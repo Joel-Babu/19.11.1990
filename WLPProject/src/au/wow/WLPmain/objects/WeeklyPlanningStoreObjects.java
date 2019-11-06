@@ -115,8 +115,8 @@ public class WeeklyPlanningStoreObjects {
 	@FindBy(xpath="//*[@id='frmDetails:btnStoreWeeklyPlanning']")
 	public WebElement WeeklyPlanningbtn_WPG;
 	
-	@FindBy(xpath="//*[@id='frmDetails:btnStoreDailyPlanning']")
-	public WebElement DailyPlanningButton;
+	//@FindBy(xpath="//*[@id='frmDetails:btnStoreDailyPlanning']")
+	//public WebElement DailyPlanningButton;
 	
 	@FindBy(xpath="//*[@id='dailyForm:btnnavigateStoreWeeklyPlanning']")
 	public WebElement WeeklyPlanningButton;

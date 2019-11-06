@@ -240,8 +240,8 @@ public class TestBase extends BasePage {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		File f = new File("C:\\sf sf newly\\sf sf nwly\\successfactor\\SuccessFactors\\Reports");
-		File f1 = new File("C:\\sf sf newly\\sf sf nwly\\successfactor\\SuccessFactors\\Reports\\Screenshots");
+		File f = new File("G:\\Automation_Joel\\reports");
+		File f1 = new File("G:\\Automation_Joel\\reports\\screenshots");
 		for (File file : f.listFiles()) {
 			if (!file.isDirectory())
 				file.delete();
@@ -252,7 +252,7 @@ public class TestBase extends BasePage {
 		}
 
 		FileUtils.copyDirectory(reportPath,
-				new File("C:\\sf sf newly\\sf sf nwly\\successfactor\\SuccessFactors\\Reports"));
+				new File("G:\\\\Automation_Joel\\\\reports"));
 	}
 
 	/**

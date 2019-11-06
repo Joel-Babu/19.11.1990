@@ -119,7 +119,7 @@ public class WeeklyTradingStatementStore extends TestBase {
 				WoWLoginPage.class);
 		pageWeeklyPlanningPO = loginPage.navToWeeklyPlanningStorePg(getContext().getStringProperty("store"));
 	}
-
+	
 	// Sales
 	@Test(description = "Weekly Trading Statement - Store, SalesColumnValidation", priority = 1)
 	public void SalesColumnValidation() throws Exception {
@@ -138,8 +138,8 @@ public class WeeklyTradingStatementStore extends TestBase {
 				objWeeklyPlanningStoreObjects.weeklyTrading, "Weekly Trading");
 		pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 				objWeeklyPlanningStoreObjects.screenToViewWeeklyTrading, "Store");
-		/*pageWeeklyPlanningPO.verifyPageName(extentTest, objWeeklyPlanningStoreObjects.DataFrame,
-				objWeeklyPlanningStoreObjects.pageName, getContext().getStringProperty("WTSStore"));*/
+		pageWeeklyPlanningPO.verifyPageName(extentTest, objWeeklyPlanningStoreObjects.DataFrame,
+				objWeeklyPlanningStoreObjects.pageName, getContext().getStringProperty("WTSStore"));
 
 		OptionToView = getContext().getStringProperty("OptionToView");
 
@@ -478,7 +478,7 @@ public class WeeklyTradingStatementStore extends TestBase {
 		pageWeeklyPlanningPO.CompareValues(extentTest, DBMixVal, MixVal);
 		pageMonthlyPlanningPO.CompareValues(extentTest, DBMixTtl, MixTtl);
 	}
-
+	
 	// Items and Item Price
 	@Test(description = "Weekly Trading Statement - Store, Planned Item", priority = 2)
 	public void ItemsColumnValidation() throws Exception {
@@ -751,7 +751,7 @@ public class WeeklyTradingStatementStore extends TestBase {
 		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBActlHrsTtl, ActlHrsTtl);
 
 		// Variance SMS:
-	/*	Report_AddStep("testcase", "VARIANCE SMS - WEEK WISE DATA", "", "", "");
+		Report_AddStep("testcase", "VARIANCE SMS - WEEK WISE DATA", "", "", "");
 		extentTest = report.startTest("Variance SMS");
 
 		String VarianceSMS = data.getText("VarianceSMS");
@@ -779,7 +779,7 @@ public class WeeklyTradingStatementStore extends TestBase {
 				objWeeklyTradingStatementStoreObjects.TotalTitle, objWeeklyTradingStatementStoreObjects.VarSMSHoursTtl,objWeeklyTradingStatementStoreObjects.DataTable);
 
 		pageWeeklyPlanningPO.CompareValueDecimalFields(extentTest, DBVarSMSHrHr, VarSMSHr);
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBVarSMSHrTtl, VarSMSHrTtl); */
+		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBVarSMSHrTtl, VarSMSHrTtl); 
 
 		// PLANNED HOURS:
 		Report_AddStep("testcase", "PLANNED HOURS: - WEEK WISE DATA", "", "", "");
@@ -842,7 +842,7 @@ public class WeeklyTradingStatementStore extends TestBase {
 		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBVarPlndHrsTtl, VarPlndHrsTtl);
 
 		// Actual SMS:
-	/*	Report_AddStep("testcase", "ACTUAL SMS - WEEK WISE DATA", "", "", "");
+		Report_AddStep("testcase", "ACTUAL SMS - WEEK WISE DATA", "", "", "");
 		extentTest = report.startTest("Actual SMS");
 
 		String ActualSMS = data.getText("ActualSMS");
@@ -871,10 +871,10 @@ public class WeeklyTradingStatementStore extends TestBase {
 				objWeeklyTradingStatementStoreObjects.ActualSMSHoursTtl,objWeeklyTradingStatementStoreObjects.DataTable);
 
 		pageWeeklyPlanningPO.CompareValueDecimalFields(extentTest, DBActlSMSHr, ActlSMSHr);
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBActlSMSHrTtl, ActlSMSHrTtl); */
+		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBActlSMSHrTtl, ActlSMSHrTtl); 
 
 		// OR % SMS:
-	/*	Report_AddStep("testcase", "OPERATIONAL RATIO - WEEK WISE DATA", "", "", "");
+		Report_AddStep("testcase", "OPERATIONAL RATIO - WEEK WISE DATA", "", "", "");
 		extentTest = report.startTest("OR Percentage");
 
 		String ORPercentage = data.getText("ORPercentage");
@@ -903,7 +903,7 @@ public class WeeklyTradingStatementStore extends TestBase {
 				objWeeklyTradingStatementStoreObjects.ORPercentageHoursTtl,objWeeklyTradingStatementStoreObjects.DataTable);
 
 		pageWeeklyPlanningPO.CompareValueDecimalFields(extentTest, DBORHr, ORHr);
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBORHrTtl, ORHrTtl); */
+		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBORHrTtl, ORHrTtl); 
 	}
 
 	// Wages
@@ -1259,7 +1259,7 @@ public class WeeklyTradingStatementStore extends TestBase {
 			
 			}
 	}
-
+	
 	//////////////////////////////////////////////// CLR 1
 	//////////////////////////////////////////////// /////////////////////////////////////////////////////////
 	// Sales
@@ -1731,7 +1731,7 @@ public class WeeklyTradingStatementStore extends TestBase {
 		OptionToView = getContext().getStringProperty("OptionToView");
 
 		// ACTUAL OR:
-	/*	Report_AddStep("testcase", " ACTUAL OR COMBINED TABLE- WEEK WISE DATA", "", "", "");
+		Report_AddStep("testcase", " ACTUAL OR COMBINED TABLE- WEEK WISE DATA", "", "", "");
 		extentTest = report.startTest("Actual OR");
 
 		String ActualOR = data.getText("ActualOR");
@@ -1755,7 +1755,7 @@ public class WeeklyTradingStatementStore extends TestBase {
 				objWeeklyTradingStatementStoreObjects.ActualORTtlNew);
 
 		pageMonthlyPlanningPO.CompareValues(extentTest, DBActlVal, ActlVal);
-		pageMonthlyPlanningPO.CompareValues(extentTest, DBActlTtl, ActlTtl); */
+		pageMonthlyPlanningPO.CompareValues(extentTest, DBActlTtl, ActlTtl); 
 
 		// WEEKLY PLANNED OR:
 		Report_AddStep("testcase", " WEEKLY PLANNED OR  COMBINED TABLE- WEEK WISE DATA", "", "", "");
@@ -1904,8 +1904,9 @@ public class WeeklyTradingStatementStore extends TestBase {
 		pageMonthlyPlanningPO.CompareValues(extentTest, DBPlndVal, PlndVal);
 		pageMonthlyPlanningPO.CompareValues(extentTest, DBPlndTtl, PlndTtl);
 	}
+
 ////////////////////////////////////////////////PST 1073////////////////////////////////////////////////////////////////////////////////
-	
+/*	
 	@Test(description = "Weekly Trading Statement - Store, LonglifeseafoodColumnValidation", priority = 11)
 	public void LonglifeseafoodSalesColumnValidation() throws Exception {
 		
@@ -1937,14 +1938,14 @@ public class WeeklyTradingStatementStore extends TestBase {
 		System.out.println("DB Value: " + DBActlValSD);
 
 		
-		ActlLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.LLTitle,
-				objWeeklyTradingStatementStoreObjects.ActualSalesLL);
+	//	ActlLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.LLTitle,
+		//		objWeeklyTradingStatementStoreObjects.ActualSalesLL);
 		
-		ActlSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.SDTitle,
-				objWeeklyTradingStatementStoreObjects.ActualSalesSD);
+		//ActlSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.SDTitle,
+		//		objWeeklyTradingStatementStoreObjects.ActualSalesSD);
 
-		pageWeeklyPlanningPO.CompareValues(extentTest, DBActlValLL, ActlLL);
-		pageMonthlyPlanningPO.CompareValues(extentTest, DBActlValSD, ActlSD);
+		//pageWeeklyPlanningPO.CompareValues(extentTest, DBActlValLL, ActlLL);
+		//pageMonthlyPlanningPO.CompareValues(extentTest, DBActlValSD, ActlSD);
 
 		// PLANNED SALES:
 		Report_AddStep("testcase", " PLANNED SALES - LONGLIFE E& SEAFOOD & DELI", "", "", "");
@@ -1967,13 +1968,13 @@ public class WeeklyTradingStatementStore extends TestBase {
 		System.out.println("DB Value: " + DBPlndValSD);
 
 		
-		PlndLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.LLTitle,
-				objWeeklyTradingStatementStoreObjects.PlannedSalesLL);
-		PlndSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.SDTitle,
-				objWeeklyTradingStatementStoreObjects.PlannedSalesSD);
+	//	PlndLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.LLTitle,
+		//		objWeeklyTradingStatementStoreObjects.PlannedSalesLL);
+		//PlndSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.SDTitle,
+		//		objWeeklyTradingStatementStoreObjects.PlannedSalesSD);
 
-		pageWeeklyPlanningPO.CompareValues(extentTest, DBPlndValLL, PlndLL);
-		pageMonthlyPlanningPO.CompareValues(extentTest, DBPlndValSD, PlndSD);
+	//	pageWeeklyPlanningPO.CompareValues(extentTest, DBPlndValLL, PlndLL);
+	//	pageMonthlyPlanningPO.CompareValues(extentTest, DBPlndValSD, PlndSD);
 
 		// VARIANCE IN PLANNED SALES:
 		Report_AddStep("testcase", " VARIANCE IN PLANNED SALES - LONGLIFE E& SEAFOOD & DELI", "", "", "");
@@ -1996,15 +1997,15 @@ public class WeeklyTradingStatementStore extends TestBase {
 		System.out.println("DB Value: " + DBVarPlndValSD);
 
 		
-		VarPlndLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.LLTitle,
-				objWeeklyTradingStatementStoreObjects.PlannedSalesGrwthLL);
-		VarPlndSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.SDTitle,
-				objWeeklyTradingStatementStoreObjects.PlannedSalesGrwthSD);
+//		VarPlndLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.LLTitle,
+//				objWeeklyTradingStatementStoreObjects.PlannedSalesGrwthLL);
+//		VarPlndSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.SDTitle,
+//				objWeeklyTradingStatementStoreObjects.PlannedSalesGrwthSD);
 
-		pageWeeklyPlanningPO.CompareValues(extentTest, DBVarPlndValLL, VarPlndLL);
-		pageMonthlyPlanningPO.CompareValues(extentTest, DBVarPlndValSD, VarPlndSD);
+	//	pageWeeklyPlanningPO.CompareValues(extentTest, DBVarPlndValLL, VarPlndLL);
+	//	pageMonthlyPlanningPO.CompareValues(extentTest, DBVarPlndValSD, VarPlndSD);
 
 		// LAST YEAR SALES:
 		Report_AddStep("testcase", " LAST YEAR SALES - WEEK WISE DATA", "", "", "");
@@ -2027,13 +2028,13 @@ public class WeeklyTradingStatementStore extends TestBase {
 		System.out.println("DB Value: " + DBLYSlsValSD);
 
 		
-		LYSlsValLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.LLTitle,
-				objWeeklyTradingStatementStoreObjects.LYSalesLL);
-		LYSlsValSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.SDTitle,
-				objWeeklyTradingStatementStoreObjects.LYSalesSD);
-
-		pageWeeklyPlanningPO.CompareValues(extentTest, DBLYSlsValLL, LYSlsValLL);
-		pageMonthlyPlanningPO.CompareValues(extentTest, DBLYSlsValSD, LYSlsValSD);
+//		LYSlsValLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.LLTitle,
+//				objWeeklyTradingStatementStoreObjects.LYSalesLL);
+//		LYSlsValSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.SDTitle,
+//				objWeeklyTradingStatementStoreObjects.LYSalesSD);
+//
+//		pageWeeklyPlanningPO.CompareValues(extentTest, DBLYSlsValLL, LYSlsValLL);
+//		pageMonthlyPlanningPO.CompareValues(extentTest, DBLYSlsValSD, LYSlsValSD);
 
 		// VARIANCE IN LAST YEAR SALES:
 		Report_AddStep("testcase", " VARIANCE IN LAST YEAR SALES - LONGLIFE E& SEAFOOD & DELI", "", "", "");
@@ -2056,15 +2057,15 @@ public class WeeklyTradingStatementStore extends TestBase {
 		System.out.println("DB Value: " + DBVarLYSlsValSD);
 
 		
-		VarLYSlsLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.LLTitle,
-				objWeeklyTradingStatementStoreObjects.LYSalesGrwthLL);
-		VarLYSlsSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.SDTitle,
-				objWeeklyTradingStatementStoreObjects.LYSalesGrwthSD);
-
-		pageWeeklyPlanningPO.CompareValues(extentTest, DBVarLYSlsValLL, VarLYSlsLL);
-		pageMonthlyPlanningPO.CompareValues(extentTest, DBVarLYSlsValSD, VarLYSlsSD);
+//		VarLYSlsLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.LLTitle,
+//				objWeeklyTradingStatementStoreObjects.LYSalesGrwthLL);
+//		VarLYSlsSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.SDTitle,
+//				objWeeklyTradingStatementStoreObjects.LYSalesGrwthSD);
+//
+//		pageWeeklyPlanningPO.CompareValues(extentTest, DBVarLYSlsValLL, VarLYSlsLL);
+//		pageMonthlyPlanningPO.CompareValues(extentTest, DBVarLYSlsValSD, VarLYSlsSD);
 
 		// BUDGET SALES:
 		if (OptionToView.contains("Budget")) {
@@ -2088,16 +2089,16 @@ public class WeeklyTradingStatementStore extends TestBase {
 			System.out.println("DB Value: " + DBBdgtValSD);
 
 			
-			BdgtLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-					objWeeklyTradingStatementStoreObjects.LLTitle,
-					objWeeklyTradingStatementStoreObjects.BudgetSalesLL);
-			
-			BdgtSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-					objWeeklyTradingStatementStoreObjects.SDTitle,
-					objWeeklyTradingStatementStoreObjects.BudgetSalesSD);
-
-			pageWeeklyPlanningPO.CompareValues(extentTest, DBBdgtValLL, BdgtLL);
-			pageMonthlyPlanningPO.CompareValues(extentTest, DBBdgtValSD, BdgtSD);
+//			BdgtLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//					objWeeklyTradingStatementStoreObjects.LLTitle,
+//					objWeeklyTradingStatementStoreObjects.BudgetSalesLL);
+//			
+//			BdgtSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//					objWeeklyTradingStatementStoreObjects.SDTitle,
+//					objWeeklyTradingStatementStoreObjects.BudgetSalesSD);
+//
+//			pageWeeklyPlanningPO.CompareValues(extentTest, DBBdgtValLL, BdgtLL);
+//			pageMonthlyPlanningPO.CompareValues(extentTest, DBBdgtValSD, BdgtSD);
 		}
 		if (OptionToView.contains("Forecast")) {
 			Report_AddStep("testcase", "FORECAST SALES - LONGLIFE E& SEAFOOD & DELI", "", "", "");
@@ -2119,15 +2120,15 @@ public class WeeklyTradingStatementStore extends TestBase {
 							.replace("Division", getContext().getStringProperty("Division")).replace("Department", getContext().getStringProperty("SeaFoodDeli")));
 			System.out.println("DB Value: " + DBBdgtValSD);
 
-			BdgtLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-					objWeeklyTradingStatementStoreObjects.LLTitle,
-					objWeeklyTradingStatementStoreObjects.BudgetSalesLL);
-			BdgtSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-					objWeeklyTradingStatementStoreObjects.SDTitle,
-					objWeeklyTradingStatementStoreObjects.BudgetSalesSD);
-
-			pageWeeklyPlanningPO.CompareValues(extentTest, DBBdgtValLL, BdgtLL);
-			pageMonthlyPlanningPO.CompareValues(extentTest, DBBdgtValSD, BdgtSD);
+//			BdgtLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//					objWeeklyTradingStatementStoreObjects.LLTitle,
+//					objWeeklyTradingStatementStoreObjects.BudgetSalesLL);
+//			BdgtSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//					objWeeklyTradingStatementStoreObjects.SDTitle,
+//					objWeeklyTradingStatementStoreObjects.BudgetSalesSD);
+//
+//			pageWeeklyPlanningPO.CompareValues(extentTest, DBBdgtValLL, BdgtLL);
+//			pageMonthlyPlanningPO.CompareValues(extentTest, DBBdgtValSD, BdgtSD);
 		}
 
 		// VARIANCE IN BUDGET SALES:
@@ -2154,15 +2155,15 @@ public class WeeklyTradingStatementStore extends TestBase {
 			System.out.println("DB Value: " + DBVarBdgtValSD);
 
 			
-			VarBdgtLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-					objWeeklyTradingStatementStoreObjects.LLTitle,
-					objWeeklyTradingStatementStoreObjects.BudgetSalesGrwthLL);
-			VarBdgtSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-					objWeeklyTradingStatementStoreObjects.SDTitle,
-					objWeeklyTradingStatementStoreObjects.BudgetSalesGrwthSD);
-
-			pageWeeklyPlanningPO.CompareValues(extentTest, DBVarBdgtValLL, VarBdgtLL);
-			pageMonthlyPlanningPO.CompareValues(extentTest, DBVarBdgtValSD, VarBdgtSD);
+//			VarBdgtLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//					objWeeklyTradingStatementStoreObjects.LLTitle,
+//					objWeeklyTradingStatementStoreObjects.BudgetSalesGrwthLL);
+//			VarBdgtSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//					objWeeklyTradingStatementStoreObjects.SDTitle,
+//					objWeeklyTradingStatementStoreObjects.BudgetSalesGrwthSD);
+//
+//			pageWeeklyPlanningPO.CompareValues(extentTest, DBVarBdgtValLL, VarBdgtLL);
+//			pageMonthlyPlanningPO.CompareValues(extentTest, DBVarBdgtValSD, VarBdgtSD);
 		}
 		
 		if (OptionToView.contains("Forecast")) {
@@ -2186,16 +2187,16 @@ public class WeeklyTradingStatementStore extends TestBase {
 			System.out.println("DB Value: " + DBVarBdgtValSD);
 
 			
-			VarBdgtLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-					objWeeklyTradingStatementStoreObjects.LLTitle,
-					objWeeklyTradingStatementStoreObjects.BudgetSalesGrwthLL);
-			
-			VarBdgtSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-					objWeeklyTradingStatementStoreObjects.SDTitle,
-					objWeeklyTradingStatementStoreObjects.BudgetSalesGrwthSD);
-
-			pageWeeklyPlanningPO.CompareValues(extentTest, DBVarBdgtValLL, VarBdgtLL);
-			pageMonthlyPlanningPO.CompareValues(extentTest, DBVarBdgtValSD, VarBdgtSD);
+//			VarBdgtLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//					objWeeklyTradingStatementStoreObjects.LLTitle,
+//					objWeeklyTradingStatementStoreObjects.BudgetSalesGrwthLL);
+//			
+//			VarBdgtSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//					objWeeklyTradingStatementStoreObjects.SDTitle,
+//					objWeeklyTradingStatementStoreObjects.BudgetSalesGrwthSD);
+//
+//			pageWeeklyPlanningPO.CompareValues(extentTest, DBVarBdgtValLL, VarBdgtLL);
+//			pageMonthlyPlanningPO.CompareValues(extentTest, DBVarBdgtValSD, VarBdgtSD);
 		}
 
 		// AVERAGE BASKET SALES:
@@ -2218,17 +2219,17 @@ public class WeeklyTradingStatementStore extends TestBase {
 						.replace("Division", getContext().getStringProperty("Division")).replace("Department", getContext().getStringProperty("SeaFoodDeli")));
 		System.out.println("DB Value: " + DBAvgBsktValSD);
 
-	
-		AvgBsktLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.LLTitle,
-				objWeeklyTradingStatementStoreObjects.AvgBasketSalesLL);
-		
-		AvgBsktSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.SDTitle,
-				objWeeklyTradingStatementStoreObjects.AvgBasketSalesSD);
-
-		pageWeeklyPlanningPO.CompareValues(extentTest, DBAvgBsktValLL, AvgBsktLL);
-		pageMonthlyPlanningPO.CompareValues(extentTest, DBAvgBsktValSD, AvgBsktSD);
+//	
+//		AvgBsktLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.LLTitle,
+//				objWeeklyTradingStatementStoreObjects.AvgBasketSalesLL);
+//		
+//		AvgBsktSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.SDTitle,
+//				objWeeklyTradingStatementStoreObjects.AvgBasketSalesSD);
+//
+//		pageWeeklyPlanningPO.CompareValues(extentTest, DBAvgBsktValLL, AvgBsktLL);
+//		pageMonthlyPlanningPO.CompareValues(extentTest, DBAvgBsktValSD, AvgBsktSD);
 
 		// MIX SALES:
 		Report_AddStep("testcase", "MIX SALES - LONGLIFE E& SEAFOOD & DELI", "", "", "");
@@ -2251,14 +2252,14 @@ public class WeeklyTradingStatementStore extends TestBase {
 		System.out.println("DB Value: " + DBMixValSD);
 
 		
-		MixLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.LLTitle,
-				objWeeklyTradingStatementStoreObjects.MixLL);
-		
-		MixSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.SDTitle,
-				objWeeklyTradingStatementStoreObjects.MixSD);
-
-		pageWeeklyPlanningPO.CompareValues(extentTest, DBMixValLL, MixLL);
-		pageMonthlyPlanningPO.CompareValues(extentTest, DBMixValSD, MixSD);
+//		MixLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.LLTitle,
+//				objWeeklyTradingStatementStoreObjects.MixLL);
+//		
+//		MixSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.SDTitle,
+//				objWeeklyTradingStatementStoreObjects.MixSD);
+//
+//		pageWeeklyPlanningPO.CompareValues(extentTest, DBMixValLL, MixLL);
+//		pageMonthlyPlanningPO.CompareValues(extentTest, DBMixValSD, MixSD);
 	}
 
 	// Items and Item Price
@@ -2292,13 +2293,13 @@ public class WeeklyTradingStatementStore extends TestBase {
 		System.out.println("DB Value: " + DBPlndItmValSD);
 
 		
-		PlndItmLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.LLTitle, objWeeklyTradingStatementStoreObjects.PlannedItemLL);
-		PlndItmSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.SDTitle, objWeeklyTradingStatementStoreObjects.PlannedItemSD);
-
-		pageWeeklyPlanningPO.CompareValues(extentTest, DBPlndItmValLL, PlndItmLL);
-		pageMonthlyPlanningPO.CompareValues(extentTest, DBPlndItmValSD, PlndItmSD);
+//		PlndItmLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.LLTitle, objWeeklyTradingStatementStoreObjects.PlannedItemLL);
+//		PlndItmSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.SDTitle, objWeeklyTradingStatementStoreObjects.PlannedItemSD);
+//
+//		pageWeeklyPlanningPO.CompareValues(extentTest, DBPlndItmValLL, PlndItmLL);
+//		pageMonthlyPlanningPO.CompareValues(extentTest, DBPlndItmValSD, PlndItmSD);
 
 		// ACTUAL ITEMS:
 		Report_AddStep("testcase", "ACTUAL ITEMS - LONGLIFE E& SEAFOOD & DELI", "", "", "");
@@ -2321,13 +2322,13 @@ public class WeeklyTradingStatementStore extends TestBase {
 		System.out.println("DB Value: " + DBActlItmValSD);
 
 		
-		ActlItmLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.LLTitle, objWeeklyTradingStatementStoreObjects.ActualItemLL);
-		ActlItmSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.SDTitle, objWeeklyTradingStatementStoreObjects.ActualItemSD);
-
-		pageWeeklyPlanningPO.CompareValues(extentTest, DBActlItmValLL, ActlItmLL);
-		pageMonthlyPlanningPO.CompareValues(extentTest, DBActlItmValSD, ActlItmSD);
+//		ActlItmLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.LLTitle, objWeeklyTradingStatementStoreObjects.ActualItemLL);
+//		ActlItmSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.SDTitle, objWeeklyTradingStatementStoreObjects.ActualItemSD);
+//
+//		pageWeeklyPlanningPO.CompareValues(extentTest, DBActlItmValLL, ActlItmLL);
+//		pageMonthlyPlanningPO.CompareValues(extentTest, DBActlItmValSD, ActlItmSD);
 
 		// PLANNED ITEM PRICE:
 		Report_AddStep("testcase", "PLANNED ITEM PRICE - LONGLIFE E& SEAFOOD & DELI", "", "", "");
@@ -2350,17 +2351,17 @@ public class WeeklyTradingStatementStore extends TestBase {
 		System.out.println("DB Value: " + DBPlndItmPriceValSD);
 
 		
-		PlndItmPriceLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.LLTitle,
-				objWeeklyTradingStatementStoreObjects.PlannedItemPriceLL);
-		
-		PlndItmPriceSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.SDTitle,
-				objWeeklyTradingStatementStoreObjects.PlannedItemPriceSD);
+//		PlndItmPriceLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.LLTitle,
+//				objWeeklyTradingStatementStoreObjects.PlannedItemPriceLL);
+//		
+//		PlndItmPriceSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.SDTitle,
+//				objWeeklyTradingStatementStoreObjects.PlannedItemPriceSD);
 
 
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBPlndItmPriceValLL, PlndItmPriceLL);
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBPlndItmPriceValSD, PlndItmPriceSD);
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBPlndItmPriceValLL, PlndItmPriceLL);
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBPlndItmPriceValSD, PlndItmPriceSD);
 
 		// ACTUAL ITEM PRICE:
 		Report_AddStep("testcase", "ACTUAL ITEM PRICE - LONGLIFE E& SEAFOOD & DELI", "", "", "");
@@ -2383,20 +2384,20 @@ public class WeeklyTradingStatementStore extends TestBase {
 		System.out.println("DB Value: " + DBActlItmPriceValSD);
 
 		
-		ActlItmPriceLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.LLTitle,
-				objWeeklyTradingStatementStoreObjects.ActualItemPriceLL);
-		
-		ActlItmPriceSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.SDTitle,
-				objWeeklyTradingStatementStoreObjects.ActualItemPriceSD);
-
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBActlItmPriceValLL, ActlItmPriceLL);
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBActlItmPriceValSD, ActlItmPriceSD);
-	}
+//		ActlItmPriceLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.LLTitle,
+//				objWeeklyTradingStatementStoreObjects.ActualItemPriceLL);
+//		
+//		ActlItmPriceSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.SDTitle,
+//				objWeeklyTradingStatementStoreObjects.ActualItemPriceSD);
+//
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBActlItmPriceValLL, ActlItmPriceLL);
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBActlItmPriceValSD, ActlItmPriceSD);
+	}*/
 
 	// Customers
-	@Test(description = "Weekly Trading Statement - Store, This Year Customer", priority = 13)
+	/*@Test(description = "Weekly Trading Statement - Store, This Year Customer", priority = 13)
 	public void LonglifeseafoodCustomersColumnValidation() throws Exception {
 		pageWeeklyPlanningPO = new WeeklyPlanningStorePage().createPage(getDriver(), getContext(), log, status, data,
 				getReport(), getReportLogger(), WeeklyPlanningStorePage.class);
@@ -2426,15 +2427,15 @@ public class WeeklyTradingStatementStore extends TestBase {
 		System.out.println("DB Value: " + DBThisYrCustValSD);
 
 		
-		ThisYrCustLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.LLTitle,
-				objWeeklyTradingStatementStoreObjects.ThisYrCustomerLL);
-		ThisYrCustSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.SDTitle,
-				objWeeklyTradingStatementStoreObjects.ThisYrCustomerSD);
-
-		pageWeeklyPlanningPO.CompareValues(extentTest, DBThisYrCustValLL, ThisYrCustLL);
-		pageMonthlyPlanningPO.CompareValues(extentTest, DBThisYrCustValSD, ThisYrCustSD);
+//		ThisYrCustLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.LLTitle,
+//				objWeeklyTradingStatementStoreObjects.ThisYrCustomerLL);
+//		ThisYrCustSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.SDTitle,
+//				objWeeklyTradingStatementStoreObjects.ThisYrCustomerSD);
+//
+//		pageWeeklyPlanningPO.CompareValues(extentTest, DBThisYrCustValLL, ThisYrCustLL);
+//		pageMonthlyPlanningPO.CompareValues(extentTest, DBThisYrCustValSD, ThisYrCustSD);
 
 		// % LAST YEAR CUSTOMER:
 		Report_AddStep("testcase", "PERCENTAGE LAST YEAR CUSTOMER - LONGLIFE E& SEAFOOD & DELI", "", "", "");
@@ -2457,15 +2458,15 @@ public class WeeklyTradingStatementStore extends TestBase {
 		System.out.println("DB Value: " + DBLstYrCustValSD);
 
 		
-		LstYrCustLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.LLTitle,
-				objWeeklyTradingStatementStoreObjects.PercentageLastCustomerLL);
-		LstYrCustSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.SDTitle,
-				objWeeklyTradingStatementStoreObjects.PercentageLastCustomerSD);
-
-		pageWeeklyPlanningPO.CompareValueDecimalFields(extentTest, DBLstYrCustValLL, LstYrCustLL);
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBLstYrCustValSD, LstYrCustSD);
+//		LstYrCustLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.LLTitle,
+//				objWeeklyTradingStatementStoreObjects.PercentageLastCustomerLL);
+//		LstYrCustSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.SDTitle,
+//				objWeeklyTradingStatementStoreObjects.PercentageLastCustomerSD);
+//
+//		pageWeeklyPlanningPO.CompareValueDecimalFields(extentTest, DBLstYrCustValLL, LstYrCustLL);
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBLstYrCustValSD, LstYrCustSD);
 
 		// DATA PENETRATION CUSTOMER:
 		Report_AddStep("testcase", "DATA PENETRATION CUSTOMER - LONGLIFE E& SEAFOOD & DELI", "", "", "");
@@ -2488,18 +2489,18 @@ public class WeeklyTradingStatementStore extends TestBase {
 		System.out.println("DB Value: " + DBDataPenValSD);
 
 		
-		DataPenLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.LLTitle,
-				objWeeklyTradingStatementStoreObjects.DeptPenetrationCustomerLL);
-		DataPenSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.SDTitle,
-				objWeeklyTradingStatementStoreObjects.DeptPenetrationCustomerSD);
-
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBDataPenValLL, DataPenLL);
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBDataPenValSD, DataPenSD);
+//		DataPenLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.LLTitle,
+//				objWeeklyTradingStatementStoreObjects.DeptPenetrationCustomerLL);
+//		DataPenSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.SDTitle,
+//				objWeeklyTradingStatementStoreObjects.DeptPenetrationCustomerSD);
+//
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBDataPenValLL, DataPenLL);
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBDataPenValSD, DataPenSD);
 	}
-
-	@Test(description = "Weekly Trading Statement - Store, Growth in SMS Hours", priority = 14)
+*/	
+	/*@Test(description = "Weekly Trading Statement - Store, Growth in SMS Hours", priority = 14)
 	public void  LonglifeseafoodHoursColumnValidation() throws Exception {
 		pageWeeklyPlanningPO = new WeeklyPlanningStorePage().createPage(getDriver(), getContext(), log, status, data,
 				getReport(), getReportLogger(), WeeklyPlanningStorePage.class);
@@ -2529,16 +2530,16 @@ public class WeeklyTradingStatementStore extends TestBase {
 		System.out.println("DB Value: " + DBActlHrsValLL);
 
 		
-		ActlHrsLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.LLTitle, objWeeklyTradingStatementStoreObjects.ActualHoursLL);
-		ActlHrsSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.SDTitle, objWeeklyTradingStatementStoreObjects.ActualHoursSD);
-
-		pageWeeklyPlanningPO.CompareValueDecimalFields(extentTest, DBActlHrsValLL, ActlHrsLL);
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBActlHrsValSD, ActlHrsSD);
+//		ActlHrsLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.LLTitle, objWeeklyTradingStatementStoreObjects.ActualHoursLL);
+//		ActlHrsSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.SDTitle, objWeeklyTradingStatementStoreObjects.ActualHoursSD);
+//
+//		pageWeeklyPlanningPO.CompareValueDecimalFields(extentTest, DBActlHrsValLL, ActlHrsLL);
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBActlHrsValSD, ActlHrsSD);
 
 		// Variance SMS:
-	/*	Report_AddStep("testcase", "VARIANCE SMS - LONGLIFE E& SEAFOOD & DELI", "", "", "");
+		Report_AddStep("testcase", "VARIANCE SMS - LONGLIFE E& SEAFOOD & DELI", "", "", "");
 		extentTest = report.startTest("Variance SMS");
 
 		String VarianceSMSLL = data.getText("VarianceSMSTotal");
@@ -2560,13 +2561,13 @@ public class WeeklyTradingStatementStore extends TestBase {
 		System.out.println("DB Value: " + DBVarSMSHrHrSD);
 
 		
-		VarSMSHrLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.LLTitle, objWeeklyTradingStatementStoreObjects.VarSMSHoursLL);
-		VarSMSHrSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.SDTitle, objWeeklyTradingStatementStoreObjects.VarSMSHoursSD);
-
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBVarSMSHrHrLL, VarSMSHrLL);
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBVarSMSHrHrSD, VarSMSHrSD); */
+//		VarSMSHrLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.LLTitle, objWeeklyTradingStatementStoreObjects.VarSMSHoursLL);
+//		VarSMSHrSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.SDTitle, objWeeklyTradingStatementStoreObjects.VarSMSHoursSD);
+//
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBVarSMSHrHrLL, VarSMSHrLL);
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBVarSMSHrHrSD, VarSMSHrSD); 
 
 		// PLANNED HOURS:
 		Report_AddStep("testcase", "PLANNED HOURS: - LONGLIFE & SEAFOOD & DELI", "", "", "");
@@ -2589,15 +2590,15 @@ public class WeeklyTradingStatementStore extends TestBase {
 		System.out.println("DB Value: " + DBPlndHrsValSD);
 
 	
-		PlndHrsLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.LLTitle,
-				objWeeklyTradingStatementStoreObjects.PlannedHoursLL);
-		PlndHrsSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.SDTitle,
-				objWeeklyTradingStatementStoreObjects.PlannedHoursSD);
-
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBPlndHrsValLL, PlndHrsLL);
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBPlndHrsValSD, PlndHrsSD);
+//		PlndHrsLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.LLTitle,
+//				objWeeklyTradingStatementStoreObjects.PlannedHoursLL);
+//		PlndHrsSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.SDTitle,
+//				objWeeklyTradingStatementStoreObjects.PlannedHoursSD);
+//
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBPlndHrsValLL, PlndHrsLL);
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBPlndHrsValSD, PlndHrsSD);
 
 		// VARIANCE IN PLANNED HOURS:
 		Report_AddStep("testcase", "VARIANCE IN PLANNED HOURS - LONGLIFE & SEAFOOD & DELI", "", "", "");
@@ -2620,19 +2621,19 @@ public class WeeklyTradingStatementStore extends TestBase {
 		System.out.println("DB Value: " + DBVarPlndHrsValSD);
 
 		
-		VarPlndHrsLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.LLTitle,
-				objWeeklyTradingStatementStoreObjects.VarPlannedHoursLL);
-		
-		VarPlndHrsSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.SDTitle,
-				objWeeklyTradingStatementStoreObjects.VarPlannedHoursSD);
-
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBVarPlndHrsValLL, VarPlndHrsLL);
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBVarPlndHrsValSD, VarPlndHrsSD);
+//		VarPlndHrsLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.LLTitle,
+//				objWeeklyTradingStatementStoreObjects.VarPlannedHoursLL);
+//		
+//		VarPlndHrsSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.SDTitle,
+//				objWeeklyTradingStatementStoreObjects.VarPlannedHoursSD);
+//
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBVarPlndHrsValLL, VarPlndHrsLL);
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBVarPlndHrsValSD, VarPlndHrsSD);
 
 		// Actual SMS:
-	/*	Report_AddStep("testcase", "ACTUAL SMS - LONGLIFE & SEAFOOD & DELI", "", "", "");
+		Report_AddStep("testcase", "ACTUAL SMS - LONGLIFE & SEAFOOD & DELI", "", "", "");
 		extentTest = report.startTest("Actual SMS");
 
 		String ActualSMSLL = data.getText("ActualSMSTotal");
@@ -2654,16 +2655,16 @@ public class WeeklyTradingStatementStore extends TestBase {
 		System.out.println("DB Value: " + DBActlSMSHrSD);
 
 		
-		ActlSMSHrLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.LLTitle,
-				objWeeklyTradingStatementStoreObjects.ActualSMSHoursLL);
-		
-		ActlSMSHrSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.SDTitle,
-				objWeeklyTradingStatementStoreObjects.ActualSMSHoursSD);
-
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBActlSMSHrLL, ActlSMSHrLL);
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBActlSMSHrSD, ActlSMSHrSD);
+//		ActlSMSHrLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.LLTitle,
+//				objWeeklyTradingStatementStoreObjects.ActualSMSHoursLL);
+//		
+//		ActlSMSHrSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.SDTitle,
+//				objWeeklyTradingStatementStoreObjects.ActualSMSHoursSD);
+//
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBActlSMSHrLL, ActlSMSHrLL);
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBActlSMSHrSD, ActlSMSHrSD);
 
 		// OR % SMS:
 		Report_AddStep("testcase", "OPERATIONAL RATIO - LONGLIFE & SEAFOOD & DELI", "", "", "");
@@ -2688,13 +2689,13 @@ public class WeeklyTradingStatementStore extends TestBase {
 		System.out.println("DB Value: " + DBORHrSD);
 
 		
-		ORHrLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.LLTitle,
-				objWeeklyTradingStatementStoreObjects.ORPercentageHoursLL);
-		ORHrSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.SDTitle,
-				objWeeklyTradingStatementStoreObjects.ORPercentageHoursSD);
-
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBORHrLL, ORHrLL);
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBORHrSD, ORHrSD); */
+//		ORHrLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.LLTitle,
+//				objWeeklyTradingStatementStoreObjects.ORPercentageHoursLL);
+//		ORHrSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.SDTitle,
+//				objWeeklyTradingStatementStoreObjects.ORPercentageHoursSD);
+//
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBORHrLL, ORHrLL);
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBORHrSD, ORHrSD); 
 	}
 
 	// Wages
@@ -2729,13 +2730,13 @@ public class WeeklyTradingStatementStore extends TestBase {
 		System.out.println("DB Value: " + DBActlWgValSD);
 
 		
-		ActlWgLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.LLTitle,
-				objWeeklyTradingStatementStoreObjects.ActualWagesLL);
-		ActlWgSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.SDTitle,
-				objWeeklyTradingStatementStoreObjects.ActualWagesSD);
-
-		pageWeeklyPlanningPO.CompareValues(extentTest, DBActlWgValLL, ActlWgLL);
-		pageMonthlyPlanningPO.CompareValues(extentTest, DBActlWgValSD, ActlWgSD);
+//		ActlWgLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.LLTitle,
+//				objWeeklyTradingStatementStoreObjects.ActualWagesLL);
+//		ActlWgSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.SDTitle,
+//				objWeeklyTradingStatementStoreObjects.ActualWagesSD);
+//
+//		pageWeeklyPlanningPO.CompareValues(extentTest, DBActlWgValLL, ActlWgLL);
+//		pageMonthlyPlanningPO.CompareValues(extentTest, DBActlWgValSD, ActlWgSD);
 
 		// ACTUAL WAGE PERCENTAGE:
 		Report_AddStep("testcase", "ACTUAL WAGE PERCENTAGE- LONGLIFE & SEAFOOD & DELI", "", "", "");
@@ -2758,15 +2759,15 @@ public class WeeklyTradingStatementStore extends TestBase {
 		System.out.println("DB Value: " + DBActlWgPrcntValSD);
 
 		
-		ActlWgPrcntLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.LLTitle,
-				objWeeklyTradingStatementStoreObjects.ActualWagesPercentageLL);
-		ActlWgPrcntSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.SDTitle,
-				objWeeklyTradingStatementStoreObjects.ActualWagesPercentageSD);
-
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBActlWgPrcntValLL, ActlWgPrcntLL);
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBActlWgPrcntValSD, ActlWgPrcntSD);
+//		ActlWgPrcntLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.LLTitle,
+//				objWeeklyTradingStatementStoreObjects.ActualWagesPercentageLL);
+//		ActlWgPrcntSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.SDTitle,
+//				objWeeklyTradingStatementStoreObjects.ActualWagesPercentageSD);
+//
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBActlWgPrcntValLL, ActlWgPrcntLL);
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBActlWgPrcntValSD, ActlWgPrcntSD);
 
 		// BUDGET WAGE:
 		if (OptionToView.contains("Budget")) {
@@ -2790,15 +2791,15 @@ public class WeeklyTradingStatementStore extends TestBase {
 			System.out.println("DB Value: " + DBBdgtWgValSD);
 
 			
-			BdgtWgLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-					objWeeklyTradingStatementStoreObjects.LLTitle,
-					objWeeklyTradingStatementStoreObjects.BudgetWagesLL);
-			BdgtWgSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-					objWeeklyTradingStatementStoreObjects.SDTitle,
-					objWeeklyTradingStatementStoreObjects.BudgetWagesSD);
-
-			pageWeeklyPlanningPO.CompareValues(extentTest, DBBdgtWgValLL,BdgtWgLL);
-			pageMonthlyPlanningPO.CompareValues(extentTest, DBBdgtWgValSD, BdgtWgSD);
+//			BdgtWgLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//					objWeeklyTradingStatementStoreObjects.LLTitle,
+//					objWeeklyTradingStatementStoreObjects.BudgetWagesLL);
+//			BdgtWgSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//					objWeeklyTradingStatementStoreObjects.SDTitle,
+//					objWeeklyTradingStatementStoreObjects.BudgetWagesSD);
+//
+//			pageWeeklyPlanningPO.CompareValues(extentTest, DBBdgtWgValLL,BdgtWgLL);
+//			pageMonthlyPlanningPO.CompareValues(extentTest, DBBdgtWgValSD, BdgtWgSD);
 		}
 		if (OptionToView.contains("Forecast")) {
 			Report_AddStep("testcase", "ACTUAL FORECAST WAGE - WEEK WISE DATA", "", "", "");
@@ -2821,16 +2822,16 @@ public class WeeklyTradingStatementStore extends TestBase {
 			System.out.println("DB Value: " + DBBdgtWgValSD);
 
 			
-			BdgtWgLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-					objWeeklyTradingStatementStoreObjects.LLTitle,
-					objWeeklyTradingStatementStoreObjects.BudgetWagesLL);
-			BdgtWgSD= pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-					objWeeklyTradingStatementStoreObjects.SDTitle,
-					objWeeklyTradingStatementStoreObjects.BudgetWagesSD);
-
-
-			pageWeeklyPlanningPO.CompareValues(extentTest, DBBdgtWgValLL, BdgtWgLL);
-			pageMonthlyPlanningPO.CompareValues(extentTest, DBBdgtWgValSD, BdgtWgSD);
+//			BdgtWgLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//					objWeeklyTradingStatementStoreObjects.LLTitle,
+//					objWeeklyTradingStatementStoreObjects.BudgetWagesLL);
+//			BdgtWgSD= pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//					objWeeklyTradingStatementStoreObjects.SDTitle,
+//					objWeeklyTradingStatementStoreObjects.BudgetWagesSD);
+//
+//
+//			pageWeeklyPlanningPO.CompareValues(extentTest, DBBdgtWgValLL, BdgtWgLL);
+//			pageMonthlyPlanningPO.CompareValues(extentTest, DBBdgtWgValSD, BdgtWgSD);
 		}
 
 		// BUDGET WAGE PERCENTAGE:
@@ -2855,15 +2856,15 @@ public class WeeklyTradingStatementStore extends TestBase {
 			System.out.println("DB Value: " + DBBdgtWgPrcntValSD);
 
 			
-			BdgtWgPrcntLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-					objWeeklyTradingStatementStoreObjects.LLTitle,
-					objWeeklyTradingStatementStoreObjects.BudgetWagesPercentageLL);
-			BdgtWgPrcntSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-					objWeeklyTradingStatementStoreObjects.SDTitle,
-					objWeeklyTradingStatementStoreObjects.BudgetWagesPercentageSD);
-
-			pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBBdgtWgPrcntValLL, BdgtWgPrcntLL);
-			pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBBdgtWgPrcntValSD, BdgtWgPrcntSD);
+//			BdgtWgPrcntLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//					objWeeklyTradingStatementStoreObjects.LLTitle,
+//					objWeeklyTradingStatementStoreObjects.BudgetWagesPercentageLL);
+//			BdgtWgPrcntSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//					objWeeklyTradingStatementStoreObjects.SDTitle,
+//					objWeeklyTradingStatementStoreObjects.BudgetWagesPercentageSD);
+//
+//			pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBBdgtWgPrcntValLL, BdgtWgPrcntLL);
+//			pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBBdgtWgPrcntValSD, BdgtWgPrcntSD);
 		}
 		if (OptionToView.contains("Forecast")) {
 			Report_AddStep("testcase", "FORECAST WAGE PERCENTAGE-LONGLIFE & SEAFOOD & DELI", "", "", "");
@@ -2886,15 +2887,15 @@ public class WeeklyTradingStatementStore extends TestBase {
 			System.out.println("DB Value: " + DBBdgtWgPrcntValSD);
 
 			
-			BdgtWgPrcntLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-					objWeeklyTradingStatementStoreObjects.LLTitle,
-					objWeeklyTradingStatementStoreObjects.BudgetWagesPercentageLL);
-			BdgtWgPrcntSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-					objWeeklyTradingStatementStoreObjects.SDTitle,
-					objWeeklyTradingStatementStoreObjects.BudgetWagesPercentageSD);
-
-			pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBBdgtWgPrcntValLL, BdgtWgPrcntLL);
-			pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBBdgtWgPrcntValSD, BdgtWgPrcntSD);
+//			BdgtWgPrcntLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//					objWeeklyTradingStatementStoreObjects.LLTitle,
+//					objWeeklyTradingStatementStoreObjects.BudgetWagesPercentageLL);
+//			BdgtWgPrcntSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//					objWeeklyTradingStatementStoreObjects.SDTitle,
+//					objWeeklyTradingStatementStoreObjects.BudgetWagesPercentageSD);
+//
+//			pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBBdgtWgPrcntValLL, BdgtWgPrcntLL);
+//			pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBBdgtWgPrcntValSD, BdgtWgPrcntSD);
 		}
 
 		// PLANNED CPH:
@@ -2918,16 +2919,16 @@ public class WeeklyTradingStatementStore extends TestBase {
 		System.out.println("DB Value: " + DBPlndCPHValSD);
 
 		
-		PlndCPHLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.LLTitle,
-				objWeeklyTradingStatementStoreObjects.PlannedCPHWagesLL);
-		PlndCPHSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.SDTitle,
-				objWeeklyTradingStatementStoreObjects.PlannedCPHWagesSD);
-
-
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBPlndCPHValLL, PlndCPHLL);
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBPlndCPHValSD, PlndCPHSD);
+//		PlndCPHLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.LLTitle,
+//				objWeeklyTradingStatementStoreObjects.PlannedCPHWagesLL);
+//		PlndCPHSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.SDTitle,
+//				objWeeklyTradingStatementStoreObjects.PlannedCPHWagesSD);
+//
+//
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBPlndCPHValLL, PlndCPHLL);
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBPlndCPHValSD, PlndCPHSD);
 
 		// PLANNED WAGE:
 		Report_AddStep("testcase", "PLANNED WAGE - LONGLIFE & SEAFOOD & DELI", "", "", "");
@@ -2950,13 +2951,13 @@ public class WeeklyTradingStatementStore extends TestBase {
 		System.out.println("DB Value: " + DBPlndWgValSD);
 
 		
-		PlndWgLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.LLTitle,
-				objWeeklyTradingStatementStoreObjects.PlannedWagesLL);
-		PlndWgSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.SDTitle,
-				objWeeklyTradingStatementStoreObjects.PlannedWagesSD);
-
-		pageWeeklyPlanningPO.CompareValues(extentTest, DBPlndWgValLL, PlndWgLL);
-		pageMonthlyPlanningPO.CompareValues(extentTest, DBPlndWgValSD, PlndWgSD);
+//		PlndWgLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.LLTitle,
+//				objWeeklyTradingStatementStoreObjects.PlannedWagesLL);
+//		PlndWgSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.SDTitle,
+//				objWeeklyTradingStatementStoreObjects.PlannedWagesSD);
+//
+//		pageWeeklyPlanningPO.CompareValues(extentTest, DBPlndWgValLL, PlndWgLL);
+//		pageMonthlyPlanningPO.CompareValues(extentTest, DBPlndWgValSD, PlndWgSD);
 
 		// PLANNED WAGE PERCENTAGE:
 		Report_AddStep("testcase", "PLANNED WAGE PERCENTAGE - LONGLIFE & SEAFOOD & DELI", "", "", "");
@@ -2979,15 +2980,15 @@ public class WeeklyTradingStatementStore extends TestBase {
 		System.out.println("DB Value: " + DBPlndWgPrcntValSD);
 
 
-		PlndWgPrcntLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.LLTitle,
-				objWeeklyTradingStatementStoreObjects.PlannedWagesPercentageLL);
-		PlndWgPrcntSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
-				objWeeklyTradingStatementStoreObjects.SDTitle,
-				objWeeklyTradingStatementStoreObjects.PlannedWagesPercentageSD);
-
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBPlndWgPrcntValLL, PlndWgPrcntLL);
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBPlndWgPrcntValSD, PlndWgPrcntSD);
+//		PlndWgPrcntLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.LLTitle,
+//				objWeeklyTradingStatementStoreObjects.PlannedWagesPercentageLL);
+//		PlndWgPrcntSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(
+//				objWeeklyTradingStatementStoreObjects.SDTitle,
+//				objWeeklyTradingStatementStoreObjects.PlannedWagesPercentageSD);
+//
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBPlndWgPrcntValLL, PlndWgPrcntLL);
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBPlndWgPrcntValSD, PlndWgPrcntSD);
 
 		// CPH Wages:
 		Report_AddStep("testcase", "CPH WAGES -LONGLIFE & SEAFOOD & DELI", "", "", "");
@@ -3010,13 +3011,13 @@ public class WeeklyTradingStatementStore extends TestBase {
 		System.out.println("DB Value: " + DBCPHWgValSD);
 
 		
-		CPHWgLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.LLTitle,
-				objWeeklyTradingStatementStoreObjects.CPHWagesLL);
-		CPHWgSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.SDTitle,
-				objWeeklyTradingStatementStoreObjects.CPHWagesSD);
-
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBCPHWgValLL, CPHWgLL);
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBCPHWgValSD, CPHWgSD);
+//		CPHWgLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.LLTitle,
+//				objWeeklyTradingStatementStoreObjects.CPHWagesLL);
+//		CPHWgSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.SDTitle,
+//				objWeeklyTradingStatementStoreObjects.CPHWagesSD);
+//
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBCPHWgValLL, CPHWgLL);
+//		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBCPHWgValSD, CPHWgSD);
 		
 		//Allowed Wages Validation
 		
@@ -3041,18 +3042,18 @@ public class WeeklyTradingStatementStore extends TestBase {
 				System.out.println("DB Value: " + DBAllowedWgValSD);
 
 				
-				AllowedWgLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.LLTitle,
-						objWeeklyTradingStatementStoreObjects.AllowedWagesLL);
-				AllowedWgSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.SDTitle,
-						objWeeklyTradingStatementStoreObjects.AllowedWagesSD);
-
-				pageWeeklyPlanningPO.CompareValues(extentTest, DBAllowedWgValLL, AllowedWgLL);
-				pageMonthlyPlanningPO.CompareValues(extentTest, DBAllowedWgValSD, AllowedWgSD);
+//				AllowedWgLL = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.LLTitle,
+//						objWeeklyTradingStatementStoreObjects.AllowedWagesLL);
+//				AllowedWgSD = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementStoreObjects.SDTitle,
+//						objWeeklyTradingStatementStoreObjects.AllowedWagesSD);
+//
+//				pageWeeklyPlanningPO.CompareValues(extentTest, DBAllowedWgValLL, AllowedWgLL);
+//				pageMonthlyPlanningPO.CompareValues(extentTest, DBAllowedWgValSD, AllowedWgSD);
 				
 			
 			}
 	}
-	@Test(priority = 16)
+*/	@Test(priority = 16)
 	public void LogoutCLRApplication() throws Exception {
 		pageWeeklyPlanningPO = new WeeklyPlanningStorePage().createPage(getDriver(), getContext(), log, status, data,
 				getReport(), getReportLogger(), WeeklyPlanningStorePage.class);

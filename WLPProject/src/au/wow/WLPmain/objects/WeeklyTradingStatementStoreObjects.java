@@ -203,11 +203,11 @@ public class WeeklyTradingStatementStoreObjects
 	
 	/////////////////////////PST 1073//////////////////////////////////////////////
 	
-	public static final String LLTitle="//td[contains(@id,'form:table1:16:j_idt281')]";	//Longlife
-	public static final String SDTitle="//td[contains(@id,'form:table1:0:j_idt281')]";	//Seafood
+	//public static final String LLTitle="//td[contains(@id,'form:table1:16:j_idt281')]";	//Longlife
+	//public static final String SDTitle="//td[contains(@id,'form:table1:0:j_idt281')]";	//Seafood
 	//Sales///
-	public static final String ActualSalesLL="//td[contains(@id,'form:table1:16:j_idt286')]";	//Actual salesLonglife
-	public static final String ActualSalesSD="//td[contains(@id,'form:table1:17:j_idt286')]";	//Actual sales Seafood
+	//public static final String ActualSalesLL="//td[contains(@id,'form:table1:16:j_idt286')]";	//Actual salesLonglife
+	//public static final String ActualSalesSD="//td[contains(@id,'form:table1:17:j_idt286')]";	//Actual sales Seafood
 	
 	public static final String PlannedSalesLL="//td[contains(@id,'form:table1:16:j_idt289')]/span[1]";	//Planned sales Longlife
 	public static final String PlannedSalesSD="//td[contains(@id,'form:table1:17:j_idt289')]/span[1]";	// Planned sales Seafood
@@ -222,29 +222,29 @@ public class WeeklyTradingStatementStoreObjects
 	public static final String BudgetSalesGrwthLL="//td[contains(@id,'form:table1:16:j_idt301')]/span[2]";	//±BUD Longlife
 	public static final String BudgetSalesGrwthSD="//td[contains(@id,'form:table1:17:j_idt301')]/span[2]";	//±BUD Seafood
 	public static final String AvgBasketSalesLL="//td[contains(@id,'form:table1:16:j_idt305')]/span[1]";	//AVG BASKET$ Longlife
-	public static final String AvgBasketSalesSD="//td[contains(@id,'form:table1:17:j_idt305')]/span[1]";	//AVG BASKET$ Seafood
+	//public static final String AvgBasketSalesSD="//td[contains(@id,'form:table1:17:j_idt305')]/span[1]";	//AVG BASKET$ Seafood
 	public static final String MixLL="//td[contains(@id,'form:table1:16:j_idt305')]/span[2]";	//MIX Longlife
-	public static final String MixSD="//td[contains(@id,'form:table1:17:j_idt305')]/span[2]";	//MIX Seafood
+	//public static final String MixSD="//td[contains(@id,'form:table1:17:j_idt305')]/span[2]";	//MIX Seafood
 	
 	///Items & Item Price/////////////////////////////////////////////////////////////////////////////////////////
 	
 	public static final String PlannedItemLL="//td[contains(@id,'form:table1:16:j_idt311')]/span[1]";	//ITEM PLAN Longlife
-	public static final String PlannedItemSD="//td[contains(@id,'form:table1:17:j_idt311')]/span[1]";	//ITEM PLAN Seafood
+	//public static final String PlannedItemSD="//td[contains(@id,'form:table1:17:j_idt311')]/span[1]";	//ITEM PLAN Seafood
 	public static final String ActualItemLL="//td[contains(@id,'form:table1:16:j_idt311')]/span[2]";	//ITEM ACTUAL Longlife
-	public static final String ActualItemSD="//td[contains(@id,'form:table1:17:j_idt311')]/span[2]";	//ITEM ACTUAL Seafood
+	//public static final String ActualItemSD="//td[contains(@id,'form:table1:17:j_idt311')]/span[2]";	//ITEM ACTUAL Seafood
 	public static final String PlannedItemPriceLL="//td[contains(@id,'form:table1:16:j_idt315')]/span[1]";	//ITEM PRICE PLAN Longlife
-	public static final String PlannedItemPriceSD="//td[contains(@id,'form:table1:17:j_idt315')]/span[1]";	//ITEM PRICE PLAN Seafood
+	//public static final String PlannedItemPriceSD="//td[contains(@id,'form:table1:17:j_idt315')]/span[1]";	//ITEM PRICE PLAN Seafood
 	public static final String ActualItemPriceLL="//td[contains(@id,'form:table1:16:j_idt315')]/span[2]";	//ITEM PRICE ACTUAL Longlife
-	public static final String ActualItemPriceSD="//td[contains(@id,'form:table1:17:j_idt315')]/span[2]";	//ITEM PRICE ACTUAL Seafood
+	//public static final String ActualItemPriceSD="//td[contains(@id,'form:table1:17:j_idt315')]/span[2]";	//ITEM PRICE ACTUAL Seafood
 	
 	////////////////Customers/////////////////////////////////////////////////////////////////////////////////
 	
 	public static final String ThisYrCustomerLL="//td[contains(@id,'form:table1:16:j_idt319')]"; //This year customer Longlife
-	public static final String ThisYrCustomerSD="//td[contains(@id,'form:table1:17:j_idt319')]"; //This year customer Seafood
+	//public static final String ThisYrCustomerSD="//td[contains(@id,'form:table1:17:j_idt319')]"; //This year customer Seafood
 	public static final String PercentageLastCustomerLL="//td[contains(@id,'form:table1:16:j_idt321')]/span[1]"; //LYpercustomer Longlife
-	public static final String PercentageLastCustomerSD="//td[contains(@id,'form:table1:17:j_idt321')]/span[1]"; //LYpercustomer Seafood
+	//public static final String PercentageLastCustomerSD="//td[contains(@id,'form:table1:17:j_idt321')]/span[1]"; //LYpercustomer Seafood
 	public static final String DeptPenetrationCustomerLL="//span[contains(@id,'form:table1:16:text41')]";//DeptPenetration Longlife
-	public static final String DeptPenetrationCustomerSD="//span[contains(@id,'form:table1:17:text41')]";//DeptPenetration Seafood
+	//public static final String DeptPenetrationCustomerSD="//span[contains(@id,'form:table1:17:text41')]";//DeptPenetration Seafood
 	
 	/////////////////////////Hours///////////////////////////////////////////////////
 	public static final String ActualHoursLL="//td[contains(@id,'form:table1:16:j_idt329')]/span[1]";//ActualHours Longlife
