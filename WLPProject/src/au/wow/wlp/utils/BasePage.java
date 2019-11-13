@@ -24,6 +24,7 @@ import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -52,6 +53,8 @@ public class BasePage extends HTMLReport {
 	private TestStatus status;
 	private XMLDataReader testdata;
 	public static String methodName;
+	@FindBy(xpath= "//*[@id='form']/div[1]/table/tbody/tr/td[1]")
+	public WebElement WTSGroupTitle;
 
 	public static Multimap<String, String> extentList = ArrayListMultimap.create();
 	public static ArrayList<String> classList = new ArrayList<String>();

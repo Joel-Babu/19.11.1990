@@ -7,10 +7,8 @@
         <methods>
           <include name="setUpItemPrice"/>
           <include name="flushReports"/>
-          <include name="LonglifeseafoodItemsColumnValidation"/>
           <include name="flushReports1"/>
-          <include name="LonglifeseafoodSalesColumnValidation"/>
-          <include name="LonglifeseafoodCustomersColumnValidation"/>
+          <include name="ORColumnValidationNewTable"/>
           <include name="loadXMLFile"/>
           <include name="tearDown"/>
           <include name="onStart"/>

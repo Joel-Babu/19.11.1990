@@ -126,8 +126,8 @@ public class WeeklyTradingStatementGroup extends TestBase {
 				objWeeklyPlanningStoreObjects.weeklyTrading, "Weekly Trading");
 		pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 				objWeeklyPlanningStoreObjects.screenToViewWeeklyTrading, "Group");
-		//pageWeeklyPlanningPO.verifyPageName(extentTest, objWeeklyPlanningStoreObjects.DataFrame,
-			//	objWeeklyPlanningStoreObjects.pageName, getContext().getStringProperty("WTSGroup"));
+		pageWeeklyPlanningPO.verifyPageName(extentTest, objWeeklyPlanningStoreObjects.DataFrame,
+				objWeeklyPlanningStoreObjects.pageName, getContext().getStringProperty("WTSGroup"));
 
 		OptionToView = getContext().getStringProperty("OptionToView");
 
@@ -159,11 +159,12 @@ public class WeeklyTradingStatementGroup extends TestBase {
 				objWeeklyTradingStatementGroupObjects.DataTable);
 		ActlTtl = pageDailyTradingStatementGroupPO.WeekToDateUITotal(objWeeklyTradingStatementGroupObjects.TotalTitle,
 				objWeeklyTradingStatementGroupObjects.ActualSalesTtl);
-
+		
+		
 		pageWeeklyPlanningPO.CompareValues(extentTest, DBActlVal, ActlVal);
 		pageMonthlyPlanningPO.CompareValues(extentTest, DBActlTtl, ActlTtl);
 
-		// PLANNED SALES:
+	/*	// PLANNED SALES:
 		Report_AddStep("testcase", " PLANNED SALES - WEEK WISE DATA", "", "", "");
 		extentTest = report.startTest("Planned Sales");
 
@@ -504,9 +505,9 @@ public class WeeklyTradingStatementGroup extends TestBase {
 
 		pageWeeklyPlanningPO.CompareValues(extentTest, DBMixVal, MixVal);
 		pageMonthlyPlanningPO.CompareValues(extentTest, DBMixTtl, MixTtl);
-	}
+	*/}
 
-	// Items and Item Price
+	/*// Items and Item Price
 	@Test(description = "Weekly Trading Statement - Group, Planned Item", priority = 2)
 	public void ItemsColumnValidation() throws Exception {
 		pageWeeklyPlanningPO = new WeeklyPlanningStorePage().createPage(getDriver(), getContext(), log, status, data,
@@ -810,7 +811,7 @@ public class WeeklyTradingStatementGroup extends TestBase {
 		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBActlHrsTtl, ActlHrsTtl);
 
 		// Variance SMS:
-	/*	Report_AddStep("testcase", "VARIANCE SMS - WEEK WISE DATA", "", "", "");
+		Report_AddStep("testcase", "VARIANCE SMS - WEEK WISE DATA", "", "", "");
 		extentTest = report.startTest("Variance SMS");
 
 		String VarianceSMS = data.getText("VarianceSMS");
@@ -844,7 +845,7 @@ public class WeeklyTradingStatementGroup extends TestBase {
 				objWeeklyTradingStatementGroupObjects.TotalTitle, objWeeklyTradingStatementGroupObjects.VarSMSHoursTtl);
 
 		pageWeeklyPlanningPO.CompareValueDecimalFields(extentTest, DBVarSMSHrHr, VarSMSHr);
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBVarSMSHrTtl, VarSMSHrTtl); */
+		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBVarSMSHrTtl, VarSMSHrTtl); 
 
 		// PLANNED HOURS:
 		Report_AddStep("testcase", "PLANNED HOURS: - WEEK WISE DATA", "", "", "");
@@ -915,7 +916,7 @@ public class WeeklyTradingStatementGroup extends TestBase {
 		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBVarPlndHrsTtl, VarPlndHrsTtl);
 
 		// Actual SMS:
-	/*	Report_AddStep("testcase", "ACTUAL SMS - WEEK WISE DATA", "", "", "");
+		Report_AddStep("testcase", "ACTUAL SMS - WEEK WISE DATA", "", "", "");
 		extentTest = report.startTest("Actual SMS");
 
 		String ActualSMS = data.getText("ActualSMS");
@@ -988,7 +989,7 @@ public class WeeklyTradingStatementGroup extends TestBase {
 				objWeeklyTradingStatementGroupObjects.ORPercentageHoursTtl);
 
 		pageWeeklyPlanningPO.CompareValueDecimalFields(extentTest, DBORHr, ORHr);
-		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBORHrTtl, ORHrTtl); */
+		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBORHrTtl, ORHrTtl); 
 	}
 
 	// Wages
@@ -1920,7 +1921,7 @@ public class WeeklyTradingStatementGroup extends TestBase {
 		OptionToView = getContext().getStringProperty("OptionToView");
 
 		// ACTUAL OR:
-	/*	Report_AddStep("testcase", " ACTUAL OR COMBINED TABLE- WEEK WISE DATA", "", "", "");
+		Report_AddStep("testcase", " ACTUAL OR COMBINED TABLE- WEEK WISE DATA", "", "", "");
 		extentTest = report.startTest("Actual OR");
 
 		String ActualOR = data.getText("ActualOR");
@@ -1948,7 +1949,7 @@ public class WeeklyTradingStatementGroup extends TestBase {
 				objWeeklyTradingStatementGroupObjects.ActualORTtlNew);
 
 		pageMonthlyPlanningPO.CompareValues(extentTest, DBActlVal, ActlVal);
-		pageMonthlyPlanningPO.CompareValues(extentTest, DBActlTtl, ActlTtl); */
+		pageMonthlyPlanningPO.CompareValues(extentTest, DBActlTtl, ActlTtl); 
 
 		// WEEKLY PLANNED OR:
 		Report_AddStep("testcase", " WEEKLY PLANNED OR  COMBINED TABLE- WEEK WISE DATA", "", "", "");
@@ -2117,7 +2118,7 @@ public class WeeklyTradingStatementGroup extends TestBase {
 		pageMonthlyPlanningPO.CompareValues(extentTest, DBPlndVal, PlndVal);
 		pageMonthlyPlanningPO.CompareValues(extentTest, DBPlndTtl, PlndTtl);
 	}
-
+*/
 	@Test(priority = 20)
 	public void LogoutCLRApplication() throws Exception {
 		pageWeeklyPlanningPO = new WeeklyPlanningStorePage().createPage(getDriver(), getContext(), log, status, data,

@@ -24,6 +24,9 @@ public class WeeklyTradingStatementGroupObjects
 	
 	@FindBy(xpath= "//*[@id='lnktable']/tbody/tr/td/a[2]")
 	public WebElement GroupHyperLink;
+	
+	@FindBy(xpath= "//*[@id='form']/div[1]/table/tbody/tr/td[1]")
+	public WebElement WTSGroupTitle;
 		
 	public static final String Departments="//td[contains(@id,'form:table1:dynamic:j')][1]";	//Stores Column
 	public static final String TotalTitle="//td[contains(@id,'form:table1:j')][1]";	//Group Total Text

@@ -525,6 +525,7 @@ public class WeeklyPlanningStorePage extends TestBase
 				int RowCount = DBValues.size();
 				double CalcuatedUIValue = 0,CalcuatedDBValue=0,RoundOffValue = 0,RoundOffValue1=0;
 				String UIName=null;
+				int Variance=0;
 				BigDecimal FinalDBValue = null,FinalUIValue=null;
 				System.out.println(UIValues);
 				System.out.println(DBValues);
@@ -533,9 +534,10 @@ public class WeeklyPlanningStorePage extends TestBase
 				{
 					for(int j=0;j<2;j++)
 					{
-						if(j!=0)
-						{
-							
+							//To map UI and DB values for store and above levels correctly
+							if(j!=0	&& i!=7 && i!=8 && i!=9)
+							{
+								System.out.println("i:"+i + "" + "j:" +j);	
 							CalcuatedDBValue =new Double(DBValues.get(i).get(j).toString());
 							RoundOffValue = Math.round(CalcuatedDBValue);	
 							FinalDBValue =ConvertBigDecimal(CalcuatedDBValue);
@@ -546,7 +548,8 @@ public class WeeklyPlanningStorePage extends TestBase
 							FinalUIValue =ConvertBigDecimal(CalcuatedUIValue);
 							System.out.println(FinalUIValue);
 							BigDecimal biggy =FinalUIValue.subtract(FinalDBValue);
-							int Variance = biggy.intValue();
+							Variance = biggy.intValue();
+							
 							if(Variance <=2 && Variance >=-2)
 							{
 								Report_AddStep("testcase","System Fetch the Values from DB for : "+UIName+" and Displayed Correctly" ,""+CalcuatedUIValue+"",""+CalcuatedDBValue+"", "Pass");
@@ -557,7 +560,127 @@ public class WeeklyPlanningStorePage extends TestBase
 								Report_AddStep("testcase","Failed to Display the UI and DB Values Correctly "+UIName+"",""+CalcuatedUIValue+"" ,""+CalcuatedDBValue+"", "Fail");
 								htmlToExtent(cName,mName,extentTest,driver1, "Failed to display data Correctly for : "+UIName+"; "+CalcuatedUIValue+";  "+CalcuatedDBValue+";Fail");
 							}
-						}
+						
+							}
+							
+							//To map the UI and DB values at store level correctly
+							else if(j!=0 && i==7)
+							{
+								System.out.println("i:"+i + "" + "j:" +j);	
+							CalcuatedDBValue =new Double(DBValues.get(i).get(j).toString());
+							RoundOffValue = Math.round(CalcuatedDBValue);	
+							FinalDBValue =ConvertBigDecimal(CalcuatedDBValue);
+							System.out.println(FinalDBValue);
+							
+							CalcuatedUIValue =new Double(UIValues.get(i+2).get(j).toString());
+							RoundOffValue1 = Math.round(CalcuatedUIValue);
+							FinalUIValue =ConvertBigDecimal(CalcuatedUIValue);
+							System.out.println(FinalUIValue);
+							BigDecimal biggy =FinalUIValue.subtract(FinalDBValue);
+							Variance = biggy.intValue();
+							
+							if(Variance <=2 && Variance >=-2)
+							{
+								Report_AddStep("testcase","System Fetch the Values from DB for : "+UIName+" and Displayed Correctly" ,""+CalcuatedUIValue+"",""+CalcuatedDBValue+"", "Pass");
+								htmlToExtent(cName,mName,extentTest,driver1, "Value displayed Correctly for : "+UIName+"; "+CalcuatedUIValue+";  "+CalcuatedDBValue+";Pass");
+							}
+							else
+							{
+								Report_AddStep("testcase","Failed to Display the UI and DB Values Correctly "+UIName+"",""+CalcuatedUIValue+"" ,""+CalcuatedDBValue+"", "Fail");
+								htmlToExtent(cName,mName,extentTest,driver1, "Failed to display data Correctly for : "+UIName+"; "+CalcuatedUIValue+";  "+CalcuatedDBValue+";Fail");
+							}
+												
+							}
+							
+							
+							//To map the UI and DB values at group level correctly
+						/*	else if(j!=0 && i==7 && getText(WTSGroupTitle).equals("Weekly Trading Statement - Group"))
+							{
+								System.out.println("i:"+i + "" + "j:" +j);	
+							CalcuatedDBValue =new Double(DBValues.get(i).get(j).toString());
+							RoundOffValue = Math.round(CalcuatedDBValue);	
+							FinalDBValue =ConvertBigDecimal(CalcuatedDBValue);
+							System.out.println(FinalDBValue);
+							
+							CalcuatedUIValue =new Double(UIValues.get(i).get(j).toString());
+							RoundOffValue1 = Math.round(CalcuatedUIValue);
+							FinalUIValue =ConvertBigDecimal(CalcuatedUIValue);
+							System.out.println(FinalUIValue);
+							BigDecimal biggy =FinalUIValue.subtract(FinalDBValue);
+							Variance = biggy.intValue();
+							
+							if(Variance <=2 && Variance >=-2)
+							{
+								Report_AddStep("testcase","System Fetch the Values from DB for : "+UIName+" and Displayed Correctly" ,""+CalcuatedUIValue+"",""+CalcuatedDBValue+"", "Pass");
+								htmlToExtent(cName,mName,extentTest,driver1, "Value displayed Correctly for : "+UIName+"; "+CalcuatedUIValue+";  "+CalcuatedDBValue+";Pass");
+							}
+							else
+							{
+								Report_AddStep("testcase","Failed to Display the UI and DB Values Correctly "+UIName+"",""+CalcuatedUIValue+"" ,""+CalcuatedDBValue+"", "Fail");
+								htmlToExtent(cName,mName,extentTest,driver1, "Failed to display data Correctly for : "+UIName+"; "+CalcuatedUIValue+";  "+CalcuatedDBValue+";Fail");
+							}
+												
+							}
+							*/
+							//To map the UI and DB values at store level correctly
+							else if(j!=0 && i==8)
+							{
+								System.out.println("i:"+i + "" + "j:" +j);	
+							CalcuatedDBValue =new Double(DBValues.get(i).get(j).toString());
+							RoundOffValue = Math.round(CalcuatedDBValue);	
+							FinalDBValue =ConvertBigDecimal(CalcuatedDBValue);
+							System.out.println(FinalDBValue);
+							
+							CalcuatedUIValue =new Double(UIValues.get(i-1).get(j).toString());
+							RoundOffValue1 = Math.round(CalcuatedUIValue);
+							FinalUIValue =ConvertBigDecimal(CalcuatedUIValue);
+							System.out.println(FinalUIValue);
+							BigDecimal biggy =FinalUIValue.subtract(FinalDBValue);
+							Variance = biggy.intValue();
+							
+							if(Variance <=2 && Variance >=-2)
+							{
+								Report_AddStep("testcase","System Fetch the Values from DB for : "+UIName+" and Displayed Correctly" ,""+CalcuatedUIValue+"",""+CalcuatedDBValue+"", "Pass");
+								htmlToExtent(cName,mName,extentTest,driver1, "Value displayed Correctly for : "+UIName+"; "+CalcuatedUIValue+";  "+CalcuatedDBValue+";Pass");
+							}
+							else
+							{
+								Report_AddStep("testcase","Failed to Display the UI and DB Values Correctly "+UIName+"",""+CalcuatedUIValue+"" ,""+CalcuatedDBValue+"", "Fail");
+								htmlToExtent(cName,mName,extentTest,driver1, "Failed to display data Correctly for : "+UIName+"; "+CalcuatedUIValue+";  "+CalcuatedDBValue+";Fail");
+							}
+							}
+							
+							//To map the UI and DB values at store level correctly
+							else if(j!=0 && i==9)
+							{
+								System.out.println("i:"+i + "" + "j:" +j);	
+							CalcuatedDBValue =new Double(DBValues.get(i).get(j).toString());
+							RoundOffValue = Math.round(CalcuatedDBValue);	
+							FinalDBValue =ConvertBigDecimal(CalcuatedDBValue);
+							System.out.println(FinalDBValue);
+							
+							CalcuatedUIValue =new Double(UIValues.get(i-1).get(j).toString());
+							RoundOffValue1 = Math.round(CalcuatedUIValue);
+							FinalUIValue =ConvertBigDecimal(CalcuatedUIValue);
+							System.out.println(FinalUIValue);
+							BigDecimal biggy =FinalUIValue.subtract(FinalDBValue);
+							Variance = biggy.intValue();
+							
+							if(Variance <=2 && Variance >=-2)
+							{
+								Report_AddStep("testcase","System Fetch the Values from DB for : "+UIName+" and Displayed Correctly" ,""+CalcuatedUIValue+"",""+CalcuatedDBValue+"", "Pass");
+								htmlToExtent(cName,mName,extentTest,driver1, "Value displayed Correctly for : "+UIName+"; "+CalcuatedUIValue+";  "+CalcuatedDBValue+";Pass");
+							}
+							else
+							{
+								Report_AddStep("testcase","Failed to Display the UI and DB Values Correctly "+UIName+"",""+CalcuatedUIValue+"" ,""+CalcuatedDBValue+"", "Fail");
+								htmlToExtent(cName,mName,extentTest,driver1, "Failed to display data Correctly for : "+UIName+"; "+CalcuatedUIValue+";  "+CalcuatedDBValue+";Fail");
+							}
+							
+							
+							}
+							
+										
 						else
 						{
 							UIName =new String(UIValues.get(i).get(j).toString());
@@ -761,7 +884,8 @@ public class WeeklyPlanningStorePage extends TestBase
 				{
 					for(int j=0;j<2;j++)
 					{
-						if(j!=0)
+						//To map the UI and DB values at store and above level correctly
+						if(j!=0 && i!=7 && i!=8 && i!=9)
 						{
 							
 							CalcuatedDBValue =new Double(DBValues.get(i).get(j).toString());
@@ -786,6 +910,85 @@ public class WeeklyPlanningStorePage extends TestBase
 								htmlToExtent(cName,mName,extentTest,driver1, "Failed to display data Correctly for : "+DBName+"; "+CalcuatedUIValue+";  "+CalcuatedDBValue+";Fail");
 							}
 						}
+						
+						//To map the UI and DB values at store level correctly
+						 else if(j!=0 && i==7)
+						 {
+							 	CalcuatedDBValue =new Double(DBValues.get(i).get(j).toString());
+								RoundOffValue = Math.round(CalcuatedDBValue);	
+								FinalDBValue =ConvertBigDecimal(CalcuatedDBValue);
+								System.out.println(FinalDBValue);
+								
+								CalcuatedUIValue =new Double(UIValues.get(i+2).get(j).toString());
+								RoundOffValue1 = Math.round(CalcuatedUIValue);
+								FinalUIValue =ConvertBigDecimal(CalcuatedUIValue);
+								System.out.println(FinalUIValue);
+								BigDecimal biggy =FinalUIValue.subtract(FinalDBValue);
+								double Variance = biggy.doubleValue();
+								if(Variance <=0.1 && Variance >=-0.1)
+								{
+									Report_AddStep("testcase","System Fetch the Values from DB for : "+DBName+" Correctly" ,""+CalcuatedUIValue+"",""+CalcuatedDBValue+"", "Pass");
+									htmlToExtent(cName,mName,extentTest,driver1, "Value displayed Correctly for : "+DBName+"; "+CalcuatedUIValue+";  "+CalcuatedDBValue+";Pass");
+								}
+								else
+								{
+									Report_AddStep("testcase","Failed to Display the UI and DB Values Correctly "+DBName+"" ,""+CalcuatedUIValue+"" ,""+CalcuatedDBValue+"", "Fail");
+									htmlToExtent(cName,mName,extentTest,driver1, "Failed to display data Correctly for : "+DBName+"; "+CalcuatedUIValue+";  "+CalcuatedDBValue+";Fail");
+								}
+						 }
+							
+						//To map the UI and DB values at store level correctly
+						 else if(j!=0 && i==8)
+						 {
+							 	CalcuatedDBValue =new Double(DBValues.get(i).get(j).toString());
+								RoundOffValue = Math.round(CalcuatedDBValue);	
+								FinalDBValue =ConvertBigDecimal(CalcuatedDBValue);
+								System.out.println(FinalDBValue);
+								
+								CalcuatedUIValue =new Double(UIValues.get(i-1).get(j).toString());
+								RoundOffValue1 = Math.round(CalcuatedUIValue);
+								FinalUIValue =ConvertBigDecimal(CalcuatedUIValue);
+								System.out.println(FinalUIValue);
+								BigDecimal biggy =FinalUIValue.subtract(FinalDBValue);
+								double Variance = biggy.doubleValue();
+								if(Variance <=0.1 && Variance >=-0.1)
+								{
+									Report_AddStep("testcase","System Fetch the Values from DB for : "+DBName+" Correctly" ,""+CalcuatedUIValue+"",""+CalcuatedDBValue+"", "Pass");
+									htmlToExtent(cName,mName,extentTest,driver1, "Value displayed Correctly for : "+DBName+"; "+CalcuatedUIValue+";  "+CalcuatedDBValue+";Pass");
+								}
+								else
+								{
+									Report_AddStep("testcase","Failed to Display the UI and DB Values Correctly "+DBName+"" ,""+CalcuatedUIValue+"" ,""+CalcuatedDBValue+"", "Fail");
+									htmlToExtent(cName,mName,extentTest,driver1, "Failed to display data Correctly for : "+DBName+"; "+CalcuatedUIValue+";  "+CalcuatedDBValue+";Fail");
+								}
+						 }
+						
+						//To map the UI and DB values at store level correctly
+						 else if(j!=0 && i==9)
+						 {
+							 	CalcuatedDBValue =new Double(DBValues.get(i).get(j).toString());
+								RoundOffValue = Math.round(CalcuatedDBValue);	
+								FinalDBValue =ConvertBigDecimal(CalcuatedDBValue);
+								System.out.println(FinalDBValue);
+								
+								CalcuatedUIValue =new Double(UIValues.get(i-1).get(j).toString());
+								RoundOffValue1 = Math.round(CalcuatedUIValue);
+								FinalUIValue =ConvertBigDecimal(CalcuatedUIValue);
+								System.out.println(FinalUIValue);
+								BigDecimal biggy =FinalUIValue.subtract(FinalDBValue);
+								double Variance = biggy.doubleValue();
+								if(Variance <=0.1 && Variance >=-0.1)
+								{
+									Report_AddStep("testcase","System Fetch the Values from DB for : "+DBName+" Correctly" ,""+CalcuatedUIValue+"",""+CalcuatedDBValue+"", "Pass");
+									htmlToExtent(cName,mName,extentTest,driver1, "Value displayed Correctly for : "+DBName+"; "+CalcuatedUIValue+";  "+CalcuatedDBValue+";Pass");
+								}
+								else
+								{
+									Report_AddStep("testcase","Failed to Display the UI and DB Values Correctly "+DBName+"" ,""+CalcuatedUIValue+"" ,""+CalcuatedDBValue+"", "Fail");
+									htmlToExtent(cName,mName,extentTest,driver1, "Failed to display data Correctly for : "+DBName+"; "+CalcuatedUIValue+";  "+CalcuatedDBValue+";Fail");
+								}
+						 }
+						
 						else
 						{
 							DBName =new String(DBValues.get(i).get(j).toString());

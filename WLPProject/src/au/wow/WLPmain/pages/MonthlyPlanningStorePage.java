@@ -137,7 +137,8 @@ public class MonthlyPlanningStorePage extends TestBase
 			{
 				for(int j=0;j<2;j++)
 				{
-					if(j!=0)
+					//To map DB and UI value at the store and above level
+					if(j!=0 && i!=7 && i!=8 && i!=9)
 					{		
 						CalcuatedDBValue =new Double(DBValues.get(i).get(j).toString());
 						RoundOffValue = Math.round(CalcuatedDBValue);	
@@ -161,6 +162,86 @@ public class MonthlyPlanningStorePage extends TestBase
 							htmlToExtent(cName,mName,extentTest,driver1, "Failed to display data Correctly for : "+WeekName+";"+FinalUIValue+";"+FinalDBValue+";Fail");
 						}
 					}
+					
+					//To map DB and UI value at the store level
+					if(j!=0 && i==7)
+					{		
+						CalcuatedDBValue =new Double(DBValues.get(i).get(j).toString());
+						RoundOffValue = Math.round(CalcuatedDBValue);	
+						FinalDBValue =ConvertBigDecimal(CalcuatedDBValue);
+						System.out.println("FinalDBValue"+FinalDBValue);
+						
+						CalcuatedUIValue =new Double(UIValues.get(i+2).get(j).toString());
+						RoundOffValue1 = Math.round(CalcuatedUIValue);
+						FinalUIValue =ConvertBigDecimal(CalcuatedUIValue);
+						System.out.println("FinalUIValue"+FinalUIValue);
+						BigDecimal biggy =FinalUIValue.subtract(FinalDBValue);
+						int Variance = biggy.intValue();
+						if(Variance <=2 && Variance >=-2)
+						{
+							Report_AddStep("testcase","Calculated DB values are displayed Correctly in UI for: "+WeekName+"" ,""+FinalUIValue+"",""+FinalDBValue+"", "Pass");
+							htmlToExtent(cName,mName,extentTest,driver1, "Value displayed Correctly for : "+WeekName+";"+FinalUIValue+";"+FinalDBValue+";Pass");
+						}
+						else
+						{
+							Report_AddStep("testcase","Calculated DB values are Not Matching for: "+WeekName+"" ,""+FinalUIValue+"",""+FinalDBValue+"", "Fail");
+							htmlToExtent(cName,mName,extentTest,driver1, "Failed to display data Correctly for : "+WeekName+";"+FinalUIValue+";"+FinalDBValue+";Fail");
+						}
+					}
+					
+					//To map DB and UI value at the store level
+					if(j!=0 && i==8)
+					{		
+						CalcuatedDBValue =new Double(DBValues.get(i).get(j).toString());
+						RoundOffValue = Math.round(CalcuatedDBValue);	
+						FinalDBValue =ConvertBigDecimal(CalcuatedDBValue);
+						System.out.println("FinalDBValue"+FinalDBValue);
+						
+						CalcuatedUIValue =new Double(UIValues.get(i-1).get(j).toString());
+						RoundOffValue1 = Math.round(CalcuatedUIValue);
+						FinalUIValue =ConvertBigDecimal(CalcuatedUIValue);
+						System.out.println("FinalUIValue"+FinalUIValue);
+						BigDecimal biggy =FinalUIValue.subtract(FinalDBValue);
+						int Variance = biggy.intValue();
+						if(Variance <=2 && Variance >=-2)
+						{
+							Report_AddStep("testcase","Calculated DB values are displayed Correctly in UI for: "+WeekName+"" ,""+FinalUIValue+"",""+FinalDBValue+"", "Pass");
+							htmlToExtent(cName,mName,extentTest,driver1, "Value displayed Correctly for : "+WeekName+";"+FinalUIValue+";"+FinalDBValue+";Pass");
+						}
+						else
+						{
+							Report_AddStep("testcase","Calculated DB values are Not Matching for: "+WeekName+"" ,""+FinalUIValue+"",""+FinalDBValue+"", "Fail");
+							htmlToExtent(cName,mName,extentTest,driver1, "Failed to display data Correctly for : "+WeekName+";"+FinalUIValue+";"+FinalDBValue+";Fail");
+						}
+					}
+					
+					//To map DB and UI value at the store level
+					if(j!=0 && i==9)
+					{		
+						CalcuatedDBValue =new Double(DBValues.get(i).get(j).toString());
+						RoundOffValue = Math.round(CalcuatedDBValue);	
+						FinalDBValue =ConvertBigDecimal(CalcuatedDBValue);
+						System.out.println("FinalDBValue"+FinalDBValue);
+						
+						CalcuatedUIValue =new Double(UIValues.get(i-1).get(j).toString());
+						RoundOffValue1 = Math.round(CalcuatedUIValue);
+						FinalUIValue =ConvertBigDecimal(CalcuatedUIValue);
+						System.out.println("FinalUIValue"+FinalUIValue);
+						BigDecimal biggy =FinalUIValue.subtract(FinalDBValue);
+						int Variance = biggy.intValue();
+						if(Variance <=2 && Variance >=-2)
+						{
+							Report_AddStep("testcase","Calculated DB values are displayed Correctly in UI for: "+WeekName+"" ,""+FinalUIValue+"",""+FinalDBValue+"", "Pass");
+							htmlToExtent(cName,mName,extentTest,driver1, "Value displayed Correctly for : "+WeekName+";"+FinalUIValue+";"+FinalDBValue+";Pass");
+						}
+						else
+						{
+							Report_AddStep("testcase","Calculated DB values are Not Matching for: "+WeekName+"" ,""+FinalUIValue+"",""+FinalDBValue+"", "Fail");
+							htmlToExtent(cName,mName,extentTest,driver1, "Failed to display data Correctly for : "+WeekName+";"+FinalUIValue+";"+FinalDBValue+";Fail");
+						}
+					}
+					
+					
 					else
 					{
 						WeekName =new String(UIValues.get(i).get(j).toString());

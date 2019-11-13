@@ -463,7 +463,7 @@ public class WeeklyPlanningStoreObjects {
 		@FindBy(xpath= "//*[@id='main-menu']")
 		public WebElement menuBar;
 		
-		@FindBy(xpath= "//span[@id='frmDetails:text11']")
+		@FindBy(xpath= "//*[@class='PgHeader']/tbody/tr/td[1]")
 		public WebElement pageName;
 		
 		public final String planningScreens="//a[contains(text(),'Planning Screens')]";

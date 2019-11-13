@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="12" passed="12">
+<testng-results skipped="0" failed="0" total="3" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="120033" started-at="2019-11-06T12:20:56Z" finished-at="2019-11-06T12:22:56Z">
+  <suite name="Default suite" duration-ms="29628" started-at="2019-11-13T06:12:41Z" finished-at="2019-11-13T06:13:10Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="120033" started-at="2019-11-06T12:20:56Z" finished-at="2019-11-06T12:22:56Z">
+    <test name="Default test" duration-ms="29628" started-at="2019-11-13T06:12:41Z" finished-at="2019-11-13T06:13:10Z">
       <class name="au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore">
-        <test-method status="PASS" signature="onStart()[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="onStart" is-config="true" duration-ms="1162" started-at="2019-11-06T23:20:55Z" finished-at="2019-11-06T23:20:56Z">
+        <test-method status="PASS" signature="onStart()[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@18920cc]" name="onStart" is-config="true" duration-ms="1084" started-at="2019-11-13T17:12:40Z" finished-at="2019-11-13T17:12:41Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- onStart -->
-        <test-method status="PASS" signature="loadXMLFile()[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="loadXMLFile" is-config="true" duration-ms="9301" started-at="2019-11-06T23:20:56Z" finished-at="2019-11-06T23:21:05Z">
+        <test-method status="PASS" signature="loadXMLFile()[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@18920cc]" name="loadXMLFile" is-config="true" duration-ms="10281" started-at="2019-11-13T17:12:41Z" finished-at="2019-11-13T17:12:51Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loadXMLFile -->
-        <test-method status="PASS" signature="setUpItemPrice(java.lang.reflect.Method, org.testng.ITestContext)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="setUpItemPrice" is-config="true" duration-ms="255" started-at="2019-11-06T23:21:05Z" finished-at="2019-11-06T23:21:05Z">
+        <test-method status="PASS" signature="setUpItemPrice(java.lang.reflect.Method, org.testng.ITestContext)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@18920cc]" name="setUpItemPrice" is-config="true" duration-ms="257" started-at="2019-11-13T17:12:51Z" finished-at="2019-11-13T17:12:51Z">
           <params>
             <param index="0">
               <value>
@@ -24,22 +24,38 @@
             </param>
             <param index="1">
               <value>
-                <![CDATA[org.testng.TestRunner@32639b12]]>
+                <![CDATA[org.testng.TestRunner@76b47204]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpItemPrice -->
-        <test-method status="PASS" signature="LogintoCLRApplication()[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="LogintoCLRApplication" duration-ms="3724" started-at="2019-11-06T23:21:05Z" finished-at="2019-11-06T23:21:09Z">
+        <test-method status="PASS" signature="LogintoCLRApplication()[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@18920cc]" name="LogintoCLRApplication" duration-ms="3638" started-at="2019-11-13T17:12:51Z" finished-at="2019-11-13T17:12:55Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- LogintoCLRApplication -->
-        <test-method status="PASS" signature="flushReports(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="flushReports" is-config="true" duration-ms="1" started-at="2019-11-06T23:21:09Z" finished-at="2019-11-06T23:21:09Z">
+        <test-method status="PASS" signature="setUpItemPrice(java.lang.reflect.Method, org.testng.ITestContext)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@18920cc]" name="setUpItemPrice" is-config="true" duration-ms="8" started-at="2019-11-13T17:12:55Z" finished-at="2019-11-13T17:12:55Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=LogintoCLRApplication status=SUCCESS method=WeeklyTradingStatementStore.LogintoCLRApplication()[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04] output={null}]]]>
+                <![CDATA[public void au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore.SalesColumnValidation() throws java.lang.Exception]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[org.testng.TestRunner@76b47204]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpItemPrice -->
+        <test-method status="PASS" signature="flushReports(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@18920cc]" name="flushReports" is-config="true" duration-ms="0" started-at="2019-11-13T17:12:55Z" finished-at="2019-11-13T17:12:55Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=LogintoCLRApplication status=SUCCESS method=WeeklyTradingStatementStore.LogintoCLRApplication()[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@18920cc] output={null}]]]>
               </value>
             </param>
             <param index="1">
@@ -51,31 +67,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- flushReports -->
-        <test-method status="PASS" signature="setUpItemPrice(java.lang.reflect.Method, org.testng.ITestContext)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="setUpItemPrice" is-config="true" duration-ms="12" started-at="2019-11-06T23:21:09Z" finished-at="2019-11-06T23:21:09Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore.SalesColumnValidation() throws java.lang.Exception]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[org.testng.TestRunner@32639b12]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUpItemPrice -->
-        <test-method status="PASS" signature="SalesColumnValidation()[pri:1, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="SalesColumnValidation" duration-ms="38273" started-at="2019-11-06T23:21:09Z" description="Weekly Trading Statement - Store, SalesColumnValidation" finished-at="2019-11-06T23:21:47Z">
+        <test-method status="PASS" signature="SalesColumnValidation()[pri:1, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@18920cc]" name="SalesColumnValidation" duration-ms="13659" started-at="2019-11-13T17:12:55Z" description="Weekly Trading Statement - Store, SalesColumnValidation" finished-at="2019-11-13T17:13:09Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- SalesColumnValidation -->
-        <test-method status="PASS" signature="flushReports(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="flushReports" is-config="true" duration-ms="0" started-at="2019-11-06T23:21:47Z" finished-at="2019-11-06T23:21:47Z">
+        <test-method status="PASS" signature="flushReports(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@18920cc]" name="flushReports" is-config="true" duration-ms="0" started-at="2019-11-13T17:13:09Z" finished-at="2019-11-13T17:13:09Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=SalesColumnValidation status=SUCCESS method=WeeklyTradingStatementStore.SalesColumnValidation()[pri:1, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04] output={null}]]]>
+                <![CDATA[[TestResult name=SalesColumnValidation status=SUCCESS method=WeeklyTradingStatementStore.SalesColumnValidation()[pri:1, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@18920cc] output={null}]]]>
               </value>
             </param>
             <param index="1">
@@ -87,331 +87,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- flushReports -->
-        <test-method status="PASS" signature="setUpItemPrice(java.lang.reflect.Method, org.testng.ITestContext)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="setUpItemPrice" is-config="true" duration-ms="16" started-at="2019-11-06T23:21:47Z" finished-at="2019-11-06T23:21:47Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore.ItemsColumnValidation() throws java.lang.Exception]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[org.testng.TestRunner@32639b12]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUpItemPrice -->
-        <test-method status="PASS" signature="ItemsColumnValidation()[pri:2, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="ItemsColumnValidation" duration-ms="6724" started-at="2019-11-06T23:21:47Z" description="Weekly Trading Statement - Store, Planned Item" finished-at="2019-11-06T23:21:54Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ItemsColumnValidation -->
-        <test-method status="PASS" signature="flushReports(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="flushReports" is-config="true" duration-ms="0" started-at="2019-11-06T23:21:54Z" finished-at="2019-11-06T23:21:54Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=ItemsColumnValidation status=SUCCESS method=WeeklyTradingStatementStore.ItemsColumnValidation()[pri:2, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04] output={null}]]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[public void au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore.ItemsColumnValidation() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- flushReports -->
-        <test-method status="PASS" signature="setUpItemPrice(java.lang.reflect.Method, org.testng.ITestContext)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="setUpItemPrice" is-config="true" duration-ms="8" started-at="2019-11-06T23:21:54Z" finished-at="2019-11-06T23:21:54Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore.CustomersColumnValidation() throws java.lang.Exception]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[org.testng.TestRunner@32639b12]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUpItemPrice -->
-        <test-method status="PASS" signature="CustomersColumnValidation()[pri:3, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="CustomersColumnValidation" duration-ms="8944" started-at="2019-11-06T23:21:54Z" description="Weekly Trading Statement - Store, This Year Customer" finished-at="2019-11-06T23:22:03Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- CustomersColumnValidation -->
-        <test-method status="PASS" signature="flushReports(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="flushReports" is-config="true" duration-ms="0" started-at="2019-11-06T23:22:03Z" finished-at="2019-11-06T23:22:03Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=CustomersColumnValidation status=SUCCESS method=WeeklyTradingStatementStore.CustomersColumnValidation()[pri:3, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04] output={null}]]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[public void au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore.CustomersColumnValidation() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- flushReports -->
-        <test-method status="PASS" signature="setUpItemPrice(java.lang.reflect.Method, org.testng.ITestContext)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="setUpItemPrice" is-config="true" duration-ms="8" started-at="2019-11-06T23:22:03Z" finished-at="2019-11-06T23:22:03Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore.HoursColumnValidation() throws java.lang.Exception]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[org.testng.TestRunner@32639b12]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUpItemPrice -->
-        <test-method status="PASS" signature="HoursColumnValidation()[pri:4, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="HoursColumnValidation" duration-ms="15173" started-at="2019-11-06T23:22:03Z" description="Weekly Trading Statement - Store, Growth in SMS Hours" finished-at="2019-11-06T23:22:18Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- HoursColumnValidation -->
-        <test-method status="PASS" signature="flushReports(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="flushReports" is-config="true" duration-ms="1" started-at="2019-11-06T23:22:18Z" finished-at="2019-11-06T23:22:18Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=HoursColumnValidation status=SUCCESS method=WeeklyTradingStatementStore.HoursColumnValidation()[pri:4, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04] output={null}]]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[public void au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore.HoursColumnValidation() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- flushReports -->
-        <test-method status="PASS" signature="setUpItemPrice(java.lang.reflect.Method, org.testng.ITestContext)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="setUpItemPrice" is-config="true" duration-ms="5" started-at="2019-11-06T23:22:18Z" finished-at="2019-11-06T23:22:18Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore.WagesColumnValidation() throws java.lang.Exception]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[org.testng.TestRunner@32639b12]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUpItemPrice -->
-        <test-method status="PASS" signature="WagesColumnValidation()[pri:5, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="WagesColumnValidation" duration-ms="19548" started-at="2019-11-06T23:22:18Z" description="Weekly Trading Statement - Store, Actual Wages" finished-at="2019-11-06T23:22:38Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- WagesColumnValidation -->
-        <test-method status="PASS" signature="flushReports(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="flushReports" is-config="true" duration-ms="0" started-at="2019-11-06T23:22:38Z" finished-at="2019-11-06T23:22:38Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=WagesColumnValidation status=SUCCESS method=WeeklyTradingStatementStore.WagesColumnValidation()[pri:5, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04] output={null}]]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[public void au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore.WagesColumnValidation() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- flushReports -->
-        <test-method status="PASS" signature="setUpItemPrice(java.lang.reflect.Method, org.testng.ITestContext)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="setUpItemPrice" is-config="true" duration-ms="10" started-at="2019-11-06T23:22:38Z" finished-at="2019-11-06T23:22:38Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore.SalesColumnValidationNewTable() throws java.lang.Exception]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[org.testng.TestRunner@32639b12]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUpItemPrice -->
-        <test-method status="PASS" signature="SalesColumnValidationNewTable()[pri:6, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="SalesColumnValidationNewTable" duration-ms="5087" started-at="2019-11-06T23:22:38Z" description="Weekly Trading Statement - Store, SalesColumnValidationNewTable" finished-at="2019-11-06T23:22:43Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- SalesColumnValidationNewTable -->
-        <test-method status="PASS" signature="flushReports(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="flushReports" is-config="true" duration-ms="1" started-at="2019-11-06T23:22:43Z" finished-at="2019-11-06T23:22:43Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=SalesColumnValidationNewTable status=SUCCESS method=WeeklyTradingStatementStore.SalesColumnValidationNewTable()[pri:6, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04] output={null}]]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[public void au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore.SalesColumnValidationNewTable() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- flushReports -->
-        <test-method status="PASS" signature="setUpItemPrice(java.lang.reflect.Method, org.testng.ITestContext)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="setUpItemPrice" is-config="true" duration-ms="3" started-at="2019-11-06T23:22:43Z" finished-at="2019-11-06T23:22:43Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore.WagesColumnValidationNewTable() throws java.lang.Exception]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[org.testng.TestRunner@32639b12]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUpItemPrice -->
-        <test-method status="PASS" signature="WagesColumnValidationNewTable()[pri:7, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="WagesColumnValidationNewTable" duration-ms="3880" started-at="2019-11-06T23:22:43Z" description="Weekly Trading Statement - Store, SalesColumnValidationNewTable" finished-at="2019-11-06T23:22:47Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- WagesColumnValidationNewTable -->
-        <test-method status="PASS" signature="flushReports(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="flushReports" is-config="true" duration-ms="0" started-at="2019-11-06T23:22:47Z" finished-at="2019-11-06T23:22:47Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=WagesColumnValidationNewTable status=SUCCESS method=WeeklyTradingStatementStore.WagesColumnValidationNewTable()[pri:7, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04] output={null}]]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[public void au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore.WagesColumnValidationNewTable() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- flushReports -->
-        <test-method status="PASS" signature="setUpItemPrice(java.lang.reflect.Method, org.testng.ITestContext)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="setUpItemPrice" is-config="true" duration-ms="4" started-at="2019-11-06T23:22:47Z" finished-at="2019-11-06T23:22:47Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore.WagePercentageColumnValidationNewTable() throws java.lang.Exception]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[org.testng.TestRunner@32639b12]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUpItemPrice -->
-        <test-method status="PASS" signature="WagePercentageColumnValidationNewTable()[pri:8, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="WagePercentageColumnValidationNewTable" duration-ms="3122" started-at="2019-11-06T23:22:47Z" description="Weekly Trading Statement - Store, WagePercentageColumnValidationNewTable" finished-at="2019-11-06T23:22:50Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- WagePercentageColumnValidationNewTable -->
-        <test-method status="PASS" signature="flushReports(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="flushReports" is-config="true" duration-ms="0" started-at="2019-11-06T23:22:50Z" finished-at="2019-11-06T23:22:50Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=WagePercentageColumnValidationNewTable status=SUCCESS method=WeeklyTradingStatementStore.WagePercentageColumnValidationNewTable()[pri:8, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04] output={null}]]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[public void au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore.WagePercentageColumnValidationNewTable() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- flushReports -->
-        <test-method status="PASS" signature="setUpItemPrice(java.lang.reflect.Method, org.testng.ITestContext)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="setUpItemPrice" is-config="true" duration-ms="3" started-at="2019-11-06T23:22:50Z" finished-at="2019-11-06T23:22:50Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore.ORColumnValidationNewTable() throws java.lang.Exception]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[org.testng.TestRunner@32639b12]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUpItemPrice -->
-        <test-method status="PASS" signature="ORColumnValidationNewTable()[pri:9, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="ORColumnValidationNewTable" duration-ms="2717" started-at="2019-11-06T23:22:50Z" description="Weekly Trading Statement - Store, ORColumnValidationNewTable" finished-at="2019-11-06T23:22:53Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ORColumnValidationNewTable -->
-        <test-method status="PASS" signature="flushReports(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="flushReports" is-config="true" duration-ms="0" started-at="2019-11-06T23:22:53Z" finished-at="2019-11-06T23:22:53Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=ORColumnValidationNewTable status=SUCCESS method=WeeklyTradingStatementStore.ORColumnValidationNewTable()[pri:9, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04] output={null}]]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[public void au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore.ORColumnValidationNewTable() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- flushReports -->
-        <test-method status="PASS" signature="setUpItemPrice(java.lang.reflect.Method, org.testng.ITestContext)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="setUpItemPrice" is-config="true" duration-ms="3" started-at="2019-11-06T23:22:53Z" finished-at="2019-11-06T23:22:53Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore.CPHColumnValidationNewTable() throws java.lang.Exception]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[org.testng.TestRunner@32639b12]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUpItemPrice -->
-        <test-method status="PASS" signature="CPHColumnValidationNewTable()[pri:10, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="CPHColumnValidationNewTable" duration-ms="1591" started-at="2019-11-06T23:22:53Z" description="Weekly Trading Statement - Store, CPHColumnValidationNewTable" finished-at="2019-11-06T23:22:54Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- CPHColumnValidationNewTable -->
-        <test-method status="PASS" signature="flushReports(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="flushReports" is-config="true" duration-ms="0" started-at="2019-11-06T23:22:54Z" finished-at="2019-11-06T23:22:54Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=CPHColumnValidationNewTable status=SUCCESS method=WeeklyTradingStatementStore.CPHColumnValidationNewTable()[pri:10, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04] output={null}]]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[public void au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore.CPHColumnValidationNewTable() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- flushReports -->
-        <test-method status="PASS" signature="setUpItemPrice(java.lang.reflect.Method, org.testng.ITestContext)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="setUpItemPrice" is-config="true" duration-ms="4" started-at="2019-11-06T23:22:54Z" finished-at="2019-11-06T23:22:54Z">
+        <test-method status="PASS" signature="setUpItemPrice(java.lang.reflect.Method, org.testng.ITestContext)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@18920cc]" name="setUpItemPrice" is-config="true" duration-ms="6" started-at="2019-11-13T17:13:09Z" finished-at="2019-11-13T17:13:09Z">
           <params>
             <param index="0">
               <value>
@@ -420,26 +96,22 @@
             </param>
             <param index="1">
               <value>
-                <![CDATA[org.testng.TestRunner@32639b12]]>
+                <![CDATA[org.testng.TestRunner@76b47204]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpItemPrice -->
-        <test-method status="PASS" signature="LogoutCLRApplication()[pri:16, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="LogoutCLRApplication" duration-ms="380" started-at="2019-11-06T23:22:54Z" finished-at="2019-11-06T23:22:55Z">
+        <test-method status="PASS" signature="LogoutCLRApplication()[pri:16, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@18920cc]" name="LogoutCLRApplication" duration-ms="363" started-at="2019-11-13T17:13:09Z" finished-at="2019-11-13T17:13:09Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- LogoutCLRApplication -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="tearDown" is-config="true" duration-ms="1161" started-at="2019-11-06T23:22:55Z" finished-at="2019-11-06T23:22:56Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="flushReports(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="flushReports" is-config="true" duration-ms="0" started-at="2019-11-06T23:22:55Z" finished-at="2019-11-06T23:22:55Z">
+        <test-method status="PASS" signature="flushReports(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@18920cc]" name="flushReports" is-config="true" duration-ms="1" started-at="2019-11-13T17:13:09Z" finished-at="2019-11-13T17:13:09Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=LogoutCLRApplication status=SUCCESS method=WeeklyTradingStatementStore.LogoutCLRApplication()[pri:16, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04] output={null}]]]>
+                <![CDATA[[TestResult name=LogoutCLRApplication status=SUCCESS method=WeeklyTradingStatementStore.LogoutCLRApplication()[pri:16, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@18920cc] output={null}]]]>
               </value>
             </param>
             <param index="1">
@@ -451,7 +123,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- flushReports -->
-        <test-method status="PASS" signature="flushReports1()[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@65d09a04]" name="flushReports1" is-config="true" duration-ms="9106" started-at="2019-11-06T23:22:56Z" finished-at="2019-11-06T23:23:05Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@18920cc]" name="tearDown" is-config="true" duration-ms="1343" started-at="2019-11-13T17:13:09Z" finished-at="2019-11-13T17:13:10Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="flushReports1()[pri:0, instance:au.wow.WLPmain.WeeklyTradingStatement.WeeklyTradingStatementStore@18920cc]" name="flushReports1" is-config="true" duration-ms="3581" started-at="2019-11-13T17:13:11Z" finished-at="2019-11-13T17:13:14Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- flushReports1 -->

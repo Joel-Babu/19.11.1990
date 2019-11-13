@@ -1129,11 +1129,11 @@ public class DailyTradingStatementGroupPage extends TestBase
 								List<List<Object>> UIValues= new  ArrayList<List<Object>>();
 								List<Object> row = new ArrayList<>(columnsize);	
 								row = new ArrayList<>(columnsize);
-								Department = prepareWebElementWithDynamicXpathWithInt(GroupTotal, RowCount-5); 	
-								WeekToDateElmt = prepareWebElementWithDynamicXpathWithInt(WeekToDateTotal, RowCount-5); 
-									
-									Dept = getText(Department);
-									WeekToDate = getText(WeekToDateElmt);			
+								Department = prepareWebElementWithDynamicXpathWithInt(GroupTotal, RowCount-2); 	
+								WeekToDateElmt = prepareWebElementWithDynamicXpathWithInt(WeekToDateTotal, RowCount-2); 
+										
+									Dept = getText(Department);		
+									WeekToDate = getText(WeekToDateElmt);	
 									WeekToDateVal= TrimData(WeekToDate);
 									FinalVal = ConvertBigDecimal(WeekToDateVal);
 									row.add(Dept);
@@ -1286,7 +1286,7 @@ public class DailyTradingStatementGroupPage extends TestBase
 						List<Object> row;
 						int RowCount =TradingStatementTableCount(Table);
 						BigDecimal FinalVal;
-						for(i=0;i<RowCount-4;i++)
+						for(i=0;i<RowCount-1;i++)
 						{
 							//if(i==6)
 								//i++;

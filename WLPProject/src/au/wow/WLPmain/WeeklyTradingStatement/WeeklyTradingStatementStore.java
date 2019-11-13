@@ -171,7 +171,7 @@ public class WeeklyTradingStatementStore extends TestBase {
 
 		pageWeeklyPlanningPO.CompareValues(extentTest, DBActlVal, ActlVal);
 		pageMonthlyPlanningPO.CompareValues(extentTest, DBActlTtl, ActlTtl);
-
+		
 		// PLANNED SALES:
 		Report_AddStep("testcase", " PLANNED SALES - WEEK WISE DATA", "", "", "");
 		extentTest = report.startTest("Planned Sales");
@@ -479,7 +479,7 @@ public class WeeklyTradingStatementStore extends TestBase {
 		pageMonthlyPlanningPO.CompareValues(extentTest, DBMixTtl, MixTtl);
 	}
 	
-	// Items and Item Price
+	/*// Items and Item Price
 	@Test(description = "Weekly Trading Statement - Store, Planned Item", priority = 2)
 	public void ItemsColumnValidation() throws Exception {
 		pageWeeklyPlanningPO = new WeeklyPlanningStorePage().createPage(getDriver(), getContext(), log, status, data,
@@ -1904,7 +1904,7 @@ public class WeeklyTradingStatementStore extends TestBase {
 		pageMonthlyPlanningPO.CompareValues(extentTest, DBPlndVal, PlndVal);
 		pageMonthlyPlanningPO.CompareValues(extentTest, DBPlndTtl, PlndTtl);
 	}
-
+*/
 ////////////////////////////////////////////////PST 1073////////////////////////////////////////////////////////////////////////////////
 /*	
 	@Test(description = "Weekly Trading Statement - Store, LonglifeseafoodColumnValidation", priority = 11)
