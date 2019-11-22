@@ -35,7 +35,7 @@ public class WeeklyPlanning_GroupManagerApprovalPage extends TestBase{
 			Boolean checkbox = chkBox.isEnabled();
 			Boolean button = saveButton.isEnabled();
 			Boolean comment = commentField.isEnabled();
-			
+			System.out.println("The values that are enabled/disabled :" + "/n"+ "checkbox:"+checkbox+"/n" +"savebutton:"+button+"/n"+"commentfield"+comment);
 			if(checkbox)
 			{
 				
@@ -57,11 +57,11 @@ public void EditFields(ExtentTest extentTest,WebElement chkBox, WebElement saveB
 			Boolean button = saveButton.isEnabled();
 			Boolean comment = commentField.isEnabled();
 			
-			System.out.println("The values that are disabled :"+ "checkbox:"+checkbox+"/n" +"savebutton:"+button+"/n"+"commentfield"+comment);
-			
 			commentField.sendKeys("Test 123");
 			chkBox.click();
 			saveButton.click();
+			
+			System.out.println("The values that amended :" + "/n"+ "checkbox:"+checkbox+"/n" +"savebutton:"+button+"/n"+"commentfield"+comment);
 			
 			if(checkbox)
 			{
