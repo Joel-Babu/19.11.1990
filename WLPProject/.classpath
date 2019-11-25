@@ -20,7 +20,7 @@
 	<classpathentry exported="true" kind="lib" path="lib/selenium/selenium-java-2.53.0-srcs.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/selenium/selenium-java-2.53.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/testng/jcommander-1.48.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/testng/testng-6.9.9.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/testng/testng-6.9.9.jar" sourcepath="C:/Automation/19.11.1990/WLPProject/lib/jar_files"/>
 	<classpathentry exported="true" kind="lib" path="lib/extentreports/lib/ant-1.7.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/extentreports/lib/ant-launcher-1.7.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/extentreports/lib/bsh-2.0b4.jar"/>
@@ -66,5 +66,13 @@
 	<classpathentry exported="true" kind="lib" path="lib/extentreports/extentreports-2.41.2.jar"/>
 	<classpathentry kind="lib" path="C:/Automation/19.11.1990/WLPProject/lib/testng/jcommander-1.48.jar"/>
 	<classpathentry kind="lib" path="C:/Automation/19.11.1990/WLPProject/lib/testng/testng-6.9.9.jar"/>
+	<classpathentry kind="lib" path="C:/Automation/19.11.1990/WLPProject/lib/jar_files/ant-1.7.0.jar"/>
+	<classpathentry kind="lib" path="C:/Automation/19.11.1990/WLPProject/lib/jar_files/ant-launcher-1.7.0.jar"/>
+	<classpathentry kind="lib" path="C:/Automation/19.11.1990/WLPProject/lib/jar_files/bsh-2.0b4.jar"/>
+	<classpathentry kind="lib" path="C:/Automation/19.11.1990/WLPProject/lib/jar_files/hamcrest-core-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Automation/19.11.1990/WLPProject/lib/jar_files/jcommander-1.48.jar"/>
+	<classpathentry kind="lib" path="C:/Automation/19.11.1990/WLPProject/lib/jar_files/junit-4.10.jar"/>
+	<classpathentry kind="lib" path="C:/Automation/19.11.1990/WLPProject/lib/jar_files/snakeyaml-1.15.jar"/>
+	<classpathentry kind="lib" path="C:/Automation/19.11.1990/WLPProject/lib/jar_files/testng-6.9.9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

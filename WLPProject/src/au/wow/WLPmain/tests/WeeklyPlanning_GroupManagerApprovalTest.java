@@ -91,10 +91,10 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 		pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 				objWeeklyPlanningStoreObjects.weeklyPlanning, "Weekly Planning");
 		pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
-				objWeeklyPlanningStoreObjects.screenToView, "Zone");
+				objWeeklyPlanningStoreObjects.screenToView, "Group");
 		
 		//check if plan completion checkbox is visible on screen
-		if(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox.isDisplayed())
+		if(!this.isDisplayed(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox))
 		{
 			System.out.println("In Zone screen the Check-box is visible");
 			pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
@@ -119,7 +119,7 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 			pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 					objWeeklyPlanningStoreObjects.screenToView, "Group");
 			//check if checkbix is enabled/disabled
-			if(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox.isEnabled()) {
+			if(!this.isEnabled(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox)) {
 				System.out.println("In Group screen the Check-box is Enabled");
 				//check if the fields are enabled/disabled
 				objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
@@ -129,7 +129,7 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 			this.click(objWeeklyPlanningGroupMangerApprovalObjects.EastGardenStore);
 			
 			//check if the checkbox are enabled/disabled
-			if(!objWeeklyPlanningGroupMangerApprovalObjects.ChkBox.isEnabled()) {
+			if(!this.isEnabled(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox)) {
 				System.out.println("In Store screen the Check-box is Enabled");
 				pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 						objWeeklyPlanningStoreObjects.planningScreens, "Planning Screens");
@@ -138,7 +138,7 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 				pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 						objWeeklyPlanningStoreObjects.screenToView, "Group");
 				
-				this.click(objWeeklyPlanningGroupMangerApprovalObjects.EastGardenStore);
+				//this.click(objWeeklyPlanningGroupMangerApprovalObjects.EastGardenStore);
 				//check if the fields are enabled/disabled
 				objWeeklyPlanningGroupMangerApprovalPO.EditFields(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 						objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
@@ -198,7 +198,8 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 		common = PageFactory.initElements(this.getDriver(), CommonFunctions.class);
 		storeprop = PageFactory.initElements(this.getDriver(), StoreProperties.class);
 		objWeeklyPlanningStoreObjects = PageFactory.initElements(this.getDriver(), WeeklyPlanningStoreObjects.class);
-		
+		objWeeklyPlanningGroupMangerApprovalObjects = PageFactory.initElements(this.getDriver(), WeeklyPlanning_GroupManagerApprovalObjects.class);
+		objWeeklyPlanningGroupMangerApprovalPO = PageFactory.initElements(this.getDriver(), WeeklyPlanning_GroupManagerApprovalPage.class);
 		ScreenShotUtil = PageFactory.initElements(this.getDriver(), ExtentReportsScreenshotCode.class);
 		System.out.println(System.getProperty("user.dir"));
 		Date date = new Date();

@@ -9,11 +9,11 @@ public class WeeklyPlanning_GroupManagerApprovalObjects {
 	public WebElement ChkBox;
 	
 	
-	@FindBy(id="frmDetails:button1")
+	@FindBy(xpath="//input[@type='submit']")
 	public WebElement SaveButton;
 	
 	
-	@FindBy(xpath="//*[@id='frmDetails:ctrStorePlanningDetailsTable:dynamic:commentsId']/textarea")
+	@FindBy(xpath="//*[@id='frmDetails:ctrStorePlanningDetailsTable:2:oOrgDescinLink']")
 	public WebElement CommentField;
 	
 	
