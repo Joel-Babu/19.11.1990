@@ -396,7 +396,7 @@ public class WeeklyPlanningStoreObjects {
 		public static final String WagePer="//*[@id='frmDetails:ctrStorePlanningDetailsTable1:dynamic:colPlannedWagePercent2']";
 		public static final String WagePerTtl="//*[@id='frmDetails:ctrStorePlanningDetailsTable1:dynamic:colPlannedWagePercent2']";
 		public static final String CPH="//*[@id='frmDetails:ctrStorePlanningDetailsTable1:dynamic:colPlannedCPH2']";
-		public static final String CPHTtL="//*[@id='frmDetails:ctrStorePlanningDetailsTable1:dynamic:colPlannedCPH2']";
+		public static final String CPHTtL="//*[@id='frmDetails:ctrStorePlanningDetailsTable1:dynamic:colPlannedCPH2']";//*[@id="frmDetails:ctrStorePlanningDetailsTable:j_idt195"]
 		public static final String PlannPaidHrs="//*[@id='frmDetails:ctrStorePlanningDetailsTable1:dynamic:colPlannedPaidHours2']";
 		public static final String PlannPaidHrsTtl="//*[@id='frmDetails:ctrStorePlanningDetailsTable1:dynamic:colPlannedPaidHours2']";
 		public static final String ORPER="//*[@id='frmDetails:ctrStorePlanningDetailsTable1:dynamic:colPlannedORPer2']";

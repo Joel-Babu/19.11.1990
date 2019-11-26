@@ -400,7 +400,7 @@ public class WeeklyPlanningStorePage extends TestBase
 		{
 
 			String Dept,Values=null;
-			double CalcValue;
+			//String CalcValue;
 			int columnsize=2;
 			List<List<Object>> UIValues= new  ArrayList<List<Object>>();
 			
@@ -410,33 +410,33 @@ public class WeeklyPlanningStorePage extends TestBase
 				List<Object> row = new ArrayList<>(columnsize);
 				System.out.println(i);
 				
-				if (i== 11) 
-				{
-					i= i+2;
-					}
-				
-				if (i== 14) 
-				{
-					i= i-3;
-					} 
+//				if (i== 11) 
+//				{
+//					i= i+2;
+//					}
+//				
+//				if (i== 14) 
+//				{
+//					i= i-3;
+//					} 
 				
 				WebElement Department = prepareWebElementWithDynamicXpathWithInt(DepName, i);
 				WebElement Data = prepareWebElementWithDynamicXpathWithInt(FieldToVerify, i);	
 				Dept = getText(Department);
 				Values = getText(Data);
-				CalcValue=TrimData(Values);
+				//CalcValue=TrimData(Values);
 				row.add(Dept);
-				row.add(CalcValue);	
+				row.add(Values);	
 				UIValues.add(row);
-				if (i== 11) 
-				{
-					i= i;
-					}	
-				
-				if (i== 12) 
-				{
-					break;
-					}	
+//				if (i== 11) 
+//				{
+//					i= i;
+//					}	
+//				
+//				if (i== 12) 
+//				{
+//					break;
+//					}	
 				
 			}
 			return UIValues;
@@ -681,6 +681,52 @@ public class WeeklyPlanningStorePage extends TestBase
 							}
 							
 										
+						else
+						{
+							UIName =new String(UIValues.get(i).get(j).toString());
+						}
+					}
+				}
+			}
+			catch(Exception e)
+			{
+				System.out.println("Exception Occured" +e.getMessage());
+				Report_AddStep("testcase","Failed to Verify UI and DB Values" ,"","", "Fail");
+				htmlToExtent(cName,mName,extentTest,driver1, "Exception Occured while comparing data;;;Fail");
+			}
+		}
+		
+		
+		public void CompareValuesText(ExtentTest extentTest,List<List<Object>> DBValues,List<List<Object>> UIValues) throws Exception
+		{
+			try
+			{	
+				int RowCount = DBValues.size();
+				String UIName=null,NewDBValue,NewUIValue;
+				System.out.println(UIValues);
+				System.out.println(DBValues);
+			
+				for(int i=0;i<=RowCount-1;i++)
+				{
+					for(int j=0;j<2;j++)
+					{
+							//To map UI and DB values for store and above levels correctly
+							if(j!=0)
+							{
+							System.out.println("i:"+i + "" + "j:" +j);	
+							NewDBValue = DBValues.get(i).get(j).toString();
+							System.out.println(NewDBValue);
+							
+							NewUIValue =UIValues.get(i).get(j).toString();
+							System.out.println(NewUIValue);
+							
+							
+							Report_AddStep("testcase","System Fetch the Values from DB for : "+UIName+" and Displayed Correctly" ,""+NewUIValue+"",""+NewDBValue+"", "Pass");
+							htmlToExtent(cName,mName,extentTest,driver1, "Value displayed Correctly for : "+UIName+"; "+NewUIValue+";  "+NewDBValue+";Pass");
+							
+							}
+							
+																	
 						else
 						{
 							UIName =new String(UIValues.get(i).get(j).toString());

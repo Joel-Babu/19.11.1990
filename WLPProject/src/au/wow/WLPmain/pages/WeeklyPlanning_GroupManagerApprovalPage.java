@@ -2,6 +2,7 @@ package au.wow.WLPmain.pages;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -36,17 +37,17 @@ public class WeeklyPlanning_GroupManagerApprovalPage extends TestBase{
 			boolean checkbox = chkBox.isEnabled();
 			boolean button = saveButton.isEnabled();
 			boolean comment = commentField.isEnabled();
-			System.out.println("The values that are enabled/disabled :" + "   "+ "checkbox:"+checkbox+"   " +"savebutton:"+button+"   "+"commentfield"+comment);
+			System.out.println("The values that are enabled/disabled :" + "   "+ "checkbox:"+checkbox+"   " +"savebutton:"+button+"   "+"commentfield:"+comment);
 			if(checkbox)
 			{
 				
 				Report_AddStep("testcase","The values that are disabled :"+ "checkbox:"+checkbox+"   " +"savebutton:"+button+"   "+"commentfield"+comment ,"","", "Fail");
-				htmlToExtent(cName,mName,extentTest,driver1, "The values that are disabled : "+ "checkbox:"+checkbox+"   " +"savebutton:"+button+"   "+"commentfield"+comment +" ;;;Fail");
+				htmlToExtent(cName,mName,extentTest,driver1, "The values that are disabled : "+ "checkbox:"+checkbox+"   " +"savebutton:"+button+"   "+"commentfield:"+comment +" ;;;Fail");
 			}
 			
 			else {
 				Report_AddStep("testcase","The values that are enabled :"+ "checkbox:"+checkbox+"   " +"savebutton:"+button+"   "+"commentfield"+comment ,"","", "Fail");
-				htmlToExtent(cName,mName,extentTest,driver1, "The values that are enabled : " + "checkbox:"+checkbox+"   " +"savebutton:"+button+"   "+"commentfield"+comment +" ;;;Fail");
+				htmlToExtent(cName,mName,extentTest,driver1, "The values that are enabled : " + "checkbox:"+checkbox+"   " +"savebutton:"+button+"   "+"commentfield:"+comment +" ;;;Fail");
 				
 			}
 			
@@ -63,23 +64,26 @@ public void EditFields(ExtentTest extentTest,WebElement chkBox, WebElement saveB
 			boolean button = saveButton.isEnabled();
 			boolean comment = commentField.isEnabled();
 			
-			//commentField.clear();
+			commentField.clear();
 			commentField.sendKeys("Test 123");
 			//chkBox.click();
 			saveButton.click();
+			Alert alert = driver1.switchTo().alert();
 			
-			System.out.println("The values that amended :" + "   "+ "checkbox:"+checkbox+"   " +"savebutton:"+button+"   "+"commentfield"+comment);
+			alert.accept();
+			
+			System.out.println("The values that amended :" + "   "+ "checkbox:"+checkbox+"   " +"savebutton:"+button+"   "+"commentfield:"+comment);
 			
 			if(checkbox)
 			{
 				
 				Report_AddStep("testcase","The values that are amended :"+ "checkbox:"+checkbox+"   " +"savebutton:"+button+"   "+"commentfield"+comment ,"","", "Fail");
-				htmlToExtent(cName,mName,extentTest,driver1, "The values that are amended : "+ "checkbox:"+checkbox+"   " +"savebutton:"+button+"   "+"commentfield"+comment +" ;;;Fail");
+				htmlToExtent(cName,mName,extentTest,driver1, "The values that are amended : "+ "checkbox:"+checkbox+"   " +"savebutton:"+button+"   "+"commentfield:"+comment +" ;;;Fail");
 			}
 			
 			else {
 				Report_AddStep("testcase","The values that are not amended :"+ "checkbox:"+checkbox+"   " +"savebutton:"+button+"   "+"commentfield"+comment ,"","", "Fail");
-				htmlToExtent(cName,mName,extentTest,driver1, "The values that are not amended : " + "checkbox:"+checkbox+"   " +"savebutton:"+button+"   "+"commentfield"+comment +" ;;;Fail");
+				htmlToExtent(cName,mName,extentTest,driver1, "The values that are not amended : " + "checkbox:"+checkbox+"   " +"savebutton:"+button+"   "+"commentfield:"+comment +" ;;;Fail");
 				
 			}
 			
