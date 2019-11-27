@@ -1,5 +1,9 @@
 package au.wow.WLPmain.pages;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Alert;
@@ -10,6 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.relevantcodes.extentreports.ExtentTest;
 
 import au.wow.WLPmain.objects.WeeklyPlanningStoreObjects;
+import au.wow.WLPmain.objects.WeeklyPlanning_GroupManagerApprovalObjects;
 import au.wow.wlp.utils.ExtentReportsScreenshotCode;
 import au.wow.wlp.utils.SQLWrapper;
 import au.wow.wlp.utils.TestBase;
@@ -94,4 +99,52 @@ public void EditFields(ExtentTest extentTest,WebElement chkBox, WebElement saveB
 		}
 
 	}
+
+
+
+
+public List<String> checkApproval(List<List<Object>> list) throws Exception{
+
+	List<String> newList=new ArrayList<String>();
+	try {
+		
+		for(int i=0;i<list.size();i++)
+		{
+			newList.add((String)list.get(i).get(1));
+			
+		}
+		System.out.println("Value contains:"+newList);
+		
+		}catch(Exception e) {
+		System.out.println("Exception Occured" +e.getMessage());
+		Report_AddStep("testcase","Exception Occured" ,"","", "Fail");
+		htmlToExtent(cName,mName,extentTest,driver1, "Exception Occured;;;Fail");
+	}
+	return newList;
 }
+
+
+public List<String> checkApprovalTwo(List<List<Object>> list) throws Exception{
+
+	List<String> newList=new ArrayList<String>();
+	try {
+		
+		for(int i=0;i<list.size();i++)
+		{
+			String st=(String)list.get(i).get(1);
+			if(st.equals("N"))
+			newList.add((String)list.get(i).get(0));
+			
+		}
+		System.out.println("Value contains:"+newList);
+		
+		}catch(Exception e) {
+		System.out.println("Exception Occured" +e.getMessage());
+		Report_AddStep("testcase","Exception Occured" ,"","", "Fail");
+		htmlToExtent(cName,mName,extentTest,driver1, "Exception Occured;;;Fail");
+	}
+	return newList;
+}
+}
+
+
