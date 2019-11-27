@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="3" passed="3">
+<testng-results skipped="0" failed="1" total="3" passed="2">
   <reporter-output>
+    <line>
+      <![CDATA[<a href='C:\Automation\19.11.1990\WLPProject\test-output\screenshots\GroupManagerApproval.jpg'><font color='red'>Link</font></a>]]>
+    </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="174704" started-at="2019-11-26T15:21:18Z" finished-at="2019-11-26T15:24:13Z">
+  <suite name="Default suite" duration-ms="160988" started-at="2019-11-27T16:27:59Z" finished-at="2019-11-27T16:30:40Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="174704" started-at="2019-11-26T15:21:18Z" finished-at="2019-11-26T15:24:13Z">
+    <test name="Default test" duration-ms="160988" started-at="2019-11-27T16:27:59Z" finished-at="2019-11-27T16:30:40Z">
       <class name="au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest">
-        <test-method status="PASS" signature="onStart()[pri:0, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@7e7b159b]" name="onStart" is-config="true" duration-ms="1035" started-at="2019-11-26T20:51:17Z" finished-at="2019-11-26T20:51:18Z">
+        <test-method status="PASS" signature="onStart()[pri:0, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@3d97a632]" name="onStart" is-config="true" duration-ms="1056" started-at="2019-11-27T21:57:58Z" finished-at="2019-11-27T21:57:59Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- onStart -->
-        <test-method status="PASS" signature="loadXMLFile()[pri:0, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@7e7b159b]" name="loadXMLFile" is-config="true" duration-ms="11198" started-at="2019-11-26T20:51:18Z" finished-at="2019-11-26T20:51:29Z">
+        <test-method status="PASS" signature="loadXMLFile()[pri:0, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@3d97a632]" name="loadXMLFile" is-config="true" duration-ms="7291" started-at="2019-11-27T21:57:59Z" finished-at="2019-11-27T21:58:06Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loadXMLFile -->
-        <test-method status="PASS" signature="setUpItemPrice(java.lang.reflect.Method, org.testng.ITestContext)[pri:0, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@7e7b159b]" name="setUpItemPrice" is-config="true" duration-ms="2467" started-at="2019-11-26T20:51:29Z" finished-at="2019-11-26T20:51:32Z">
+        <test-method status="PASS" signature="setUpItemPrice(java.lang.reflect.Method, org.testng.ITestContext)[pri:0, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@3d97a632]" name="setUpItemPrice" is-config="true" duration-ms="89" started-at="2019-11-27T21:58:06Z" finished-at="2019-11-27T21:58:06Z">
           <params>
             <param index="0">
               <value>
@@ -24,22 +27,90 @@
             </param>
             <param index="1">
               <value>
-                <![CDATA[org.testng.TestRunner@77d381e6]]>
+                <![CDATA[org.testng.TestRunner@31973858]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpItemPrice -->
-        <test-method status="PASS" signature="LogintoCLRApplication()[pri:0, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@7e7b159b]" name="LogintoCLRApplication" duration-ms="10099" started-at="2019-11-26T20:51:32Z" finished-at="2019-11-26T20:51:42Z">
+        <test-method status="PASS" signature="LogintoCLRApplication()[pri:0, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@3d97a632]" name="LogintoCLRApplication" duration-ms="6637" started-at="2019-11-27T21:58:06Z" finished-at="2019-11-27T21:58:13Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- LogintoCLRApplication -->
-        <test-method status="PASS" signature="flushReports(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@7e7b159b]" name="flushReports" is-config="true" duration-ms="1" started-at="2019-11-26T20:51:42Z" finished-at="2019-11-26T20:51:42Z">
+        <test-method status="FAIL" signature="GroupManagerApproval()[pri:1, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@3d97a632]" name="GroupManagerApproval" duration-ms="144348" started-at="2019-11-27T21:58:13Z" finished-at="2019-11-27T22:00:37Z">
+          <exception class="org.openqa.selenium.NoSuchElementException">
+            <message>
+              <![CDATA[The element: roxy element for: DefaultElementLocator 'By.xpath: //*[@id='frmDetails:ctrStorePlanningDetailsTable:dynamic:colOrgDesc' and style='color: red'] could not be found
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.53.0', revision: '35ae25b', time: '2016-03-15 16:57:40'
+System info: host: 'NCDWIN7PXD05111', ip: '10.168.232.205', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_131'
+Driver info: driver.version: unknown]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: The element: roxy element for: DefaultElementLocator 'By.xpath: //*[@id='frmDetails:ctrStorePlanningDetailsTable:dynamic:colOrgDesc' and style='color: red'] could not be found
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.53.0', revision: '35ae25b', time: '2016-03-15 16:57:40'
+System info: host: 'NCDWIN7PXD05111', ip: '10.168.232.205', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_131'
+Driver info: driver.version: unknown
+	at au.wow.wlp.utils.CustomException.exceptionHandler(CustomException.java:38)
+	at au.wow.wlp.utils.CustomException.<init>(CustomException.java:23)
+	at au.wow.wlp.utils.BasePage.isDisplayed(BasePage.java:890)
+	at au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest.GroupManagerApproval(WeeklyPlanning_GroupManagerApprovalTest.java:225)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:816)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1124)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:774)
+	at org.testng.TestRunner.run(TestRunner.java:624)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:359)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:354)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:312)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:261)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1215)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.run(TestNG.java:1048)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+          <reporter-output>
+            <line>
+              <![CDATA[<a href='C:\Automation\19.11.1990\WLPProject\test-output\screenshots\GroupManagerApproval.jpg'><font color='red'>Link</font></a>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- GroupManagerApproval -->
+        <test-method status="PASS" signature="setUpItemPrice(java.lang.reflect.Method, org.testng.ITestContext)[pri:0, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@3d97a632]" name="setUpItemPrice" is-config="true" duration-ms="0" started-at="2019-11-27T21:58:13Z" finished-at="2019-11-27T21:58:13Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=LogintoCLRApplication status=SUCCESS method=WeeklyPlanning_GroupManagerApprovalTest.LogintoCLRApplication()[pri:0, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@7e7b159b] output={null}]]]>
+                <![CDATA[public void au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest.GroupManagerApproval() throws java.lang.Exception]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[org.testng.TestRunner@31973858]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpItemPrice -->
+        <test-method status="PASS" signature="flushReports(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@3d97a632]" name="flushReports" is-config="true" duration-ms="0" started-at="2019-11-27T21:58:13Z" finished-at="2019-11-27T21:58:13Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=LogintoCLRApplication status=SUCCESS method=WeeklyPlanning_GroupManagerApprovalTest.LogintoCLRApplication()[pri:0, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@3d97a632] output={null}]]]>
               </value>
             </param>
             <param index="1">
@@ -51,31 +122,27 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- flushReports -->
-        <test-method status="PASS" signature="setUpItemPrice(java.lang.reflect.Method, org.testng.ITestContext)[pri:0, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@7e7b159b]" name="setUpItemPrice" is-config="true" duration-ms="10" started-at="2019-11-26T20:51:42Z" finished-at="2019-11-26T20:51:42Z">
+        <test-method status="PASS" signature="setUpItemPrice(java.lang.reflect.Method, org.testng.ITestContext)[pri:0, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@3d97a632]" name="setUpItemPrice" is-config="true" duration-ms="16" started-at="2019-11-27T22:00:38Z" finished-at="2019-11-27T22:00:38Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest.GroupManagerApproval() throws java.lang.Exception]]>
+                <![CDATA[public void au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest.LogoutCLRApplication() throws java.lang.Exception]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[org.testng.TestRunner@77d381e6]]>
+                <![CDATA[org.testng.TestRunner@31973858]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpItemPrice -->
-        <test-method status="PASS" signature="GroupManagerApproval()[pri:1, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@7e7b159b]" name="GroupManagerApproval" duration-ms="149528" started-at="2019-11-26T20:51:42Z" finished-at="2019-11-26T20:54:11Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- GroupManagerApproval -->
-        <test-method status="PASS" signature="flushReports(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@7e7b159b]" name="flushReports" is-config="true" duration-ms="0" started-at="2019-11-26T20:54:11Z" finished-at="2019-11-26T20:54:11Z">
+        <test-method status="PASS" signature="flushReports(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@3d97a632]" name="flushReports" is-config="true" duration-ms="0" started-at="2019-11-27T22:00:38Z" finished-at="2019-11-27T22:00:38Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=GroupManagerApproval status=SUCCESS method=WeeklyPlanning_GroupManagerApprovalTest.GroupManagerApproval()[pri:1, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@7e7b159b] output={null}]]]>
+                <![CDATA[[TestResult name=GroupManagerApproval status=FAILURE method=WeeklyPlanning_GroupManagerApprovalTest.GroupManagerApproval()[pri:1, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@3d97a632] output=<a href='C:\Automation\19.11.1990\WLPProject\test-output\screenshots\GroupManagerApproval.jpg'><font color='red'>Link</font></a>]]]>
               </value>
             </param>
             <param index="1">
@@ -87,35 +154,19 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- flushReports -->
-        <test-method status="PASS" signature="setUpItemPrice(java.lang.reflect.Method, org.testng.ITestContext)[pri:0, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@7e7b159b]" name="setUpItemPrice" is-config="true" duration-ms="23" started-at="2019-11-26T20:54:11Z" finished-at="2019-11-26T20:54:12Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest.LogoutCLRApplication() throws java.lang.Exception]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[org.testng.TestRunner@77d381e6]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUpItemPrice -->
-        <test-method status="PASS" signature="LogoutCLRApplication()[pri:2, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@7e7b159b]" name="LogoutCLRApplication" duration-ms="577" started-at="2019-11-26T20:54:12Z" finished-at="2019-11-26T20:54:12Z">
+        <test-method status="PASS" signature="LogoutCLRApplication()[pri:2, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@3d97a632]" name="LogoutCLRApplication" duration-ms="1739" started-at="2019-11-27T22:00:38Z" finished-at="2019-11-27T22:00:40Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- LogoutCLRApplication -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@7e7b159b]" name="tearDown" is-config="true" duration-ms="739" started-at="2019-11-26T20:54:12Z" finished-at="2019-11-26T20:54:13Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@3d97a632]" name="tearDown" is-config="true" duration-ms="461" started-at="2019-11-27T22:00:40Z" finished-at="2019-11-27T22:00:40Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="flushReports(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@7e7b159b]" name="flushReports" is-config="true" duration-ms="0" started-at="2019-11-26T20:54:12Z" finished-at="2019-11-26T20:54:12Z">
+        <test-method status="PASS" signature="flushReports(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@3d97a632]" name="flushReports" is-config="true" duration-ms="0" started-at="2019-11-27T22:00:40Z" finished-at="2019-11-27T22:00:40Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=LogoutCLRApplication status=SUCCESS method=WeeklyPlanning_GroupManagerApprovalTest.LogoutCLRApplication()[pri:2, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@7e7b159b] output={null}]]]>
+                <![CDATA[[TestResult name=LogoutCLRApplication status=SUCCESS method=WeeklyPlanning_GroupManagerApprovalTest.LogoutCLRApplication()[pri:2, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@3d97a632] output={null}]]]>
               </value>
             </param>
             <param index="1">
@@ -127,7 +178,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- flushReports -->
-        <test-method status="FAIL" signature="flushReports1()[pri:0, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@7e7b159b]" name="flushReports1" is-config="true" duration-ms="0" started-at="2019-11-26T20:54:13Z" finished-at="2019-11-26T20:54:13Z">
+        <test-method status="FAIL" signature="flushReports1()[pri:0, instance:au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@3d97a632]" name="flushReports1" is-config="true" duration-ms="0" started-at="2019-11-27T22:00:40Z" finished-at="2019-11-27T22:00:40Z">
           <exception class="java.lang.NullPointerException">
             <full-stacktrace>
               <![CDATA[java.lang.NullPointerException
