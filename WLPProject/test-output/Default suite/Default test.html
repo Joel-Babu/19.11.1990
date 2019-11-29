@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>2/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Nov 27 21:57:59 IST 2019</td>
+<td>Started on:</td><td>Fri Nov 29 11:09:41 IST 2019</td>
 </tr>
-<tr><td>Total time:</td><td>160 seconds (160988 ms)</td>
+<tr><td>Total time:</td><td>5162 seconds (5162616 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,22 +76,17 @@ function toggleAllBoxes() {
 </tr>
 <tr>
 <td title='au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest.GroupManagerApproval()'><b>GroupManagerApproval</b><br>Test class: au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest<br/>
-<a href="#Output-1492897838" onClick='toggleBox("Output-1492897838", this, "Show output", "Hide output");'>Show output</a>
+<a href="#Output-1180383462" onClick='toggleBox("Output-1180383462", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-1492897838" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-1492897838">
+<a href="#Output-1180383462" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1180383462">
 <a href='C:\Automation\19.11.1990\WLPProject\test-output\screenshots\GroupManagerApproval.jpg'><font color='red'>Link</font></a><br/>
 </div>
 </td>
-<td><div><pre>org.openqa.selenium.NoSuchElementException: The element: roxy element for: DefaultElementLocator &apos;By.xpath: //*[@id=&apos;frmDetails:ctrStorePlanningDetailsTable:dynamic:colOrgDesc&apos; and style=&apos;color: red&apos;] could not be found
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;2.53.0&apos;, revision: &apos;35ae25b&apos;, time: &apos;2016-03-15 16:57:40&apos;
-System info: host: &apos;NCDWIN7PXD05111&apos;, ip: &apos;10.168.232.205&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_131&apos;
-Driver info: driver.version: unknown
-	at au.wow.wlp.utils.CustomException.exceptionHandler(CustomException.java:38)
-	at au.wow.wlp.utils.CustomException.&lt;init&gt;(CustomException.java:23)
-	at au.wow.wlp.utils.BasePage.isDisplayed(BasePage.java:890)
-	at au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest.GroupManagerApproval(WeeklyPlanning_GroupManagerApprovalTest.java:225)
+<td><div><pre>java.lang.NullPointerException
+	at au.wow.wlp.utils.BasePage.TradingStatementTableCount(BasePage.java:699)
+	at au.wow.WLPmain.pages.WeeklyPlanning_GroupManagerApprovalPage.EditFields(WeeklyPlanning_GroupManagerApprovalPage.java:74)
+	at au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest.GroupManagerApproval(WeeklyPlanning_GroupManagerApprovalTest.java:243)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -116,16 +111,11 @@ Driver info: driver.version: unknown
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1492897838", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1492897838'><pre>org.openqa.selenium.NoSuchElementException: The element: roxy element for: DefaultElementLocator &apos;By.xpath: //*[@id=&apos;frmDetails:ctrStorePlanningDetailsTable:dynamic:colOrgDesc&apos; and style=&apos;color: red&apos;] could not be found
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;2.53.0&apos;, revision: &apos;35ae25b&apos;, time: &apos;2016-03-15 16:57:40&apos;
-System info: host: &apos;NCDWIN7PXD05111&apos;, ip: &apos;10.168.232.205&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_131&apos;
-Driver info: driver.version: unknown
-	at au.wow.wlp.utils.CustomException.exceptionHandler(CustomException.java:38)
-	at au.wow.wlp.utils.CustomException.&lt;init&gt;(CustomException.java:23)
-	at au.wow.wlp.utils.BasePage.isDisplayed(BasePage.java:890)
-	at au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest.GroupManagerApproval(WeeklyPlanning_GroupManagerApprovalTest.java:225)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1180383462", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1180383462'><pre>java.lang.NullPointerException
+	at au.wow.wlp.utils.BasePage.TradingStatementTableCount(BasePage.java:699)
+	at au.wow.WLPmain.pages.WeeklyPlanning_GroupManagerApprovalPage.EditFields(WeeklyPlanning_GroupManagerApprovalPage.java:74)
+	at au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest.GroupManagerApproval(WeeklyPlanning_GroupManagerApprovalTest.java:243)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -151,8 +141,8 @@ Driver info: driver.version: unknown
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 </pre></div></td>
-<td>144</td>
-<td>au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@3d97a632</td></tr>
+<td>5149</td>
+<td>au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@2320fa6f</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
@@ -164,13 +154,13 @@ Driver info: driver.version: unknown
 <tr>
 <td title='au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest.LogintoCLRApplication()'><b>LogintoCLRApplication</b><br>Test class: au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest</td>
 <td></td>
-<td>6</td>
-<td>au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@3d97a632</td></tr>
+<td>3</td>
+<td>au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@2320fa6f</td></tr>
 <tr>
 <td title='au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest.LogoutCLRApplication()'><b>LogoutCLRApplication</b><br>Test class: au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest</td>
 <td></td>
-<td>1</td>
-<td>au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@3d97a632</td></tr>
+<td>0</td>
+<td>au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest@2320fa6f</td></tr>
 </table><p>
 </body>
 </html>
