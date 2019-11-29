@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.TimeZone;
-
+import org.openqa.selenium.support.Color;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -1337,6 +1337,7 @@ public class BasePage extends HTMLReport {
 	}
 
 	public WebElement prepareWebElementWithLinkText(String xpathValue) {
+	
 		WebElement Xpath = driver.findElement(By.linkText(xpathValue));
 		return Xpath;
 	}

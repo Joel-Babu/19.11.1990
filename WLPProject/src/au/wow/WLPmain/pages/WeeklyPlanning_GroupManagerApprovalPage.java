@@ -26,9 +26,10 @@ public class WeeklyPlanning_GroupManagerApprovalPage extends TestBase{
 
 	
 		CommonFunctions common = PageFactory.initElements(this.getDriver(),CommonFunctions.class);
-		public Logger log = LogManager.getLogger(WeeklyPlanningStorePage.class);
+		public Logger log = LogManager.getLogger(WeeklyPlanning_GroupManagerApprovalPage.class);
 		SQLWrapper sql = new SQLWrapper(log);
 		//WeeklyPlanningStoreObjects objWeeklyPlanningStoreObjects;
+		WeeklyPlanning_GroupManagerApprovalObjects objWeeklyPlanningGroupMangerApprovalObjects;
 		static ExtentReportsScreenshotCode ScreenShotUtil; 
 		static WebDriverWait wait;
 		String image;

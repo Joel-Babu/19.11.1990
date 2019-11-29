@@ -6,14 +6,11 @@ import java.lang.reflect.Method;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeClass;
@@ -21,17 +18,14 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
 
-import au.wow.WLPmain.WeeklyPlanning.WeeklyPlanningGroup;
-import au.wow.WLPmain.objects.MonthlyPlanningGroupObjects;
 import au.wow.WLPmain.objects.MonthlyPlanningStoreObjects;
 import au.wow.WLPmain.objects.WeeklyPlanningStoreObjects;
 import au.wow.WLPmain.objects.WeeklyPlanning_GroupManagerApprovalObjects;
+import au.wow.WLPmain.objects.WeeklyPlanning_GroupManagerApprovalObjects;
 import au.wow.WLPmain.pages.CommonFunctions;
-import au.wow.WLPmain.pages.MonthlyPlanningGroupPage;
-import au.wow.WLPmain.pages.MonthlyPlanningStorePage;
 import au.wow.WLPmain.pages.WeeklyPlanningStorePage;
+import au.wow.WLPmain.pages.WeeklyPlanning_GroupManagerApprovalPage;
 import au.wow.WLPmain.pages.WeeklyPlanning_GroupManagerApprovalPage;
 import au.wow.WLPmain.pages.WoWLoginPage;
 import au.wow.wlp.utils.BasePage;
@@ -42,11 +36,12 @@ import au.wow.wlp.utils.SQLWrapper;
 import au.wow.wlp.utils.TestBase;
 import au.wow.wlp.utils.TestStatus;
 import au.wow.wlp.utils.XMLDataReader;
-import mx4j.log.Log;
 
-public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
+public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 
-	protected Logger log = LogManager.getLogger(WeeklyPlanning_GroupManagerApprovalTest.class);
+	
+	
+	protected Logger log = LogManager.getLogger(WeeklyPlanning_ZoneManagerApprovalTest.class);
 	TestStatus status;
 	ExtentReportsScreenshotCode ScreenShotUtil;
 	SQLWrapper sql = new SQLWrapper(log);
@@ -68,7 +63,7 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 	int LYYear, HistWk;
 	String[] WeekName, YearName;
 
-	public WeeklyPlanning_GroupManagerApprovalTest() {
+	public WeeklyPlanning_ZoneManagerApprovalTest() {
 		super.log = log;
 	}
 	
@@ -79,14 +74,14 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 		pageWeeklyPlanningPO = loginPage.navToWeeklyPlanningGroupPg(getContext().getStringProperty("store"));
 	}
 
-	//Group Manager Approval for plan completion 
+	//Zone Manager Approval for plan completion 
 	@Test(priority = 1)
-	public void GroupManagerApproval() throws Exception {
+	public void ZoneManagerApproval() throws Exception {
 		
 		pageWeeklyPlanningPO = new WeeklyPlanning_GroupManagerApprovalPage().createPage(getDriver(), getContext(), log, status, data,
 				getReport(), getReportLogger(), WeeklyPlanningStorePage.class);
-//		pageMonthlyPlanningGroupPO = new MonthlyPlanningGroupPage().createPage(getDriver(), getContext(), log, status,
-//				data, getReport(), getReportLogger(), MonthlyPlanningGroupPage.class);
+//		pageMonthlyPlanningZonePO = new MonthlyPlanningZonePage().createPage(getDriver(), getContext(), log, status,
+//				data, getReport(), getReportLogger(), MonthlyPlanningZonePage.class);
 		TestStatus status = getTestStatus();
 		System.out.println("Entering into TestCase");
 		pageWeeklyPlanningPO.SelectWeekFromDropdown(objWeeklyPlanningStoreObjects, extentTest,
@@ -97,7 +92,7 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 		pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 				objWeeklyPlanningStoreObjects.weeklyPlanning, "Weekly Planning");
 		pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
-				objWeeklyPlanningStoreObjects.screenToView, "Group");
+				objWeeklyPlanningStoreObjects.screenToView, "Zone");
 		
 		//check if plan completion checkbox is visible on zone screen
 		if(!this.isDisplayed(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox))
@@ -108,7 +103,7 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 			pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 					objWeeklyPlanningStoreObjects.weeklyPlanning, "Weekly Planning");
 			pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
-					objWeeklyPlanningStoreObjects.screenToView, "Group");
+					objWeeklyPlanningStoreObjects.screenToView, "Zone");
 			//check if the fields are enabled/disabled in group screen
 			objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 					objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
@@ -137,7 +132,7 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 			//compare UI and DB comments matching or not in group screen
 			pageWeeklyPlanningPO.CompareValuesText(extentTest, DBValues, UIValues);
 
-//			UITotal = pageMonthlyPlanningGroupPO.WPGetTotal(extentTest, MonthlyPlanningGroupObjects.RowNameTotal,
+//			UITotal = pageMonthlyPlanningZonePO.WPGetTotal(extentTest, MonthlyPlanningZoneObjects.RowNameTotal,
 //					WeeklyPlanningStoreObjects.FirstWeekofMonth);
 //			pageMonthlyPlanningPO.CompareValues(extentTest, DBTotal, UITotal);
 			}
@@ -150,10 +145,10 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 			pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 					objWeeklyPlanningStoreObjects.weeklyPlanning, "Weekly Planning");
 			pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
-					objWeeklyPlanningStoreObjects.screenToView, "Group");
+					objWeeklyPlanningStoreObjects.screenToView, "Zone");
 			//check if checkbox is enabled/disabled in group screen
 			if(this.isEnabled(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox)) {
-				System.out.println("In Group screen the Check-box is Enabled");
+				System.out.println("In Zone screen the Check-box is Enabled");
 				//check if the fields are enabled/disabled in group screen
 				objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 					objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
@@ -184,7 +179,7 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 				pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 						objWeeklyPlanningStoreObjects.weeklyPlanning, "Weekly Planning");
 				pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
-						objWeeklyPlanningStoreObjects.screenToView, "Group");
+						objWeeklyPlanningStoreObjects.screenToView, "Zone");
 				
 				//this.click(objWeeklyPlanningGroupMangerApprovalObjects.EastGardenStore);
 				//edit the fields and save in group screen
@@ -212,7 +207,7 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 			}
 			
 			else {
-				System.out.println("In Group screen the Check-box is disabled");
+				System.out.println("In Zone screen the Check-box is disabled");
 				//check if the fields are enabled/disabled in group screen
 				objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 						objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
@@ -302,7 +297,7 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 					pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 							objWeeklyPlanningStoreObjects.weeklyPlanning, "Weekly Planning");
 					pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
-							objWeeklyPlanningStoreObjects.screenToView, "Group");
+							objWeeklyPlanningStoreObjects.screenToView, "Zone");
 					//check the fields are enabled/disabled in group screen
 					objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 							objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
@@ -364,7 +359,7 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 		dtmoduledesc = m.getAnnotation(Test.class).description();
 		testcasesttime = new Date();
 		pageWeeklyPlanningPO = PageFactory.initElements(this.getDriver(), WeeklyPlanningStorePage.class);
-		objMonthlyPlanningStoreObjects = PageFactory.initElements(this.getDriver(), MonthlyPlanningStoreObjects.class);
+		
 		BaseObj = PageFactory.initElements(this.getDriver(), BasePage.class);
 		common = PageFactory.initElements(this.getDriver(), CommonFunctions.class);
 		storeprop = PageFactory.initElements(this.getDriver(), StoreProperties.class);
@@ -401,10 +396,11 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 			createDriver(getContext().getStringProperty("WLPUrl"), getContext().getStringProperty("browser"), cName,
 					mName, extentTest, driver1);
 			log.info("Loading data for the class: ");
-			data.loadTestDataXML(System.getProperty("user.dir") + "\\TestData\\WLP\\WeeklyPlanningGroup.xml");
+			data.loadTestDataXML(System.getProperty("user.dir") + "\\TestData\\WLP\\WeeklyPlanningZone.xml");
 			customreport.createExtentReport();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
+
 }
