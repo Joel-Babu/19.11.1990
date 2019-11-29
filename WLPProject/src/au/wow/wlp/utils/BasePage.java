@@ -1336,6 +1336,11 @@ public class BasePage extends HTMLReport {
 		return Xpath;
 	}
 
+	public WebElement prepareWebElementWithLinkText(String xpathValue) {
+		WebElement Xpath = driver.findElement(By.linkText(xpathValue));
+		return Xpath;
+	}
+	
 	public WebElement prepareWebElementWithDynamicXpathWithIntTry(String xpathValue, int i) {
 		WebElement Xpath = driver.findElement(By.xpath(xpathValue.replace("dynamic", "" + i).replace("$", "c")));
 		return Xpath;
