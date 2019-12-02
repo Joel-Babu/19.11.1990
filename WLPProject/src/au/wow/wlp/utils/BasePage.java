@@ -47,7 +47,8 @@ public class BasePage extends HTMLReport {
 	// WLP
 	protected Logger log;
 	private TestContext context;
-	public WebDriver driver;
+	//public WebDriver driver;
+	public static WebDriver driver;
 	public ExtentReports report;
 	public ExtentTest extentTest;
 	private TestStatus status;
@@ -514,7 +515,22 @@ public class BasePage extends HTMLReport {
 	public void click(WebElement element) {
 		String elementname = getElementLocator(element);
 		try {
-			element.click();
+			element.click(); 
+			// getLogger().info("The element: " + elementname + " is clicked");
+		} catch (Exception e) {
+			try {
+				throw new CustomException(e, getLogger(), elementname);
+			} catch (CustomException e1) {
+				getLogger().error("Error in clicking the element: " + elementname);
+			}
+		}
+	}
+	
+	
+	public void submit(WebElement element) {
+		String elementname = getElementLocator(element);
+		try {
+			element.click(); 
 			// getLogger().info("The element: " + elementname + " is clicked");
 		} catch (Exception e) {
 			try {

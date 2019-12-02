@@ -405,7 +405,7 @@ public class WeeklyPlanningStorePage extends TestBase
 			List<List<Object>> UIValues= new  ArrayList<List<Object>>();
 			
 			int RowCount =TradingStatementTableCount(Table);	
-			for(int i=1;i<=RowCount-2;i++) //6
+			for(int i=0;i<=RowCount-3;i++) //6
 			{
 				List<Object> row = new ArrayList<>(columnsize);
 				System.out.println(i);

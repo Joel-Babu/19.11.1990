@@ -11,21 +11,26 @@ public class WeeklyPlanning_GroupManagerApprovalObjects {
 	public WebElement ChkBox;
 	
 	
-	@FindBy(xpath="//input[@type='submit']")
+	@FindBy(xpath="//input[@type='submit' and @name='frmDetails:button1']")
 	public WebElement SaveButton;
 	
 	
 	@FindBy(xpath="//*[@id='frmDetails:ctrStorePlanningDetailsTable:2:text55']")
 	public WebElement CommentField;
 	
-	
 	@FindBy(xpath="//*[@id='frmDetails:ctrStorePlanningDetailsTable:2:oOrgDescinLink']")
 	public WebElement EastGardenStore;
 	
-	//@FindBy(xpath="//*[@id='frmDetails:ctrStorePlanningDetailsTable:dynamic:colOrgDesc' and style='color: red']")
-	//public List<WebElement> DeptNameRed;
+	@FindBy(xpath= "//*[@id='main-menu']")
+	public WebElement menuBar;
 	
-	public static final String Comments="//*[@id='frmDetails:ctrStorePlanningDetailsTable:dynamic:commentsId']";
+	public final String planningScreens="//a[contains(text(),'Planning Screens')]";
+	
+	public final String weeklyPlanning="//a[contains(text(),'Weekly Planning')]";
+	
+	public final String screenToView="//li[a[contains(text(),'Weekly Planning')]]/ul/li[a[contains(text(),'dynamic')]]";
+	
+	public static final String Comments="//*[@id='frmDetails:ctrStorePlanningDetailsTable:dynamic:text55']";
 	
 	public static final String DeptName="//*[@id='frmDetails:ctrStorePlanningDetailsTable:dynamic:colOrgDesc']";
 	

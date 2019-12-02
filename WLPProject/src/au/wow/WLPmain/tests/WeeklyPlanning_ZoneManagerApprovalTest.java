@@ -183,7 +183,7 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 				
 				//this.click(objWeeklyPlanningGroupMangerApprovalObjects.EastGardenStore);
 				//edit the fields and save in group screen
-				UIValues2 = objWeeklyPlanningGroupMangerApprovalPO.EditFields(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
+				UIValues2 = objWeeklyPlanningGroupMangerApprovalPO.EditFields(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 						objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.Comments,
 						objWeeklyPlanningGroupMangerApprovalObjects.DeptName,objMonthlyPlanningStoreObjects.MPTable);
 				
@@ -227,7 +227,7 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 				if(newDBValues.contains("N")){
 					//perform plan completion for unplanned stores
 					objWeeklyPlanningGroupMangerApprovalPO.selectByVisibleText(extentTest,newDBValuesText,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
-							objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, pageWeeklyPlanningPO, objWeeklyPlanningStoreObjects);
+							objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects);
 					
 					//check if the fields are enabled/disabled in group screen		  
 					  objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,
@@ -235,7 +235,7 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 					  objWeeklyPlanningGroupMangerApprovalObjects.SaveButton,
 					  objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
 					//edit  the fields in group screen
-					  UIValues2 = objWeeklyPlanningGroupMangerApprovalPO.EditFields(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
+					  UIValues2 = objWeeklyPlanningGroupMangerApprovalPO.EditFields(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 								objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.Comments,
 								objWeeklyPlanningGroupMangerApprovalObjects.DeptName,objMonthlyPlanningStoreObjects.MPTable);
 					  //get DB values for comments of group screen
@@ -302,7 +302,7 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 					objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 							objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
 					//edit the fields in group screen
-					UIValues2 = objWeeklyPlanningGroupMangerApprovalPO.EditFields(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
+					UIValues2 = objWeeklyPlanningGroupMangerApprovalPO.EditFields(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 							objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.Comments,
 							objWeeklyPlanningGroupMangerApprovalObjects.DeptName,objMonthlyPlanningStoreObjects.MPTable);
 					

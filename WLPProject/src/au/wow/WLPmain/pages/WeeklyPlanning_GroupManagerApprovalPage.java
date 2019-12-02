@@ -43,15 +43,15 @@ public class WeeklyPlanning_GroupManagerApprovalPage extends TestBase{
 		public void Checklist(ExtentTest extentTest,WebElement chkBox, WebElement saveButton, WebElement commentField) throws Exception{
 			
 			try {
-			boolean checkbox = chkBox.isEnabled();
-			boolean button = saveButton.isEnabled();
-			boolean comment = commentField.isEnabled();
+			boolean checkbox = this.isEnabled(chkBox);
+			boolean button = this.isEnabled(saveButton);
+			boolean comment = this.isEnabled(commentField);
 			System.out.println("The values that are enabled/disabled :" + "   "+ "checkbox:"+checkbox+"   " +"savebutton:"+button+"   "+"commentfield:"+comment);
-			if(checkbox)
+			if(checkbox || button)
 			{
 				
-				Report_AddStep("testcase","The values that are disabled :"+ "checkbox:"+checkbox+"   " +"savebutton:"+button+"   "+"commentfield"+comment ,"","", "Fail");
-				htmlToExtent(cName,mName,extentTest,driver1, "The values that are disabled : "+ "checkbox:"+checkbox+"   " +"savebutton:"+button+"   "+"commentfield:"+comment +" ;;;Fail");
+				Report_AddStep("testcase","The values that are disabled :"+ "checkbox:"+checkbox+"   " +"savebutton:"+button+"   "+"commentfield"+comment ,"","", "Pass");
+				htmlToExtent(cName,mName,extentTest,driver1, "The values that are disabled : "+ "checkbox:"+checkbox+"   " +"savebutton:"+button+"   "+"commentfield:"+comment +" ;;;Pass");
 			}
 			
 			else {
@@ -67,13 +67,17 @@ public class WeeklyPlanning_GroupManagerApprovalPage extends TestBase{
 		}
 		}
 		
-public List<List<Object>> EditFields(WebElement chkBox, WebElement saveButton, String commentField,String dept,String Table){
-			
+public List<List<Object>> EditFields(ExtentTest extentTest, WebElement chkBox, WebElement saveButton, String commentField,String dept,String Table) throws Exception{
+
+		try {
+			 	boolean checkbox = this.isEnabled(chkBox);
+			 	boolean button = this.isEnabled(saveButton);
+			 	//boolean comment = commentField.isEnabled();
 				String Dept,Comment=null;
 				int columnsize=2;
 				List<List<Object>> Values= new  ArrayList<List<Object>>();
 				int RowCount =TradingStatementTableCount(Table);	
-				for(int i=1;i<=RowCount-2;i++) //6
+				for(int i=1;i<=RowCount-3;i++) //6
 				{
 					List<Object> row = new ArrayList<>(columnsize);
 					System.out.println(i);
@@ -87,31 +91,55 @@ public List<List<Object>> EditFields(WebElement chkBox, WebElement saveButton, S
 					Values.add(row);
 				}
 			
-			chkBox.click();
-			saveButton.click();
-			//Alert alert = driver1.switchTo().alert();
-			//alert.accept();
+				if(checkbox && button)
+				{
+					this.click(chkBox);
+					//this.submit(saveButton);
+					
+				}
+				else
+				{
+					this.submit(saveButton);
+					
+				}
+//			Alert alert = driver1.switchTo().alert();
+//			alert.accept();
 			return Values;
-		
+		}catch(Exception e) {
+			System.out.println("Exception Occured" +e.getMessage());
+			Report_AddStep("testcase","Exception Occured" ,"","", "Fail");
+			htmlToExtent(cName,mName,extentTest,driver1, "Exception Occured;;;Fail");
+			throw e;
+		}
+	
 	}
 
-public void selectByVisibleText(ExtentTest extentTest,List<String> text, WebElement chkBox,WebElement saveButton, WeeklyPlanningStorePage pageWeeklyPlanningPO, WeeklyPlanningStoreObjects objWeeklyPlanningStoreObjects) throws Exception{
+public void selectByVisibleText(ExtentTest extentTest,List<String> text, WebElement chkBox,WebElement saveButton, WeeklyPlanning_GroupManagerApprovalObjects objWeeklyPlanningGroupMangerApprovalObjects) throws Exception{
 	
 	try {
 		for(int i=0;i<text.size();i++)
 		{
 			WebElement element = prepareWebElementWithLinkText(text.get(i));
-			element.click();
-			chkBox.click();
-			saveButton.click();
-			pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
-					objWeeklyPlanningStoreObjects.planningScreens, "Planning Screens");
-			pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
-					objWeeklyPlanningStoreObjects.weeklyPlanning, "Weekly Planning");
-			pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
-					objWeeklyPlanningStoreObjects.screenToView, "Group");
+			this.click(element);
+			if(!this.isSelected(chkBox)) {
+			this.click(chkBox);
+			
+			selectPage(extentTest, objWeeklyPlanningGroupMangerApprovalObjects.menuBar,
+					objWeeklyPlanningGroupMangerApprovalObjects.planningScreens, "Planning Screens");
+			selectPage(extentTest, objWeeklyPlanningGroupMangerApprovalObjects.menuBar,
+					objWeeklyPlanningGroupMangerApprovalObjects.weeklyPlanning, "Weekly Planning");
+			selectPage(extentTest, objWeeklyPlanningGroupMangerApprovalObjects.menuBar,
+					objWeeklyPlanningGroupMangerApprovalObjects.screenToView, "Group");
+		}else {
+			
+			selectPage(extentTest, objWeeklyPlanningGroupMangerApprovalObjects.menuBar,
+					objWeeklyPlanningGroupMangerApprovalObjects.planningScreens, "Planning Screens");
+			selectPage(extentTest, objWeeklyPlanningGroupMangerApprovalObjects.menuBar,
+					objWeeklyPlanningGroupMangerApprovalObjects.weeklyPlanning, "Weekly Planning");
+			selectPage(extentTest, objWeeklyPlanningGroupMangerApprovalObjects.menuBar,
+					objWeeklyPlanningGroupMangerApprovalObjects.screenToView, "Group");
 		}
-		
+		}
 		/*
 		 * getLogger().info("The option with text: " + text +
 		 * " is selected in the dropdown: " + elementname);
@@ -123,6 +151,29 @@ public void selectByVisibleText(ExtentTest extentTest,List<String> text, WebElem
 	}
 }
 
+
+public void selectPage(ExtentTest extentTest,WebElement PageTitle,String menuBtn,String reportName) throws Exception
+{
+	String buttonName;
+	try
+	{
+		if((isDisplayed(PageTitle)))
+		{
+			WebElement element =prepareWebElementWithDynamicXpathWithString(menuBtn,reportName);
+			buttonName = getText(element);
+			//if (buttonName.equalsIgnoreCase(reportName))
+			//{
+				click(element);
+				//htmlToExtent(cName,mName,extentTest,driver, "Successfully clicked the button: "+reportName+" ;;;Pass");
+			//}
+		}
+	}
+	catch(Exception e)
+	{
+		System.out.println("Exception Occured" +e.getMessage()); 
+		//htmlToExtent(cName,mName,extentTest,driver, "Exception Occured - Failed to Select Page from Menu Bar ;;;Fail");
+	}
+}
 
 public List<String> checkApproval(List<List<Object>> list) throws Exception{
 
