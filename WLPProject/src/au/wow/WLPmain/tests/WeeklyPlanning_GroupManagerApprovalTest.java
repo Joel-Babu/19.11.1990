@@ -60,8 +60,8 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 	BasePage BaseObj;
 	CommonFunctions common;
 	StoreProperties storeprop;
-	List<List<Object>> DBValues, DBValues1, DBValues2;
-	List<List<Object>> UIValues, UIValues1, UIValues2;
+	List<List<Object>> DBValues, DBValues1, DBValues2, DBValues3,DBValues4,DBValues5,DBValues6,DBValues7,DBValues8;
+	List<List<Object>> UIValues, UIValues1, UIValues2,UIValues3,UIValues4,UIValues5;
 	String Week, Name, Year, YrName, LYYr, OptionToView, Wk, HWk1, HWk2, HWk3, HWk4;
 	int LYYear, HistWk;
 	String[] WeekName, YearName;
@@ -121,23 +121,12 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 							.replace("Division", getContext().getStringProperty("Division")));
 			System.out.println("DB Value: " + DBValues);
 
-//			String SalesHistoryTotal = data.getText("SalesHistoryTotal");
-//			DBTotal = sql.CLRexecuteQuery(getContext(),
-//					SalesHistoryTotal.replace("Region", getContext().getStringProperty("Region"))
-//							.replace("Area", getContext().getStringProperty("Area"))
-//							.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
-//							.replace("FinYear", getContext().getStringProperty("Year"))
-//							.replace("Division", getContext().getStringProperty("Division")));
-//			System.out.println("DB Total: " + DBTotal);
 			//Get comments of group screen from UI
 			UIValues = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
 					objWeeklyPlanningGroupMangerApprovalObjects.DeptName, objWeeklyPlanningGroupMangerApprovalObjects.Comments);
 			//compare UI and DB comments matching or not in group screen
 			pageWeeklyPlanningPO.CompareValuesText(extentTest, DBValues, UIValues);
 
-//			UITotal = pageMonthlyPlanningGroupPO.WPGetTotal(extentTest, MonthlyPlanningGroupObjects.RowNameTotal,
-//					WeeklyPlanningStoreObjects.FirstWeekofMonth);
-//			pageMonthlyPlanningPO.CompareValues(extentTest, DBTotal, UITotal);
 			}
 		
 		else {
@@ -157,19 +146,19 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 					objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
 				//get comment of group screen from DB
 				String GrpMgrCmts = data.getText("GrpMgrCmts");
-				DBValues = sql.CLRexecuteQuery(getContext(),
+				DBValues2 = sql.CLRexecuteQuery(getContext(),
 						GrpMgrCmts.replace("Region", getContext().getStringProperty("Region"))
 								.replace("Area", getContext().getStringProperty("Area"))
 								.replace("Zone", getContext().getStringProperty("Zone"))
 								.replace("FinWeek", getContext().getStringProperty("FinWk"))
 								.replace("FinYear", getContext().getStringProperty("Year"))
 								.replace("Division", getContext().getStringProperty("Division")));
-				System.out.println("DB Value: " + DBValues);
+				System.out.println("DB Value: " + DBValues2);
 				//get comments of group screen from UI
-				UIValues = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
+				UIValues2 = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
 						objWeeklyPlanningGroupMangerApprovalObjects.DeptName, objWeeklyPlanningGroupMangerApprovalObjects.Comments);
 				//Compare UI and DB comments matching or not in group screen
-				pageWeeklyPlanningPO.CompareValuesText(extentTest, DBValues, UIValues);
+				pageWeeklyPlanningPO.CompareValuesText(extentTest, DBValues2, UIValues2);
 				
 			//toggle checkbox to disable	
 			this.click(objWeeklyPlanningGroupMangerApprovalObjects.EastGardenStore);
@@ -193,24 +182,27 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 				objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 						objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
 				//edit the fields and save in group screen
-				UIValues2 = objWeeklyPlanningGroupMangerApprovalPO.EditFields(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
+				objWeeklyPlanningGroupMangerApprovalPO.EditFields(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 						objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.Comments,
 						objWeeklyPlanningGroupMangerApprovalObjects.DeptName,objMonthlyPlanningStoreObjects.MPTable);
 				
+				UIValues3 = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
+						objWeeklyPlanningGroupMangerApprovalObjects.DeptName, objWeeklyPlanningGroupMangerApprovalObjects.Comments);
+				
 				//get updated DB comment for group screen
-				DBValues2 = sql.CLRexecuteQuery(getContext(),
+				DBValues3 = sql.CLRexecuteQuery(getContext(),
 						GrpMgrCmts.replace("Region", getContext().getStringProperty("Region"))
 								.replace("Area", getContext().getStringProperty("Area"))
 								.replace("Zone", getContext().getStringProperty("Zone"))
 								.replace("FinWeek", getContext().getStringProperty("FinWk"))
 								.replace("FinYear", getContext().getStringProperty("Year"))
 								.replace("Division", getContext().getStringProperty("Division")));
-				System.out.println("DB Value: " + DBValues2);
+				System.out.println("DB Value: " + DBValues3);
 				//get updated UI comment for group screen
 //				UIValues = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
 //						objWeeklyPlanningGroupMangerApprovalObjects.DeptName, objWeeklyPlanningGroupMangerApprovalObjects.Comments);
 				//Compare DB and UI comments for group screen
-				pageWeeklyPlanningPO.CompareValuesText(extentTest, DBValues2, UIValues2);
+				pageWeeklyPlanningPO.CompareValuesText(extentTest, DBValues3, UIValues3);
 				
 			}
 				
@@ -223,30 +215,30 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 						objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
 				//Check DB comment for group screen
 				String StorePlanCompletion = data.getText("StorePlanCompletion");
-				DBValues = sql.CLRexecuteQuery(getContext(),
+				DBValues4 = sql.CLRexecuteQuery(getContext(),
 						StorePlanCompletion.replace("Region", getContext().getStringProperty("Region"))
 								.replace("Area", getContext().getStringProperty("Area"))
 								.replace("Zone", getContext().getStringProperty("Zone"))
 								.replace("FinWeek", getContext().getStringProperty("FinWk"))
 								.replace("FinYear", getContext().getStringProperty("Year"))
 								.replace("Division", getContext().getStringProperty("Division")));
-				System.out.println("DB Value: " + DBValues);
+				System.out.println("DB Value: " + DBValues4);
 				//check if plan complete for all stores by DB result, if not iterate and do plan completion
-				List<String> newDBValues= objWeeklyPlanningGroupMangerApprovalPO.checkApproval(DBValues);
-				List<String> newDBValuesText= objWeeklyPlanningGroupMangerApprovalPO.checkApprovalTwo(DBValues);
+				List<String> newDBValues= objWeeklyPlanningGroupMangerApprovalPO.checkApproval(DBValues4);
+				List<String> newDBValuesText= objWeeklyPlanningGroupMangerApprovalPO.checkApprovalTwo(DBValues4);
 				if(newDBValues.contains("N")){
 					//perform plan completion for unplanned stores
 					objWeeklyPlanningGroupMangerApprovalPO.selectByVisibleText(extentTest,newDBValuesText,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 							objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects);
 					
-					DBValues = sql.CLRexecuteQuery(getContext(),
+					DBValues5 = sql.CLRexecuteQuery(getContext(),
 							StorePlanCompletion.replace("Region", getContext().getStringProperty("Region"))
 									.replace("Area", getContext().getStringProperty("Area"))
 									.replace("Zone", getContext().getStringProperty("Zone"))
 									.replace("FinWeek", getContext().getStringProperty("FinWk"))
 									.replace("FinYear", getContext().getStringProperty("Year"))
 									.replace("Division", getContext().getStringProperty("Division")));
-					System.out.println("DB Value: " + DBValues);
+					System.out.println("DB Value: " + DBValues5);
 					
 					
 					//check if the fields are enabled/disabled in group screen		  
@@ -255,25 +247,29 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 					  objWeeklyPlanningGroupMangerApprovalObjects.SaveButton,
 					  objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
 					//edit  the fields in group screen
-					  UIValues2 = objWeeklyPlanningGroupMangerApprovalPO.EditFields(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
+					  objWeeklyPlanningGroupMangerApprovalPO.EditFields(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 								objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.Comments,
 								objWeeklyPlanningGroupMangerApprovalObjects.DeptName,objMonthlyPlanningStoreObjects.MPTable);
+					  
+					  
+					  UIValues4 = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
+								objWeeklyPlanningGroupMangerApprovalObjects.DeptName, objWeeklyPlanningGroupMangerApprovalObjects.Comments);
 					  //get DB values for comments of group screen
 					  String GrpMgrCmts = data.getText("GrpMgrCmts");
-					  DBValues =  sql.CLRexecuteQuery(getContext(),
+					  DBValues6 =  sql.CLRexecuteQuery(getContext(),
 						GrpMgrCmts.replace("Region", getContext().getStringProperty("Region")) 
 							  	  .replace("Area",getContext().getStringProperty("Area"))
 							  	  .replace("Zone",getContext().getStringProperty("Zone"))
 							  	  .replace("FinWeek", getContext().getStringProperty("FinWk")) 
 							  	  .replace("FinYear",getContext().getStringProperty("Year")) 
 							  	  .replace("Division",getContext().getStringProperty("Division")));
-					  System.out.println("DB Value: " + DBValues);
+					  System.out.println("DB Value: " + DBValues6);
 					  //get comments of UI in group screen
 //					  UIValues =
 //					  pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable,
 //					  extentTest, objWeeklyPlanningGroupMangerApprovalObjects.DeptName,
 //					  objWeeklyPlanningGroupMangerApprovalObjects.Comments);
-					  pageWeeklyPlanningPO.CompareValuesText(extentTest, DBValues, UIValues2);
+					  pageWeeklyPlanningPO.CompareValuesText(extentTest, DBValues6, UIValues4);
 					//check if the fields are enabled/disabled in group screen
 					  objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,
 					  objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
@@ -288,26 +284,26 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 					this.click(objWeeklyPlanningGroupMangerApprovalObjects.EastGardenStore);
 					//check plan completion is done or not by Db result
 					//String StorePlanCompletion = data.getText("StorePlanCompletion");
-					DBValues = sql.CLRexecuteQuery(getContext(),
+					DBValues7 = sql.CLRexecuteQuery(getContext(),
 							StorePlanCompletion.replace("Region", getContext().getStringProperty("Region"))
 									.replace("Area", getContext().getStringProperty("Area"))
 									.replace("Zone", getContext().getStringProperty("Zone"))
 									.replace("FinWeek", getContext().getStringProperty("FinWk"))
 									.replace("FinYear", getContext().getStringProperty("Year"))
 									.replace("Division", getContext().getStringProperty("Division")));
-					System.out.println("DB Value: " + DBValues);
+					System.out.println("DB Value: " + DBValues7);
 					
 					this.click(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox);
 					
-					newDBValues= objWeeklyPlanningGroupMangerApprovalPO.checkApproval(DBValues);
+					List<String> newDBValues2= objWeeklyPlanningGroupMangerApprovalPO.checkApproval(DBValues7);
 					
-					if(newDBValues.get(1).equals("N"))
+					if(newDBValues2.get(1).equals("N"))
 					{
 						System.out.println("Plan complete checkbox for Eastgarden is unchecked");
 						this.click(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox);
 					}
 					
-					if(newDBValues.get(1).equals("Y"))
+					if(newDBValues2.get(1).equals("Y"))
 					{
 						System.out.println("Plan complete  checkbox for Eastgarden is checked");
 					}
@@ -322,24 +318,28 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 					objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 							objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
 					//edit the fields in group screen
-					UIValues2 = objWeeklyPlanningGroupMangerApprovalPO.EditFields(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
+					objWeeklyPlanningGroupMangerApprovalPO.EditFields(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 							objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.Comments,
 							objWeeklyPlanningGroupMangerApprovalObjects.DeptName,objMonthlyPlanningStoreObjects.MPTable);
 					
+					
+					UIValues5 = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
+							objWeeklyPlanningGroupMangerApprovalObjects.DeptName, objWeeklyPlanningGroupMangerApprovalObjects.Comments);
+					
 					String GrpMgrCmts = data.getText("GrpMgrCmts");
-					DBValues = sql.CLRexecuteQuery(getContext(),
+					DBValues8 = sql.CLRexecuteQuery(getContext(),
 							GrpMgrCmts.replace("Region", getContext().getStringProperty("Region"))
 									.replace("Area", getContext().getStringProperty("Area"))
 									.replace("Zone", getContext().getStringProperty("Zone"))
 									.replace("FinWeek", getContext().getStringProperty("FinWk"))
 									.replace("FinYear", getContext().getStringProperty("Year"))
 									.replace("Division", getContext().getStringProperty("Division")));
-					System.out.println("DB Value: " + DBValues);
+					System.out.println("DB Value: " + DBValues8);
 					//list down the comments of UI in group screen 
 //					UIValues = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
 //							objWeeklyPlanningGroupMangerApprovalObjects.DeptName, objWeeklyPlanningGroupMangerApprovalObjects.Comments);
 					//compare UI and DB comments in group screen
-					pageWeeklyPlanningPO.CompareValuesText(extentTest, DBValues, UIValues2);
+					pageWeeklyPlanningPO.CompareValuesText(extentTest, DBValues8, UIValues5);
 					
 				}
 		}

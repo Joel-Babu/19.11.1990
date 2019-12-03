@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class WeeklyPlanning_GroupManagerApprovalObjects {
 
-	@FindBy(id="frmDetails:chkCompleted")
+	@FindBy(xpath="//input[@id='frmDetails:chkCompleted' and @type='checkbox']")
 	public WebElement ChkBox;
 	
 	

@@ -67,7 +67,7 @@ public class WeeklyPlanning_GroupManagerApprovalPage extends TestBase{
 		}
 		}
 		
-public List<List<Object>> EditFields(ExtentTest extentTest, WebElement chkBox, WebElement saveButton, String commentField,String dept,String Table) throws Exception{
+public void EditFields(ExtentTest extentTest, WebElement chkBox, WebElement saveButton, String commentField,String dept,String Table) throws Exception{
 
 		try {
 			 	boolean checkbox = this.isEnabled(chkBox);
@@ -82,34 +82,34 @@ public List<List<Object>> EditFields(ExtentTest extentTest, WebElement chkBox, W
 					List<Object> row = new ArrayList<>(columnsize);
 					System.out.println(i);
 					WebElement Department = prepareWebElementWithDynamicXpathWithInt(dept, i);
-					WebElement comments = prepareWebElementWithDynamicXpathWithInt(commentField, i);	
-					comments.sendKeys("Test 123");
-					Dept = getText(Department);
-					Comment = getText(comments);
-					row.add(Dept);
-					row.add(Comment);	
-					Values.add(row);
+					WebElement comments = prepareWebElementWithDynamicXpathWithInt(commentField, i);
+					comments.sendKeys("QQQQ 4444");
+//					Dept = getText(Department);
+//					Comment = getText(comments);
+//					row.add(Dept);
+//					row.add(Comment);	
+//					Values.add(row);
 				}
 			
 				if(checkbox && button)
 				{
+					saveButton.submit();
 					this.click(chkBox);
-					//this.submit(saveButton);
 					
 				}
 				else
 				{
-					this.submit(saveButton);
+					saveButton.submit();
 					
 				}
 //			Alert alert = driver1.switchTo().alert();
 //			alert.accept();
-			return Values;
+			//return Values;
 		}catch(Exception e) {
 			System.out.println("Exception Occured" +e.getMessage());
 			Report_AddStep("testcase","Exception Occured" ,"","", "Fail");
 			htmlToExtent(cName,mName,extentTest,driver1, "Exception Occured;;;Fail");
-			throw e;
+			//throw e;
 		}
 	
 	}

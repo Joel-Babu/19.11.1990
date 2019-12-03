@@ -720,6 +720,7 @@ public class WeeklyPlanningStorePage extends TestBase
 							NewUIValue =UIValues.get(i).get(j).toString();
 							System.out.println(NewUIValue);
 							
+							if(NewDBValue==NewUIValue) {
 							
 							Report_AddStep("testcase","System Fetch the Values from DB for : "+UIName+" and Displayed Correctly" ,""+NewUIValue+"",""+NewDBValue+"", "Pass");
 							htmlToExtent(cName,mName,extentTest,driver1, "Value displayed Correctly for : "+UIName+"; "+NewUIValue+";  "+NewDBValue+";Pass");
@@ -729,16 +730,22 @@ public class WeeklyPlanningStorePage extends TestBase
 																	
 						else
 						{
-							UIName =new String(UIValues.get(i).get(j).toString());
+							
+							Report_AddStep("testcase","System Fetch the Values from DB for : "+UIName+" and found not macthing" ,""+NewUIValue+"",""+NewDBValue+"", "Fail");
+							htmlToExtent(cName,mName,extentTest,driver1, "Value displayed Correctly for : "+UIName+"; "+NewUIValue+";  "+NewDBValue+";Fail");
 						}
 					}
+							else
+							{
+								UIName =new String(UIValues.get(i).get(j).toString());
+							}
 				}
+			}
 			}
 			catch(Exception e)
 			{
 				System.out.println("Exception Occured" +e.getMessage());
-				Report_AddStep("testcase","Failed to Verify UI and DB Values" ,"","", "Fail");
-				htmlToExtent(cName,mName,extentTest,driver1, "Exception Occured while comparing data;;;Fail");
+				
 			}
 		}
 		
