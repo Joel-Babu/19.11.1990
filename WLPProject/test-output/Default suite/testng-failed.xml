@@ -3,17 +3,17 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest">
+      <class name="au.wow.WLPmain.tests.WeeklyPlanning_ZoneManagerApprovalTest">
         <methods>
-          <include name="loadXMLFile"/>
           <include name="setUpItemPrice"/>
+          <include name="loadXMLFile"/>
           <include name="flushReports"/>
           <include name="flushReports1"/>
-          <include name="tearDown"/>
           <include name="GroupManagerApproval"/>
+          <include name="tearDown"/>
           <include name="onStart"/>
         </methods>
-      </class> <!-- au.wow.WLPmain.tests.WeeklyPlanning_GroupManagerApprovalTest -->
+      </class> <!-- au.wow.WLPmain.tests.WeeklyPlanning_ZoneManagerApprovalTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
