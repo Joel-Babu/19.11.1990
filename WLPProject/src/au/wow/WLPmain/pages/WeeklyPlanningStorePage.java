@@ -405,7 +405,7 @@ public class WeeklyPlanningStorePage extends TestBase
 			List<List<Object>> UIValues= new  ArrayList<List<Object>>();
 			
 			int RowCount =TradingStatementTableCount(Table);	
-			for(int i=0;i<=RowCount-3;i++) //6
+			for(int i=1;i<=RowCount-3;i++) //6
 			{
 				List<Object> row = new ArrayList<>(columnsize);
 				System.out.println(i);
@@ -720,7 +720,7 @@ public class WeeklyPlanningStorePage extends TestBase
 							NewUIValue =UIValues.get(i).get(j).toString();
 							System.out.println(NewUIValue);
 							
-							if(NewDBValue==NewUIValue) {
+							if(NewDBValue.equals(NewUIValue)) {
 							
 							Report_AddStep("testcase","System Fetch the Values from DB for : "+UIName+" and Displayed Correctly" ,""+NewUIValue+"",""+NewDBValue+"", "Pass");
 							htmlToExtent(cName,mName,extentTest,driver1, "Value displayed Correctly for : "+UIName+"; "+NewUIValue+";  "+NewDBValue+";Pass");

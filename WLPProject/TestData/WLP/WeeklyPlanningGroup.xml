@@ -4170,6 +4170,7 @@ and a.loc_no=b.loc_no and b.div_no='Division' and b.rgn_no='Region' and b.zone_n
 order by b.div_no,b.rgn_no,b.zone_no,b.ar_no,a.loc_no,b.loc_nm,d.perd_desc,a.wk_id) g 
 on f.loc_nm=g.loc_nm order by f.loc_nm]]>
 </GrpMgrCmts>
+
 <StorePlanCompletion>
 <![CDATA[select f.loc_nm,NVL(g.PLN_CPLT,'N') as STOR_PLN_CPLT_WPG from 
 (select div_no,rgn_no,zone_no,ar_no,loc_no,loc_nm from ww_wlp.loc 
@@ -4183,6 +4184,48 @@ and a.loc_no=b.loc_no and b.div_no='Division' and b.rgn_no='Region' and b.zone_n
 order by b.div_no,b.rgn_no,b.zone_no,b.ar_no,a.loc_no,b.loc_nm,d.perd_desc,a.wk_id) g 
 on f.loc_nm=g.loc_nm order by f.loc_nm]]>
  </StorePlanCompletion>
+ 
+ <ZoneMgrCmts>
+<![CDATA[select f.ar_no,NVL(g.ZONE_MGR_CMT,0) as ZONE_MGR_CMT_WPZ from 
+(select distinct div_no,rgn_no,zone_no,ar_no from ww_wlp.loc 
+where div_no='Division' and rgn_no='Region' and zone_no='Zone' and WLP_LIVE_IND IN ('Y','N') order by div_no,rgn_no,zone_no,ar_no) f 
+LEFT OUTER JOIN 
+(select distinct b.div_no,b.rgn_no,b.zone_no,b.ar_no,d.perd_desc,a.wk_id,a.ZONE_MGR_CMT 
+from WW_WLP.GRP_WK_PLN_STAT a,loc b, wk d 
+where a.wk_id in (select wk_id from ww_wlp.wk where fin_wk_no = 'FinWeek' and fin_yr = 'FinYear') 
+and a.group_no=b.ar_no and b.div_no='Division' and b.rgn_no='Region' and b.zone_no='Zone' and WLP_LIVE_IND IN ('Y','N') and a.wk_id=d.wk_id 
+/*and a.loc_no in (select loc_no from LOC_WK_PLN_STAT where wk_id in (select wk_id from ww_wlp.wk where fin_wk_no = 'FinWeek' and fin_yr = 'FinYear') and pln_cplt='Y')*/
+order by b.div_no,b.rgn_no,b.zone_no,b.ar_no,d.perd_desc,a.wk_id) g 
+on f.ar_no=g.ar_no order by f.ar_no]]>
+ 	</ZoneMgrCmts>
+ 	
+   <ZoneMgrPlanCompletion>
+<![CDATA[select f.zone_no,NVL(g.PLN_CPLT,'N') as ZONE_PLN_CPLT_WPZ from 
+(select distinct div_no,rgn_no,zone_no from ww_wlp.loc 
+where div_no='Division' and rgn_no='Region' and zone_no='Zone' and WLP_LIVE_IND IN ('Y','N') order by div_no,rgn_no,zone_no) f 
+LEFT OUTER JOIN 
+(select distinct b.div_no,b.rgn_no,b.zone_no,d.perd_desc,a.wk_id,a.PLN_CPLT 
+from WW_WLP.ZONE_WK_PLN_STAT a,loc b, wk d 
+where a.wk_id in (select wk_id from ww_wlp.wk where fin_wk_no = 'FinWeek' and fin_yr = 'FinYear') 
+and a.zone_no=b.zone_no and b.div_no='Division' and b.rgn_no='Region' and b.zone_no='Zone' and WLP_LIVE_IND IN ('Y','N') and a.wk_id=d.wk_id 
+/*and a.loc_no in (select loc_no from LOC_WK_PLN_STAT where wk_id in (select wk_id from ww_wlp.wk where fin_wk_no = 'FinWeek' and fin_yr = 'FinYear') and pln_cplt='Y')*/
+order by b.div_no,b.rgn_no,b.zone_no,d.perd_desc,a.wk_id) g 
+on f.zone_no=g.zone_no order by f.zone_no]]>
+  </ZoneMgrPlanCompletion>
+ 	
+ <GroupMgrPlanCompletion>
+<![CDATA[select f.ar_no,NVL(g.PLN_CPLT,'N') as GRP_PLN_CPLT_WPZ from 
+(select distinct div_no,rgn_no,zone_no,ar_no from ww_wlp.loc 
+where div_no='Division' and rgn_no='Region' and zone_no='Zone' and WLP_LIVE_IND IN ('Y','N') order by div_no,rgn_no,zone_no,ar_no) f 
+LEFT OUTER JOIN 
+(select distinct b.div_no,b.rgn_no,b.zone_no,b.ar_no,d.perd_desc,a.wk_id,a.PLN_CPLT 
+from WW_WLP.GRP_WK_PLN_STAT a,loc b, wk d 
+where a.wk_id in (select wk_id from ww_wlp.wk where fin_wk_no = 'FinWeek' and fin_yr = 'FinYear') 
+and a.group_no=b.ar_no and b.div_no='Division' and b.rgn_no='Region' and b.zone_no='Zone' and WLP_LIVE_IND IN ('Y','N') and a.wk_id=d.wk_id 
+/*and a.loc_no in (select loc_no from LOC_WK_PLN_STAT where wk_id in (select wk_id from ww_wlp.wk where fin_wk_no = 'FinWeek' and fin_yr = 'FinYear') and pln_cplt='Y')*/
+order by b.div_no,b.rgn_no,b.zone_no,b.ar_no,d.perd_desc,a.wk_id) g 
+on f.ar_no=g.ar_no order by f.ar_no]]>
+  </GroupMgrPlanCompletion>
 </TCName>
 
 <TCName name = "STORE_MANAGER_PlanCompletion">
@@ -4200,4 +4243,7 @@ order by b.div_no,b.rgn_no,b.zone_no,b.ar_no,a.loc_no,b.loc_nm,d.perd_desc,a.wk_
 on f.loc_nm=g.loc_nm order by f.loc_nm]]>
 </StorePlanCompletion>
 </TCName>
+
+
+
 </configuration>

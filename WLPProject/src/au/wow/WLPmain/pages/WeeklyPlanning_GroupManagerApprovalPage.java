@@ -83,7 +83,7 @@ public void EditFields(ExtentTest extentTest, WebElement chkBox, WebElement save
 					System.out.println(i);
 					WebElement Department = prepareWebElementWithDynamicXpathWithInt(dept, i);
 					WebElement comments = prepareWebElementWithDynamicXpathWithInt(commentField, i);
-					comments.sendKeys("QQQQ 4444");
+					comments.sendKeys(" thanks for completing planning");
 //					Dept = getText(Department);
 //					Comment = getText(comments);
 //					row.add(Dept);
@@ -93,13 +93,13 @@ public void EditFields(ExtentTest extentTest, WebElement chkBox, WebElement save
 			
 				if(checkbox && button)
 				{
-					saveButton.submit();
-					this.click(chkBox);
+					clickElmentUsingJs(saveButton);
+					click(chkBox);
 					
 				}
 				else
 				{
-					saveButton.submit();
+					clickElmentUsingJs(saveButton);
 					
 				}
 //			Alert alert = driver1.switchTo().alert();

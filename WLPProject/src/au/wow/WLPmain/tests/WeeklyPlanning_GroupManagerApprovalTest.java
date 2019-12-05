@@ -167,8 +167,8 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 			if(this.isSelected(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox)) {
 				System.out.println("In Store screen the plan complete Check-box is selected");
 				
-				objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
-						objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
+//				objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
+//						objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
 				
 				pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 						objWeeklyPlanningStoreObjects.planningScreens, "Planning Screens");
@@ -352,6 +352,7 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 		pageWeeklyPlanningPO = new WeeklyPlanningStorePage().createPage(getDriver(), getContext(), log, status, data,
 				getReport(), getReportLogger(), WeeklyPlanningStorePage.class);
 		pageWeeklyPlanningPO.LogOFF(objWeeklyPlanningStoreObjects);
+		driver1.close();
 	}
 	
 	

@@ -11,7 +11,7 @@ public class WeeklyPlanning_GroupManagerApprovalObjects {
 	public WebElement ChkBox;
 	
 	
-	@FindBy(xpath="//input[@type='submit' and @name='frmDetails:button1']")
+	@FindBy(xpath="//input[@value='Save Comments' and @name='frmDetails:button1']")
 	public WebElement SaveButton;
 	
 	
@@ -23,6 +23,15 @@ public class WeeklyPlanning_GroupManagerApprovalObjects {
 	
 	@FindBy(xpath= "//*[@id='main-menu']")
 	public WebElement menuBar;
+	
+	@FindBy(xpath= "//*[@id='frmDetails:ctrStorePlanningDetailsTable:3:oOrgDescinLink']")
+	public WebElement selectGroup;
+	
+	
+	
+	@FindBy(xpath= "//*[@id='frmDetails:ctrStorePlanningDetailsTable:cboLocation\'")
+	public WebElement selectZone;
+	
 	
 	public final String planningScreens="//a[contains(text(),'Planning Screens')]";
 	
