@@ -29,7 +29,7 @@ public class WeeklyPlanning_GroupManagerApprovalObjects {
 	
 	
 	
-	@FindBy(xpath= "//*[@id='frmDetails:ctrStorePlanningDetailsTable:cboLocation\'")
+	@FindBy(xpath= "//*[@id='frmDetails:ctrStorePlanningDetailsTable:cboLocation']")
 	public WebElement selectZone;
 	
 	

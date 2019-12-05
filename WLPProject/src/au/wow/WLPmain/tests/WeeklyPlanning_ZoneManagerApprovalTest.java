@@ -60,7 +60,7 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 	BasePage BaseObj;
 	CommonFunctions common;
 	StoreProperties storeprop;
-	List<List<Object>> DBValues, DBValues1, DBValues2,DBValues3,DBValues4,DBValues5,DBValues6,DBValues7;
+	List<List<Object>> DBValues, DBValues1, DBValues2,DBValues3,DBValues4,DBValues5,DBValues6,DBValues7,DBValues9;
 	List<List<Object>> UIValues, UIValues1, UIValues2,UIValues3,UIValues4;
 	String Week, Name, Year, YrName, LYYr, OptionToView, Wk, HWk1, HWk2, HWk3, HWk4;
 	int LYYear, HistWk;
@@ -98,7 +98,7 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 				objWeeklyPlanningStoreObjects.screenToView, "Zone");
 		
 		//check if plan completion checkbox is checked in state screen
-		if(this.isDisplayed(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox))
+		if(!this.isDisplayed(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox))
 		{
 			System.out.println("In State screen the plan complete Check-box is checked, so going back to Zone screen");
 			pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
@@ -107,8 +107,8 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 					objWeeklyPlanningStoreObjects.weeklyPlanning, "Weekly Planning");
 			pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 					objWeeklyPlanningStoreObjects.screenToView, "Zone");
-			
-			this.selectByVisibleText(objWeeklyPlanningGroupMangerApprovalObjects.selectZone, "R04 Z04");
+			// select the required zone
+			selectByVisibleText(objWeeklyPlanningGroupMangerApprovalObjects.selectZone, "R04 Z04");
 			//check if the fields are enabled/disabled in zone screen
 			objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 					objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
@@ -133,6 +133,7 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 		
 		else {
 			
+			List<Object> UI = null;
 			System.out.println("In State screen the plan complete Check-box is not checked, going back to zone screen for approvals");
 			pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 					objWeeklyPlanningStoreObjects.planningScreens, "Planning Screens");
@@ -140,6 +141,9 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 					objWeeklyPlanningStoreObjects.weeklyPlanning, "Weekly Planning");
 			pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 					objWeeklyPlanningStoreObjects.screenToView, "Zone");
+			// select the required zone
+						selectByVisibleText(objWeeklyPlanningGroupMangerApprovalObjects.selectZone, "R04 Z04");
+			
 			//check if checkbox is enabled/disabled in zone screen
 			if(this.isSelected(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox)) {
 				System.out.println("In Zone screen the plan complete check-box is Selected");
@@ -162,14 +166,14 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 				pageWeeklyPlanningPO.CompareValuesText(extentTest, DBValues, UIValues);
 				
 			//toggle checkbox to disable	
-			this.click(objWeeklyPlanningGroupMangerApprovalObjects.EastGardenStore);
+			this.click(objWeeklyPlanningGroupMangerApprovalObjects.selectGroup);
 			
 			//check if the checkbox are enabled/disabled in Group screen
 			if(this.isSelected(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox)) {
 				System.out.println("In Group screen the plan complete Check-box is checked");
 				
-				objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
-						objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
+//				objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
+//						objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
 				
 				pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 						objWeeklyPlanningStoreObjects.planningScreens, "Planning Screens");
@@ -177,6 +181,9 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 						objWeeklyPlanningStoreObjects.weeklyPlanning, "Weekly Planning");
 				pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 						objWeeklyPlanningStoreObjects.screenToView, "Zone");
+				
+				// select the required zone
+				selectByVisibleText(objWeeklyPlanningGroupMangerApprovalObjects.selectZone, "R04 Z04");
 				
 				this.click(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox);
 				
@@ -198,6 +205,8 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 				//get updated UI comment for zone screen
 				UIValues2 = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
 						objWeeklyPlanningGroupMangerApprovalObjects.DeptName, objWeeklyPlanningGroupMangerApprovalObjects.Comments);
+				
+				
 				//Compare DB and UI comments for zone screen
 				pageWeeklyPlanningPO.CompareValuesText(extentTest, DBValues2, UIValues2);
 				
@@ -207,28 +216,36 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 			
 			else {
 				System.out.println("In Zone screen the plan complete Check-box is unchecked");
+				
+				UIValues2 = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
+						objWeeklyPlanningGroupMangerApprovalObjects.DeptName, objWeeklyPlanningGroupMangerApprovalObjects.Comments);
+				UI = objWeeklyPlanningGroupMangerApprovalPO.checkApprovalThree(UIValues2);
 				//check if the fields are enabled/disabled in zone screen
 				objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 						objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
 				//Check DB comment for zone screen
-				String ZoneMgrPlanCompletion = data.getText("ZoneMgrPlanCompletion");
+				String GroupMgrPlanCompletion = data.getText("GroupMgrPlanCompletion");
 				DBValues3 = sql.CLRexecuteQuery(getContext(),
-						ZoneMgrPlanCompletion.replace("Region", getContext().getStringProperty("Region"))
+						GroupMgrPlanCompletion.replace("Region", getContext().getStringProperty("Region"))
 								.replace("Zone", getContext().getStringProperty("Zone"))
+								.replace("Area", getContext().getStringProperty("Area"))
 								.replace("FinWeek", getContext().getStringProperty("FinWk"))
 								.replace("FinYear", getContext().getStringProperty("Year"))
 								.replace("Division", getContext().getStringProperty("Division")));
 				System.out.println("DB Value: " + DBValues3);
+				
+				
 				//check if plan complete for all group by DB result, if not iterate and do plan completion
 				List<String> newDBValues= objWeeklyPlanningGroupMangerApprovalPO.checkApproval(DBValues3);
-				List<String> newDBValuesText= objWeeklyPlanningGroupMangerApprovalPO.checkApprovalTwo(DBValues3);
+				//List<Object> newDBValuesText= objWeeklyPlanningGroupMangerApprovalPO.checkApprovalThree(DBValues3);
+				//newDBValuesText.add(UI);
 				if(newDBValues.contains("N")){
 					//perform plan completion for unplanned group
-					objWeeklyPlanningGroupMangerApprovalPO.selectByVisibleText(extentTest,newDBValuesText,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
+					objWeeklyPlanningGroupMangerApprovalPO.selectByVisibleTextTwo(extentTest,UI,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 							objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects);
 					
 					DBValues4 = sql.CLRexecuteQuery(getContext(),
-							ZoneMgrPlanCompletion.replace("Region", getContext().getStringProperty("Region"))
+							GroupMgrPlanCompletion.replace("Region", getContext().getStringProperty("Region"))
 									.replace("Area", getContext().getStringProperty("Area"))
 									.replace("Zone", getContext().getStringProperty("Zone"))
 									.replace("FinWeek", getContext().getStringProperty("FinWk"))
@@ -271,9 +288,9 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 					System.out.println("Planning is complete for all group");
 					this.click(objWeeklyPlanningGroupMangerApprovalObjects.selectGroup);
 					//check plan completion is done or not in group by Db result
-					String GroupMgrPlanCompletion = data.getText("GroupMgrPlanCompletion");
+					String StorePlanCompletion = data.getText("StorePlanCompletion");
 					DBValues6 = sql.CLRexecuteQuery(getContext(),
-							GroupMgrPlanCompletion.replace("Region", getContext().getStringProperty("Region"))
+							StorePlanCompletion.replace("Region", getContext().getStringProperty("Region"))
 									.replace("Zone", getContext().getStringProperty("Zone"))
 									.replace("Area", getContext().getStringProperty("Area"))
 									.replace("FinWeek", getContext().getStringProperty("FinWk"))
@@ -283,15 +300,25 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 					
 					this.click(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox);
 					
-					newDBValues= objWeeklyPlanningGroupMangerApprovalPO.checkApproval(DBValues6);
+					String GroupMgrPlanCompletion2 = data.getText("GroupMgrPlanCompletion");
+					DBValues9 = sql.CLRexecuteQuery(getContext(),
+							GroupMgrPlanCompletion.replace("Region", getContext().getStringProperty("Region"))
+									.replace("Zone", getContext().getStringProperty("Zone"))
+									.replace("Area", getContext().getStringProperty("Area"))
+									.replace("FinWeek", getContext().getStringProperty("FinWk"))
+									.replace("FinYear", getContext().getStringProperty("Year"))
+									.replace("Division", getContext().getStringProperty("Division")));
+					System.out.println("DB Value: " + DBValues9);
 					
-					if(newDBValues.get(1).equals("N"))
+					newDBValues= objWeeklyPlanningGroupMangerApprovalPO.checkApproval(DBValues9);
+					
+					if(newDBValues.get(2).equals("N"))
 					{
 						System.out.println("Plan complete checkbox for selected Group is unchecked");
 						this.click(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox);
 					}
 					
-					if(newDBValues.get(1).equals("Y"))
+					if(newDBValues.get(2).equals("Y"))
 					{
 						System.out.println("Plan complete  checkbox for selected Group is checked");
 					}
@@ -302,6 +329,10 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 							objWeeklyPlanningStoreObjects.weeklyPlanning, "Weekly Planning");
 					pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 							objWeeklyPlanningStoreObjects.screenToView, "Zone");
+					
+					// select the required zone
+					selectByVisibleText(objWeeklyPlanningGroupMangerApprovalObjects.selectZone, "R04 Z04");
+					
 					//check the fields are enabled/disabled in zone screen
 					objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 							objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);

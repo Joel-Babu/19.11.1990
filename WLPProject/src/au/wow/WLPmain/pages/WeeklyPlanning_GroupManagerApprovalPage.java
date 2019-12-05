@@ -83,7 +83,7 @@ public void EditFields(ExtentTest extentTest, WebElement chkBox, WebElement save
 					System.out.println(i);
 					WebElement Department = prepareWebElementWithDynamicXpathWithInt(dept, i);
 					WebElement comments = prepareWebElementWithDynamicXpathWithInt(commentField, i);
-					comments.sendKeys(" thanks for completing planning");
+					comments.sendKeys(" ZZZZ");
 //					Dept = getText(Department);
 //					Comment = getText(comments);
 //					row.add(Dept);
@@ -152,6 +152,43 @@ public void selectByVisibleText(ExtentTest extentTest,List<String> text, WebElem
 }
 
 
+public void selectByVisibleTextTwo(ExtentTest extentTest,List<Object> text, WebElement chkBox,WebElement saveButton, WeeklyPlanning_GroupManagerApprovalObjects objWeeklyPlanningGroupMangerApprovalObjects) throws Exception{
+	
+	try {
+		for(int i=0;i<text.size();i++)
+		{
+			WebElement element = prepareWebElementWithLinkText((String)text.get(i));
+			this.click(element);
+			if(!this.isSelected(chkBox)) {
+			this.click(chkBox);
+			
+			selectPage(extentTest, objWeeklyPlanningGroupMangerApprovalObjects.menuBar,
+					objWeeklyPlanningGroupMangerApprovalObjects.planningScreens, "Planning Screens");
+			selectPage(extentTest, objWeeklyPlanningGroupMangerApprovalObjects.menuBar,
+					objWeeklyPlanningGroupMangerApprovalObjects.weeklyPlanning, "Weekly Planning");
+			selectPage(extentTest, objWeeklyPlanningGroupMangerApprovalObjects.menuBar,
+					objWeeklyPlanningGroupMangerApprovalObjects.screenToView, "Zone");
+		}else {
+			
+			selectPage(extentTest, objWeeklyPlanningGroupMangerApprovalObjects.menuBar,
+					objWeeklyPlanningGroupMangerApprovalObjects.planningScreens, "Planning Screens");
+			selectPage(extentTest, objWeeklyPlanningGroupMangerApprovalObjects.menuBar,
+					objWeeklyPlanningGroupMangerApprovalObjects.weeklyPlanning, "Weekly Planning");
+			selectPage(extentTest, objWeeklyPlanningGroupMangerApprovalObjects.menuBar,
+					objWeeklyPlanningGroupMangerApprovalObjects.screenToView, "Zone");
+		}
+		}
+		/*
+		 * getLogger().info("The option with text: " + text +
+		 * " is selected in the dropdown: " + elementname);
+		 */
+	} catch(Exception e) {
+		System.out.println("Exception Occured" +e.getMessage());
+		Report_AddStep("testcase","Exception Occured" ,"","", "Fail");
+		htmlToExtent(cName,mName,extentTest,driver1, "Exception Occured;;;Fail");
+	}
+}
+
 public void selectPage(ExtentTest extentTest,WebElement PageTitle,String menuBtn,String reportName) throws Exception
 {
 	String buttonName;
@@ -206,6 +243,28 @@ public List<String> checkApprovalTwo(List<List<Object>> list) throws Exception{
 			String st=(String)list.get(i).get(0);
 			if(!st.isEmpty())
 			newList.add((String)list.get(i).get(0));
+			
+		}
+		System.out.println("Value contains:"+newList);
+		
+		}catch(Exception e) {
+		System.out.println("Exception Occured" +e.getMessage());
+		Report_AddStep("testcase","Exception Occured" ,"","", "Fail");
+		htmlToExtent(cName,mName,extentTest,driver1, "Exception Occured;;;Fail");
+	}
+	return newList;
+}
+
+public List<Object> checkApprovalThree(List<List<Object>> list) throws Exception{
+
+	List<Object> newList=new ArrayList<Object>();
+	try {
+		
+		for(int i=0;i<list.size();i++)
+		{
+			Object st=list.get(i).get(0);
+			if(st!=null)
+			newList.add(list.get(i).get(0));
 			
 		}
 		System.out.println("Value contains:"+newList);
