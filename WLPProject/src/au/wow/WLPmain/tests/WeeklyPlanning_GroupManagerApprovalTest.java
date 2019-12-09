@@ -100,13 +100,19 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 		//check if plan completion checkbox is visible on zone screen
 		if(this.isSelected(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox))
 		{
-			System.out.println("In Zone screen the plan complete Check-box is visible, so going back to Group for approval");
+			System.out.println("In Zone screen the plan complete Check-box is checked");
 			pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 					objWeeklyPlanningStoreObjects.planningScreens, "Planning Screens");
 			pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 					objWeeklyPlanningStoreObjects.weeklyPlanning, "Weekly Planning");
 			pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 					objWeeklyPlanningStoreObjects.screenToView, "Group");
+			
+			Report_AddStep("testcase","In Zone screen the planning complete check-box is checked and thus going back to group screen : ", "" , "" , "Pass");
+			htmlToExtentTwo(cName,mName,extentTest,driver1, "  Zone screen planning complete check-box is checked and so moving back to group screen  ; ; ;Pass");
+			
+			Report_AddStep("testcase","In Group screen checking for the fields that are enabled and disabled : ", "", "" , "Pass");
+			htmlToExtentTwo(cName,mName,extentTest,driver1, " In Group screen checking for the fields that are enabled and disabled ; ; ;Pass");
 			//check if the fields are enabled/disabled in group screen
 			objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 					objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
@@ -119,11 +125,15 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 							.replace("FinWeek", getContext().getStringProperty("FinWk"))
 							.replace("FinYear", getContext().getStringProperty("Year"))
 							.replace("Division", getContext().getStringProperty("Division")));
-			System.out.println("DB Value: " + DBValues);
+			System.out.println("DB Value of group manager comments : " + DBValues);
 
 			//Get comments of group screen from UI
 			UIValues = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
 					objWeeklyPlanningGroupMangerApprovalObjects.DeptName, objWeeklyPlanningGroupMangerApprovalObjects.Comments);
+			
+			Report_AddStep("testcase","In Group screen comparing UI and DB group manager comments : ", "", "  " , "Pass");
+			htmlToExtentTwo(cName,mName,extentTest,driver1, " In Group screen comparing UI and DB group manager comments ; ; ;Pass");
+			
 			//compare UI and DB comments matching or not in group screen
 			pageWeeklyPlanningPO.CompareValuesText(extentTest, DBValues, UIValues);
 
@@ -131,16 +141,27 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 		
 		else {
 			
-			System.out.println("In Zone screen the plan complete Check-box is not visible, going back to group screen for approvals");
+			System.out.println("In Zone screen the plan complete Check-box is unchecked");
 			pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 					objWeeklyPlanningStoreObjects.planningScreens, "Planning Screens");
 			pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 					objWeeklyPlanningStoreObjects.weeklyPlanning, "Weekly Planning");
 			pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 					objWeeklyPlanningStoreObjects.screenToView, "Group");
+			
+			Report_AddStep("testcase","In Zone screen the planning complete check-box is unchecked and thus going back to group screen : ", "", "" , "Pass");
+			htmlToExtentTwo(cName,mName,extentTest,driver1, "  Zone screen planning complete check-box is unchecked and so moving back to group screen ; ; ;Pass");
+			
 			//check if checkbox is enabled/disabled in group screen
 			if(this.isSelected(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox)) {
 				System.out.println("In Group screen the plan complete check-box is Selected");
+				
+				Report_AddStep("testcase","In Group screen the planning complete check-box is checked : ", "", "  " , "Pass");
+				htmlToExtentTwo(cName,mName,extentTest,driver1, "  Group screen planning complete check-box is checked  ; ; ;Pass");
+				
+				Report_AddStep("testcase","In Group screen checking for the fields that are enabled and disabled : ", "", "" , "Pass");
+				htmlToExtentTwo(cName,mName,extentTest,driver1, " In Group screen checking for the fields that are enabled and disabled ; ; ;Pass");
+				
 				//check if the fields are enabled/disabled in group screen
 				objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 					objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
@@ -153,19 +174,30 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 								.replace("FinWeek", getContext().getStringProperty("FinWk"))
 								.replace("FinYear", getContext().getStringProperty("Year"))
 								.replace("Division", getContext().getStringProperty("Division")));
-				System.out.println("DB Value: " + DBValues2);
+				System.out.println("DB Value for group manager comments: " + DBValues2);
 				//get comments of group screen from UI
 				UIValues2 = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
 						objWeeklyPlanningGroupMangerApprovalObjects.DeptName, objWeeklyPlanningGroupMangerApprovalObjects.Comments);
+				
+				Report_AddStep("testcase","In Group screen comparing UI and DB group manager comments : ", "", "" , "Pass");
+				htmlToExtentTwo(cName,mName,extentTest,driver1, " In Group screen comparing UI and DB group manager comments ; ; ;Pass");
+				
 				//Compare UI and DB comments matching or not in group screen
 				pageWeeklyPlanningPO.CompareValuesText(extentTest, DBValues2, UIValues2);
+				
 				
 			//toggle checkbox to disable	
 			this.click(objWeeklyPlanningGroupMangerApprovalObjects.EastGardenStore);
 			
+			Report_AddStep("testcase","Click open Eastgarden store : ", "", "" , "Pass");
+			htmlToExtentTwo(cName,mName,extentTest,driver1, " Click open Eastgarden store ; ; ;Pass");
+			
 			//check if the checkbox are enabled/disabled in store screen
 			if(this.isSelected(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox)) {
 				System.out.println("In Store screen the plan complete Check-box is selected");
+				
+				Report_AddStep("testcase"," Inside Eastgarden store the check- box is selected : ", "", "" , "Pass");
+				htmlToExtentTwo(cName,mName,extentTest,driver1, " Inside Eastgarden store the check- box is selected and so move back to group screen; ; ;Pass");
 				
 //				objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 //						objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
@@ -177,15 +209,26 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 				pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 						objWeeklyPlanningStoreObjects.screenToView, "Group");
 				
-				this.click(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox);
+//				this.click(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox);
+//				
+//				Report_AddStep("testcase"," In Group screen uncheck planning comeplete check- box : ", " planning comeplete check- box is unchecked ", "planning comeplete check- box" , "Pass");
+//				htmlToExtentTwo(cName,mName,extentTest,driver1, " In Group screen uncheck planning comeplete check- box ;Pass");
+//				
+				Report_AddStep("testcase","In Group screen checking for the fields that are enabled and disabled : ", "", "" , "Pass");
+				htmlToExtentTwo(cName,mName,extentTest,driver1, " In Group screen checking for the fields that are enabled and disabled ; ; ;Pass");
+				
 				
 				objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 						objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
-				//edit the fields and save in group screen
-				objWeeklyPlanningGroupMangerApprovalPO.EditFields(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
-						objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.Comments,
-						objWeeklyPlanningGroupMangerApprovalObjects.DeptName,objMonthlyPlanningStoreObjects.MPTable);
 				
+//				Report_AddStep("testcase","In Group screen edit the comment field : ", " Group screen comments edited ", " Group screen comments edited " , "Pass");
+//				htmlToExtentTwo(cName,mName,extentTest,driver1, " In Group screen edit the comment field ;Pass");
+//				
+//				//edit the fields and save in group screen
+//				objWeeklyPlanningGroupMangerApprovalPO.EditFields(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
+//						objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.Comments,
+//						objWeeklyPlanningGroupMangerApprovalObjects.DeptName,objMonthlyPlanningStoreObjects.MPTable);
+//				
 				UIValues3 = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
 						objWeeklyPlanningGroupMangerApprovalObjects.DeptName, objWeeklyPlanningGroupMangerApprovalObjects.Comments);
 				
@@ -197,10 +240,13 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 								.replace("FinWeek", getContext().getStringProperty("FinWk"))
 								.replace("FinYear", getContext().getStringProperty("Year"))
 								.replace("Division", getContext().getStringProperty("Division")));
-				System.out.println("DB Value: " + DBValues3);
+				System.out.println("DB Value for group manager comments: " + DBValues3);
 				//get updated UI comment for group screen
 //				UIValues = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
 //						objWeeklyPlanningGroupMangerApprovalObjects.DeptName, objWeeklyPlanningGroupMangerApprovalObjects.Comments);
+				Report_AddStep("testcase","In Group screen comparing UI and DB group manager comments : ", "", "" , "Pass");
+				htmlToExtentTwo(cName,mName,extentTest,driver1, " In Group screen comparing UI and DB group manager comments ; ; ;Pass");
+				
 				//Compare DB and UI comments for group screen
 				pageWeeklyPlanningPO.CompareValuesText(extentTest, DBValues3, UIValues3);
 				
@@ -210,6 +256,13 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 			
 			else {
 				System.out.println("In Group screen the plan complete Check-box is unchecked");
+				
+				Report_AddStep("testcase","In Group screen the planning complete check-box is unchecked : ", "", "" , "Pass");
+				htmlToExtentTwo(cName,mName,extentTest,driver1, "  Group screen planning complete check-box is unchecked  ; ; ;Pass");
+				
+				Report_AddStep("testcase","In Group screen checking for the fields that are enabled and disabled : ", "", "" , "Pass");
+				htmlToExtentTwo(cName,mName,extentTest,driver1, " In Group screen checking for the fields that are enabled and disabled ; ; ;Pass");
+				
 				//check if the fields are enabled/disabled in group screen
 				objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 						objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
@@ -222,11 +275,14 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 								.replace("FinWeek", getContext().getStringProperty("FinWk"))
 								.replace("FinYear", getContext().getStringProperty("Year"))
 								.replace("Division", getContext().getStringProperty("Division")));
-				System.out.println("DB Value: " + DBValues4);
+				System.out.println("DB Values for planning completion of all stores: " + DBValues4);
 				//check if plan complete for all stores by DB result, if not iterate and do plan completion
 				List<String> newDBValues= objWeeklyPlanningGroupMangerApprovalPO.checkApproval(DBValues4);
 				List<String> newDBValuesText= objWeeklyPlanningGroupMangerApprovalPO.checkApprovalTwo(DBValues4);
 				if(newDBValues.contains("N")){
+					
+					Report_AddStep("testcase","Perform plan completion for the store for which planning is not done : ", "", "" , "Pass");
+					htmlToExtentTwo(cName,mName,extentTest,driver1, " Perform plan completion for the store for which planning is not done ; ; ;Pass");
 					//perform plan completion for unplanned stores
 					objWeeklyPlanningGroupMangerApprovalPO.selectByVisibleText(extentTest,newDBValuesText,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 							objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects);
@@ -238,14 +294,20 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 									.replace("FinWeek", getContext().getStringProperty("FinWk"))
 									.replace("FinYear", getContext().getStringProperty("Year"))
 									.replace("Division", getContext().getStringProperty("Division")));
-					System.out.println("DB Value: " + DBValues5);
+					System.out.println("DB Values for plan completion after automated plan completion: " + DBValues5);
 					
+					Report_AddStep("testcase","In Group screen checking for the fields that are enabled and disabled : ", "", "" , "Pass");
+					htmlToExtentTwo(cName,mName,extentTest,driver1, " In Group screen checking for the fields that are enabled and disabled ; ; ;Pass");
 					
 					//check if the fields are enabled/disabled in group screen		  
 					  objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,
 					  objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 					  objWeeklyPlanningGroupMangerApprovalObjects.SaveButton,
 					  objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
+					  
+					  Report_AddStep("testcase","In Group screen edit the comment field : ", "", "" , "Pass");
+						htmlToExtentTwo(cName,mName,extentTest,driver1, " In Group screen edit the comment field ; ; ;Pass");
+						
 					//edit  the fields in group screen
 					  objWeeklyPlanningGroupMangerApprovalPO.EditFields(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 								objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.Comments,
@@ -263,13 +325,21 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 							  	  .replace("FinWeek", getContext().getStringProperty("FinWk")) 
 							  	  .replace("FinYear",getContext().getStringProperty("Year")) 
 							  	  .replace("Division",getContext().getStringProperty("Division")));
-					  System.out.println("DB Value: " + DBValues6);
+					  System.out.println("DB Value for group manager comments after edit operation: " + DBValues6);
 					  //get comments of UI in group screen
 //					  UIValues =
 //					  pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable,
 //					  extentTest, objWeeklyPlanningGroupMangerApprovalObjects.DeptName,
 //					  objWeeklyPlanningGroupMangerApprovalObjects.Comments);
+					  Report_AddStep("testcase","In Group screen comparing UI and DB group manager comments : ", "", "" , "Pass");
+						htmlToExtentTwo(cName,mName,extentTest,driver1, " In Group screen comparing UI and DB group manager comments ; ; ;Pass");
+						
 					  pageWeeklyPlanningPO.CompareValuesText(extentTest, DBValues6, UIValues4);
+					  
+
+						Report_AddStep("testcase","In Group screen checking for the fields that are enabled and disabled : ", "", "" , "Pass");
+						htmlToExtentTwo(cName,mName,extentTest,driver1, " In Group screen checking for the fields that are enabled and disabled ; ; ;Pass");
+						
 					//check if the fields are enabled/disabled in group screen
 					  objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,
 					  objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
@@ -281,7 +351,15 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 				
 				else {
 					System.out.println("Planning is complete for all stores");
+					Report_AddStep("testcase","In Group screen all store planning completion is done : ", "", "" , "Pass");
+					htmlToExtentTwo(cName,mName,extentTest,driver1, " In Group screen all store planning completion is done ; ; ;Pass");
+					
+					
+					
 					this.click(objWeeklyPlanningGroupMangerApprovalObjects.EastGardenStore);
+					Report_AddStep("testcase"," Click open Eastgarden store : ", "", "" , "Pass");
+					htmlToExtentTwo(cName,mName,extentTest,driver1, " Click open Eastgarden store ; ; ;Pass");
+					
 					//check plan completion is done or not by Db result
 					//String StorePlanCompletion = data.getText("StorePlanCompletion");
 					DBValues7 = sql.CLRexecuteQuery(getContext(),
@@ -291,9 +369,11 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 									.replace("FinWeek", getContext().getStringProperty("FinWk"))
 									.replace("FinYear", getContext().getStringProperty("Year"))
 									.replace("Division", getContext().getStringProperty("Division")));
-					System.out.println("DB Value: " + DBValues7);
+					System.out.println("DB Value for plan completion of all stores: " + DBValues7);
 					
 					this.click(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox);
+					Report_AddStep("testcase","  Uncheck plan completion for Eastgarden store : ", "", "" , "Pass");
+					htmlToExtentTwo(cName,mName,extentTest,driver1, " Uncheck plan completion for Eastgarden store ; ; ;Pass");
 					
 					List<String> newDBValues2= objWeeklyPlanningGroupMangerApprovalPO.checkApproval(DBValues7);
 					
@@ -301,11 +381,15 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 					{
 						System.out.println("Plan complete checkbox for Eastgarden is unchecked");
 						this.click(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox);
+						Report_AddStep("testcase","  check plan completion for the store : ", "", "" , "Pass");
+						htmlToExtentTwo(cName,mName,extentTest,driver1, " check plan completion check-box for the store and go back to group screen ; ; ;Pass");
 					}
 					
 					if(newDBValues2.get(1).equals("Y"))
 					{
 						System.out.println("Plan complete  checkbox for Eastgarden is checked");
+						Report_AddStep("testcase","  Check plan completion for the store : ", "", "" , "Pass");
+						htmlToExtentTwo(cName,mName,extentTest,driver1, " Check plan completion check-box for the store and go back to group screen ; ; ;Pass");
 					}
 					
 					pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
@@ -314,9 +398,16 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 							objWeeklyPlanningStoreObjects.weeklyPlanning, "Weekly Planning");
 					pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 							objWeeklyPlanningStoreObjects.screenToView, "Group");
+
+					Report_AddStep("testcase","In Group screen checking for the fields that are enabled and disabled : ", "", "" , "Pass");
+					htmlToExtentTwo(cName,mName,extentTest,driver1, " In Group screen checking for the fields that are enabled and disabled ; ; ;Pass");
+					
 					//check the fields are enabled/disabled in group screen
 					objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 							objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
+					
+					Report_AddStep("testcase","In Group screen edit the comment field : ", "", "" , "Pass");
+					htmlToExtentTwo(cName,mName,extentTest,driver1, " In Group screen edit the comment field ; ; ;Pass");
 					//edit the fields in group screen
 					objWeeklyPlanningGroupMangerApprovalPO.EditFields(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 							objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.Comments,
@@ -334,10 +425,13 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 									.replace("FinWeek", getContext().getStringProperty("FinWk"))
 									.replace("FinYear", getContext().getStringProperty("Year"))
 									.replace("Division", getContext().getStringProperty("Division")));
-					System.out.println("DB Value: " + DBValues8);
+					System.out.println("DB Value of group manager comments after edit operation : " + DBValues8);
 					//list down the comments of UI in group screen 
 //					UIValues = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
 //							objWeeklyPlanningGroupMangerApprovalObjects.DeptName, objWeeklyPlanningGroupMangerApprovalObjects.Comments);
+					 Report_AddStep("testcase","In Group screen comparing UI and DB group manager comments : ", "", "" , "Pass");
+						htmlToExtentTwo(cName,mName,extentTest,driver1, " In Group screen comparing UI and DB group manager comments ; ; ;Pass");
+						
 					//compare UI and DB comments in group screen
 					pageWeeklyPlanningPO.CompareValuesText(extentTest, DBValues8, UIValues5);
 					

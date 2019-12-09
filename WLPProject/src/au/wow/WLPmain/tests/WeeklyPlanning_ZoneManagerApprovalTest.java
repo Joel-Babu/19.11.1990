@@ -109,6 +109,12 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 					objWeeklyPlanningStoreObjects.screenToView, "Zone");
 			// select the required zone
 			selectByVisibleText(objWeeklyPlanningGroupMangerApprovalObjects.selectZone, "R04 Z04");
+			
+			Report_AddStep("testcase","In State screen the planning complete check-box is checked and thus going back to Zone screen : ", "" , "" , "Pass");
+			htmlToExtentTwo(cName,mName,extentTest,driver1, "  State screen planning complete check-box is checked and so moving back to Zone screen  ; ; ;Pass");
+			
+			Report_AddStep("testcase","In Zone screen checking for the fields that are enabled and disabled : ", "", "" , "Pass");
+			htmlToExtentTwo(cName,mName,extentTest,driver1, " In Zone screen checking for the fields that are enabled and disabled ; ; ;Pass");
 			//check if the fields are enabled/disabled in zone screen
 			objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 					objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
@@ -120,11 +126,15 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 							.replace("FinWeek", getContext().getStringProperty("FinWk"))
 							.replace("FinYear", getContext().getStringProperty("Year"))
 							.replace("Division", getContext().getStringProperty("Division")));
-			System.out.println("DB Value: " + DBValues);
+			System.out.println("DB Value for zone manager comments: " + DBValues);
 
 
 			UIValues = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
 					objWeeklyPlanningGroupMangerApprovalObjects.DeptName, objWeeklyPlanningGroupMangerApprovalObjects.Comments);
+			
+			Report_AddStep("testcase","In Zone screen comparing UI and DB zone manager comments : ", "", "  " , "Pass");
+			htmlToExtentTwo(cName,mName,extentTest,driver1, " In Zone screen comparing UI and DB zone manager comments ; ; ;Pass");
+			
 			//compare UI and DB comments matching or not in zone screen
 			pageWeeklyPlanningPO.CompareValuesText(extentTest, DBValues, UIValues);
 
@@ -143,10 +153,19 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 					objWeeklyPlanningStoreObjects.screenToView, "Zone");
 			// select the required zone
 						selectByVisibleText(objWeeklyPlanningGroupMangerApprovalObjects.selectZone, "R04 Z04");
+						
+			Report_AddStep("testcase","In State screen the planning complete check-box is unchecked and thus going back to zone screen : ", "", "" , "Pass");
+			htmlToExtentTwo(cName,mName,extentTest,driver1, "  State screen planning complete check-box is unchecked and so moving back to zone screen ; ; ;Pass");
 			
 			//check if checkbox is enabled/disabled in zone screen
 			if(this.isSelected(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox)) {
 				System.out.println("In Zone screen the plan complete check-box is Selected");
+				
+				Report_AddStep("testcase","In Zone screen the planning complete check-box is checked : ", "", "  " , "Pass");
+				htmlToExtentTwo(cName,mName,extentTest,driver1, "  Zone screen planning complete check-box is checked  ; ; ;Pass");
+				
+				Report_AddStep("testcase","In Zone screen checking for the fields that are enabled and disabled : ", "", "" , "Pass");
+				htmlToExtentTwo(cName,mName,extentTest,driver1, " In Zone screen checking for the fields that are enabled and disabled ; ; ;Pass");
 				//check if the fields are enabled/disabled in zone screen
 				objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 					objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
@@ -158,19 +177,29 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 								.replace("FinWeek", getContext().getStringProperty("FinWk"))
 								.replace("FinYear", getContext().getStringProperty("Year"))
 								.replace("Division", getContext().getStringProperty("Division")));
-				System.out.println("DB Value: " + DBValues);
+				System.out.println("DB Value for zone manager comments: " + DBValues);
 				//get comments of zone screen from UI
 				UIValues = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
 						objWeeklyPlanningGroupMangerApprovalObjects.DeptName, objWeeklyPlanningGroupMangerApprovalObjects.Comments);
+				
+				Report_AddStep("testcase","In Zone screen comparing UI and DB zone manager comments : ", "", "" , "Pass");
+				htmlToExtentTwo(cName,mName,extentTest,driver1, " In Zone screen comparing UI and DB zone manager comments ; ; ;Pass");
+				
 				//Compare UI and DB comments matching or not in zone screen
 				pageWeeklyPlanningPO.CompareValuesText(extentTest, DBValues, UIValues);
 				
 			//toggle checkbox to disable	
 			this.click(objWeeklyPlanningGroupMangerApprovalObjects.selectGroup);
 			
+			Report_AddStep("testcase","Click open 419 group : ", "", "" , "Pass");
+			htmlToExtentTwo(cName,mName,extentTest,driver1, " Click open 419 group ; ; ;Pass");
+			
 			//check if the checkbox are enabled/disabled in Group screen
 			if(this.isSelected(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox)) {
 				System.out.println("In Group screen the plan complete Check-box is checked");
+				
+				Report_AddStep("testcase"," Inside 419 group the check- box is selected : ", "", "" , "Pass");
+				htmlToExtentTwo(cName,mName,extentTest,driver1, " Inside 419 group the check- box is selected and so move back to zone screen; ; ;Pass");
 				
 //				objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 //						objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
@@ -187,8 +216,18 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 				
 				this.click(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox);
 				
+				Report_AddStep("testcase"," In zone screen uncheck planning comeplete check- box : ", "", "" , "Pass");
+				htmlToExtentTwo(cName,mName,extentTest,driver1, " In Zone screen uncheck planning comeplete check- box ;Pass");
+//				
+				Report_AddStep("testcase","In Zone screen checking for the fields that are enabled and disabled : ", "", "" , "Pass");
+				htmlToExtentTwo(cName,mName,extentTest,driver1, " In Zone screen checking for the fields that are enabled and disabled ; ; ;Pass");
+				
 				objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 						objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
+				
+				Report_AddStep("testcase","In Zone screen edit the comment field : ", "", "" , "Pass");
+				htmlToExtentTwo(cName,mName,extentTest,driver1, " In Zone screen edit the comment field ; ; ;Pass");
+				
 				//edit the fields and save in group screen
 				objWeeklyPlanningGroupMangerApprovalPO.EditFields(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 						objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.Comments,
@@ -201,11 +240,13 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 								.replace("FinWeek", getContext().getStringProperty("FinWk"))
 								.replace("FinYear", getContext().getStringProperty("Year"))
 								.replace("Division", getContext().getStringProperty("Division")));
-				System.out.println("DB Value: " + DBValues2);
+				System.out.println("DB Value for zone manager comments: " + DBValues2);
 				//get updated UI comment for zone screen
 				UIValues2 = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
 						objWeeklyPlanningGroupMangerApprovalObjects.DeptName, objWeeklyPlanningGroupMangerApprovalObjects.Comments);
 				
+				Report_AddStep("testcase","In Zone screen comparing UI and DB Zone manager comments : ", "", "" , "Pass");
+				htmlToExtentTwo(cName,mName,extentTest,driver1, " In Zone screen comparing UI and DB Zone manager comments ; ; ;Pass");
 				
 				//Compare DB and UI comments for zone screen
 				pageWeeklyPlanningPO.CompareValuesText(extentTest, DBValues2, UIValues2);
@@ -216,6 +257,13 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 			
 			else {
 				System.out.println("In Zone screen the plan complete Check-box is unchecked");
+				
+				Report_AddStep("testcase","In Group screen the planning complete check-box is unchecked : ", "", "" , "Pass");
+				htmlToExtentTwo(cName,mName,extentTest,driver1, "  Zone screen planning complete check-box is unchecked  ; ; ;Pass");
+				
+				Report_AddStep("testcase","In Group screen checking for the fields that are enabled and disabled : ", "", "" , "Pass");
+				htmlToExtentTwo(cName,mName,extentTest,driver1, " In Zone screen checking for the fields that are enabled and disabled ; ; ;Pass");
+				
 				
 				UIValues2 = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
 						objWeeklyPlanningGroupMangerApprovalObjects.DeptName, objWeeklyPlanningGroupMangerApprovalObjects.Comments);
@@ -232,7 +280,7 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 								.replace("FinWeek", getContext().getStringProperty("FinWk"))
 								.replace("FinYear", getContext().getStringProperty("Year"))
 								.replace("Division", getContext().getStringProperty("Division")));
-				System.out.println("DB Value: " + DBValues3);
+				System.out.println("DB Value for group plan completion: " + DBValues3);
 				
 				
 				//check if plan complete for all group by DB result, if not iterate and do plan completion
@@ -240,6 +288,10 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 				//List<Object> newDBValuesText= objWeeklyPlanningGroupMangerApprovalPO.checkApprovalThree(DBValues3);
 				//newDBValuesText.add(UI);
 				if(newDBValues.contains("N")){
+					
+					Report_AddStep("testcase","Perform plan completion for the groups for which planning is not done : ", "", "" , "Pass");
+					htmlToExtentTwo(cName,mName,extentTest,driver1, " Perform plan completion for the groups for which planning is not done ; ; ;Pass");
+					
 					//perform plan completion for unplanned group
 					objWeeklyPlanningGroupMangerApprovalPO.selectByVisibleTextTwo(extentTest,UI,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 							objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects);
@@ -251,13 +303,19 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 									.replace("FinWeek", getContext().getStringProperty("FinWk"))
 									.replace("FinYear", getContext().getStringProperty("Year"))
 									.replace("Division", getContext().getStringProperty("Division")));
-					System.out.println("DB Value: " + DBValues4);
+					System.out.println("DB Value for group plan completion after automated plan completion: " + DBValues4);
 					
+					Report_AddStep("testcase","In Zone screen checking for the fields that are enabled and disabled : ", "", "" , "Pass");
+					htmlToExtentTwo(cName,mName,extentTest,driver1, " In Zone screen checking for the fields that are enabled and disabled ; ; ;Pass");
 					
 					//check if the fields are enabled/disabled in zone screen		  
 					  objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 							  objWeeklyPlanningGroupMangerApprovalObjects.SaveButton,
 							  objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
+					  
+					  Report_AddStep("testcase","In Zone screen edit the comment field : ", "", "" , "Pass");
+						htmlToExtentTwo(cName,mName,extentTest,driver1, " In Zone screen edit the comment field ; ; ;Pass");
+						
 					//edit the fields in zone screen
 					  objWeeklyPlanningGroupMangerApprovalPO.EditFields(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 								objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.Comments,
@@ -270,12 +328,20 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 							  	  .replace("FinWeek", getContext().getStringProperty("FinWk")) 
 							  	  .replace("FinYear",getContext().getStringProperty("Year")) 
 							  	  .replace("Division",getContext().getStringProperty("Division")));
-					  System.out.println("DB Value: " + DBValues5);
+					  System.out.println("DB Value for zone manager comments: " + DBValues5);
 					  //get comments of UI in zone screen
 					  UIValues3 = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable,
 					  		extentTest, objWeeklyPlanningGroupMangerApprovalObjects.DeptName,
 					  		objWeeklyPlanningGroupMangerApprovalObjects.Comments);
+					  
+					  Report_AddStep("testcase","In Zone screen comparing UI and DB zone manager comments : ", "", "" , "Pass");
+						htmlToExtentTwo(cName,mName,extentTest,driver1, " In Zone screen comparing UI and DB zone manager comments ; ; ;Pass");
+					  
 					  pageWeeklyPlanningPO.CompareValuesText(extentTest, DBValues5, UIValues3);
+					  
+					  Report_AddStep("testcase","In Zone screen checking for the fields that are enabled and disabled : ", "", "" , "Pass");
+						htmlToExtentTwo(cName,mName,extentTest,driver1, " In Zone screen checking for the fields that are enabled and disabled ; ; ;Pass");
+						
 					//check if the fields are enabled/disabled in group screen
 					  objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 							  objWeeklyPlanningGroupMangerApprovalObjects.SaveButton,
@@ -286,7 +352,13 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 				
 				else {
 					System.out.println("Planning is complete for all group");
+					Report_AddStep("testcase","In Zone screen all store planning completion is done : ", "", "" , "Pass");
+					htmlToExtentTwo(cName,mName,extentTest,driver1, " In Zone screen all store planning completion is done ; ; ;Pass");
+					
 					this.click(objWeeklyPlanningGroupMangerApprovalObjects.selectGroup);
+					Report_AddStep("testcase"," Click open 419 group : ", "", "" , "Pass");
+					htmlToExtentTwo(cName,mName,extentTest,driver1, " Click open 419 group ; ; ;Pass");
+					
 					//check plan completion is done or not in group by Db result
 					String StorePlanCompletion = data.getText("StorePlanCompletion");
 					DBValues6 = sql.CLRexecuteQuery(getContext(),
@@ -296,9 +368,11 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 									.replace("FinWeek", getContext().getStringProperty("FinWk"))
 									.replace("FinYear", getContext().getStringProperty("Year"))
 									.replace("Division", getContext().getStringProperty("Division")));
-					System.out.println("DB Value: " + DBValues6);
+					System.out.println("DB Value for store plan completion: " + DBValues6);
 					
 					this.click(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox);
+					Report_AddStep("testcase","  Uncheck plan completion for 419 group : ", "", "" , "Pass");
+					htmlToExtentTwo(cName,mName,extentTest,driver1, " Uncheck plan completion for 419 group ; ; ;Pass");
 					
 					String GroupMgrPlanCompletion2 = data.getText("GroupMgrPlanCompletion");
 					DBValues9 = sql.CLRexecuteQuery(getContext(),
@@ -308,7 +382,7 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 									.replace("FinWeek", getContext().getStringProperty("FinWk"))
 									.replace("FinYear", getContext().getStringProperty("Year"))
 									.replace("Division", getContext().getStringProperty("Division")));
-					System.out.println("DB Value: " + DBValues9);
+					System.out.println("DB Value group plan completion: " + DBValues9);
 					
 					newDBValues= objWeeklyPlanningGroupMangerApprovalPO.checkApproval(DBValues9);
 					
@@ -316,11 +390,15 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 					{
 						System.out.println("Plan complete checkbox for selected Group is unchecked");
 						this.click(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox);
+						Report_AddStep("testcase","  check plan completion for the group : ", "", "" , "Pass");
+						htmlToExtentTwo(cName,mName,extentTest,driver1, " check plan completion check-box for the group and go back to zone screen ; ; ;Pass");
 					}
 					
 					if(newDBValues.get(2).equals("Y"))
 					{
 						System.out.println("Plan complete  checkbox for selected Group is checked");
+						Report_AddStep("testcase","  Check plan completion for the group : ", "", "" , "Pass");
+						htmlToExtentTwo(cName,mName,extentTest,driver1, " Check plan completion check-box for the group and go back to zone screen ; ; ;Pass");
 					}
 					
 					pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
@@ -333,9 +411,16 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 					// select the required zone
 					selectByVisibleText(objWeeklyPlanningGroupMangerApprovalObjects.selectZone, "R04 Z04");
 					
+					Report_AddStep("testcase","In Zone screen checking for the fields that are enabled and disabled : ", "", "" , "Pass");
+					htmlToExtentTwo(cName,mName,extentTest,driver1, " In Zone screen checking for the fields that are enabled and disabled ; ; ;Pass");
+					
 					//check the fields are enabled/disabled in zone screen
 					objWeeklyPlanningGroupMangerApprovalPO.Checklist(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 							objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.CommentField);
+					
+					Report_AddStep("testcase","In Zone screen edit the comment field : ", "", "" , "Pass");
+					htmlToExtentTwo(cName,mName,extentTest,driver1, " In Zone screen edit the comment field ; ; ;Pass");
+					
 					//edit the fields in group screen
 					objWeeklyPlanningGroupMangerApprovalPO.EditFields(extentTest,objWeeklyPlanningGroupMangerApprovalObjects.ChkBox,
 							objWeeklyPlanningGroupMangerApprovalObjects.SaveButton, objWeeklyPlanningGroupMangerApprovalObjects.Comments,
@@ -348,10 +433,13 @@ public class WeeklyPlanning_ZoneManagerApprovalTest extends TestBase {
 									.replace("FinWeek", getContext().getStringProperty("FinWk"))
 									.replace("FinYear", getContext().getStringProperty("Year"))
 									.replace("Division", getContext().getStringProperty("Division")));
-					System.out.println("DB Value: " + DBValues7);
+					System.out.println("DB Value for zone manager comments: " + DBValues7);
 					//list down the comments of UI in zone screen 
 					UIValues4 = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
 							objWeeklyPlanningGroupMangerApprovalObjects.DeptName, objWeeklyPlanningGroupMangerApprovalObjects.Comments);
+					Report_AddStep("testcase","In Zone screen comparing UI and DB zone manager comments : ", "", "" , "Pass");
+					htmlToExtentTwo(cName,mName,extentTest,driver1, " In Zone screen comparing UI and DB zone manager comments ; ; ;Pass");
+					
 					//compare UI and DB comments in zone screen
 					pageWeeklyPlanningPO.CompareValuesText(extentTest, DBValues7, UIValues4);
 					

@@ -715,15 +715,15 @@ public class WeeklyPlanningStorePage extends TestBase
 							{
 							System.out.println("i:"+i + "" + "j:" +j);	
 							NewDBValue = DBValues.get(i).get(j).toString();
-							System.out.println(NewDBValue);
+							System.out.println("DB comment of group manager: "+NewDBValue);
 							
 							NewUIValue =UIValues.get(i).get(j).toString();
-							System.out.println(NewUIValue);
+							System.out.println("UI comments of group manager"+NewUIValue);
 							
 							if(NewDBValue.equals(NewUIValue)) {
 							
-							Report_AddStep("testcase","System Fetch the Values from DB for : "+UIName+" and Displayed Correctly" ,""+NewUIValue+"",""+NewDBValue+"", "Pass");
-							htmlToExtent(cName,mName,extentTest,driver1, "Value displayed Correctly for : "+UIName+"; "+NewUIValue+";  "+NewDBValue+";Pass");
+							Report_AddStep("testcase","System Fetch the Values from DB for : "+UIName+" and found matching" ,""+NewUIValue+"",""+NewDBValue+"", "Pass");
+							htmlToExtent(cName,mName,extentTest,driver1, "UI and DB values matches for : "+UIName+"; "+NewUIValue+";  "+NewDBValue+";Pass");
 							
 							}
 							
@@ -732,7 +732,7 @@ public class WeeklyPlanningStorePage extends TestBase
 						{
 							
 							Report_AddStep("testcase","System Fetch the Values from DB for : "+UIName+" and found not macthing" ,""+NewUIValue+"",""+NewDBValue+"", "Fail");
-							htmlToExtent(cName,mName,extentTest,driver1, "Value displayed Correctly for : "+UIName+"; "+NewUIValue+";  "+NewDBValue+";Fail");
+							htmlToExtent(cName,mName,extentTest,driver1, "UI and DB values matches for : "+UIName+"; "+NewUIValue+";  "+NewDBValue+";Fail");
 						}
 					}
 							else

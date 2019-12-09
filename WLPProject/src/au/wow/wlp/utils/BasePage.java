@@ -1650,6 +1650,20 @@ public class BasePage extends HTMLReport {
 		writeExtentReportStep1(valueList[3], desc, methodName, extLogger, cName, mName, driver);
 
 	}
+	
+	public static void htmlToExtentTwo(String cName, String mName, ExtentTest extLogger, WebDriver driver, String value) {
+		String[] valueList = value.split(";");
+		String desc = "";
+		if (!valueList[1].isEmpty()) {
+			desc = valueList[0] + "" + valueList[1] + ""
+					+ valueList[2];
+		} else {
+			desc = valueList[0];
+		}
+		System.out.println("Test Value : " + valueList[3]);
+		writeExtentReportStep1(valueList[3], desc, methodName, extLogger, cName, mName, driver);
+
+	}
 
 	public static Multimap<String, String> writeExtentReportStep1(String status, String desc, String methodName,
 			ExtentTest extLogger, String cName, String mName, WebDriver driver) {
