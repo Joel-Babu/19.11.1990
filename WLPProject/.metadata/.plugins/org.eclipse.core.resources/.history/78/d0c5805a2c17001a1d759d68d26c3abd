@@ -1,0 +1,114 @@
+package au.wow.main.objects.fcd;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class ParameterMaintenanceObjects {
+	//Frame
+		@FindBy(xpath= "//frame[@id='wowList']")
+		public static WebElement frame;
+
+		//User Management			
+		@FindBy(xpath= "//*[@id='frmSearch:cbxTradingDept']")
+		public static WebElement tradingDepartment;
+		
+		//Search
+		@FindBy(xpath= "//*[@id='frmSearch:btnSearch']")
+		public static WebElement search;
+		
+		
+		
+		//Add
+		@FindBy(xpath="//input[@value='Add']")
+		public static WebElement Add;
+		
+		//Selectingdepttogiveparametermaintenance
+		@FindBy(xpath="//*[@id='frmDetails:cbxTradingDept']")
+		public static WebElement Selectingdepttogiveparametermaintenance;
+		
+		//Selectingtypetogiveparametermaintenance
+		@FindBy(xpath="//*[@id='frmDetails:cbxType']")
+		public static WebElement Selectingtypetogiveparametermaintenance;
+		
+		//Selectingoperationtogiveparametermaintenance
+		@FindBy(xpath="//*[@id='frmDetails:cbxOperation']")
+		public static WebElement Selectingoperationtogiveparametermaintenance;
+		
+		//parameterdesc
+	    @FindBy(xpath="//input[@id='frmDetails:txtParamDesc']")
+		public static WebElement parameterdesc ;
+		
+	    //abbrevation
+	    @FindBy(xpath="//input[@id='frmDetails:txtAbbreviation']")
+		public static WebElement abbrevation ;
+	    
+	    @FindBy(xpath="//input[@id='frmDetails:btnParam1LookUp']")
+		public static WebElement Parameter1;
+	    
+	    @FindBy(xpath="//input[@id='frmDetails:btnParam2LookUp']")
+		public static WebElement Parameter2;
+	    
+	    
+	    @FindBy(xpath="//input[@id='frmSearch:txtParamId']")
+	  		public static WebElement parameteridstorelookup;
+	    
+	    @FindBy(xpath="//input[@id='frmSearch:btnSearch']")
+  		public static WebElement searchid;
+	
+	    @FindBy(xpath="(//span[@id='frmSearch:ctrParamTable:0:oParamId']/parent::a")
+  		public static WebElement selectingtheparameter;
+	    
+	    @FindBy(xpath="//input[@id='frmSearch:btnCancel']")
+  		public static WebElement closestorelookup;
+	    
+	
+	    @FindBy(xpath="//input[@id='frmDetails:btnSave']")
+  		public static WebElement savebutton;
+	    
+	    @FindBy(xpath="//input[@id='frmDetails:btnCancel']")
+  		public static WebElement closebutton;
+	    
+	    @FindBy(xpath="//input[@name='frmSearch:txtParamId']")
+  		public static WebElement parameterid;
+	    
+	    @FindBy(xpath="//input[@name='frmDetails:txtParamId']")
+  		public static WebElement fetchingparameterid;
+	
+	    @FindBy(xpath="//input[@id='frmSearch:txtParamId']")
+  		public static WebElement editparameteridtextbox;
+	    
+	 
+	    @FindBy(xpath="//input[@id='frmSearch:ctrParamTable:0:chkDelete']")
+  		public static WebElement deleteoption;
+	    
+	    @FindBy(xpath="//input[@id='frmSearch:btnDelete']")
+  		public static WebElement deletebutton;
+	    
+	    
+	    
+		//Edit
+		@FindBy(xpath="//*[@id='frmSearch:ctrParamTable:0:oEdit']")
+		public static WebElement edit;
+		
+		
+		//parameteridtextbox
+		@FindBy(xpath="//input[@id='frmSearch:txtParamId']")
+		public static WebElement parameteridtextbox;
+		
+		//Store User Edit
+		@FindBy(xpath="//*[@id='frmDetails:chkStoreStateUserView']")
+		public static WebElement storeUserEdit;
+		
+		//SAVE
+		@FindBy(xpath="//*[@id='frmDetails:btnSave']")
+		public static WebElement save;
+		
+		//close
+		@FindBy(xpath="//*[@id='frmDetails:btnCancel']")
+		public static WebElement close;
+		
+		
+		
+		
+		
+}

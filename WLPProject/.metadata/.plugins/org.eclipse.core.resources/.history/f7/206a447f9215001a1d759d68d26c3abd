@@ -1,0 +1,103 @@
+package au.wow.main.objects.fcd;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class ActivityObjects {
+
+	@FindBy(xpath= "//frame[@id='wowList']")
+	public static WebElement frame;
+
+	
+			//Activityidtextbox
+			@FindBy(xpath= "(//input[@type='text'])[1]")
+			public static WebElement Activityidtextbox;	
+			
+	//Activity
+	@FindBy(xpath= "//*[@id='frmSearch:txtActId']")
+	public static WebElement activityID;
+	
+	//Search
+	@FindBy(xpath= "//*[@id='frmSearch:btnSearch']")
+	public static WebElement search;
+	
+	//Add
+	@FindBy(xpath= "//*[@id='frmSearch:btnAdd']")
+	public static WebElement add;
+	
+	//Trading Department
+	@FindBy(xpath= "//*[@id='frmDetails:cbxStdTaskTradingDept']")
+	public static WebElement tradingDepartment;
+	
+	//SMS Job
+	@FindBy(xpath= "//*[@id='frmDetails:cbxSMSJob1']")
+	public static WebElement smsJob;
+	
+	//Activity Description
+	@FindBy(xpath= "//*[@id='frmDetails:txtActivityDesc']")
+	public static WebElement activityDesc;
+	
+	
+	//EditActivity Description
+		@FindBy(xpath= "//input[@value='creating activity']")
+		public static WebElement EditActivityDescription;
+		
+	//Save           
+	@FindBy(xpath= "//*[@id='frmDetails:btnSave']")
+	public static WebElement save;
+	
+	//Close
+	@FindBy(xpath= "//*[@id='frmDetails:btnCancel']")
+	public static WebElement close;
+	
+	//close LMS
+	@FindBy(xpath= "//input[@value='Close']")
+	public static WebElement closeLMS;
+	//edit
+	@FindBy(xpath= "//*[@id='frmSearch:ctrActTable:0:oEdit']")
+	public static WebElement edit;
+	
+	//Activity Description
+	@FindBy(xpath= "//textarea[@id='frmDetails:txtActivityDesc']")
+	public static WebElement activityDescription;
+	
+	//Description
+	
+	@FindBy(xpath= "//*[@id='frmSearch:txtActDesc']")
+	public static WebElement Description;
+	
+	//ActivityUID
+		@FindBy(xpath="//input[@name='frmDetails:txtActivityId']")
+		public static WebElement ActivityUID;
+		
+		
+	//DeleteActivityUID
+		@FindBy(xpath="//span[@id='frmSearch:ctrActTable:0:oActId']")
+		public static WebElement DeleteActivityUID;
+		
+		
+		//DeleteActivitydescription
+		@FindBy(xpath="(//span[@class='CharUIInput'])[2]")
+		public static WebElement DeleteActivitydescription;
+	
+	//delete option
+	@FindBy(xpath= "//*[@id='frmSearch:ctrActTable:0:chkDelete']")
+	public static WebElement deleteOption;
+	
+	//Delete
+	@FindBy(xpath= "//*[@id='frmSearch:btnDelete']")
+	public static WebElement delete;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+}

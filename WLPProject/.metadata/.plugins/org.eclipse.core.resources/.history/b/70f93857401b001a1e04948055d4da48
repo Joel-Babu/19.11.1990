@@ -1,0 +1,286 @@
+package au.wow.main.tests.fcd;
+
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.ITestContext;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import com.relevantcodes.extentreports.ExtentReports;
+
+import au.wow.main.objects.LoginPageObjects;
+import au.wow.main.objects.fcd.HoursCalculationsObjects;
+import au.wow.main.objects.fcd.StandardDepartmentObjects;
+import au.wow.main.pages.CommonFunctions;
+import au.wow.main.pages.LoginPage;
+import au.wow.main.pages.fcd.ActivityPage;
+import au.wow.main.pages.fcd.HoursCalculationsPage;
+import au.wow.main.pages.fcd.StandardDepartmentPage;
+import au.wow.sms.utils.BasePage;
+import au.wow.sms.utils.CommonRepository;
+import au.wow.sms.utils.CustomExtentReports;
+import au.wow.sms.utils.ExtentReportsScreenshotCode;
+import au.wow.sms.utils.SQLWrapper;
+import au.wow.sms.utils.TestBase;
+import au.wow.sms.utils.TestStatus;
+import au.wow.sms.utils.XMLDataReader;
+
+public class HoursCalculations extends TestBase {
+	private static final HoursCalculationsObjects  HoursCalculationsObjects = null;
+	protected Logger log = LogManager.getLogger(HoursCalculations.class);
+	TestStatus status;
+	ExtentReportsScreenshotCode ScreenShotUtil;
+	SQLWrapper sql = new SQLWrapper(log);
+	CommonFunctions objCommonFunctions;
+	LoginPage objLoginPage;
+	LoginPageObjects objLoginPageObjects;
+	CommonRepository CommonFunc;
+	HoursCalculationsObjects objHoursCalculationsObjects;
+	HoursCalculationsPage objHoursCalculationsPage;
+	String MenuSelection;
+	List<List<Object>> UIValues;
+	BasePage BaseObj;
+
+	public HoursCalculations() {
+		super.log = log;
+	}
+
+	/**
+	 * LogintoApplication: Logging into SMS Application
+	 * 
+	 * @throws Exception
+	 */
+
+	@Test(description = "Logging into SMS Application", priority = 0)
+	public void LoginApplication() throws Exception {
+		extentTest = report.startTest("Application Login - HomePage verification");		
+		objLoginPage = new LoginPage().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(), LoginPage.class);
+		objLoginPage.enterUserCredentials(getContext().getStringProperty("SMSUserType"));
+		objLoginPage.VerifySignIn(objLoginPageObjects, extentTest, getContext().getStringProperty("WelcomeName"));
+	}
+
+
+
+	//Searching the hours calculation
+
+	@Test(description = "Searching the hours calculation with filter criteria", priority = 1)
+	public void Search_Details() throws Exception {
+		extentTest = report.startTest("Searching the hours calculation");
+		objLoginPage = new LoginPage().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(), LoginPage.class);
+		objCommonFunctions = new CommonFunctions().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(), CommonFunctions.class);
+		objHoursCalculationsPage= new HoursCalculations().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(),HoursCalculationsPage.class);
+
+		objCommonFunctions.verifyMenuSelection(objLoginPageObjects, extentTest,getContext().getStringProperty("MenuSelection"), 
+				getContext().getStringProperty("SubSMSMenu17"),LoginPageObjects.smsSubMenuCount, LoginPageObjects.smsSubMenu, LoginPageObjects.smsMenuExpand);
+
+		objCommonFunctions.clickButton(LoginPageObjects.explorerMenuFrame, LoginPageObjects.hoursCalculations, extentTest, "clicking on Hours Calculation Screen");
+
+		objHoursCalculationsPage.Search(objHoursCalculationsObjects,HoursCalculationsObjects.fiscalYear,getContext().getStringProperty("fiscalYear"),
+				HoursCalculationsObjects.weekID,getContext().getStringProperty("weekID"),extentTest);
+		objCommonFunctions.clickButton(HoursCalculationsObjects.frame,HoursCalculationsObjects.storeNo,extentTest,"Clicking on Store NO Button");
+
+		// Get Parent window handle
+		String winHandleBefore = driver1.getWindowHandle();
+		for (String winHandle : driver1.getWindowHandles()) {
+			// Switch to child window
+			driver1.switchTo().window(winHandle);
+		}
+		// Do some operation on child window and get child window handle.
+		String winHandleAfter = driver1.getWindowHandle();
+		waitFor(3);
+		objHoursCalculationsPage.LMSSearch(objHoursCalculationsObjects,HoursCalculationsObjects.region,getContext().getStringProperty("region"),
+				HoursCalculationsObjects.area,getContext().getStringProperty("area"),extentTest);
+		waitFor(3);
+
+		objCommonFunctions.clickButtonWithoutFrame(HoursCalculationsObjects.lmsStoreNo,extentTest,"Clicking on StoreNo Button");
+		waitFor(3);
+		//to switch to parent window.
+		driver1.switchTo().window(winHandleBefore);
+		objCommonFunctions.clickButton(HoursCalculationsObjects.frame,HoursCalculationsObjects.search,extentTest,"Clicking on Searh Button");
+
+	}
+
+
+	//Editing the hours calculation
+
+	@Test(description = "Searching the hours calculation with filter criteria", priority = 1)
+	public void Edit_Details() throws Exception {
+		extentTest = report.startTest("Searching the hours calculation");
+		objLoginPage = new LoginPage().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(), LoginPage.class);
+		objCommonFunctions = new CommonFunctions().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(), CommonFunctions.class);
+		objHoursCalculationsPage= new HoursCalculations().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(),HoursCalculationsPage.class);
+
+		objCommonFunctions.clickButton(HoursCalculationsObjects.frame,HoursCalculationsObjects.edit,extentTest,"Clicking on Edit Button");
+
+		// Get Parent window handle
+		String winHandleBefore = driver1.getWindowHandle();
+		for (String winHandle : driver1.getWindowHandles()) {
+			// Switch to child window
+			driver1.switchTo().window(winHandle);
+		}
+		// Do some operation on child window and get child window handle.
+		String winHandleAfter = driver1.getWindowHandle();
+		waitFor(3);
+
+		enterText(HoursCalculationsObjects.earnedHours, getContext().getStringProperty("earnedHours")); 
+		waitFor(3);
+		objCommonFunctions.clickButtonWithoutFrame(HoursCalculationsObjects.save,extentTest,"Clicking on Save Button");
+
+		//to switch to parent window.
+		driver1.switchTo().window(winHandleBefore);
+
+	}
+
+
+
+	//Logging of the Application
+
+	@Test(priority = 5)
+	public void LogoutApplication() throws Exception {
+		objLoginPage = new LoginPage().createPage(getDriver(), getContext(), log, status, data, getReport(),
+				getReportLogger(), LoginPage.class);
+		objLoginPage.LogOFF(objLoginPageObjects);
+	}
+
+	@BeforeTest
+	public void InitiateExtentReport() throws Exception {
+		report = new ExtentReports(System.getProperty("user.dir") + "\\Reports\\Activity.html");
+	}
+
+	@AfterTest
+	public void CloseExtentReport() throws Exception {
+		report.endTest(extentTest);
+		report.flush();
+	}
+
+	@BeforeMethod
+	public void setUpItemPrice(Method m, ITestContext testcontext) throws IOException {
+
+	/*	initializeTestcontext();
+		System.out.println("test1 - beforemethod");
+		log.info("Loading Testdata for the test case: " + m.getName().toString());
+		data.getTCNameFromChildren(m.getName().toString().trim());
+		testcontext.setAttribute("WebDriver", getDriver());
+		testcontext.setAttribute("Customreports", this.customreport);
+		customreport.startTest(m.getName().toString());
+		initializeTestStatus();
+		reportPath = new File(getContext().getStringProperty("reportPath"));
+		moduledesc = m.getName().toString().trim();
+		dtmoduledesc = m.getAnnotation(Test.class).description();
+		testcasesttime = new Date();
+		objCommonFunctions = PageFactory.initElements(this.getDriver(), CommonFunctions.class);
+		objLoginPage = PageFactory.initElements(this.getDriver(), LoginPage.class);
+		objLoginPageObjects = PageFactory.initElements(this.getDriver(), LoginPageObjects.class);
+		objHoursCalculationsObjects = PageFactory.initElements(this.getDriver(),HoursCalculationsObjects.class);
+		objHoursCalculationsPage = PageFactory.initElements(this.getDriver(), HoursCalculationsPage.class);
+
+		ScreenShotUtil = PageFactory.initElements(this.getDriver(), ExtentReportsScreenshotCode.class);
+		System.out.println(System.getProperty("user.dir"));
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("MMddyyyy_hmmss");
+		String formattedDate = sdf.format(date);
+		System.out.println(formattedDate); // 12/01/2011 4:48:16 PM
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		String formattedDate1 = dateFormat.format(date);
+		System.out.println(formattedDate1); // 12/01/2011 4:48:16 PM
+		String dat = formattedDate1;
+		Report_Header("testcase", reportPath, moduledesc, dat);
+		*/
+		System.out.println("test1 - beforemethod");
+		mName = m.getName().toString().trim();
+		System.out.println(m.getName().toString().trim());
+		if (!methodList.contains(m.getName().toString().trim())) {
+			methodList.add(m.getName().toString().trim());
+			//extentTest = report.startTest(m.getName().toString().trim());
+		}
+		System.out.println(methodList.size());
+		//initializeTestcontext();
+		System.out.println("test1 - beforemethod");
+		log.info("Loading Testdata for the test case: " + m.getName().toString());
+		data.getTCNameFromChildren(m.getName().toString().trim());
+		testcontext.setAttribute("WebDriver", getDriver());
+		testcontext.setAttribute("Customreports", this.customreport);
+		customreport.startTest(m.getName().toString());
+		initializeTestStatus();
+		reportPath = new File(getContext().getStringProperty("reportPath"));
+		moduledesc = m.getName().toString().trim();
+		dtmoduledesc = m.getAnnotation(Test.class).description();
+		testcasesttime = new Date();
+		objCommonFunctions = PageFactory.initElements(this.getDriver(), CommonFunctions.class);
+		objLoginPage = PageFactory.initElements(this.getDriver(), LoginPage.class);
+		objLoginPageObjects = PageFactory.initElements(this.getDriver(), LoginPageObjects.class);
+		objHoursCalculationsObjects = PageFactory.initElements(this.getDriver(),HoursCalculationsObjects.class);
+		objHoursCalculationsPage = PageFactory.initElements(this.getDriver(), HoursCalculationsPage.class);
+		ScreenShotUtil = PageFactory.initElements(this.getDriver(), ExtentReportsScreenshotCode.class);
+		BaseObj = PageFactory.initElements(this.getDriver(), BasePage.class);
+		System.out.println(System.getProperty("user.dir"));
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("MMddyyyy_hmmss");
+		String formattedDate = sdf.format(date);
+		System.out.println(formattedDate); // 12/01/2011 4:48:16 PM
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		String formattedDate1 = dateFormat.format(date);
+		System.out.println(formattedDate1); // 12/01/2011 4:48:16 PM
+		String dat = formattedDate1;
+		Report_Header("testcase", reportPath, moduledesc, dat);
+
+
+	}
+
+	@BeforeClass
+	public void loadXMLFile() {
+		
+	/*	//try {
+		initializeTestcontext();
+		//sql.CLRConnectSITDB(context);
+		System.out.println("test1 - Beforeclass");
+		data = new XMLDataReader(log);
+		customreport = new CustomExtentReports();
+		createDriver(getContext().getStringProperty("SMSUrl"), getContext().getStringProperty("browser"), cName,
+				mName, extentTest, driver1);	
+		log.info("Loading data for the class: ");
+		data.loadTestDataXML(System.getProperty("user.dir") + "\\TestData\\SMSApplication\\SMStoCLRDBValOthers.xml");
+		customreport.createExtentReport();
+		//} catch (SQLException e) {
+		//e.printStackTrace();
+		//}
+	}
+	*/
+		try {
+			cName = this.getClass().getSimpleName();
+			reportPath = new File(getContext().getStringProperty("reportPath"));
+			report = new ExtentReports(
+					getContext().getStringProperty("reportPath") + "\\" + this.getClass().getSimpleName() + ".html");
+			classList.add(this.getClass().getSimpleName());
+			initializeTestcontext();
+			sql.SMSConnectSITDB(context);
+				
+			System.out.println("test1 - Beforeclass");
+			data = new XMLDataReader(log);
+			customreport = new CustomExtentReports();
+		createDriver(getContext().getStringProperty("SMSUrl"), getContext().getStringProperty("browser"), cName,
+					mName, extentTest, driver1);
+			log.info("Loading data for the class: ");
+			data.loadTestDataXML(System.getProperty("user.dir") + "\\TestData\\SMSApplication\\SMStoCLRDBValOthers.xml");
+			customreport.createExtentReport();
+			
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+}
+

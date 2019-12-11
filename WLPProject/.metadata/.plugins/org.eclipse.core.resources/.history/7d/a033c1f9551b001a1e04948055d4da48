@@ -1,0 +1,445 @@
+package au.wow.main.tests.fcd;
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.ITestContext;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import com.relevantcodes.extentreports.ExtentReports;
+
+import au.wow.main.objects.LoginPageObjects;
+import au.wow.main.objects.fcd.CombinedDistributionObjects;
+import au.wow.main.objects.fcd.EditObjects;
+import au.wow.main.objects.fcd.LabourStandardProfilesObjects;
+import au.wow.main.objects.fcd.ParameterMaintenanceObjects;
+import au.wow.main.objects.fcd.StandardDepartmentObjects;
+import au.wow.main.objects.fcd.TaskMaintenanceObjects;
+import au.wow.main.objects.fcd.TaskSetupObjects;
+import au.wow.main.pages.CommonFunctions;
+import au.wow.main.pages.LoginPage;
+import au.wow.main.pages.fcd.EditPage;
+import au.wow.main.pages.fcd.LabourStandardsProfilePage;
+import au.wow.main.pages.fcd.StandardDepartmentPage;
+import au.wow.main.pages.fcd.TaskMaintenancePage;
+import au.wow.main.pages.fcd.TaskSetupPage;
+import au.wow.sms.utils.BasePage;
+import au.wow.sms.utils.CommonRepository;
+import au.wow.sms.utils.CustomExtentReports;
+import au.wow.sms.utils.ExtentReportsScreenshotCode;
+import au.wow.sms.utils.SQLWrapper;
+import au.wow.sms.utils.TestBase;
+import au.wow.sms.utils.TestStatus;
+import au.wow.sms.utils.XMLDataReader;
+
+public class TaskSetup extends TestBase {
+	private static final TaskSetupObjects TaskSetupObjects = null;
+	protected Logger log = LogManager.getLogger(TaskSetup.class);
+	TestStatus status;
+	ExtentReportsScreenshotCode ScreenShotUtil;
+	SQLWrapper sql = new SQLWrapper(log);
+	CommonFunctions objCommonFunctions;
+	LoginPage objLoginPage;
+	LoginPageObjects objLoginPageObjects;
+	CommonRepository CommonFunc;
+	TaskSetupObjects objTaskSetupObjects;
+	TaskSetupPage objTaskSetupPage;
+	String MenuSelection,Tasksetupid;
+	List<List<Object>> UIValues,DBTasksetupAdd,DBTasksetupEdit,DBTasksetupDelete;
+	BasePage BaseObj;
+	
+	public TaskSetup() {
+		super.log = log;
+	}
+
+	/**
+	 * LogintoApplication: Logging into SMS Application
+	 * 
+	 * @throws Exception
+	 */
+
+	@Test(description = "Logging into SMS Application",priority = 0)
+	public void LoginApplication() throws Exception {
+		extentTest = report.startTest("Application Login - HomePage verification");		
+		objLoginPage = new LoginPage().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(), LoginPage.class);
+		objLoginPage.enterUserCredentials(getContext().getStringProperty("SMSUserType"));
+		objLoginPage.VerifySignIn(objLoginPageObjects, extentTest, getContext().getStringProperty("WelcomeName"));
+	}
+	
+	/**
+	 		Search the Task Setup
+	
+	 */
+	@Test(description = "Search of Task Setup with filter criteria",priority = 1)
+	public void MenuSelection() throws Exception {
+		extentTest = report.startTest("Selection of Trading Department");
+		objLoginPage = new LoginPage().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(), LoginPage.class);
+		objCommonFunctions = new CommonFunctions().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(), CommonFunctions.class);
+		objTaskSetupPage= new TaskSetup().createPage(getDriver(), getContext(), log, status, data,getReport(), 
+				getReportLogger(),TaskSetupPage.class);
+
+		objCommonFunctions.verifyMenuSelection(objLoginPageObjects, extentTest,getContext().getStringProperty("MenuSelection"), 
+				getContext().getStringProperty("SubSMSMenu12"),
+				LoginPageObjects.smsSubMenuCount, LoginPageObjects.smsSubMenu, LoginPageObjects.smsMenuExpand);
+
+
+//		objTaskSetupPage.search(objTaskSetupObjects,TaskSetupObjects.TradingDepartment,getContext().getStringProperty("TradingDepartmentTaskSetup"),
+//				TaskSetupObjects.SMSJob,getContext().getStringProperty("SMSJob"),TaskSetupObjects.Type,getContext().getStringProperty("Type"),
+//				TaskSetupObjects.Search,extentTest);	
+		
+		waitFor(3);
+		
+	}
+
+	
+	//ADD Task in Task Setup
+
+			@Test(description = "Search of Task Setup with filter criteria", priority = 2)
+			public void Add() throws Exception {
+				extentTest = report.startTest("Selection of Trading Department");
+				objLoginPage = new LoginPage().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(), LoginPage.class);
+				objCommonFunctions = new CommonFunctions().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(), CommonFunctions.class);
+				objTaskSetupPage= new TaskSetup().createPage(getDriver(), getContext(), log, status, data,getReport(), 
+						getReportLogger(),TaskSetupPage.class);
+				
+				String windows_1 = driver1.getWindowHandle();
+				System.out.println("Window : " + windows_1);
+				objTaskSetupPage.AddOption(objTaskSetupObjects,TaskSetupObjects.Add,extentTest);
+
+				for (String windowLoop : driver1.getWindowHandles()) {
+					// Switch to child window
+					driver1.switchTo().window(windowLoop);
+				}
+			
+				String windows_2 = driver1.getWindowHandle();
+				System.out.println("Window : " + windows_2);
+				driver1.switchTo().window(windows_2);
+				
+				enterText(TaskSetupObjects.TaskDescription, getContext().getStringProperty("TaskDescription")); 
+				enterText(TaskSetupObjects.ProductivityStandard,getContext().getStringProperty("ProductivityStandard"));
+				
+				objTaskSetupPage.LMSAddOption(objTaskSetupObjects,TaskSetupObjects.LMSTradingdept,getContext().getStringProperty("TradingDepartmentTaskSetup"),
+						TaskSetupObjects.LMSSMSJob,getContext().getStringProperty("SMSJob"),TaskSetupObjects.Activity,getContext().getStringProperty("Activity"),
+						TaskSetupObjects.LMSType,getContext().getStringProperty("Type"),TaskSetupObjects.Formulae,extentTest);	
+				
+
+				for (String windowLoop : driver1.getWindowHandles()) {
+					// Switch to child window
+					driver1.switchTo().window(windowLoop);
+				}
+				String windows_3 = driver1.getWindowHandle();
+				System.out.println("Window : " + windows_3);
+
+				Set<String> multiWindow = driver1.getWindowHandles();
+				System.out.println("Multi Window : \n "+multiWindow);
+
+				driver1.switchTo().window(windows_3);
+
+				
+				objTaskSetupPage.searchlookup(objTaskSetupPage,
+						TaskSetupObjects.parameteridstorelookup, getContext().getStringProperty("parameteridvalue"),
+						TaskSetupObjects.searchid, TaskSetupObjects.selectingtheparameter, extentTest);
+				
+				for (String winHandle : driver1.getWindowHandles()) {
+					// // Switch to child window
+					if (winHandle.equals(windows_2))
+						driver1.switchTo().window(windows_2);
+				}
+	
+				objCommonFunctions.clickButtonWithoutFrame(TaskSetupObjects.Save, extentTest, "Task Can be Saved Successfully");
+				waitFor(3);
+				Tasksetupid =getValueAttribute(TaskSetupObjects.Tasksetupid);
+			    System.out.println(Tasksetupid);
+			
+			    objCommonFunctions.clickButtonWithoutFrame(TaskSetupObjects.Close, extentTest, "Task Can be Closed Successfully");
+			  
+			    driver1.switchTo().window(windows_1); 
+			    
+			//verifying the data in DB
+			String TasksetupDBValues = data.getText("TasksetupDBValues");
+			DBTasksetupAdd = sql.SMSexecuteQuery(getContext(),
+					TasksetupDBValues.replace  ("idno", Tasksetupid));
+			System.out.println("DB Values: " + DBTasksetupAdd);
+			
+			if (Integer.parseInt(DBTasksetupAdd.get(0).get(0).toString())==1) {
+				
+				Report_AddStep("testcase", "The tasksetup UI data is matching with DB for created task:  " + Tasksetupid + "", "", "", "Pass");
+				htmlToExtent(cName, mName, extentTest, driver1,"tasksetup UI & DB data are matching for created task: " + Tasksetupid + ";;;Pass");
+				}
+				
+			else
+			{				
+				Report_AddStep("testcase","The tasksetup UI data is not matching with DB for created taskset:  " + Tasksetupid + "", "", "", "Fail");
+				htmlToExtent(cName, mName, extentTest, driver1,"tasksetup UI & DB data are not matching for created taskset: " + Tasksetupid +  ";;;Fail");
+			}
+
+			}
+
+	
+	
+	
+	
+	//Edit the Task Setup
+	
+	@Test(description = "Search of Task Setup with filter criteria", priority = 2)
+	public void Edit() throws Exception {
+		extentTest = report.startTest("Selection of Trading Department");
+		objLoginPage = new LoginPage().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(), LoginPage.class);
+		objCommonFunctions = new CommonFunctions().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(), CommonFunctions.class);
+		objTaskSetupPage= new TaskSetup().createPage(getDriver(), getContext(), log, status, data,getReport(), 
+				getReportLogger(),TaskSetupPage.class);
+		
+        String windows_1 = driver1.getWindowHandle();
+				System.out.println("Window : " + windows_1);
+				
+				objCommonFunctions.clickButton(TaskSetupObjects.frame,TaskSetupObjects.Taskidtextbox,extentTest,"Clicking on Activity Description ");
+				enterText(TaskSetupObjects.Taskidtextbox,Tasksetupid ); 
+	     objCommonFunctions.clickButton(TaskSetupObjects.frame,TaskSetupObjects.Search,extentTest,"Clicking on Search Button");
+	     
+			objCommonFunctions.clickButton(TaskSetupObjects.frame,TaskSetupObjects.Editbutton,extentTest,"Clicking on Edit Button");
+
+
+			for (String windowLoop : driver1.getWindowHandles()) {
+				// Switch to child window
+				driver1.switchTo().window(windowLoop);
+			}
+			String windows_2 = driver1.getWindowHandle();
+			System.out.println("Window : " + windows_2);
+			driver1.switchTo().window(windows_2);
+		
+		waitFor(3);
+		//objCommonFunctions.clickButtonWithoutFrame(TaskSetupObjects.Edit, extentTest, "clicking on Edit Button");
+		
+		// Get Parent window handle
+		
+		objTaskSetupPage.LMSEdit(objTaskSetupObjects,TaskSetupObjects.TaskInformation,getContext().getStringProperty("TaskInformation"),extentTest);	 
+		waitFor(3);
+		objCommonFunctions.clickButtonWithoutFrame(TaskSetupObjects.Save, extentTest, "Task Can be Saved Successfully");
+		waitFor(3);
+		
+		objCommonFunctions.clickButtonWithoutFrame(TaskSetupObjects.Close, extentTest, "Task Can be Closed Successfully");
+		// Do some operation on child window and get child window handle.
+				
+		 driver1.switchTo().window(windows_1);	
+				//verifying the data in DB
+				String TasksetupDBValues = data.getText("TasksetupDBValues"); 
+				DBTasksetupEdit = sql.SMSexecuteQuery(getContext(),
+						TasksetupDBValues.replace("idno", Tasksetupid));
+				System.out.println("DB Values: " + DBTasksetupEdit);
+				
+				
+				if (Integer.parseInt(DBTasksetupEdit.get(0).get(0).toString())==1) {
+					
+					Report_AddStep("testcase", "The tasksetup screen UI data is matching with DB for created task:  " + Tasksetupid + "", "", "", "Pass");
+					htmlToExtent(cName, mName, extentTest, driver1,"tasksetup screen UI & DB data are matching for created task: " + Tasksetupid + ";;;Pass");
+					}
+					
+				else
+				{				
+					Report_AddStep("testcase","The tasksetup screen UI data is not matching with DB for created task:  " + Tasksetupid + "", "", "", "Fail");
+					htmlToExtent(cName, mName, extentTest, driver1,"tasksetup screen UI & DB data are not matching for created task: " + Tasksetupid +  ";;;Fail");
+				}
+		
+				
+				
+				
+	}
+	
+
+	
+		//Delete the Task
+	
+	@Test(description = "Delete of Task Setup with filter criteria", priority = 4)
+	public void Delete() throws Exception {
+		extentTest = report.startTest("Selection of Trading Department");
+		objLoginPage = new LoginPage().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(), LoginPage.class);
+		objCommonFunctions = new CommonFunctions().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(), CommonFunctions.class);
+		objTaskSetupPage= new TaskSetup().createPage(getDriver(), getContext(), log, status, data,getReport(), 
+				getReportLogger(),TaskSetupPage.class);
+
+		 String windows_1 = driver1.getWindowHandle();
+			System.out.println("Window : " + windows_1);
+		
+		objTaskSetupPage.Delete(objTaskSetupObjects,TaskSetupObjects.DeleteOption,extentTest);	
+		objCommonFunctions.clickButtonWithoutFrame(TaskSetupObjects.Delete, extentTest, "Task Can be Deleted Successfully");
+
+		Alert alert = driver1.switchTo().alert();
+		alert.accept();
+		// driver.switchto.alert.accept();
+		
+		
+		//verifying the data in DB
+		String TasksetupDBValues = data.getText("TasksetupDBValues");
+		DBTasksetupDelete = sql.SMSexecuteQuery(getContext(),
+				TasksetupDBValues.replace("idno",Tasksetupid));
+		System.out.println("DB Values: " + DBTasksetupDelete);
+		
+		if (Integer.parseInt(DBTasksetupDelete.get(0).get(0).toString())==0) {
+			
+			Report_AddStep("testcase", "The tasksetup screen UI data is matching with DB after deleting the task:  " +Tasksetupid + "", "", "", "Pass");
+			htmlToExtent(cName, mName, extentTest, driver1,"tasksetup screen UI & DB data are matching after deleting the task: " + Tasksetupid + ";;;Pass");
+			}
+			
+		else
+		{		
+			Report_AddStep("testcase","The tasksetup screen UI data is not matching with DB after deleting the task:  " + Tasksetupid + "", "", "", "Fail");
+			htmlToExtent(cName, mName, extentTest, driver1,"tasksetup screen UI & DB data are not matching after deleting the task: " + Tasksetupid +  ";;;Fail");
+		}	
+		
+	}
+		
+	
+
+	//Logging of the Application
+
+	@Test(priority = 5)
+	public void LogoutApplication() throws Exception {
+		objLoginPage = new LoginPage().createPage(getDriver(), getContext(), log, status, data, getReport(),
+				getReportLogger(), LoginPage.class);
+		objLoginPage.LogOFF(objLoginPageObjects);
+	}
+
+	@BeforeTest
+	public void InitiateExtentReport() throws Exception {
+		report = new ExtentReports(System.getProperty("user.dir") + "\\Reports\\TaskSetup.html");
+	}
+
+	@AfterTest
+	public void CloseExtentReport() throws Exception {
+		report.endTest(extentTest);
+		report.flush();
+	}
+
+	@BeforeMethod
+	public void setUpItemPrice(Method m, ITestContext testcontext) throws IOException {
+/*
+		initializeTestcontext();
+		System.out.println("test1 - beforemethod");
+		log.info("Loading Testdata for the test case: " + m.getName().toString());
+		data.getTCNameFromChildren(m.getName().toString().trim());
+		testcontext.setAttribute("WebDriver", getDriver());
+		testcontext.setAttribute("Customreports", this.customreport);
+		customreport.startTest(m.getName().toString());
+		initializeTestStatus();
+		reportPath = new File(getContext().getStringProperty("reportPath"));
+		moduledesc = m.getName().toString().trim();
+		dtmoduledesc = m.getAnnotation(Test.class).description();
+		testcasesttime = new Date();
+		objCommonFunctions = PageFactory.initElements(this.getDriver(), CommonFunctions.class);
+		objLoginPage = PageFactory.initElements(this.getDriver(), LoginPage.class);
+		objLoginPageObjects = PageFactory.initElements(this.getDriver(), LoginPageObjects.class);
+		objTaskSetupObjects = PageFactory.initElements(this.getDriver(), TaskSetupObjects.class);
+		objTaskSetupPage = PageFactory.initElements(this.getDriver(),TaskSetupPage.class);
+		ScreenShotUtil = PageFactory.initElements(this.getDriver(), ExtentReportsScreenshotCode.class);
+		System.out.println(System.getProperty("user.dir"));
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("MMddyyyy_hmmss");
+		String formattedDate = sdf.format(date);
+		System.out.println(formattedDate); // 12/01/2011 4:48:16 PM
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		String formattedDate1 = dateFormat.format(date);
+		System.out.println(formattedDate1); // 12/01/2011 4:48:16 PM
+		String dat = formattedDate1;
+		Report_Header("testcase", reportPath, moduledesc, dat);
+		*/
+		System.out.println("test1 - beforemethod");
+		mName = m.getName().toString().trim();
+		System.out.println(m.getName().toString().trim());
+		if (!methodList.contains(m.getName().toString().trim())) {
+			methodList.add(m.getName().toString().trim());
+			//extentTest = report.startTest(m.getName().toString().trim());
+		}
+		System.out.println(methodList.size());
+		//initializeTestcontext();
+		System.out.println("test1 - beforemethod");
+		log.info("Loading Testdata for the test case: " + m.getName().toString());
+		data.getTCNameFromChildren(m.getName().toString().trim());
+		testcontext.setAttribute("WebDriver", getDriver());
+		testcontext.setAttribute("Customreports", this.customreport);
+		customreport.startTest(m.getName().toString());
+		initializeTestStatus();
+		reportPath = new File(getContext().getStringProperty("reportPath"));
+		moduledesc = m.getName().toString().trim();
+		dtmoduledesc = m.getAnnotation(Test.class).description();
+		testcasesttime = new Date();
+		objCommonFunctions = PageFactory.initElements(this.getDriver(), CommonFunctions.class);
+		objLoginPage = PageFactory.initElements(this.getDriver(), LoginPage.class);
+		objLoginPageObjects = PageFactory.initElements(this.getDriver(), LoginPageObjects.class);
+		ScreenShotUtil = PageFactory.initElements(this.getDriver(), ExtentReportsScreenshotCode.class);
+		objTaskSetupObjects = PageFactory.initElements(this.getDriver(), TaskSetupObjects.class);
+		objTaskSetupPage = PageFactory.initElements(this.getDriver(),TaskSetupPage.class);
+		BaseObj = PageFactory.initElements(this.getDriver(), BasePage.class);
+		System.out.println(System.getProperty("user.dir"));
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("MMddyyyy_hmmss");
+		String formattedDate = sdf.format(date);
+		System.out.println(formattedDate); // 12/01/2011 4:48:16 PM
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		String formattedDate1 = dateFormat.format(date);
+		System.out.println(formattedDate1); // 12/01/2011 4:48:16 PM
+		String dat = formattedDate1;
+		Report_Header("testcase", reportPath, moduledesc, dat);
+
+
+	}
+
+	@BeforeClass
+	public void loadXMLFile() {
+	/*	//try {
+		initializeTestcontext();
+		//sql.CLRConnectSITDB(context);
+		System.out.println("test1 - Beforeclass");
+		data = new XMLDataReader(log);
+		customreport = new CustomExtentReports();
+		createDriver(getContext().getStringProperty("SMSUrl"), getContext().getStringProperty("browser"), cName,
+				mName, extentTest, driver1);		log.info("Loading data for the class: ");
+		data.loadTestDataXML(System.getProperty("user.dir") + "\\TestData\\SMSApplication\\SMStoCLRDBValOthers.xml");
+		customreport.createExtentReport();
+		//} catch (SQLException e) {
+		//e.printStackTrace();
+		//}
+		 * 
+		 */
+		try {
+			cName = this.getClass().getSimpleName();
+			reportPath = new File(getContext().getStringProperty("reportPath"));
+			report = new ExtentReports(
+					getContext().getStringProperty("reportPath") + "\\" + this.getClass().getSimpleName() + ".html");
+			classList.add(this.getClass().getSimpleName());
+			initializeTestcontext();
+			sql.SMSConnectSITDB(context);
+				
+			System.out.println("test1 - Beforeclass");
+			data = new XMLDataReader(log);
+			customreport = new CustomExtentReports();
+		createDriver(getContext().getStringProperty("SMSUrl"), getContext().getStringProperty("browser"), cName,
+					mName, extentTest, driver1);
+			log.info("Loading data for the class: ");
+			data.loadTestDataXML(System.getProperty("user.dir") + "\\TestData\\SMSApplication\\SMSUItoDBTasksetup.xml");
+			customreport.createExtentReport();
+			
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}		
+	}
+

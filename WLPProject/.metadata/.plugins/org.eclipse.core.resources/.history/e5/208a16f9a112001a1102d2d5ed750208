@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+<TCName name = "SMSDBComparison" >
+	<SMSDBValues>
+	<![CDATA[select distinct DIVISION,TRD_DEPT,PROFILE_NAME from LBR_STD_PRFL 
+where PROFILE_NAME IN('Profilename')and CRE_TMSTMP>SYSDATE-5 ]]>
+	</SMSDBValues>
+
+</TCName>
+
+<TCName name = "SMSDBComparison" >
+	<ADD_Details>
+	<![CDATA[select distinct DIVISION,TRD_DEPT,PROFILE_NAME from LBR_STD_PRFL 
+where PROFILE_NAME IN('Profilename')and CRE_TMSTMP>SYSDATE-5 ]]>
+	</ADD_Details>
+</TCName>
+
+<TCName name = "SMSDBComparison" >
+	<Edit_Details>
+	<![CDATA[select distinct DIVISION,TRD_DEPT,PROFILE_NAME from LBR_STD_PRFL 
+where PROFILE_NAME IN('Profilename')and CRE_TMSTMP>SYSDATE-5 ]]>
+	</Edit_Details>
+	
+	<TCName name = "SMSDBComparison" >
+	<Edit_Details>
+	<![CDATA[select distinct DIVISION,TRD_DEPT,PROFILE_NAME from LBR_STD_PRFL 
+where PROFILE_NAME IN('Profilename')and CRE_TMSTMP>SYSDATE-5 ]]>
+	</Edit_Details>
+
+</TCName>
+	
+
+</TCName>
+
+
+
+</configuration>
+

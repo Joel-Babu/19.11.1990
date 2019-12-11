@@ -1,0 +1,260 @@
+#Global data to use throughout the scripts nswsom47 vicsom80
+reportPath=C:\\SMS BAU MOUNIKA\\sms-bau-nov-2019\\SMS_New\\Reports
+#C:\\COM & FME\\SMS_New\\Reports
+#ExtentreportPath=C:\\SMS BAU\\SMS GIT\\sms-bau-nov-2019\\SMS_New\\Reports
+ExtentreportPath=C:\\SMS BAU MOUNIKA\\sms-bau-nov-2019\\SMS_New\\Reports
+#reportPath=C:\\COM & FME\\SMS_New\\Reports
+SMSUrl= http://ncdljbsast0001:8180/fcd-web/faces/SMSLogin.jsp
+#WLPUrl =http://ncdljbsast0002:8480/clr-web/faces/pages/security/login.jsp
+browser=chrome
+isDocketRun=false
+
+# SMS login
+WelcomeName = Welcome to FCD
+SMSUserType= IEUser
+IEUsername = xssrj
+IEUserPwd=Happy@123
+
+#MenuSelection can Be SMS or FCD
+MenuSelection = SMS
+SubSMSMenu0=Admin
+SubSMSMenu1=Combined Distribution
+SubSMSMenu2=Labour Standard Profiles
+SubSMSMenu3=Parameter Maintenance
+SubSMSMenu4= Report
+SubSMSMenu5= SMS Job
+SubSMSMenu6= Standards Department
+SubSMSMenu7= Standards Dept Task
+SubSMSMenu8=Store Attributes Review
+SubSMSMenu9=Survey Question Review
+SubSMSMenu10=Task Group Maintenance
+SubSMSMenu11=Tasks Maintenance
+SubSMSMenu12= Task Setup
+SubSMSMenu13= Activity
+SubSMSMenu14=JTW and Daily Split Profile
+SubSMSMenu15=ADDITIONAL_FIXED_HOURS_TASK
+SubSMSMenu16=Labour Forecast Limit
+SubSMSMenu17=Hours Calculation
+
+
+
+#Labour standard profile
+#divComparison
+Division=3
+DivisionName=Woolworths Supermarkets
+Profilename=02-Grocery
+lsmTradingdeptdropdown=8-BAKERY
+
+#EDIT
+ProfileName=02-Grocery
+
+#parameter maintenance
+type=Formulae
+operation=Add
+parameterdesc=Parameter testing
+Abbreviation=Testingactivities
+
+#Export to kronos
+ExportProfileDropdownName=02-Grocery
+Regiondropdown=1-Region 01
+Areadropdown=110-Group 10
+EffectiveDatedropdown=2018-06-18
+
+#Combined Distribution	
+
+KronosDept=8-Bakery
+Region=1-Region 01
+Area=110-Group 10
+StoreNo=4312-MUNDARING
+Store=4312
+
+EditOption=Right
+ValideDate=Monday
+#store selection
+KALAMUNDA=004307
+
+#task group maintenance
+skipBreak=YES
+
+#Task Maintenance
+KronosDepartment=9-Proprietary Bakery
+Task1=Team Member
+TaskName=TASK
+TaskGroup=Team Member TG
+Description=Add Task
+Task2=TASK
+
+#Task setup
+TradingDepartmentTaskSetup=1-GENERAL MERCHANDISE
+SMSJob=19485-0107. Major Fill
+Type=Fixed
+NightFillJob=500003-EAS Tagging
+
+Activity=78-EAS Tagging
+TaskDescription=TaskSetup
+ProductivityStandard=1.55
+
+
+#Survey questions Review
+Storeno=1416
+Lastdepartmentname=NON TRADE EXCL STOCKROOM
+StndDeptName=MEAT SERVICE
+StndDeptNo=25
+stndDeptOption=new dept JJ
+stdDeptIdno=400505
+StandardDepartment1dropdown=Butcher Shop
+StandardDepartment2dropdown=Deli Service, Seafood
+
+MEAT_SERVICE_SD=Case Ready
+DELI_SERVICE_SD=Deli Packing
+SEAFOOD_SERVICE_SD=Fish
+FRESH_CONVENIENCE_SD=Nightfill, Hand,Well
+PROPRIETRY_SD=Bun
+FRUIT_AND_VEG_SD=Carrot
+BAKEHOUSE_SD=Cakes Pastries
+GENERAL_MERCHANDISE_SD=Value
+GROCERIES_SD=Nightfill Cartons
+CIGARETTES_SD=Cigar
+FRONT_OF_STORE_SD=Front of store std dept
+ONLINE_SD=Gaming
+FRONT_END_SD=Store articles
+NON_TRADE_EXCL_STOCKROOM_SD=New entry
+
+
+MEAT_SERVICE_QN_1=Full Production, Comb Manual W/L
+DELI_SERVICE_QN_1=Deli Hot Chicken Only
+DELI_SERVICE_QN_2=5
+DELI_SERVICE_QN_3=6
+DELI_SERVICE_QN_4=7
+DELI_SERVICE_QN_5=8
+FRESH_CONVENIENCE_QN_1=No
+FRESH_CONVENIENCE_QN_2=No
+PROPRIETRY_QN_1=No
+BAKEHOUSE_QN_1=Resale Bread only,Maxi Bakery
+FRONT_OF_STORE_QN_1=Manual
+ONLINE_QN_1=Express
+FRONT_END_QN_1=15
+FRONT_END_QN_2=20
+FRONT_END_QN_3=Cash on Delivery
+FRONT_END_QN_4=No
+NON_TRADE_EXCL_STOCKROOM_QN_1=Compactor
+NON_TRADE_EXCL_STOCKROOM_QN_2=Other(Pls specify),test
+NON_TRADE_EXCL_STOCKROOM_QN_3=WithinBakery
+
+
+LMSEmployeeId=039354
+#Survey Question review
+#Automation script
+StoreNo_Row=1061
+EmployeeId=1111
+Name=Karthi
+TradingDepartment=25-MEAT SERVICE
+ApprenticeStartDate=30/07/2018
+
+#Alpha Numeric in Employee ID
+EmployeeId_alpha=11aa
+
+
+#store Attributes Review
+
+TradingDepartmentdropdown=2-GROCERY
+CurrentValue=61
+
+#Report
+fiscalyearselection=2017
+FiscalYear=Select 
+from=Week Id: 49 Date From: 29-05-2017 To: 04-06-2017(Active)
+region=1-Region 01
+lmsRegion=1-Region 01
+lmsArea=111-Group 11
+
+region1=2-Region 02
+zone1=201-Zone 01
+lmsRegion1=2-Region 02
+lmsArea1=201-Group 01
+
+#Standard Dept Task
+tradingDepartmentTask=2                                         
+smsJob=19934-0101. AutoStockR Routine
+standardDept=204797-IPLM 81-100
+
+#Standard Department
+divisionheading=3-Woolworths Supermarkets
+lmsTradingDept=25-MEAT SERVICE
+TradingDept=25
+CRE_TMSTMP=18/NOV/19
+LMSDescription=Meat Testing
+active=Y
+#Edit / Delete
+standardDeptid=400528
+
+
+Editpagestandarddepartmentheading=Standard Department
+SelectOption=Select
+
+
+#ADMIN
+UserType1=Store Role
+UserType2=IE User
+UserType3=RPS User
+UserType4=Productivity Analyst
+UserType5=State User
+
+NetworkID=xmnj3
+NetworkID1=xrmna
+NetworkID2=xdkna
+NetworkID3=xmsna
+
+LMSUserType=IE User
+LMSUserType1=RPS User
+LMSUserType2=Productivity Analyst
+LMSUserType3=State User
+LMSUserType4=Store Role
+Regiondrop=3
+
+#WeekID Configuration
+fiscalYear=2018
+
+#SMS Job
+tradingDepartment=10-FRESH CONVENIENCE
+jobTradingDept=10
+variableType=Cartons
+ SMSJobID=10063
+homepageheading=SMS Job
+storepageheading=Store Look-Up
+Lmsstorenumber=004307
+
+
+#Activity 
+ACTIVITY_ID=1
+TradingDepartment_Activity=25-MEAT SERVICE
+SMSJob_Activity=600211-meat serv job
+ActivityDescription=activity for regression automation6
+Edit_ActivityDescription=Activity editing for regression automation7
+
+#JTWandDailySplitProfile
+
+profileType=Exclusive
+ProfileName=JTWProfile
+TradingDepartmentJTW=2-GROCERY
+Day=Monday
+
+StartYear=2017
+EndYear=2017
+StartWeek=Week Id: 15 Date From: 03-10-2016 To: 09-10-2016
+EndWeek=Week Id: 20 Date From: 07-11-2016 To: 13-11-2016
+
+#Additional Fixed Hours Tasks
+tradingDepartmentFixedHoursTask=5-MEAT
+taskDescription=FixedHoursTasks
+availableDepartment=4-DELICATESSEN
+
+#Labour Forecast Limit
+tradingDepartmentForecastLimit=0-Non Trade
+lflProfileName=Labour Profile
+day=Tuesday
+
+
+#Hours Calculation
+weekID=Week Id: 1 Date From: 26-06-2017 To: 02-07-2017
+earnedHours=0.53

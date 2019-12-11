@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+<TCName name = "Add" >
+	<TasksetupDBValues>
+	<![CDATA[SELECT count(*) FROM sms_task where TASK_ID='idno']]>
+	</TasksetupDBValues>
+
+</TCName>
+
+<TCName name = "Edit" >
+	<TasksetupDBValues>
+	<![CDATA[SELECT count(*) FROM sms_task where TASK_ID='idno']]>
+	</TasksetupDBValues>
+</TCName>
+
+<TCName name = "Delete" >
+	<TasksetupDBValues>
+	<![CDATA[SELECT count(*) FROM sms_task where TASK_ID='idno']]>
+	</TasksetupDBValues>
+	</TCName>
+	
+	
+	<TCName name = "SMSDBComparison" >
+	<SMSDBValues>
+	<![CDATA[SELECT count(*) FROM sms_task where TASK_ID='idno' ]]>
+	</SMSDBValues>
+
+</TCName>
+	
+
+
+
+
+
+</configuration>
+

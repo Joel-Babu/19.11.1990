@@ -1,0 +1,489 @@
+package au.wow.main.tests.fcd;
+
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.ITestContext;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import com.relevantcodes.extentreports.ExtentReports;
+
+import au.wow.main.objects.LoginPageObjects;
+import au.wow.main.objects.fcd.EditObjects;
+import au.wow.main.objects.fcd.ParameterMaintenanceObjects;
+import au.wow.main.objects.fcd.ReportsObjects;
+import au.wow.main.objects.fcd.StandardDepartmentObjects;
+import au.wow.main.pages.CommonFunctions;
+import au.wow.main.pages.LoginPage;
+import au.wow.main.pages.fcd.ActivityPage;
+import au.wow.main.pages.fcd.EditPage;
+import au.wow.main.pages.fcd.ParameterMaintenancePage;
+import au.wow.main.pages.fcd.ReportsPage;
+import au.wow.main.pages.fcd.StandardDepartmentPage;
+import au.wow.sms.utils.BasePage;
+import au.wow.sms.utils.CommonRepository;
+import au.wow.sms.utils.CustomExtentReports;
+import au.wow.sms.utils.ExtentReportsScreenshotCode;
+import au.wow.sms.utils.SQLWrapper;
+import au.wow.sms.utils.TestBase;
+import au.wow.sms.utils.TestStatus;
+import au.wow.sms.utils.XMLDataReader;
+
+public class ParameterMaintenance extends TestBase {
+	private static final ReportsObjects ReportsObjects = null;
+	protected Logger log = LogManager.getLogger(TaskMaintenance.class);
+	TestStatus status;
+	ExtentReportsScreenshotCode ScreenShotUtil;
+	SQLWrapper sql = new SQLWrapper(log);
+	CommonFunctions objCommonFunctions;
+	LoginPage objLoginPage;
+	LoginPageObjects objLoginPageObjects;
+	CommonRepository CommonFunc;
+	ParameterMaintenanceObjects objParameterMaintenanceObjects;
+	ParameterMaintenancePage objParameterMaintenancePage;
+	EditPage objEditPage;
+	EditObjects objEditObjects;
+	String MenuSelection, ParameterID;
+	List<List<Object>> UIValues, DBParameterAdd, DBParameterEdit, DBParameterDelete;
+	BasePage BaseObj;
+
+	public ParameterMaintenance() {
+		super.log = log;
+	}
+
+	/**
+	 * LogintoApplication: Logging into SMS Application
+	 * 
+	 * @throws Exception
+	 */
+
+	@Test(description = "Logging into SMS Application", priority = 0)
+	public void LoginApplication() throws Exception {
+		extentTest = report.startTest("Application Login - HomePage verification");
+		objLoginPage = new LoginPage().createPage(getDriver(), getContext(), log, status, data, getReport(),
+				getReportLogger(), LoginPage.class);
+		objLoginPage.enterUserCredentials(getContext().getStringProperty("SMSUserType"));
+		objLoginPage.VerifySignIn(objLoginPageObjects, extentTest, getContext().getStringProperty("WelcomeName"));
+	}
+
+	/**
+	 * search of parameter maintenance
+	 */
+
+	@Test(description = "Search of parameter maintenance with filter criteria", priority = 1)
+	public void MenuSelection() throws Exception {
+		extentTest = report.startTest("Searching the parameter maintenance");
+		objLoginPage = new LoginPage().createPage(getDriver(), getContext(), log, status, data, getReport(),
+				getReportLogger(), LoginPage.class);
+		objCommonFunctions = new CommonFunctions().createPage(getDriver(), getContext(), log, status, data, getReport(),
+				getReportLogger(), CommonFunctions.class);
+		objParameterMaintenancePage = new ParameterMaintenance().createPage(getDriver(), getContext(), log, status,
+				data, getReport(), getReportLogger(), ParameterMaintenancePage.class);
+
+		objCommonFunctions.verifyMenuSelection(objLoginPageObjects, extentTest,
+				getContext().getStringProperty("MenuSelection"), getContext().getStringProperty("SubSMSMenu3"),
+				LoginPageObjects.smsSubMenuCount, LoginPageObjects.smsSubMenu, LoginPageObjects.smsMenuExpand);
+
+		objCommonFunctions.clickButton(LoginPageObjects.explorerMenuFrame, LoginPageObjects.ParameterMaintenance,
+				extentTest, "clicking on Parameter Maintenance");
+
+		objParameterMaintenancePage.Search(objParameterMaintenanceObjects,
+				ParameterMaintenanceObjects.tradingDepartment, getContext().getStringProperty("TradingDepartment"),
+				extentTest);
+		waitFor(3);
+		objCommonFunctions.clickButton(ParameterMaintenanceObjects.frame, ParameterMaintenanceObjects.search,
+				extentTest, "clicking on Search Button ");
+
+	}
+
+	/*
+	 * Adding the parameter maintenance
+	 */
+
+	@Test(description = "Adding the Activity Details", priority = 2)
+	public void ADDDetails() throws Exception {
+		extentTest = report.startTest("Adding the Activity Details");
+		objLoginPage = new LoginPage().createPage(getDriver(), getContext(), log, status, data, getReport(),
+				getReportLogger(), LoginPage.class);
+		objCommonFunctions = new CommonFunctions().createPage(getDriver(), getContext(), log, status, data, getReport(),
+				getReportLogger(), CommonFunctions.class);
+		objParameterMaintenancePage = new ParameterMaintenance().createPage(getDriver(), getContext(), log, status,
+				data, getReport(), getReportLogger(), ParameterMaintenancePage.class);
+
+		// objCommonFunctions.verifyMenuSelection(objLoginPageObjects,
+		// extentTest,getContext().getStringProperty("MenuSelection"),
+		// getContext().getStringProperty("SubSMSMenu13"),
+		// LoginPageObjects.smsSubMenuCount, LoginPageObjects.smsSubMenu,
+		// LoginPageObjects.smsMenuExpand);
+		//
+		// objCommonFunctions.clickButton(LoginPageObjects.explorerMenuFrame,
+		// LoginPageObjects.activity, extentTest, "clicking on Activity Screen");
+		//
+
+		String windows_1 = driver1.getWindowHandle();
+		System.out.println("Window : " + windows_1);
+		objCommonFunctions.clickButton(ParameterMaintenanceObjects.frame, ParameterMaintenanceObjects.Add, extentTest,
+				"Clicking on ADD Button");
+
+		// // Get Parent window handle
+		// String winHandleBefore = driver1.getWindowHandle();
+		// for (String winHandle : driver1.getWindowHandles()) {
+		// // Switch to child window
+		// driver1.switchTo().window(winHandle);
+		// }
+		// // Do some operation on child window and get child window handle.
+		String windows_2 = driver1.getWindowHandle();
+		System.out.println("Window : " + windows_2);
+		driver1.switchTo().window(windows_2);
+
+		objParameterMaintenancePage.Add_ParametermaintenanceDetails(objParameterMaintenanceObjects,
+				ParameterMaintenanceObjects.Selectingdepttogiveparametermaintenance,
+				getContext().getStringProperty("TradingDepartment_Activity"),
+				ParameterMaintenanceObjects.Selectingtypetogiveparametermaintenance,
+				getContext().getStringProperty("type"),
+				ParameterMaintenanceObjects.Selectingoperationtogiveparametermaintenance,
+				getContext().getStringProperty("operation"), extentTest);
+		enterText(ParameterMaintenanceObjects.parameterdesc, getContext().getStringProperty("parameterdesc"));
+		enterText(ParameterMaintenanceObjects.abbrevation, getContext().getStringProperty("Abbreviation"));
+
+		// // get the Session id of the Parent
+		// String parentGUID = driver1.getWindowHandle();
+		// // click the button to open new window
+		objParameterMaintenancePage.search(objParameterMaintenanceObjects, ParameterMaintenanceObjects.Parameter1,
+				extentTest);
+
+		Thread.sleep(5000);
+
+		String windows_3 = driver1.getWindowHandle();
+		System.out.println("Window : " + windows_3);
+		
+		Set<String> multiWindow = driver1.getWindowHandles();
+		System.out.println(multiWindow);
+		
+		driver1.switchTo().window(windows_3);
+
+		// // Get Parent window handle
+		// String winHandleBefore1 = driver1.getWindowHandle();
+		// for (String winHandle : driver1.getWindowHandles()) {
+		// // Switch to child window
+		// driver1.switchTo().window(winHandle);
+		// }
+		// // Do some operation on child window and get child window handle.
+		// String winHandleAfter1 = driver1.getWindowHandle();
+		// System.out.println(winHandleAfter1);
+		// driver1.switchTo().window(winHandleAfter1);
+		// System.out.println(driver1.getTitle());
+		objParameterMaintenancePage.searchlookup(objParameterMaintenanceObjects,
+				ParameterMaintenanceObjects.parameteridstorelookup, getContext().getStringProperty("parameteridvalue"),
+				ParameterMaintenanceObjects.searchid, ParameterMaintenanceObjects.selectingtheparameter, extentTest);
+		// objCommonFunctions.clickButton(ParameterMaintenanceObjects.frame,ParameterMaintenanceObjects.closestorelookup,extentTest,"Clicking
+		// on ADD Button");
+
+		// to switch to parent window.
+		// driver1.switchTo().window(winHandleBefore1);
+
+		waitFor(3);
+		// // iterate the values in the set
+		// for (String guid : allGUID) { // one enter into if blobk if the GUID is not
+		// equal to parent window's GUID
+		// if (!guid.equals(parentGUID)) {
+		// // switch to the guid
+		// driver1.switchTo().window(guid);
+		// // break the loop
+		// break;
+		// }
+		// }
+
+		for (String winHandle : driver1.getWindowHandles()) {
+			// // Switch to child window
+			if (winHandle.equals(windows_2))
+				driver1.switchTo().window(winHandle);
+		}
+
+		objParameterMaintenancePage.search(objParameterMaintenanceObjects, ParameterMaintenanceObjects.Parameter2,
+				extentTest);
+		
+		
+		
+		
+		
+		// Get Parent window handle
+		String winHandleBefore2 = driver1.getWindowHandle();
+		for (String winHandle : driver1.getWindowHandles()) {
+			// Switch to child window
+			driver1.switchTo().window(winHandle);
+		}
+		// Do some operation on child window and get child window handle.
+		String winHandleAfter2 = driver1.getWindowHandle();
+
+		objParameterMaintenancePage.searchlookup(objParameterMaintenanceObjects,
+				ParameterMaintenanceObjects.parameteridstorelookup, getContext().getStringProperty("parameteridvalue"),
+				ParameterMaintenanceObjects.search, ParameterMaintenanceObjects.selectingtheparameter, extentTest);
+		// objCommonFunctions.clickButton(ParameterMaintenanceObjects.frame,ParameterMaintenanceObjects.closestorelookup,extentTest,"Clicking
+		// on ADD Button");
+
+		// to switch to parent window.
+	//	driver1.switchTo().window(parentGUID);
+
+		waitFor(3);
+
+		objCommonFunctions.clickButtonWithoutFrame(ParameterMaintenanceObjects.savebutton, extentTest,
+				"Clicking on SAVE Button");
+		ParameterID = getValueAttribute(ParameterMaintenanceObjects.fetchingparameterid);
+		System.out.println(ParameterID);
+		objCommonFunctions.clickButtonWithoutFrame(ParameterMaintenanceObjects.closebutton, extentTest,
+				"closing LMS page");
+
+		// to switch to parent window.
+		// driver1.switchTo().window(winHandleBefore1);
+
+		// verifying the data in DB
+		String ParameterDBValues = data.getText("ParameterDBValues");
+		DBParameterAdd = sql.SMSexecuteQuery(getContext(), ParameterDBValues.replace("idno", ParameterID));
+		System.out.println("DB Values: " + DBParameterAdd);
+
+		if (Integer.parseInt(DBParameterAdd.get(0).get(0).toString()) == 1) {
+
+			Report_AddStep("testcase",
+					"The Activity UI data is matching with DB for created Activity:  " + ParameterID + "", "", "",
+					"Pass");
+			htmlToExtent(cName, mName, extentTest, driver1,
+					"Activity UI & DB data are matching for created Activity: " + ParameterID + ";;;Pass");
+		}
+
+		else {
+			Report_AddStep("testcase",
+					"The Activity UI data is not matching with DB for created Activity:  " + ParameterID + "", "", "",
+					"Fail");
+			htmlToExtent(cName, mName, extentTest, driver1,
+					"Activity UI & DB data are not matching for created Activity: " + ParameterID + ";;;Fail");
+		}
+
+	}
+
+	/*
+	 * Editing the parameter maintainance
+	 */
+
+	@Test(description = "Editing the Parameter Maintenance", priority = 3)
+	public void EditOption() throws Exception {
+		extentTest = report.startTest("Editing the Parameter Maintenance");
+		objLoginPage = new LoginPage().createPage(getDriver(), getContext(), log, status, data, getReport(),
+				getReportLogger(), LoginPage.class);
+		objCommonFunctions = new CommonFunctions().createPage(getDriver(), getContext(), log, status, data, getReport(),
+				getReportLogger(), CommonFunctions.class);
+		objParameterMaintenancePage = new ParameterMaintenance().createPage(getDriver(), getContext(), log, status,
+				data, getReport(), getReportLogger(), ParameterMaintenancePage.class);
+
+		// objCommonFunctions.clickButton(ParameterMaintenanceObjects.frame,
+		// ParameterMaintenanceObjects.editparameteridtextbox,extentTest, "clicking on
+		// parameter textbox ");
+
+		objCommonFunctions.clickButtonWithoutFrame(ParameterMaintenanceObjects.editparameteridtextbox, extentTest,
+				"clicking on parameter textbox ");
+		// objCommonFunctions.clickButton(ActivityObjects.frame,ActivityObjects.Activityidtextbox,extentTest,"Clicking
+		// on Activity Description ");
+		enterText(ParameterMaintenanceObjects.parameteridtextbox, ParameterID);
+		objCommonFunctions.clickButton(ParameterMaintenanceObjects.frame, ParameterMaintenanceObjects.search,
+				extentTest, "Clicking on Search Button");
+		// objCommonFunctions.clickButton(ParameterMaintenanceObjects.frame,ParameterMaintenanceObjects.edit,extentTest,"Clicking
+		// on Edit Button");
+
+		objCommonFunctions.clickButton(ParameterMaintenanceObjects.frame, ParameterMaintenanceObjects.edit, extentTest,
+				"clicking on EDIT Button ");
+		// Get Parent window handle
+		String winHandleBefore = driver1.getWindowHandle();
+
+		for (String winHandle : driver1.getWindowHandles()) {
+			// Switch to child window
+			driver1.switchTo().window(winHandle);
+		}
+		waitFor(3);
+		objCommonFunctions.clickButtonWithoutFrame(ParameterMaintenanceObjects.storeUserEdit, extentTest,
+				"clicking on Store/state User option");
+		waitFor(3);
+		objCommonFunctions.clickButtonWithoutFrame(ParameterMaintenanceObjects.save, extentTest,
+				"clicking on Save Button");
+		waitFor(3);
+		objCommonFunctions.clickButtonWithoutFrame(ParameterMaintenanceObjects.close, extentTest,
+				"clicking on CLOSE button");
+
+		driver1.switchTo().window(winHandleBefore);
+
+		// verifying the data in DB
+		String ParameterDBValues = data.getText("ParameterDBValues");
+		DBParameterEdit = sql.SMSexecuteQuery(getContext(), ParameterDBValues.replace("idno", ParameterID));
+		System.out.println("DB Values: " + DBParameterEdit);
+
+		if (Integer.parseInt(DBParameterEdit.get(0).get(0).toString()) == 1) {
+
+			Report_AddStep("testcase",
+					"The Activity UI data is matching with DB for created Activity:  " + ParameterID + "", "", "",
+					"Pass");
+			htmlToExtent(cName, mName, extentTest, driver1,
+					"Activity UI & DB data are matching for created Activity: " + ParameterID + ";;;Pass");
+		}
+
+		else {
+			Report_AddStep("testcase",
+					"The Activity UI data is not matching with DB for created Activity:  " + ParameterID + "", "", "",
+					"Fail");
+			htmlToExtent(cName, mName, extentTest, driver1,
+					"Activity UI & DB data are not matching for created Activity: " + ParameterID + ";;;Fail");
+		}
+	}
+
+	// Delete the Activity Details
+
+	@Test(description = "Deleting the Activity Details", priority = 4)
+	public void Delete() throws Exception {
+		extentTest = report.startTest("Deleting the Activity Details");
+		objLoginPage = new LoginPage().createPage(getDriver(), getContext(), log, status, data, getReport(),
+				getReportLogger(), LoginPage.class);
+		objCommonFunctions = new CommonFunctions().createPage(getDriver(), getContext(), log, status, data, getReport(),
+				getReportLogger(), CommonFunctions.class);
+		objParameterMaintenancePage = new ParameterMaintenance().createPage(getDriver(), getContext(), log, status,
+				data, getReport(), getReportLogger(), ParameterMaintenancePage.class);
+
+		objCommonFunctions.clickButton(ParameterMaintenanceObjects.frame, ParameterMaintenanceObjects.deleteoption,
+				extentTest, "Clicking on Delete Option Button");
+		// waitFor(3);
+		objCommonFunctions.clickButton(ParameterMaintenanceObjects.frame, ParameterMaintenanceObjects.deletebutton,
+				extentTest, "Clicking on Delete Button");
+		Alert alert = driver1.switchTo().alert();
+		alert.accept();
+
+		// verifying the data in DB
+		String SMSDBValues = data.getText("SMSDBValues");
+		DBParameterDelete = sql.SMSexecuteQuery(getContext(), SMSDBValues.replace("idno", ParameterID));
+		System.out.println("DB Values: " + DBParameterDelete);
+
+		if (Integer.parseInt(DBParameterDelete.get(0).get(0).toString()) == 0) {
+
+			Report_AddStep("testcase",
+					"The Activity screen UI data is matching with DB after deleting the Activity:  " + ParameterID + "",
+					"", "", "Pass");
+			htmlToExtent(cName, mName, extentTest, driver1,
+					"Activity screen UI & DB data are matching after deleting the Activity: " + ParameterID
+							+ ";;;Pass");
+		}
+
+		else {
+			Report_AddStep("testcase",
+					"The Activity screen UI data is not matching with DB after deleting the Activity:  " + ParameterID
+							+ "",
+					"", "", "Fail");
+			htmlToExtent(cName, mName, extentTest, driver1,
+					"Activity screen UI & DB data are not matching after deleting the Activity: " + ParameterID
+							+ ";;;Fail");
+		}
+
+	}
+
+	// Logging of the Application
+
+	@Test(priority = 5)
+	public void LogoutApplication() throws Exception {
+		objLoginPage = new LoginPage().createPage(getDriver(), getContext(), log, status, data, getReport(),
+				getReportLogger(), LoginPage.class);
+		objLoginPage.LogOFF(objLoginPageObjects);
+	}
+
+	@BeforeTest
+	public void InitiateExtentReport() throws Exception {
+		report = new ExtentReports(System.getProperty("user.dir") + "\\Reports\\ParameterMaintenance.html");
+	}
+
+	@AfterTest
+	public void CloseExtentReport() throws Exception {
+		report.endTest(extentTest);
+		report.flush();
+	}
+
+	@BeforeMethod
+	public void setUpItemPrice(Method m, ITestContext testcontext) throws IOException {
+
+		System.out.println("test1 - beforemethod");
+		mName = m.getName().toString().trim();
+		System.out.println(m.getName().toString().trim());
+		if (!methodList.contains(m.getName().toString().trim())) {
+			methodList.add(m.getName().toString().trim());
+			// extentTest = report.startTest(m.getName().toString().trim());
+		}
+		System.out.println(methodList.size());
+		// initializeTestcontext();
+		System.out.println("test1 - beforemethod");
+		log.info("Loading Testdata for the test case: " + m.getName().toString());
+		data.getTCNameFromChildren(m.getName().toString().trim());
+		testcontext.setAttribute("WebDriver", getDriver());
+		testcontext.setAttribute("Customreports", this.customreport);
+		customreport.startTest(m.getName().toString());
+		initializeTestStatus();
+		reportPath = new File(getContext().getStringProperty("reportPath"));
+		moduledesc = m.getName().toString().trim();
+		dtmoduledesc = m.getAnnotation(Test.class).description();
+		testcasesttime = new Date();
+		objCommonFunctions = PageFactory.initElements(this.getDriver(), CommonFunctions.class);
+		objLoginPage = PageFactory.initElements(this.getDriver(), LoginPage.class);
+		objLoginPageObjects = PageFactory.initElements(this.getDriver(), LoginPageObjects.class);
+		objParameterMaintenanceObjects = PageFactory.initElements(this.getDriver(), ParameterMaintenanceObjects.class);
+		objParameterMaintenancePage = PageFactory.initElements(this.getDriver(), ParameterMaintenancePage.class);
+		ScreenShotUtil = PageFactory.initElements(this.getDriver(), ExtentReportsScreenshotCode.class);
+		BaseObj = PageFactory.initElements(this.getDriver(), BasePage.class);
+		System.out.println(System.getProperty("user.dir"));
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("MMddyyyy_hmmss");
+		String formattedDate = sdf.format(date);
+		System.out.println(formattedDate); // 12/01/2011 4:48:16 PM
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		String formattedDate1 = dateFormat.format(date);
+		System.out.println(formattedDate1); // 12/01/2011 4:48:16 PM
+		String dat = formattedDate1;
+		Report_Header("testcase", reportPath, moduledesc, dat);
+
+	}
+
+	@BeforeClass
+	public void loadXMLFile() {
+
+		try {
+			cName = this.getClass().getSimpleName();
+			reportPath = new File(getContext().getStringProperty("reportPath"));
+			report = new ExtentReports(
+					getContext().getStringProperty("reportPath") + "\\" + this.getClass().getSimpleName() + ".html");
+			classList.add(this.getClass().getSimpleName());
+			initializeTestcontext();
+			sql.SMSConnectSITDB(context);
+
+			System.out.println("test1 - Beforeclass");
+			data = new XMLDataReader(log);
+			customreport = new CustomExtentReports();
+			createDriver(getContext().getStringProperty("SMSUrl"), getContext().getStringProperty("browser"), cName,
+					mName, extentTest, driver1);
+			log.info("Loading data for the class: ");
+			data.loadTestDataXML(
+					System.getProperty("user.dir") + "\\TestData\\SMSApplication\\SMSUItoDBParameterMaintainance.xml");
+			customreport.createExtentReport();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+}

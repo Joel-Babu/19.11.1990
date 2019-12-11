@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+<TCName name = "SMSDBComparison" >
+	<SMSDBValues>
+	<![CDATA[select distinct DIVISION,TRD_DEPT,PROFILE_NAME from LBR_STD_PRFL 
+where PROFILE_NAME IN('Profilename')and CRE_TMSTMP>SYSDATE-5 ]]>
+	</SMSDBValues>
+
+</TCName>
+<TCName name = "AddTask" >
+	<StandardDeptAdd>
+	<![CDATA[select count (*) from stds_dept where stor_trd_dept_no='deptno' and trunc(UPD_DTE_TM)='date' and stds_dept_id='idno' and stds_dept_desc='descp']]>
+	</StandardDeptAdd>	
+</TCName>
+
+
+<TCName name = "EditTask" >
+	<StandardDeptEdit>
+	<![CDATA[select count (*) from stds_dept where stor_trd_dept_no='deptno' and trunc(UPD_DTE_TM)='date' and stds_dept_id='idno' and stds_dept_desc='descp']]>
+	</StandardDeptEdit>	
+</TCName>
+
+
+<TCName name = "DeleteTask" >
+	<StandardDeptDelete>
+	<![CDATA[select count (*) from stds_dept where stor_trd_dept_no='deptno' and stds_dept_id='idno' and stds_dept_desc='descp']]>
+	</StandardDeptDelete>	
+</TCName>
+
+
+<TCName name = "Edit_Global" >
+	<SMSJobEdit>
+	<![CDATA[select count (*) from sms_job where SMS_JOB_ID='idno' and STOR_TRD_DEPT_NO='deptno']]>
+	</SMSJobEdit>	
+</TCName>
+
+<TCName name = "Edit_StoreSpecific" >
+	<SMSJobEditstorespecific>
+	<![CDATA[select count (*) from sms_job where SMS_JOB_ID='idno' and STOR_TRD_DEPT_NO='deptno']]>
+	</SMSJobEditstorespecific>	
+</TCName>
+
+<TCName name = "Remove_Global" >
+	<SMSJobremoveglobal>
+	<![CDATA[select count (*) from sms_job where SMS_JOB_ID='idno' and STOR_TRD_DEPT_NO='deptno']]>
+	</SMSJobremoveglobal>	
+</TCName>
+<TCName name = "Remove_StoreSpecific" >
+	<SMSJobremovestorespecific>
+	<![CDATA[select count (*) from sms_job where SMS_JOB_ID='idno' and STOR_TRD_DEPT_NO='deptno']]>
+	</SMSJobremovestorespecific>	
+</TCName>
+
+<TCName name = "validationofdepts" >
+	<SMSSurveyDepts>
+	<![CDATA[select dept.STOR_TRD_DEPT from
+(select * from stor_trd_dept where div_no=3 and low_lvl_dept_fl is NOT NULL ORDER BY low_lvl_dept_fl ) dept
+INNER JOIN
+(select distinct b.STOR_TRD_DEPT_NO from stor_stds_dept a, stds_dept b 
+where a.STDS_DEPT_ID = b.STDS_DEPT_ID ) stddept
+ON dept.STOR_TRD_DEPT_NO=stddept.stor_trd_dept_no 
+order by low_lvl_dept_fl]]>
+	</SMSSurveyDepts>	
+</TCName>
+
+<TCName name = "validationofquestions" >
+	<SMSSurveyDeptQuestions>
+	<![CDATA[select dept.STOR_TRD_DEPT, 
+case when quest.QSTN_DESC is NOT NULL then quest.QSTN_DESC 
+when quest.QSTN_DESC is NULL then 'NULL' end as QSTN_DESC from
+(select * from stor_trd_dept where div_no=3 and low_lvl_dept_fl is NOT NULL ORDER BY low_lvl_dept_fl  ) dept
+LEFT OUTER JOIN
+(select * from  SRVY_QSTN where QSTN_DESC is NOT NULL order by STOR_TRD_DEPT_NO, QSTN_ID) quest
+ON dept.STOR_TRD_DEPT_NO=quest.stor_trd_dept_no 
+order by dept.low_lvl_dept_fl,quest.STOR_TRD_DEPT_NO,quest.QSTN_ID]]>
+	</SMSSurveyDeptQuestions>	
+</TCName>
+
+<TCName name = "validationofanswers" >
+	<SMSSurveyDeptAnswers>
+	<![CDATA[select B.QSTN_DESC,A.CHC_DESC from SRVY_QSTN_CHC A,SRVY_QSTN B, STOR_TRD_DEPT C where A.QSTN_ID=b.QSTN_ID AND B.STOR_TRD_DEPT_NO=C.STOR_TRD_DEPT_NO 
+AND B.QSTN_DESC IS NOT NULL --AND B.ANS_TYPE_CD not in (6)
+and B.STOR_TRD_DEPT_NO in (0,5,10,15,25,27,28,30,40,45,47,55,85,90)and a.chc_id not in 1000000000
+ORDER BY C.LOW_LVL_DEPT_FL,A.QSTN_ID,A.CHC_ID]]>
+	</SMSSurveyDeptAnswers>	
+</TCName>
+
+<TCName name = "validationofstandarddepartmentslist" >
+	<SMSStndDeptOptions>
+	<![CDATA[select dept.stor_trd_dept,std_dept.stds_dept_desc from
+(select stor_trd_dept_no,stor_trd_dept,low_lvl_dept_fl from stor_trd_dept where div_no='3'
+and stor_trd_dept_no in (0,5,10,15,25,27,28,30,40,45,47,55,85,90) order by low_lvl_dept_fl) dept
+LEFT JOIN
+(select b.stor_trd_dept_no,b.stds_dept_desc,b.stds_dept_id from stds_dept b where b.div_no='3' and b.status='Y'
+and b.stor_trd_dept_no in (0,5,10,15,25,27,28,30,40,45,47,55,85,90)
+group by b.stor_trd_dept_no,b.stds_dept_desc,b.stds_dept_id) std_dept
+on dept.stor_trd_dept_no=std_dept.stor_trd_dept_no
+order by dept.low_lvl_dept_fl, std_dept.stds_dept_id]]>
+	</SMSStndDeptOptions>	
+</TCName>
+
+
+<TCName name = "validationofAnswersSaved" >
+	<SMSStndDeptSelect>
+	<![CDATA[select dept.stor_trd_dept as DEPT,NVL(std_dept.stds_dept_desc,'Select') as STD_DEPT from 
+(select stor_trd_dept_no,stor_trd_dept,low_lvl_dept_fl from stor_trd_dept where div_no='3' 
+and stor_trd_dept_no in (0,5,10,15,25,27,28,30,40,45,47,55,85,90) order by low_lvl_dept_fl) dept
+LEFT JOIN
+(select a.stor_loc_no,a.stds_dept_id,a.upd_dte_tm,b.stor_trd_dept_no,b.stds_dept_desc from stor_stds_dept a, stds_dept b 
+where a.stor_loc_no='Store' and a.stds_dept_id=b.stds_dept_id and b.div_no='3' and 
+b.status='Y' and b.stor_trd_dept_no in (0,5,10,15,25,27,28,30,40,45,47,55,85,90)
+and (b.stor_trd_dept_no,a.upd_dte_tm) in (select b.stor_trd_dept_no,max(a.upd_dte_tm) from stor_stds_dept a, stds_dept b 
+where a.stor_loc_no='Store' and a.stds_dept_id=b.stds_dept_id and b.div_no='3' and 
+b.status='Y' and b.stor_trd_dept_no in (0,5,10,15,25,27,28,30,40,45,47,55,85,90)
+group by b.stor_trd_dept_no)) std_dept
+on dept.stor_trd_dept_no=std_dept.stor_trd_dept_no
+order by dept.low_lvl_dept_fl]]>
+	</SMSStndDeptSelect>	
+	
+	<SMSAnswersOptions>
+	<![CDATA[select ques.qstn_desc as QUES,
+CASE WHEN ques.ANS_TYPE_CD=4 THEN ans.chc_val
+WHEN ques.ANS_TYPE_CD=6 THEN ans.chc_desc||' + '||ans.chc_val
+ELSE ans.chc_desc END AS ANS from
+(select ques.QSTN_ID,ques.QSTN_DESC,ques.ANS_TYPE_CD,ques.LOW_LVL_DEPT_FL from
+(select ques.QSTN_ID,ques.QSTN_DESC,ques.ANS_TYPE_CD,dept.LOW_LVL_DEPT_FL from
+(select * from stor_trd_dept where div_no='3' and stor_trd_dept_no in (0,5,10,15,25,27,28,30,40,45,47,55,85,90) and low_lvl_dept_fl is NOT NULL ORDER BY low_lvl_dept_fl) dept
+LEFT OUTER JOIN
+(select * from  SRVY_QSTN where stor_trd_dept_no in (0,5,10,15,25,27,28,30,40,45,47,55,85,90) AND QSTN_DESC is NOT NULL order by STOR_TRD_DEPT_NO,QSTN_ID) ques
+ON dept.STOR_TRD_DEPT_NO=ques.stor_trd_dept_no order by dept.low_lvl_dept_fl,ques.STOR_TRD_DEPT_NO,ques.QSTN_ID) ques where ques.qstn_id is not null) ques
+LEFT OUTER JOIN
+(select distinct a.qstn_id,a.chc_val,a.oth_desc,b.chc_desc,b.chc_id from STOR_RESP_TO_SRVY a, SRVY_QSTN_CHC b
+where a.stor_loc_no='Store' and a.qstn_id=b.qstn_id and a.chc_id=b.chc_id order by a.qstn_id,b.chc_id) ans
+ON ques.qstn_id=ans.qstn_id order by ques.low_lvl_dept_fl,ques.qstn_id,ans.chc_id]]>
+	</SMSAnswersOptions>	
+</TCName>
+
+</configuration>
+

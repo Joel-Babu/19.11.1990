@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+<TCName name = "ADD_Details" >
+	<SMSDBValues>
+	<![CDATA[SELECT count(*) FROM SMS_ACTV where ACTV_ID ='idno']]>
+	</SMSDBValues>
+
+</TCName>
+
+<TCName name = "Edit_Details" >
+	<SMSDBValues>
+	<![CDATA[SELECT count(*)  FROM SMS_ACTV where ACTV_ID ='idno']]>
+	</SMSDBValues>
+</TCName>
+
+<TCName name = "Delete" >
+	<SMSDBValues>
+	<![CDATA[SELECT count(*) FROM SMS_ACTV where ACTV_ID ='idno']]>
+	</SMSDBValues>
+	
+	<TCName name = "SMSDBComparison" >
+	<SMSDBValues>
+	<![CDATA[select distinct DIVISION,TRD_DEPT,PROFILE_NAME from LBR_STD_PRFL 
+where PROFILE_NAME IN('Profilename')and CRE_TMSTMP>SYSDATE-5 ]]>
+	</SMSDBValues>
+
+</TCName>
+	
+
+</TCName>
+
+
+
+</configuration>
+

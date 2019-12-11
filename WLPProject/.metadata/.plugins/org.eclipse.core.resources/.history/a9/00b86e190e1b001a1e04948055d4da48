@@ -1,0 +1,208 @@
+package au.wow.main.pages.fcd;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.relevantcodes.extentreports.ExtentTest;
+
+import au.wow.main.objects.LoginPageObjects;
+import au.wow.main.objects.fcd.LabourStandardProfilesObjects;
+import au.wow.main.objects.fcd.ParameterMaintenanceObjects;
+import au.wow.main.objects.fcd.TaskGroupMaintenanceObjects;
+import au.wow.main.objects.fcd.TaskSetupObjects;
+import au.wow.main.pages.CommonFunctions;
+import au.wow.main.pages.LoginPage;
+import au.wow.sms.utils.BasePage;
+import au.wow.sms.utils.ExtentReportsScreenshotCode;
+import au.wow.sms.utils.SQLWrapper;
+
+public class TaskSetupPage extends BasePage {
+	CommonFunctions common = PageFactory.initElements(this.getDriver(), CommonFunctions.class);
+	public Logger log = LogManager.getLogger(LoginPage.class);
+	SQLWrapper sql = new SQLWrapper(log);
+	LoginPageObjects loginPageObjects;
+	static ExtentReportsScreenshotCode ScreenShotUtil;
+	static WebDriverWait wait;
+	String image;
+
+	public TaskSetupPage() {
+		// TODO Auto-generated constructor stub
+		super();
+	}
+
+
+	/**
+	 * Search option in Task Setup
+	 * 
+	 */
+
+	public void search(TaskSetupObjects TaskSetupObjects,WebElement TradingDepartment,String TradingDepartmentdropdown,
+			WebElement SMSJob,String SMSJobdropdown,WebElement Type,String Typedropdown,WebElement Button,ExtentTest extentTest) throws Exception {
+
+		SwitchFrame(TaskSetupObjects.frame);
+		try 
+		{
+			selectByVisibleText(TaskSetupObjects.TradingDepartment,TradingDepartmentdropdown);
+			waitFor(3);
+			selectByVisibleText(TaskSetupObjects.SMSJob,SMSJobdropdown);
+			waitFor(3);
+			selectByVisibleText(TaskSetupObjects.Type,Typedropdown);
+			waitFor(3);
+			click(Button);
+		}
+		
+		catch (Exception e) 
+		{
+			image = TakeScreenshot(extentTest, "UIResult");
+			System.out.println("Exception occured while Fetching Data");
+			e.printStackTrace();
+		}
+		}
+		
+		public void LMSEdit(TaskSetupObjects TaskSetupObjects,WebElement NightFillJob,String NightFillJobdropdown,ExtentTest extentTest) throws Exception {
+
+			//SwitchFrame(TaskSetupObjects.frame);
+			try 
+			{
+				selectByVisibleText(TaskSetupObjects.NightFillJob,NightFillJobdropdown);
+
+			}
+			
+			catch (Exception e) 
+			{
+				image = TakeScreenshot(extentTest, "UIResult");
+				System.out.println("Exception occured while Fetching Data");
+				e.printStackTrace();
+			}
+	}
+	
+		/**
+		 * ADD option in Task Setup
+		 * 
+		 */
+		
+		public void AddOption(TaskSetupObjects TaskSetupObjects,WebElement AddButton,ExtentTest extentTest) throws Exception {
+
+			SwitchFrame(TaskSetupObjects.frame);
+			try 
+			{
+				click(AddButton);
+			}
+			
+			catch (Exception e) 
+			{
+				image = TakeScreenshot(extentTest, "UIResult");
+				System.out.println("Exception occured while Fetching Data");
+				e.printStackTrace();
+			}
+			}
+		
+		
+		public void LMSAddOption(TaskSetupObjects TaskSetupObjects,WebElement LMSTradingdept,String LMSTradingdeptdropdown,
+				WebElement LMSSMSJob,String LMSSMSJobdropdown,WebElement Activity,String Activitydropdown,WebElement LMSType,String LMSTypedropdown,WebElement Formulae,ExtentTest extentTest) throws Exception {
+
+			//SwitchFrame(TaskSetupObjects.frame);
+			try 
+			{
+				selectByVisibleText(TaskSetupObjects.LMSTradingdept,LMSTradingdeptdropdown);
+				//waitFor(3);
+				selectByVisibleText(TaskSetupObjects.LMSSMSJob,LMSSMSJobdropdown);
+				//waitFor(3);
+				selectByVisibleText(TaskSetupObjects.Activity,Activitydropdown);
+				//waitFor(3);
+				selectByVisibleText(TaskSetupObjects.LMSType,LMSTypedropdown);
+				//waitFor(3);
+				click(Formulae);
+
+			}
+			
+			catch (Exception e) 
+			{
+				image = TakeScreenshot(extentTest, "UIResult");
+				System.out.println("Exception occured while Fetching Data");
+				e.printStackTrace();
+			}
+			}
+		/**
+		 * 
+		 * 
+		 */
+
+		public void search(TaskSetupObjects objTaskSetupObjects, WebElement Button,
+				ExtentTest extentTest) throws Exception {
+
+			//SwitchFrame(objParameterMaintenanceObjects.frame);
+			try {
+
+				// selectByVisibleText(TaskMaintenanceObjects.KronosDepartment,dropdown);
+				waitFor(3);
+				click(Button);
+
+			} catch (Exception e) {
+				image = TakeScreenshot(extentTest, "UIResult");
+				System.out.println("Exception occured while Fetching Data");
+				e.printStackTrace();
+			}
+		}
+		
+		public void LMSFormulae(TaskSetupObjects TaskSetupObjects,WebElement ParameterIdButton,ExtentTest extentTest) throws Exception {
+
+			SwitchFrame(TaskSetupObjects.frame);
+			try 
+			{
+				click(ParameterIdButton);
+				waitFor(3);
+			}
+			
+			catch (Exception e) 
+			{
+				image = TakeScreenshot(extentTest, "UIResult");
+				System.out.println("Exception occured while Fetching Data");
+				e.printStackTrace();
+			}
+			}
+		
+		
+		public void searchlookup(TaskSetupPage objTaskSetupPage, WebElement parameterid,String value,
+				WebElement Searchbutton,WebElement selectingtheparameter, ExtentTest extentTest) throws Exception {
+
+			//SwitchFrame(SurveyQuestionReviewObjects.frame);
+			try {
+
+				// selectByVisibleText(TaskMaintenanceObjects.KronosDepartment,dropdown);
+				
+				enterText(parameterid,value);
+				waitFor(3);
+				click(Searchbutton);
+				click(selectingtheparameter);
+				
+
+
+			} catch (Exception e) {
+				image = TakeScreenshot(extentTest, "UIResult");
+				System.out.println("Exception occured while Fetching Data");
+				e.printStackTrace();
+			}
+		}
+		
+		public void Delete(TaskSetupObjects TaskSetupObjects,WebElement DeleteOption,ExtentTest extentTest) throws Exception {
+
+			SwitchFrame(TaskSetupObjects.frame);
+			try 
+			{
+				click(DeleteOption);
+				waitFor(3);	
+			}
+			
+			catch (Exception e) 
+			{
+				image = TakeScreenshot(extentTest, "UIResult");
+				System.out.println("Exception occured while Fetching Data");
+				e.printStackTrace();
+			}
+			}
+
+}

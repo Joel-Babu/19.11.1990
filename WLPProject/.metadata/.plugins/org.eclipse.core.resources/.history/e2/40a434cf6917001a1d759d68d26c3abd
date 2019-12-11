@@ -1,0 +1,811 @@
+package au.wow.main.pages.fcd;
+
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.server.handler.FindElements;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+
+import au.wow.main.objects.LoginPageObjects;
+import au.wow.main.objects.fcd.LabourStandardProfilesObjects;
+import au.wow.main.objects.fcd.SurveyQuestionReviewObjects;
+import au.wow.main.objects.fcd.TaskMaintenanceObjects;
+import au.wow.main.pages.CommonFunctions;
+import au.wow.main.pages.LoginPage;
+import au.wow.sms.utils.BasePage;
+import au.wow.sms.utils.ExtentReportsScreenshotCode;
+import au.wow.sms.utils.SQLWrapper;
+import au.wow.sms.utils.TestBase;
+
+public class SurveyQuestionReviewPage extends TestBase {
+	CommonFunctions common = PageFactory.initElements(this.getDriver(), CommonFunctions.class);
+	public Logger log = LogManager.getLogger(LoginPage.class);
+	SQLWrapper sql = new SQLWrapper(log);
+	LoginPageObjects loginPageObjects;
+	LabourStandardProfilesObjects labourStandardProfilesObjects;
+	static ExtentReportsScreenshotCode ScreenShotUtil;
+	static WebDriverWait wait;
+	String image;
+	CommonFunctions objCommonFunctions;
+
+	public SurveyQuestionReviewPage() {
+		// TODO Auto-generated constructor stub
+		super();
+	}
+
+	/**
+	 * 
+	 * 
+	 */
+
+	public void search(SurveyQuestionReviewObjects SurveyQuestionReviewObjects, WebElement Button,
+			ExtentTest extentTest) throws Exception {
+
+		SwitchFrame(SurveyQuestionReviewObjects.frame);
+		try {
+
+			// selectByVisibleText(TaskMaintenanceObjects.KronosDepartment,dropdown);
+			waitFor(3);
+			click(Button);
+
+		} catch (Exception e) {
+			image = TakeScreenshot(extentTest, "UIResult");
+			System.out.println("Exception occured while Fetching Data");
+			e.printStackTrace();
+		}
+	}
+
+	public void searchlookup(SurveyQuestionReviewObjects SurveyQuestionReviewObjects, WebElement SearchLookup,
+			WebElement Searchbutton, ExtentTest extentTest) throws Exception {
+
+		// SwitchFrame(SurveyQuestionReviewObjects.frame);
+		try {
+
+			// selectByVisibleText(TaskMaintenanceObjects.KronosDepartment,dropdown);
+			waitFor(3);
+			click(Searchbutton);
+			click(SearchLookup);
+
+		} catch (Exception e) {
+			image = TakeScreenshot(extentTest, "UIResult");
+			System.out.println("Exception occured while Fetching Data");
+			e.printStackTrace();
+		}
+	}
+
+	public void searchLoadQuestion(SurveyQuestionReviewObjects SurveyQuestionReviewObjects, WebElement LoadQuestions,
+			WebElement StandardDepartment1, String StandardDepartment1dropdown, WebElement StandardDepartment2,
+			String StandardDepartment2dropdown, ExtentTest extentTest) throws Exception {
+
+		SwitchFrame(SurveyQuestionReviewObjects.frame);
+		try {
+			waitFor(3);
+			click(LoadQuestions);
+			// objCommonFunctions.clickButton(SurveyQuestionReviewObjects.frame,SurveyQuestionReviewObjects.LoadQuestions,extentTest,"Clicking
+			// on Load Question");
+
+			selectByVisibleText(SurveyQuestionReviewObjects.StandardDepartment1, StandardDepartment1dropdown);
+			waitFor(3);
+			selectByVisibleText(SurveyQuestionReviewObjects.StandardDepartment2, StandardDepartment2dropdown);
+
+		} catch (Exception e) {
+			image = TakeScreenshot(extentTest, "UIResult");
+			System.out.println("Exception occured while Fetching Data");
+			e.printStackTrace();
+		}
+	}
+
+	public void Add(SurveyQuestionReviewObjects SurveyQuestionReviewObjects, WebElement tradingDepartment,
+			String tradingDepartmentdropdown, ExtentTest extentTest) throws Exception {
+
+		// SwitchFrame(SurveyQuestionReviewObjects.frame);
+		try {
+			selectByVisibleText(SurveyQuestionReviewObjects.tradingDepartment, tradingDepartmentdropdown);
+			waitFor(3);
+
+		} catch (Exception e) {
+			image = TakeScreenshot(extentTest, "UIResult");
+			System.out.println("Exception occured while Fetching Data");
+			e.printStackTrace();
+		}
+	}
+
+	public void LMSEmployee(SurveyQuestionReviewObjects SurveyQuestionReviewObjects, WebElement LMSEmployeeId,
+			ExtentTest extentTest) throws Exception {
+
+		// SwitchFrame(SurveyQuestionReviewObjects.frame);
+		try {
+			click(LMSEmployeeId);
+			waitFor(3);
+
+		} catch (Exception e) {
+			image = TakeScreenshot(extentTest, "UIResult");
+			System.out.println("Exception occured while Fetching Data");
+			e.printStackTrace();
+		}
+	}
+
+	public void LoadQuestions(SurveyQuestionReviewObjects SurveyQuestionReviewObjects, WebElement LoadQuestions,
+			ExtentTest extentTest) throws Exception {
+
+		// SwitchFrame(SurveyQuestionReviewObjects.frame);
+		try {
+			click(LoadQuestions);
+			waitFor(3);
+
+		} catch (Exception e) {
+			image = TakeScreenshot(extentTest, "UIResult");
+			System.out.println("Exception occured while Fetching Data");
+			e.printStackTrace();
+		}
+	}
+
+	public void Delete(SurveyQuestionReviewObjects SurveyQuestionReviewObjects, WebElement LoadQuestions,
+			WebElement DeleteColumn, WebElement DeleteRow, ExtentTest extentTest) throws Exception {
+
+		SwitchFrame(SurveyQuestionReviewObjects.frame);
+		try {
+			click(LoadQuestions);
+			waitFor(3);
+			click(DeleteColumn);
+			waitFor(3);
+			click(DeleteRow);
+
+		} catch (Exception e) {
+			image = TakeScreenshot(extentTest, "UIResult");
+			System.out.println("Exception occured while Fetching Data");
+			e.printStackTrace();
+		}
+	}
+
+	// To Fetch Dept names from UI
+	public List<List<Object>> validationOfDeptNames(SurveyQuestionReviewObjects surveyquestionreviewobjects,
+			ExtentTest extentTest, String count1, String deptheadingXpath, String Lastdepartmentname)
+			throws IOException {
+
+		String deptName = null;
+		int columnsize = 1;
+		List<List<Object>> UIValues = new ArrayList<List<Object>>();
+
+		try {
+
+			int RowCount = TableCount(count1);
+
+			for (int i = 0; i <= RowCount - 1; i++) {
+				WebElement Individualdeptheading = prepareWebElementWithDynamicXpathWithInt(deptheadingXpath, i);
+				deptName = getText(Individualdeptheading);
+				System.out.println(deptName);
+
+				List<Object> row = new ArrayList<>(columnsize);
+
+				row.add(deptName);
+				UIValues.add(row);
+				System.out.println(UIValues);
+
+			}
+		} catch (Exception e) {
+			System.out.println("Exception Occured" + e.getMessage());
+			image = TakeScreenshot(extentTest, "validationofdeptheadings");
+			extentTest.log(LogStatus.FAIL, "Exception occured while validating department: " + deptName + "", image);
+			Report_AddStep("testcase", "Exception occured while validating department " + deptName + "", "", "",
+					"Fail");
+			htmlToExtent(cName, mName, extentTest, driver1,
+					"Failed to validate departments on UI screen: " + deptName + ";;;Fail");
+		}
+		return UIValues;
+	}
+
+	// To Fetch Questions for each dept from UI
+	public List<List<Object>> validationOfDeptQuestions(List<List<Object>> DeptUIValues,
+			SurveyQuestionReviewObjects surveyquestionreviewobjects, ExtentTest extentTest) throws IOException {
+
+		String deptName = null, question = null;
+		int columnsize = 2;
+		List<List<Object>> UIValues = new ArrayList<List<Object>>();
+
+		int DeptRowCount = DeptUIValues.size();
+		System.out.println("Dept UI: " + DeptUIValues);
+		try {
+			// To fetch questions
+			for (int i = 0; i <= DeptRowCount - 1; i++) {
+
+				deptName = (DeptUIValues.get(i)).toString();
+				String finaldeptName1 = deptName.substring(1, deptName.length() - 1);
+				String finaldeptName = deptName.replaceAll("\\[", "").replaceAll("\\]", "");
+				if (finaldeptName.contains("PROPRIETRY")) {
+					finaldeptName = "PROPRIETRY";
+				}
+				String Individualdeptheading = surveyquestionreviewobjects.questionsCount.replace("dynamic",
+						finaldeptName);
+				int questioncount = TableCount(Individualdeptheading);
+
+				if (questioncount == 0) {
+					question = "NULL";
+					List<Object> questions = new ArrayList<>(columnsize);
+					questions.add(finaldeptName);
+					questions.add(question);
+					UIValues.add(questions);
+				}
+
+				for (int j = 1; j <= questioncount; j++) {
+
+					if (finaldeptName.contains("PROPRIETRY")) {
+						finaldeptName = "PROPRIETRY";
+					}
+					String questionsPerDept = surveyquestionreviewobjects.questionsForDept
+							.replace("dynamic", finaldeptName).replaceAll("count", "" + j);
+					question = convertToStringGetText(questionsPerDept);
+					List<Object> questions = new ArrayList<>(columnsize);
+
+					questions.add(finaldeptName1);
+					questions.add(question);
+					UIValues.add(questions);
+					System.out.println("UI: " + UIValues);
+
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("Exception Occured" + e.getMessage());
+			image = TakeScreenshot(extentTest, "validationofdeptquestions");
+			extentTest.log(LogStatus.FAIL, "Exception occured while validating department Questions: " + deptName + "",
+					image);
+			Report_AddStep("testcase", "Exception occured while validating department Questions " + deptName + "", "",
+					"", "Fail");
+			htmlToExtent(cName, mName, extentTest, driver1,
+					"Failed to validate departments Questions on UI screen: " + deptName + ";;;Fail");
+		}
+		return UIValues;
+	}
+
+	// To Fetch Dept Answers from UI
+	public List<List<Object>> validationOfDeptAnswers(List<List<Object>> DeptUIValues,
+			SurveyQuestionReviewObjects surveyquestionreviewobjects, ExtentTest extentTest) throws IOException {
+
+		String deptName = null, question = null, answers = null;
+		int columnsize = 2;
+		List<List<Object>> UIValues = new ArrayList<List<Object>>();
+
+		int DeptRowCount = DeptUIValues.size();
+		System.out.println("Dept UI: " + DeptUIValues);
+		try {
+			// To fetch questions and corresponding answers
+			for (int i = 0; i <= DeptRowCount - 1; i++) {
+
+				deptName = (DeptUIValues.get(i)).toString();
+				String finaldeptName1 = deptName.substring(1, deptName.length() - 1);
+				String finaldeptName = deptName.replaceAll("\\[", "").replaceAll("\\]", "");
+				if (finaldeptName.contains("PROPRIETRY")) {
+					finaldeptName = "PROPRIETRY";
+				}
+
+				String Individualdeptheading = surveyquestionreviewobjects.questionsCount.replace("dynamic",
+						finaldeptName);
+				int questioncount = TableCount(Individualdeptheading);
+
+				if (questioncount == 0) {
+					System.out.println("Questions & Answers count is 0: " + finaldeptName);
+				}
+
+				for (int j = 1; j <= questioncount; j++) {
+
+					if (finaldeptName.contains("PROPRIETRY")) {
+						finaldeptName = "PROPRIETRY";
+					}
+					String questionsPerDept = surveyquestionreviewobjects.questionsForDept
+							.replace("dynamic", finaldeptName).replaceAll("count", "" + j);
+					question = convertToStringGetText(questionsPerDept);
+
+					String answersPerDeptDropdown = surveyquestionreviewobjects.answersDropdownCount
+							.replace("dynamic", finaldeptName).replaceAll("count", "" + j);
+					int answerscountDropdown = TableCount(answersPerDeptDropdown);
+
+					if (answerscountDropdown > 0) {
+						for (int k = 1; k <= answerscountDropdown; k++) {
+							List<Object> questions = new ArrayList<>(columnsize);
+							String options = surveyquestionreviewobjects.answersDropdown
+									.replace("dynamic", finaldeptName).replaceAll("count", "" + j)
+									.replaceAll("size", "" + k);
+							answers = convertToStringGetText(options);
+							questions.add(question);
+							questions.add(answers);
+							UIValues.add(questions);
+							System.out.println("UI: " + UIValues);
+						}
+					}
+
+					String answersPerDeptCheckbox = surveyquestionreviewobjects.answersCheckboxCount
+							.replace("dynamic", finaldeptName).replaceAll("count", "" + j);
+					int answerscountCheckbox = TableCount(answersPerDeptCheckbox);
+
+					if (answerscountCheckbox > 0) {
+						for (int k = 1; k <= answerscountCheckbox; k++) {
+							List<Object> questions = new ArrayList<>(columnsize);
+							String options = surveyquestionreviewobjects.answersCheckbox
+									.replace("dynamic", finaldeptName).replaceAll("count", "" + j)
+									.replaceAll("size", "" + k);
+							answers = convertToStringGetText(options);
+							questions.add(question);
+							questions.add(answers);
+							UIValues.add(questions);
+							System.out.println("UI: " + UIValues);
+						}
+
+					}
+					
+				}
+
+			}
+			System.out.println("Final UI: " + UIValues);
+		} catch (Exception e) {
+			System.out.println("Exception Occured" + e.getMessage());
+			image = TakeScreenshot(extentTest, "validationofdeptquestions");
+			extentTest.log(LogStatus.FAIL, "Exception occured while validating department Questions: " + deptName + "",
+					image);
+			Report_AddStep("testcase", "Exception occured while validating department Questions " + deptName + "", "",
+					"", "Fail");
+			htmlToExtent(cName, mName, extentTest, driver1,
+					"Failed to validate departments Questions on UI screen: " + deptName + ";;;Fail");
+		}
+		return UIValues;
+	}
+
+	
+	  // To check standard dept tasks in survey review question screen public
+	public List<List<Object>> validationOfStandardDeptsList(List<List<Object>> DeptUIValues,
+	  SurveyQuestionReviewObjects surveyquestionreviewobjects, ExtentTest extentTest) throws IOException
+	  {
+	  
+	  String deptName = null, optionsText = null;
+	  int columnsize = 2; List<List<Object>> UIValues = new
+	  ArrayList<List<Object>>();
+	  int DeptRowCount = DeptUIValues.size();
+	  try {
+		  for (int i = 0; i <= DeptRowCount - 1; i++) {
+				deptName = (DeptUIValues.get(i)).toString();
+				
+				String finaldeptName = deptName.replaceAll("\\[", "").replaceAll("\\]", "");
+				if (finaldeptName.contains("PROPRIETRY"))
+                { finaldeptName = "PROPRIETRY"; }
+				
+				String standardDept = surveyquestionreviewobjects.standardDeptOptionsCount.replace("dynamic",
+						finaldeptName);
+				int stndDeptOptioncount = TableCount(standardDept);
+				System.out.println("Opt count: " +finaldeptName +";'"+ stndDeptOptioncount);
+	            
+	  
+	  if (stndDeptOptioncount <= 1) {
+	  System.out.println("No Options is present in Stnd Dept: " + finaldeptName); }
+	  
+	  for (int j = 2; j <= stndDeptOptioncount; j++) {
+	  
+	  String options =  surveyquestionreviewobjects.standardDeptOptionsText.replace("dynamic",finaldeptName).replaceAll("count", "" + j); 
+	  optionsText = convertToStringGetText(options); 
+	    List<Object> opt = new ArrayList<>(columnsize); 
+		  opt.add(finaldeptName);
+		  opt.add(optionsText); 
+		  UIValues.add(opt);
+		  System.out.println("List of Std dept in UI: " + UIValues);
+	   
+	  }
+	  } 
+	  } 
+	  
+	  catch (Exception e) { System.out.println("Exception Occured" +
+	  e.getMessage()); image = TakeScreenshot(extentTest,
+	  "validationofdeptquestions"); extentTest.log(LogStatus.FAIL,
+	  "Exception occured while validating department Questions: " + deptName + "",
+	  image); Report_AddStep("testcase",
+	  "Exception occured while validating department Questions " + deptName + "",
+	  "", "", "Fail"); htmlToExtent(cName, mName, extentTest, driver1,
+	  "Failed to validate departments Questions on UI screen: " + deptName +
+	  ";;;Fail"); 
+	  } 
+	  return UIValues; 
+	  }
+	  
+	 
+
+	// To check standard dept tasks in survey review question screen
+	public List<List<Object>> validationOfStandardDepts(List<List<Object>> DeptUIValues,
+			SurveyQuestionReviewObjects surveyquestionreviewobjects, String stndDept, ExtentTest extentTest)
+			throws IOException {
+
+		String deptName = null, optionsText = null, finalOptionsText = null, inputStndDept = null,
+				finalInputStndDept = null;
+		int columnsize = 2;
+		List<List<Object>> UIValues = new ArrayList<List<Object>>();
+		int DeptRowCount = DeptUIValues.size();
+		try {
+			for (int i = 0; i <= DeptRowCount - 1; i++) {
+				deptName = (DeptUIValues.get(i)).toString();
+				String finaldeptName1 = deptName.substring(1, deptName.length() - 1);
+				String finaldeptName = deptName.replaceAll("\\[", "").replaceAll("\\]", "");
+
+				if (finaldeptName.contains("PROPRIETRY")) {
+					finaldeptName = "PROPRIETRY";
+				}
+
+				String standardDept = surveyquestionreviewobjects.standardDeptOptionsCount.replace("dynamic",
+						finaldeptName);
+				int stndDeptOptioncount = TableCount(standardDept);
+
+				String[] Dept = finaldeptName.split(" ");
+				String fn_Dept = null;
+				for (int s = 0; s < Dept.length; s++) {
+					// if (fn_Dept.isEmpty())
+					if (fn_Dept == null)
+						fn_Dept = Dept[s];
+					else
+						fn_Dept = fn_Dept + "_" + Dept[s];
+				}
+
+				System.out.println(getContext().getStringProperty(fn_Dept + "_SD"));
+
+				if (stndDeptOptioncount <= 1) {
+					System.out.println("No Options is present in Stnd Dept: " + finaldeptName);
+				}
+				for (int j = 2; j <= stndDeptOptioncount; j++) {
+
+					String options = surveyquestionreviewobjects.standardDeptOptionsText
+							.replace("dynamic", finaldeptName).replaceAll("count", "" + j);
+					optionsText = convertToStringGetText(options);
+					finalOptionsText = optionsText.replaceAll(" ", "");
+					inputStndDept = getContext().getStringProperty(fn_Dept + "_SD");
+					finalInputStndDept = inputStndDept.replaceAll(" ", "");
+
+					if (finalOptionsText.equalsIgnoreCase(finalInputStndDept)) {
+						List<Object> opt = new ArrayList<>(columnsize);
+						String selectOpt = surveyquestionreviewobjects.standardDeptOptions.replace("dynamic",
+								finaldeptName);
+						WebElement answers = prepareWebElementWithDynamicXpathWithInt(selectOpt);
+						selectByVisibleText(answers, optionsText);
+
+						opt.add(finaldeptName);
+						opt.add(optionsText);
+						UIValues.add(opt);
+						System.out.println(UIValues);
+						Report_AddStep("testcase", "Survey questions  DB values are displayed Correctly in UI for: ",
+								"" + finalOptionsText + "", "" + inputStndDept + "", "Pass");
+						htmlToExtent(cName, mName, extentTest, driver1, "Value displayed Correctly for : " + ";"
+								+ finalOptionsText + ";" + inputStndDept + ";Pass");
+						break;
+					}
+
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("Exception Occured" + e.getMessage());
+			image = TakeScreenshot(extentTest, "validationofdeptquestions");
+			extentTest.log(LogStatus.FAIL, "Exception occured while validating department Questions: " + deptName + "",
+					image);
+			Report_AddStep("testcase", "Exception occured while validating department Questions " + deptName + "", "",
+					"", "Fail");
+			htmlToExtent(cName, mName, extentTest, driver1,
+					"Failed to validate departments Questions on UI screen: " + deptName + ";;;Fail");
+		}
+		return UIValues;
+	}
+
+	// To update the answers in survey review question screen
+	public List<List<Object>> validationOfAnswersUpdated(List<List<Object>> DeptUIValues,
+			SurveyQuestionReviewObjects surveyquestionreviewobjects, ExtentTest extentTest) throws IOException {
+
+		String deptName = null, question = null, answers = null,x=null,answers1=null;
+		int columnsize = 2;
+		List<List<Object>> UIValues = new ArrayList<List<Object>>();
+
+		int DeptRowCount = DeptUIValues.size();
+		System.out.println("Dept UI: " + DeptUIValues);
+		try {
+			// To fetch
+			for (int i = 0; i <= DeptRowCount - 1; i++) {
+				deptName = (DeptUIValues.get(i)).toString();
+				String finaldeptName1 = deptName.substring(1, deptName.length() - 1);
+				String finaldeptName = deptName.replaceAll("\\[", "").replaceAll("\\]", "");
+
+				if (finaldeptName.contains("PROPRIETRY")) {
+					finaldeptName = "PROPRIETRY";
+				}
+
+				String Individualdeptheading = surveyquestionreviewobjects.questionsCount.replace("dynamic",
+						finaldeptName);
+				int questioncount = TableCount(Individualdeptheading);
+
+				if (questioncount == 0) {
+					System.out.println("Questions & Answers count is 0: " + finaldeptName);
+				}
+
+				for (int j = 1; j <= questioncount; j++) {
+
+					if (finaldeptName.contains("PROPRIETRY")) {
+						finaldeptName = "PROPRIETRY";
+					}
+					String[] Dept = finaldeptName.split(" ");
+					String fn_Dept = null;
+					for (int s = 0; s < Dept.length; s++) {
+						// if (fn_Dept.isEmpty())
+						if (fn_Dept == null)
+							fn_Dept = Dept[s];
+						else
+							fn_Dept = fn_Dept + "_" + Dept[s];
+					}
+
+					System.out.println(getContext().getStringProperty(fn_Dept + "_QN_" + j));
+
+					String[] cnt = (getContext().getStringProperty(fn_Dept + "_QN_" + j)).split(",");
+					int size = cnt.length;
+
+					String questionsPerDept = surveyquestionreviewobjects.questionsForDept
+							.replace("dynamic", finaldeptName).replaceAll("count", "" + j);
+					question = convertToStringGetText(questionsPerDept);
+
+					String answersPerDeptDropdown = surveyquestionreviewobjects.answersDropdownCount
+							.replace("dynamic", finaldeptName).replaceAll("count", "" + j);
+					int answerscountDropdown = TableCount(answersPerDeptDropdown);
+
+					if (answerscountDropdown > 0) {
+						for (int k = 1; k <= answerscountDropdown; k++) {
+							List<Object> questions = new ArrayList<>(columnsize);
+							//for (int l = 0; l <= size - 1; l++) {
+								//x=null;
+							String options = surveyquestionreviewobjects.answersDropdown
+									.replace("dynamic", finaldeptName).replaceAll("count", "" + j)
+									.replaceAll("size", "" + k);
+							answers = convertToStringGetText(options);
+							String finalOptionsText = answers.replaceAll(" ", "").toLowerCase();
+							String inputStndDept =cnt[0];
+							String finalInputStndDept = inputStndDept.replaceAll(" ", "").toLowerCase();
+
+							/*String answersPerDeptTextArea = surveyquestionreviewobjects.answersTextArea
+									.replace("dynamic", finaldeptName).replaceAll("count", "" + j);
+							int answerscountTextArea = TableCount(answersPerDeptTextArea); 
+*/
+							if (finalOptionsText.contains(finalInputStndDept)) {
+
+								String answersDropdownOption = surveyquestionreviewobjects.answersDropdownOption
+										.replace("dynamic", finaldeptName).replaceAll("count", "" + j);
+								WebElement answeroption = prepareWebElementWithDynamicXpathWithInt(
+										answersDropdownOption);
+								selectByVisibleText(answeroption,answers);
+								x = finalInputStndDept;
+								questions.add(question);
+								questions.add(answers);
+								UIValues.add(questions);
+								System.out.println("UI: " + UIValues);
+								break;
+							}
+							
+							/*else if ((answerscountTextArea > 0)&&((k==6)&&(x==null))) {
+									
+									//String finalInputStdDept = cnt[l].replaceAll(" ", "");
+									answers = convertToStringGetText(answersPerDeptTextArea);
+									WebElement answeroption = prepareWebElementWithDynamicXpathWithInt(
+											answersPerDeptTextArea);
+									enterText(answeroption, inputStndDept);
+									questions.add(question);
+									questions.add(inputStndDept);
+									UIValues.add(questions);
+									System.out.println("UI: " + UIValues);
+									break;
+								}
+*/
+							}
+					//	}
+					}
+					
+					String answersPerDeptTextArea = surveyquestionreviewobjects.answersTextArea
+							.replace("dynamic", finaldeptName).replaceAll("count", "" + j);
+					int answerscountTextArea = TableCount(answersPerDeptTextArea); 
+					 x =getContext().getStringProperty("NON_TRADE_COMMENT");
+					 System.out.println(x);
+					if ((answerscountTextArea > 0)&&(!(x.equals("null")))){
+						List<Object> questions = new ArrayList<>(columnsize);
+						answers = convertToStringGetText(answersPerDeptTextArea);
+						WebElement answeroption = prepareWebElementWithDynamicXpathWithInt(
+								answersPerDeptTextArea);
+						enterText(answeroption, getContext().getStringProperty("NON_TRADE_COMMENT"));
+						questions.add(question);
+						questions.add(getContext().getStringProperty("NON_TRADE_COMMENT"));
+						UIValues.add(questions);
+						System.out.println("UI: " + UIValues);
+						
+					}
+					
+					
+					String answersPerDeptCheckbox = surveyquestionreviewobjects.answersCheckboxCount
+							.replace("dynamic", finaldeptName).replaceAll("count", "" + j);
+					int answerscountCheckbox = TableCount(answersPerDeptCheckbox);
+
+					if (answerscountCheckbox > 0) {
+						
+						for (int z = 1; z <= answerscountCheckbox; z++) {
+							String options = surveyquestionreviewobjects.answersCheckbox
+									.replace("dynamic", finaldeptName).replaceAll("count", "" + j)
+									.replaceAll("size", "" + z);
+							answers = convertToStringGetText(options).replaceAll(" ", "").toLowerCase();
+							String selectedOpt = surveyquestionreviewobjects.answersCheckboxSelected
+									.replace("dynamic", finaldeptName).replaceAll("count", "" + j)
+									.replaceAll("size", "" + z);
+							WebElement answeroption = prepareWebElementWithDynamicXpathWithInt(selectedOpt);
+							boolean result = isSelected(answeroption);
+							if (result == true) {
+								click(answeroption);
+							}	
+						}
+					
+						for (int k = 1; k <= answerscountCheckbox; k++) {
+							List<Object> questions = new ArrayList<>(columnsize);
+							String options = surveyquestionreviewobjects.answersCheckbox
+									.replace("dynamic", finaldeptName).replaceAll("count", "" + j)
+									.replaceAll("size", "" + k);
+							answers = convertToStringGetText(options).replaceAll(" ", "");
+							answers1 = convertToStringGetText(options).replaceAll(" ", "").toLowerCase();
+							for (int l = 0; l <= size - 1; l++) {
+
+								String selectedOpt = surveyquestionreviewobjects.answersCheckboxSelected
+										.replace("dynamic", finaldeptName).replaceAll("count", "" + j)
+										.replaceAll("size", "" + k);
+								String finalInputStndDept = cnt[l].replaceAll(" ", "").toLowerCase();
+								WebElement answeroption = prepareWebElementWithDynamicXpathWithInt(selectedOpt);
+								
+								if (answers1.equalsIgnoreCase(finalInputStndDept)) {
+									// String answersDropdownOption =
+									// surveyquestionreviewobjects.answersDropdownOption.replace("dynamic",
+									// finaldeptName).replaceAll("count", "" + j);
+									boolean finresult = isSelected(answeroption);
+									if (finresult == false) {
+										click(answeroption);
+									}
+									questions.add(question);
+									questions.add(answers);
+									UIValues.add(questions);
+									System.out.println("UI: " + UIValues);
+								}
+							}
+						}
+					}
+					String answersPerDeptTextbox = surveyquestionreviewobjects.answersTextboxCount
+							.replace("dynamic", finaldeptName).replaceAll("count", "" + j);
+					int answerscountTextbox = TableCount(answersPerDeptTextbox);
+
+					if (answerscountTextbox > 0) {
+						// for (int k = 1; k <= answerscountTextbox; k++) {
+						List<Object> questions = new ArrayList<>(columnsize);
+						/*
+						 * String options = surveyquestionreviewobjects.answersTextbox
+						 * .replace("dynamic", finaldeptName).replaceAll("count", "" + j)
+						 * .replaceAll("size", "" + k); answers =
+						 * convertToStringGetText(answersPerDeptTextbox);
+						 */
+						WebElement answeroption = prepareWebElementWithDynamicXpathWithInt(answersPerDeptTextbox);
+						enterText(answeroption, getContext().getStringProperty(fn_Dept + "_QN_" + j));
+						questions.add(question);
+						questions.add(getContext().getStringProperty(fn_Dept + "_QN_" + j));
+						UIValues.add(questions);
+						System.out.println("UI: " + UIValues);
+						// }
+					}
+
+				}
+
+			}
+			System.out.println("Final UI: " + UIValues);
+		}
+
+		catch (Exception e) {
+			System.out.println("Exception Occured" + e.getMessage());
+			image = TakeScreenshot(extentTest, "validationofdeptquestions");
+			extentTest.log(LogStatus.FAIL, "Exception occured while validating department Questions: " + deptName + "",
+					image);
+			Report_AddStep("testcase", "Exception occured while validating department Questions " + deptName + "", "",
+					"", "Fail");
+			htmlToExtent(cName, mName, extentTest, driver1,
+					"Failed to validate departments Questions on UI screen: " + deptName + ";;;Fail");
+		}
+		return UIValues;
+	}
+
+	// Compare UI and DB values - For checking single value 
+	public void CompareValues(ExtentTest extentTest, List<List<Object>> DBValues, List<List<Object>> UIValues)
+			throws Exception {
+		try {
+			int RowCount = DBValues.size();
+			int RowCount1 = UIValues.size();
+			String CalcuatedUIValue, CalcuatedDBValue;
+
+			System.out.println("UIValues: " + UIValues);
+			System.out.println("DBValues: " + DBValues);
+
+			for (int i = 0; i <= RowCount - 1; i++) {
+				CalcuatedDBValue = (DBValues.get(i).toString());
+				String finaldeptNameDB = CalcuatedDBValue.substring(1, CalcuatedDBValue.length() - 1).replaceAll(" ",
+						"");
+				System.out.println("FinalDBValue: " + finaldeptNameDB);
+
+				CalcuatedUIValue = (UIValues.get(i).toString());
+				String finaldeptNameUI = CalcuatedUIValue.substring(1, CalcuatedUIValue.length() - 1).replaceAll(" ",
+						"");
+				System.out.println("FinalUIValue: " + finaldeptNameUI);
+
+				if (finaldeptNameDB.equalsIgnoreCase(finaldeptNameUI)) {
+					Report_AddStep("testcase", "Survey questions  DB values are displayed Correctly in UI for: ",
+							"" + CalcuatedDBValue + "", "" + CalcuatedUIValue + "", "Pass");
+					htmlToExtent(cName, mName, extentTest, driver1, "Value displayed Correctly for : " + ";"
+							+ CalcuatedDBValue + ";" + CalcuatedUIValue + ";Pass");
+
+				} else {
+					Report_AddStep("testcase", "Survey questions DB values are not matching with UI for: ",
+							"" + CalcuatedDBValue + "", "" + CalcuatedUIValue + "", "Fail");
+					htmlToExtent(cName, mName, extentTest, driver1, "Failed to display data Correctly for : " + ";"
+							+ CalcuatedDBValue + ";" + CalcuatedUIValue + ";Fail");
+
+				}
+
+			}
+		} catch (Exception e) {
+			System.out.println("Exception Occured" + e.getMessage());
+			Report_AddStep("testcase", "Failed to Verify UI and DB Values for Department questions", "", "", "Fail");
+			htmlToExtent(cName, mName, extentTest, driver1, "Exception Occured while comparing data;;;Fail");
+		}
+	}
+
+	// Compare UI & DB values when 2 columns are present
+	public void CompareValuesforTwoDimension(ExtentTest extentTest, List<List<Object>> DBValues, List<List<Object>> UIValues)
+			throws Exception {
+
+		try {
+			int RowCount = DBValues.size();
+			int RowCount1 = UIValues.size();
+			String DeptName = null, CalcuatedUIValue = null, CalcuatedDBValue = null, FinalDBValue = null,
+					FinalUIValue = null;
+
+			System.out.println("UIValues: " + UIValues);
+			System.out.println("DBValues: " + DBValues);
+
+			for (int i = 0; i <= RowCount - 2; i++) {
+				for (int j = 0; j < 2; j++) {
+					if (j != 0) {
+						CalcuatedDBValue = (DBValues.get(i).get(j).toString());
+						FinalDBValue = CalcuatedDBValue.replaceAll(" ", "").trim();
+						System.out.println("FinalDBValue: " + CalcuatedDBValue);
+
+						CalcuatedUIValue = (UIValues.get(i).get(j).toString());
+						FinalUIValue = CalcuatedUIValue.replaceAll(" ", "").trim();
+						System.out.println("FinalUIValue: " + CalcuatedUIValue);
+
+						if (FinalDBValue.equalsIgnoreCase(FinalUIValue)) {
+							Report_AddStep("testcase",
+									"Calculated DB values are displayed Correctly in UI for : " + DeptName + "",
+									"" + CalcuatedUIValue + "", "" + CalcuatedDBValue + "", "Pass");
+							htmlToExtent(cName, mName, extentTest, driver1, "Value displayed Correctly for : "
+									+ DeptName + ";" + CalcuatedUIValue + ";" + CalcuatedDBValue + ";Pass");
+						} else {
+							Report_AddStep("testcase", "Calculated DB values are Not Matching for: " + DeptName + "",
+									"" + CalcuatedUIValue + "", "" + CalcuatedDBValue + "", "Fail");
+							htmlToExtent(cName, mName, extentTest, driver1, "Failed to display data Correctly for : "
+									+ DeptName + ";" + CalcuatedUIValue + ";" + CalcuatedDBValue + ";Fail");
+						}
+					} else {
+						DeptName = new String(UIValues.get(i).get(j).toString());
+					}
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("Exception Occured" + e.getMessage());
+			Report_AddStep("testcase", "Failed to Verify UI and DB Values", "", "", "Fail");
+			htmlToExtent(cName, mName, extentTest, driver1, "Exception Occured while comparing data;;;Fail");
+		}
+
+	}
+
+}

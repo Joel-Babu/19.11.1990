@@ -1533,7 +1533,7 @@ public class WeeklyPlanningZone extends TestBase {
 	}
 
 	// Operational Ratio
-	/*@Test(description = "Weekly Planning - BU, OR History - First Week", priority = 33)
+	@Test(description = "Weekly Planning - BU, OR History - First Week", priority = 33)
 	public void ORHistoryFirstWeek() throws Exception {
 		pageWeeklyPlanningPO = new WeeklyPlanningStorePage().createPage(getDriver(), getContext(), log, status, data,
 				getReport(), getReportLogger(), WeeklyPlanningStorePage.class);
@@ -1725,7 +1725,7 @@ public class WeeklyPlanningZone extends TestBase {
 		UITotal = pageMonthlyPlanningGroupPO.WPGetTotal(extentTest, objMonthlyPlanningGroupObjects.RowNameTotal,
 				objWeeklyPlanningStoreObjects.FourWeekofMonth);
 		pageMonthlyPlanningPO.CompareValueDecimalFields(extentTest, DBTotal, UITotal);
-	}*/
+	}
 
 	////////////////////////// CURRENT MONTH ///////////////////////////////
 	@Test(description = "Weekly Planning - Zone, Budget Sales - Current Week", priority = 37)
@@ -1755,6 +1755,7 @@ public class WeeklyPlanningZone extends TestBase {
 							.replace("Area", getContext().getStringProperty("Area"))
 							.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 							.replace("FinYear", getContext().getStringProperty("Year"))
+							.replace("Week", getContext().getStringProperty("CYWk"))
 							.replace("Division", getContext().getStringProperty("Division")));
 			System.out.println("DB Value: " + DBValues);
 
@@ -1764,6 +1765,7 @@ public class WeeklyPlanningZone extends TestBase {
 							.replace("Area", getContext().getStringProperty("Area"))
 							.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 							.replace("FinYear", getContext().getStringProperty("Year"))
+							.replace("Week", getContext().getStringProperty("CYWk"))
 							.replace("Division", getContext().getStringProperty("Division")));
 			System.out.println("DB Total: " + DBTotal);
 
@@ -1782,6 +1784,7 @@ public class WeeklyPlanningZone extends TestBase {
 							.replace("Area", getContext().getStringProperty("Area"))
 							.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 							.replace("FinYear", getContext().getStringProperty("Year"))
+							.replace("Week", getContext().getStringProperty("CYWk"))
 							.replace("Division", getContext().getStringProperty("Division")));
 			System.out.println("DB Value: " + DBValues);
 
@@ -1791,6 +1794,7 @@ public class WeeklyPlanningZone extends TestBase {
 							.replace("Area", getContext().getStringProperty("Area"))
 							.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 							.replace("FinYear", getContext().getStringProperty("Year"))
+							.replace("Week", getContext().getStringProperty("CYWk"))
 							.replace("Division", getContext().getStringProperty("Division")));
 			System.out.println("DB Total: " + DBTotal);
 
@@ -1829,6 +1833,7 @@ public class WeeklyPlanningZone extends TestBase {
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 						.replace("FinYear", getContext().getStringProperty("Year"))
+						.replace("Week", getContext().getStringProperty("CYWk"))
 						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Value: " + DBValues);
 
@@ -1838,6 +1843,7 @@ public class WeeklyPlanningZone extends TestBase {
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 						.replace("FinYear", getContext().getStringProperty("Year"))
+						.replace("Week", getContext().getStringProperty("CYWk"))
 						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Total: " + DBTotal);
 
@@ -1875,6 +1881,7 @@ public class WeeklyPlanningZone extends TestBase {
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 						.replace("FinYear", getContext().getStringProperty("Year"))
+						.replace("Week", getContext().getStringProperty("CYWk"))
 						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Value: " + DBValues);
 
@@ -1884,6 +1891,7 @@ public class WeeklyPlanningZone extends TestBase {
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 						.replace("FinYear", getContext().getStringProperty("Year"))
+						.replace("Week", getContext().getStringProperty("CYWk"))
 						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Total: " + DBTotal);
 
@@ -1923,6 +1931,7 @@ public class WeeklyPlanningZone extends TestBase {
 							.replace("Area", getContext().getStringProperty("Area"))
 							.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 							.replace("FinYear", getContext().getStringProperty("Year"))
+							.replace("Week", getContext().getStringProperty("CYWk"))
 							.replace("Division", getContext().getStringProperty("Division")));
 			System.out.println("DB Value: " + DBValues);
 
@@ -1932,6 +1941,7 @@ public class WeeklyPlanningZone extends TestBase {
 							.replace("Area", getContext().getStringProperty("Area"))
 							.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 							.replace("FinYear", getContext().getStringProperty("Year"))
+							.replace("Week", getContext().getStringProperty("CYWk"))
 							.replace("Division", getContext().getStringProperty("Division")));
 			System.out.println("DB Total: " + DBTotal);
 
@@ -1950,6 +1960,7 @@ public class WeeklyPlanningZone extends TestBase {
 							.replace("Area", getContext().getStringProperty("Area"))
 							.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 							.replace("FinYear", getContext().getStringProperty("Year"))
+							.replace("Week", getContext().getStringProperty("CYWk"))
 							.replace("Division", getContext().getStringProperty("Division")));
 			System.out.println("DB Value: " + DBValues);
 
@@ -1959,6 +1970,7 @@ public class WeeklyPlanningZone extends TestBase {
 							.replace("Area", getContext().getStringProperty("Area"))
 							.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 							.replace("FinYear", getContext().getStringProperty("Year"))
+							.replace("Week", getContext().getStringProperty("CYWk"))
 							.replace("Division", getContext().getStringProperty("Division")));
 			System.out.println("DB Total: " + DBTotal);
 
@@ -2000,6 +2012,7 @@ public class WeeklyPlanningZone extends TestBase {
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr)
+						.replace("Week", getContext().getStringProperty("CYWk"))
 						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Value: " + DBValues);
 
@@ -2008,7 +2021,9 @@ public class WeeklyPlanningZone extends TestBase {
 				PercentLYSalesTotal.replace("Region", getContext().getStringProperty("Region"))
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
-						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr).replace("Division", getContext().getStringProperty("Division")));
+						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr)
+						.replace("Week", getContext().getStringProperty("CYWk"))
+						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Total: " + DBTotal);
 
 		UIValues = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
@@ -2047,6 +2062,7 @@ public class WeeklyPlanningZone extends TestBase {
 							.replace("Area", getContext().getStringProperty("Area"))
 							.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 							.replace("FinYear", getContext().getStringProperty("Year"))
+							.replace("Week", getContext().getStringProperty("CYWk"))
 							.replace("Division", getContext().getStringProperty("Division")));
 			System.out.println("DB Value: " + DBValues);
 
@@ -2056,6 +2072,7 @@ public class WeeklyPlanningZone extends TestBase {
 							.replace("Area", getContext().getStringProperty("Area"))
 							.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 							.replace("FinYear", getContext().getStringProperty("Year"))
+							.replace("Week", getContext().getStringProperty("CYWk"))
 							.replace("Division", getContext().getStringProperty("Division")));
 			System.out.println("DB Total: " + DBTotal);
 
@@ -2074,6 +2091,7 @@ public class WeeklyPlanningZone extends TestBase {
 							.replace("Area", getContext().getStringProperty("Area"))
 							.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 							.replace("FinYear", getContext().getStringProperty("Year"))
+							.replace("Week", getContext().getStringProperty("CYWk"))
 							.replace("Division", getContext().getStringProperty("Division")));
 			System.out.println("DB Value: " + DBValues);
 
@@ -2083,6 +2101,7 @@ public class WeeklyPlanningZone extends TestBase {
 							.replace("Area", getContext().getStringProperty("Area"))
 							.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 							.replace("FinYear", getContext().getStringProperty("Year"))
+							.replace("Week", getContext().getStringProperty("CYWk"))
 							.replace("Division", getContext().getStringProperty("Division")));
 			System.out.println("DB Total: " + DBTotal);
 
@@ -2123,6 +2142,7 @@ public class WeeklyPlanningZone extends TestBase {
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 						.replace("FinYear", getContext().getStringProperty("Year"))
+						.replace("Week", getContext().getStringProperty("CYWk"))
 						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Value: " + DBValues);
 
@@ -2132,6 +2152,7 @@ public class WeeklyPlanningZone extends TestBase {
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 						.replace("FinYear", getContext().getStringProperty("Year"))
+						.replace("Week", getContext().getStringProperty("CYWk"))
 						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Total: " + DBTotal);
 
@@ -2171,7 +2192,9 @@ public class WeeklyPlanningZone extends TestBase {
 				PlannedpercentonLY.replace("Region", getContext().getStringProperty("Region"))
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
-						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr).replace("Division", getContext().getStringProperty("Division")));
+						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr)
+						.replace("Week", getContext().getStringProperty("CYWk"))
+						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Value: " + DBValues);
 
 		String PlannedpercentonLYTotal = data.getText("PlannedpercentonLYTotal");
@@ -2179,7 +2202,9 @@ public class WeeklyPlanningZone extends TestBase {
 				PlannedpercentonLYTotal.replace("Region", getContext().getStringProperty("Region"))
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
-						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr).replace("Division", getContext().getStringProperty("Division")));
+						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr)
+						.replace("Week", getContext().getStringProperty("CYWk"))
+						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Total: " + DBTotal);
 
 		UIValues = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
@@ -2218,6 +2243,7 @@ public class WeeklyPlanningZone extends TestBase {
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 						.replace("FinYear", getContext().getStringProperty("Year"))
+						.replace("Week", getContext().getStringProperty("CYWk"))
 						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Value: " + DBValues);
 
@@ -2227,6 +2253,7 @@ public class WeeklyPlanningZone extends TestBase {
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 						.replace("FinYear", getContext().getStringProperty("Year"))
+						.replace("Week", getContext().getStringProperty("CYWk"))
 						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Total: " + DBTotal);
 
@@ -2266,7 +2293,9 @@ public class WeeklyPlanningZone extends TestBase {
 				PlannedIPLHitems.replace("Region", getContext().getStringProperty("Region"))
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
-						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr).replace("Division", getContext().getStringProperty("Division")));
+						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr)
+						.replace("Week", getContext().getStringProperty("CYWk"))
+						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Value: " + DBValues);
 
 		String PlannedIPLHitemsTotal = data.getText("PlannedIPLHitemsTotal");
@@ -2274,7 +2303,9 @@ public class WeeklyPlanningZone extends TestBase {
 				PlannedIPLHitemsTotal.replace("Region", getContext().getStringProperty("Region"))
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
-						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr).replace("Division", getContext().getStringProperty("Division")));
+						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr)
+						.replace("Week", getContext().getStringProperty("CYWk"))
+						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Total: " + DBTotal);
 
 		UIValues = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
@@ -2313,6 +2344,7 @@ public class WeeklyPlanningZone extends TestBase {
 							.replace("Area", getContext().getStringProperty("Area"))
 							.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 							.replace("FinYear", getContext().getStringProperty("Year"))
+							.replace("Week", getContext().getStringProperty("CYWk"))
 							.replace("Division", getContext().getStringProperty("Division")));
 			System.out.println("DB Value: " + DBValues);
 
@@ -2322,6 +2354,7 @@ public class WeeklyPlanningZone extends TestBase {
 							.replace("Area", getContext().getStringProperty("Area"))
 							.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 							.replace("FinYear", getContext().getStringProperty("Year"))
+							.replace("Week", getContext().getStringProperty("CYWk"))
 							.replace("Division", getContext().getStringProperty("Division")));
 			System.out.println("DB Total: " + DBTotal);
 
@@ -2340,6 +2373,7 @@ public class WeeklyPlanningZone extends TestBase {
 							.replace("Area", getContext().getStringProperty("Area"))
 							.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 							.replace("FinYear", getContext().getStringProperty("Year"))
+							.replace("Week", getContext().getStringProperty("CYWk"))
 							.replace("Division", getContext().getStringProperty("Division")));
 			System.out.println("DB Value: " + DBValues);
 
@@ -2349,6 +2383,7 @@ public class WeeklyPlanningZone extends TestBase {
 							.replace("Area", getContext().getStringProperty("Area"))
 							.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 							.replace("FinYear", getContext().getStringProperty("Year"))
+							.replace("Week", getContext().getStringProperty("CYWk"))
 							.replace("Division", getContext().getStringProperty("Division")));
 			System.out.println("DB Total: " + DBTotal);
 
@@ -2388,6 +2423,7 @@ public class WeeklyPlanningZone extends TestBase {
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 						.replace("FinYear", getContext().getStringProperty("Year"))
+						.replace("Week", getContext().getStringProperty("CYWk"))
 						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Value: " + DBValues);
 
@@ -2397,6 +2433,7 @@ public class WeeklyPlanningZone extends TestBase {
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 						.replace("FinYear", getContext().getStringProperty("Year"))
+						.replace("Week", getContext().getStringProperty("CYWk"))
 						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Total: " + DBTotal);
 
@@ -2436,7 +2473,9 @@ public class WeeklyPlanningZone extends TestBase {
 				PlannedLYWages.replace("Region", getContext().getStringProperty("Region"))
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
-						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr).replace("Division", getContext().getStringProperty("Division")));
+						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr)
+						.replace("Week", getContext().getStringProperty("CYWk"))
+						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Value: " + DBValues);
 
 		String PlannedLYWagesTotal = data.getText("PlannedLYWagesTotal");
@@ -2444,7 +2483,9 @@ public class WeeklyPlanningZone extends TestBase {
 				PlannedLYWagesTotal.replace("Region", getContext().getStringProperty("Region"))
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
-						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr).replace("Division", getContext().getStringProperty("Division")));
+						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr)
+						.replace("Week", getContext().getStringProperty("CYWk"))
+						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Total: " + DBTotal);
 
 		UIValues = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
@@ -2483,6 +2524,7 @@ public class WeeklyPlanningZone extends TestBase {
 							.replace("Area", getContext().getStringProperty("Area"))
 							.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 							.replace("FinYear", getContext().getStringProperty("Year"))
+							.replace("Week", getContext().getStringProperty("CYWk"))
 							.replace("Division", getContext().getStringProperty("Division")));
 			System.out.println("DB Value: " + DBValues);
 
@@ -2492,6 +2534,7 @@ public class WeeklyPlanningZone extends TestBase {
 							.replace("Area", getContext().getStringProperty("Area"))
 							.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 							.replace("FinYear", getContext().getStringProperty("Year"))
+							.replace("Week", getContext().getStringProperty("CYWk"))
 							.replace("Division", getContext().getStringProperty("Division")));
 			System.out.println("DB Total: " + DBTotal);
 
@@ -2510,6 +2553,7 @@ public class WeeklyPlanningZone extends TestBase {
 							.replace("Area", getContext().getStringProperty("Area"))
 							.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 							.replace("FinYear", getContext().getStringProperty("Year"))
+							.replace("Week", getContext().getStringProperty("CYWk"))
 							.replace("Division", getContext().getStringProperty("Division")));
 			System.out.println("DB Value: " + DBValues);
 
@@ -2519,6 +2563,7 @@ public class WeeklyPlanningZone extends TestBase {
 							.replace("Area", getContext().getStringProperty("Area"))
 							.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 							.replace("FinYear", getContext().getStringProperty("Year"))
+							.replace("Week", getContext().getStringProperty("CYWk"))
 							.replace("Division", getContext().getStringProperty("Division")));
 			System.out.println("DB Total: " + DBTotal);
 
@@ -2558,6 +2603,7 @@ public class WeeklyPlanningZone extends TestBase {
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 						.replace("FinYear", getContext().getStringProperty("Year"))
+						.replace("Week", getContext().getStringProperty("CYWk"))
 						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Value: " + DBValues);
 
@@ -2567,6 +2613,7 @@ public class WeeklyPlanningZone extends TestBase {
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 						.replace("FinYear", getContext().getStringProperty("Year"))
+						.replace("Week", getContext().getStringProperty("CYWk"))
 						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Total: " + DBTotal);
 
@@ -2606,7 +2653,9 @@ public class WeeklyPlanningZone extends TestBase {
 				LYWagesPercentage.replace("Region", getContext().getStringProperty("Region"))
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
-						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr).replace("Division", getContext().getStringProperty("Division")));
+						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr)
+						.replace("Week", getContext().getStringProperty("CYWk"))
+						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Value: " + DBValues);
 
 		String LYWagesPercentageTotal = data.getText("LYWagesPercentageTotal");
@@ -2614,7 +2663,9 @@ public class WeeklyPlanningZone extends TestBase {
 				LYWagesPercentageTotal.replace("Region", getContext().getStringProperty("Region"))
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
-						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr).replace("Division", getContext().getStringProperty("Division")));
+						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr)
+						.replace("Week", getContext().getStringProperty("CYWk"))
+						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Total: " + DBTotal);
 
 		UIValues = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
@@ -2652,6 +2703,7 @@ public class WeeklyPlanningZone extends TestBase {
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 						.replace("FinYear", getContext().getStringProperty("Year"))
+						.replace("Week", getContext().getStringProperty("CYWk"))						
 						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Value: " + DBValues);
 
@@ -2661,6 +2713,7 @@ public class WeeklyPlanningZone extends TestBase {
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 						.replace("FinYear", getContext().getStringProperty("Year"))
+						.replace("Week", getContext().getStringProperty("CYWk"))
 						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Total: " + DBTotal);
 
@@ -2699,6 +2752,7 @@ public class WeeklyPlanningZone extends TestBase {
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 						.replace("FinYear", getContext().getStringProperty("Year"))
+						.replace("Week", getContext().getStringProperty("CYWk"))
 						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Value: " + DBValues);
 
@@ -2708,6 +2762,7 @@ public class WeeklyPlanningZone extends TestBase {
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
 						.replace("FinYear", getContext().getStringProperty("Year"))
+						.replace("Week", getContext().getStringProperty("CYWk"))
 						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Total: " + DBTotal);
 
@@ -2748,7 +2803,9 @@ public class WeeklyPlanningZone extends TestBase {
 				HoursLY.replace("Region", getContext().getStringProperty("Region"))
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
-						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr).replace("Division", getContext().getStringProperty("Division")));
+						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr)
+						.replace("Week", getContext().getStringProperty("CYWk"))
+						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Value: " + DBValues);
 
 		String HoursLYTotal = data.getText("HoursLYTotal");
@@ -2756,7 +2813,9 @@ public class WeeklyPlanningZone extends TestBase {
 				HoursLYTotal.replace("Region", getContext().getStringProperty("Region"))
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
-						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr).replace("Division", getContext().getStringProperty("Division")));
+						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr)
+						.replace("Week", getContext().getStringProperty("CYWk"))
+						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Total: " + DBTotal);
 
 		UIValues = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
@@ -2795,7 +2854,9 @@ public class WeeklyPlanningZone extends TestBase {
 				plannedOR.replace("Region", getContext().getStringProperty("Region"))
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
-						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr).replace("Division", getContext().getStringProperty("Division")));
+						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr)
+						.replace("Week", getContext().getStringProperty("CYWk"))
+						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Value: " + DBValues);
 
 		String plannedORTotal = data.getText("plannedORTotal");
@@ -2803,7 +2864,9 @@ public class WeeklyPlanningZone extends TestBase {
 				plannedORTotal.replace("Region", getContext().getStringProperty("Region"))
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
-						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr).replace("Division", getContext().getStringProperty("Division")));
+						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr)
+						.replace("Week", getContext().getStringProperty("CYWk"))
+						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Total: " + DBTotal);
 
 		UIValues = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
@@ -2845,7 +2908,9 @@ public class WeeklyPlanningZone extends TestBase {
 					BudgetOR.replace("Region", getContext().getStringProperty("Region"))
 							.replace("Area", getContext().getStringProperty("Area"))
 							.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
-							.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr).replace("Division", getContext().getStringProperty("Division")));
+							.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr)
+							.replace("Week", getContext().getStringProperty("CYWk"))
+							.replace("Division", getContext().getStringProperty("Division")));
 			System.out.println("DB Value: " + DBValues);
 
 			String BudgetORTotal = data.getText("BudgetORTotal");
@@ -2853,7 +2918,9 @@ public class WeeklyPlanningZone extends TestBase {
 					BudgetORTotal.replace("Region", getContext().getStringProperty("Region"))
 							.replace("Area", getContext().getStringProperty("Area"))
 							.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
-							.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr).replace("Division", getContext().getStringProperty("Division")));
+							.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr)
+							.replace("Week", getContext().getStringProperty("CYWk"))
+							.replace("Division", getContext().getStringProperty("Division")));
 			System.out.println("DB Total: " + DBTotal);
 
 			UIValues = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
@@ -2872,7 +2939,9 @@ public class WeeklyPlanningZone extends TestBase {
 					ForecastOR.replace("Region", getContext().getStringProperty("Region"))
 							.replace("Area", getContext().getStringProperty("Area"))
 							.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
-							.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr).replace("Division", getContext().getStringProperty("Division")));
+							.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr)
+							.replace("Week", getContext().getStringProperty("CYWk"))
+							.replace("Division", getContext().getStringProperty("Division")));
 			System.out.println("DB Value: " + DBValues);
 
 			String ForecastORTotal = data.getText("ForecastORTotal");
@@ -2880,7 +2949,9 @@ public class WeeklyPlanningZone extends TestBase {
 					ForecastORTotal.replace("Region", getContext().getStringProperty("Region"))
 							.replace("Area", getContext().getStringProperty("Area"))
 							.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
-							.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr).replace("Division", getContext().getStringProperty("Division")));
+							.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr)
+							.replace("Week", getContext().getStringProperty("CYWk"))
+							.replace("Division", getContext().getStringProperty("Division")));
 			System.out.println("DB Total: " + DBTotal);
 
 			UIValues = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
@@ -2920,7 +2991,9 @@ public class WeeklyPlanningZone extends TestBase {
 				PlannedCPH.replace("Region", getContext().getStringProperty("Region"))
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
-						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr).replace("Division", getContext().getStringProperty("Division")));
+						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr)
+						.replace("Week", getContext().getStringProperty("CYWk"))
+						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Value: " + DBValues);
 
 		String PlannedCPHTotal = data.getText("PlannedCPHTotal");
@@ -2928,7 +3001,9 @@ public class WeeklyPlanningZone extends TestBase {
 				PlannedCPHTotal.replace("Region", getContext().getStringProperty("Region"))
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
-						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr).replace("Division", getContext().getStringProperty("Division")));
+						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr)
+						.replace("Week", getContext().getStringProperty("CYWk"))
+						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Total: " + DBTotal);
 
 		UIValues = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,
@@ -2967,7 +3042,9 @@ public class WeeklyPlanningZone extends TestBase {
 				GrowthLYCPH.replace("Region", getContext().getStringProperty("Region"))
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
-						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr).replace("Division", getContext().getStringProperty("Division")));
+						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr)
+						.replace("Week", getContext().getStringProperty("CYWk"))
+						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Value: " + DBValues);
 
 		String GrowthLYCPHTotal = data.getText("GrowthLYCPHTotal");
@@ -2975,7 +3052,9 @@ public class WeeklyPlanningZone extends TestBase {
 				GrowthLYCPHTotal.replace("Region", getContext().getStringProperty("Region"))
 						.replace("Area", getContext().getStringProperty("Area"))
 						.replace("Zone", getContext().getStringProperty("Zone")).replace("FinWeek", Week)
-						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr).replace("Division", getContext().getStringProperty("Division")));
+						.replace("FinYear", getContext().getStringProperty("Year")).replace("LYFinYr", LYYr)
+						.replace("Week", getContext().getStringProperty("CYWk"))
+						.replace("Division", getContext().getStringProperty("Division")));
 		System.out.println("DB Total: " + DBTotal);
 
 		UIValues = pageWeeklyPlanningPO.UIResults(objMonthlyPlanningStoreObjects.MPTable, extentTest,

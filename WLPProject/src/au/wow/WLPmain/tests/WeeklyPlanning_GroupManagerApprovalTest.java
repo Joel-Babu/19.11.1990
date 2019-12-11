@@ -41,7 +41,7 @@ import au.wow.wlp.utils.XMLDataReader;
 
 public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 
-	protected Logger log = LogManager.getLogger(WeeklyPlanningGroup.class);
+	protected Logger log = LogManager.getLogger(WeeklyPlanning_GroupManagerApprovalTest.class);
 	TestStatus status;
 	ExtentReportsScreenshotCode ScreenShotUtil;
 	SQLWrapper sql = new SQLWrapper(log);
@@ -77,22 +77,22 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 	@Test(priority = 1)
 	public void GroupManagerApproval() throws Exception {
 		
-		pageWeeklyPlanningPO = new WeeklyPlanning_GroupManagerApprovalPage().createPage(getDriver(), getContext(), log, status, data,
+		pageWeeklyPlanningPO = new WeeklyPlanningStorePage().createPage(getDriver(), getContext(), log, status, data,
 				getReport(), getReportLogger(), WeeklyPlanningStorePage.class);
-//		pageMonthlyPlanningGroupPO = new MonthlyPlanningGroupPage().createPage(getDriver(), getContext(), log, status,
-//				data, getReport(), getReportLogger(), MonthlyPlanningGroupPage.class);
+		pageMonthlyPlanningGroupPO = new MonthlyPlanningGroupPage().createPage(getDriver(), getContext(), log, status,
+				data, getReport(), getReportLogger(), MonthlyPlanningGroupPage.class);
 		TestStatus status = getTestStatus();
 		System.out.println("Entering into TestCase");
 		pageWeeklyPlanningPO.SelectWeekFromDropdown(objWeeklyPlanningStoreObjects, extentTest,
 				getContext().getStringProperty("SelectFiscalWeek"));
-		
+
 		pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 				objWeeklyPlanningStoreObjects.planningScreens, "Planning Screens");
 		pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 				objWeeklyPlanningStoreObjects.weeklyPlanning, "Weekly Planning");
 		pageWeeklyPlanningPO.selectPage(extentTest, objWeeklyPlanningStoreObjects.menuBar,
 				objWeeklyPlanningStoreObjects.screenToView, "Zone");
-		
+		try {
 		//check if plan completion checkbox is visible on screen
 		if(objWeeklyPlanningGroupMangerApprovalObjects.ChkBox.isDisplayed())
 		{
@@ -158,7 +158,12 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 		
 		
 		
+	}catch(Exception e) {
 		
+		System.out.println("Exception Occured" +e.getMessage());
+		Report_AddStep("testcase","Exception occured" ,"","", "Fail");
+		htmlToExtent(cName,mName,extentTest,driver1, "Exception occured ;;;Fail");
+		}
 	}
 	
 	@Test(priority = 2)
@@ -193,12 +198,14 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 		dtmoduledesc = m.getAnnotation(Test.class).description();
 		testcasesttime = new Date();
 		pageWeeklyPlanningPO = PageFactory.initElements(this.getDriver(), WeeklyPlanningStorePage.class);
-		
+		pageMonthlyPlanningPO = PageFactory.initElements(this.getDriver(), MonthlyPlanningStorePage.class);
+		pageMonthlyPlanningGroupPO = PageFactory.initElements(this.getDriver(), MonthlyPlanningGroupPage.class);
 		BaseObj = PageFactory.initElements(this.getDriver(), BasePage.class);
 		common = PageFactory.initElements(this.getDriver(), CommonFunctions.class);
 		storeprop = PageFactory.initElements(this.getDriver(), StoreProperties.class);
 		objWeeklyPlanningStoreObjects = PageFactory.initElements(this.getDriver(), WeeklyPlanningStoreObjects.class);
-		
+		objMonthlyPlanningStoreObjects = PageFactory.initElements(this.getDriver(), MonthlyPlanningStoreObjects.class);
+		objMonthlyPlanningGroupObjects = PageFactory.initElements(this.getDriver(), MonthlyPlanningGroupObjects.class);
 		ScreenShotUtil = PageFactory.initElements(this.getDriver(), ExtentReportsScreenshotCode.class);
 		System.out.println(System.getProperty("user.dir"));
 		Date date = new Date();
@@ -212,6 +219,7 @@ public class WeeklyPlanning_GroupManagerApprovalTest extends TestBase {
 		Report_Header("testcase", reportPath, moduledesc, dat);
 
 	}
+
 
 	@BeforeClass
 	public void loadXMLFile() {

@@ -1,0 +1,131 @@
+package au.wow.main.objects.fcd;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class TaskSetupObjects {
+
+	@FindBy(xpath= "//frame[@id='wowList']")
+	public static WebElement frame;
+
+	//Trading Department	
+	@FindBy(xpath= "//*[@id='frmSearch:cbxTradingDept']")
+	public static WebElement TradingDepartment;
+
+	//SMS JOB
+	@FindBy(xpath= "//*[@id='frmSearch:cbxSMSJob']")
+	public static WebElement SMSJob;
+
+	//Type
+	@FindBy(xpath= "//*[@id='frmSearch:cbxType']")
+	public static WebElement Type;
+	
+	//SEARCH
+	@FindBy(xpath= "//*[@id='frmSearch:btnSearch']")
+	public static WebElement Search;
+
+	//Edit
+	@FindBy(xpath= "//*[@id='frmSearch:ctrTaskMaintenanceTable:0:oEdit']")
+	public static WebElement Edit;
+
+	//LMSEdit
+	@FindBy(xpath= "//*[@id='frmDetails:cbxNightFillTask']")
+	public static WebElement NightFillJob;
+
+	//save
+	@FindBy(xpath= "//*[@id='frmDetails:btnSave']") 		
+	public static WebElement Save;
+	
+	
+	//parametersearchbutton
+	@FindBy(xpath= "//input[@class='fcdLookUp']") 		
+	public static WebElement parametersearchbutton;
+	
+	  @FindBy(xpath="//input[@id='frmSearch:txtParamId']")
+		public static WebElement parameteridstorelookup;
+	  
+	  @FindBy(xpath="//input[@id='frmSearch:btnSearch']")
+		public static WebElement searchid;
+	  
+	  @FindBy(xpath="//span[@id='frmSearch:ctrParamTable:0:oParamId']/parent::a")
+		public static WebElement selectingtheparameter;
+	  
+	
+	@FindBy(xpath= "//input[@id='frmDetails:txtTaskId']") 		
+	public static WebElement Tasksetupid;
+
+	//close			
+	@FindBy(xpath= "//*[@id='frmDetails:btnClose']")
+	public static WebElement Close;
+
+	//ADD
+	@FindBy(xpath= "//*[@id='frmSearch:btnAdd']")
+	public static WebElement Add;
+
+	//LMS Trading dep
+	@FindBy(xpath= "//*[@id='frmDetails:cbxTradingDept']")
+	public static WebElement LMSTradingdept;
+
+	//LMS SMS Job
+	@FindBy(xpath= "//*[@id='frmDetails:cbxSMSJob']")
+	public static WebElement LMSSMSJob;
+
+	//Activity
+	@FindBy(xpath= "//*[@id='frmDetails:cbxActivity']")
+	public static WebElement Activity;
+
+	//Task Description
+	@FindBy(xpath= "//*[@id='frmDetails:txtTaskDesc']")
+	public static WebElement TaskDescription;
+
+	//Productivity Standard
+	@FindBy(xpath= "//*[@id='frmDetails:txtProductivityStd']")
+	public static WebElement ProductivityStandard;
+
+	//Type
+	@FindBy(xpath= "//*[@id='frmDetails:cbxTaskType']")
+	public static WebElement LMSType;
+
+
+	//Formulae
+	@FindBy(xpath= "//*[@id='frmDetails:btnFormulaLookUp']")
+	public static WebElement Formulae;
+
+	//ParameterId
+	@FindBy(xpath= "//*[@id='frmSearch:ctrParamTable:1:oParamId']")
+	public static WebElement ParameterId;
+
+	@FindBy(xpath= "//*[@id='frmDetails:btnSave']")
+	public static WebElement LMSSave;
+	
+	@FindBy(xpath= "//*[@id='frmSearch:ctrTaskMaintenanceTable:0:chkDelete']")
+	public static WebElement DeleteOption;
+	
+	
+	@FindBy(xpath= "//*[@id='frmSearch:btnDelete']")
+	public static WebElement Delete;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

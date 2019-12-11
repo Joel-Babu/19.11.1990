@@ -1,0 +1,39 @@
+package au.wow.main.objects.fcd;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class ParameterMaintenanceObjects {
+	//Frame
+		@FindBy(xpath= "//frame[@id='wowList']")
+		public static WebElement frame;
+
+		//User Management			
+		@FindBy(xpath= "//*[@id='frmSearch:cbxTradingDept']")
+		public static WebElement tradingDepartment;
+		
+		//Search
+		@FindBy(xpath= "//*[@id='frmSearch:btnSearch']")
+		public static WebElement search;
+		
+		//Edit
+		@FindBy(xpath= "//*[@id='frmSearch:ctrParamTable:0:oEdit']")
+		public static WebElement edit;
+		
+		//Store User Edit
+		@FindBy(xpath= "//*[@id='frmDetails:chkStoreStateUserView']")
+		public static WebElement storeUserEdit;
+		
+		//SAVE
+		@FindBy(xpath= "//*[@id='frmDetails:btnSave']")
+		public static WebElement save;
+		
+		//close
+		@FindBy(xpath= "//*[@id='frmDetails:btnCancel']")
+		public static WebElement close;
+		
+		
+		
+		
+		
+}

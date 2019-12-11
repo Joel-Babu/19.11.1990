@@ -1,0 +1,131 @@
+package au.wow.main.pages.fcd;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+
+import au.wow.main.objects.LoginPageObjects;
+import au.wow.main.objects.fcd.ActivityObjects;
+import au.wow.main.objects.fcd.CombinedDistributionObjects;
+import au.wow.main.objects.fcd.LabourStandardProfilesObjects;
+import au.wow.main.objects.fcd.ParameterMaintenanceObjects;
+import au.wow.main.objects.fcd.SurveyQuestionReviewObjects;
+import au.wow.main.pages.CommonFunctions;
+import au.wow.main.pages.LoginPage;
+import au.wow.sms.utils.BasePage;
+import au.wow.sms.utils.ExtentReportsScreenshotCode;
+import au.wow.sms.utils.SQLWrapper;
+
+public class ParameterMaintenancePage extends BasePage {
+	CommonFunctions common = PageFactory.initElements(this.getDriver(), CommonFunctions.class);
+	public Logger log = LogManager.getLogger(LoginPage.class);
+	SQLWrapper sql = new SQLWrapper(log);
+	LoginPageObjects loginPageObjects;
+	CommonFunctions objCommonFunctions;
+	static ExtentReportsScreenshotCode ScreenShotUtil;
+	static WebDriverWait wait;
+	String image;
+
+	public ParameterMaintenancePage() {
+		// TODO Auto-generated constructor stub
+		super();
+	}
+	
+
+	/**
+	  Search option in Parameter Maintenance
+	 */
+
+	public void Search(ParameterMaintenanceObjects ParameterMaintenanceObjects,WebElement tradingDepartment,String tradingDepartmentdropdown, ExtentTest extentTest) 
+			throws Exception {
+
+		SwitchFrame(ParameterMaintenanceObjects.frame);
+		try 
+		{
+			waitFor(3);
+			selectByVisibleText(ParameterMaintenanceObjects.tradingDepartment,tradingDepartmentdropdown);
+		}
+		catch (Exception e) 
+		{
+			image = TakeScreenshot(extentTest, "UIResult");
+			System.out.println("Exception occured while Fetching Data");
+			e.printStackTrace();
+			extentTest.log(LogStatus.FAIL, "Failed to click the Search button" ,image);
+		}
+	}
+	
+	/**
+	 * 
+	 * 
+	 */
+
+	public void Add_ParametermaintenanceDetails(ActivityObjects ActivityObjects,WebElement tradingDepartment,String tradingDepartmentdropdown,WebElement smsJob,String smsJobdropdown,
+			ExtentTest extentTest) throws Exception {
+
+		//SwitchFrame(ActivityObjects.frame);
+		try 
+		{
+
+			selectByVisibleText(ActivityObjects.tradingDepartment,tradingDepartmentdropdown);
+			waitFor(3);
+			selectByVisibleText(ActivityObjects.smsJob,smsJobdropdown);
+			waitFor(3);
+
+		}
+		catch (Exception e) 
+		{
+			image = TakeScreenshot(extentTest, "UIResult");
+			System.out.println("Exception occured while Fetching Data");
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 
+	 * 
+	 */
+
+	public void search(ParameterMaintenanceObjects objParameterMaintenanceObjects, WebElement Button,
+			ExtentTest extentTest) throws Exception {
+
+		SwitchFrame(objParameterMaintenanceObjects.frame);
+		try {
+
+			// selectByVisibleText(TaskMaintenanceObjects.KronosDepartment,dropdown);
+			waitFor(3);
+			click(Button);
+
+		} catch (Exception e) {
+			image = TakeScreenshot(extentTest, "UIResult");
+			System.out.println("Exception occured while Fetching Data");
+			e.printStackTrace();
+		}
+	}
+
+	public void searchlookup(SurveyQuestionReviewObjects SurveyQuestionReviewObjects, WebElement parameterid,String value,
+			WebElement Searchbutton, ExtentTest extentTest) throws Exception {
+
+		// SwitchFrame(SurveyQuestionReviewObjects.frame);
+		try {
+
+			// selectByVisibleText(TaskMaintenanceObjects.KronosDepartment,dropdown);
+			
+			enterText(parameterid,value);
+			waitFor(3);
+			click(Searchbutton);
+
+
+		} catch (Exception e) {
+			image = TakeScreenshot(extentTest, "UIResult");
+			System.out.println("Exception occured while Fetching Data");
+			e.printStackTrace();
+		}
+	}
+	
+
+}

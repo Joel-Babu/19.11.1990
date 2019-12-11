@@ -1,0 +1,437 @@
+package au.wow.main.tests.fcd;
+
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.ITestContext;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import com.relevantcodes.extentreports.ExtentReports;
+
+import au.wow.main.objects.LoginPageObjects;
+import au.wow.main.objects.fcd.EditObjects;
+import au.wow.main.objects.fcd.StandardDepartmentObjects;
+import au.wow.main.objects.fcd.ActivityObjects;
+import au.wow.main.pages.CommonFunctions;
+import au.wow.main.pages.LoginPage;
+import au.wow.main.pages.fcd.ActivityPage;
+import au.wow.main.pages.fcd.StandardDepartmentPage;
+import au.wow.main.pages.fcd.SurveyQuestionReviewPage;
+import au.wow.sms.utils.BasePage;
+import au.wow.sms.utils.CommonRepository;
+import au.wow.sms.utils.CustomExtentReports;
+import au.wow.sms.utils.ExtentReportsScreenshotCode;
+import au.wow.sms.utils.SQLWrapper;
+import au.wow.sms.utils.TestBase;
+import au.wow.sms.utils.TestStatus;
+import au.wow.sms.utils.XMLDataReader;
+
+public class Activity extends TestBase {
+	private static final ActivityObjects  ActivityObjects = null;
+	protected Logger log = LogManager.getLogger(Activity.class);
+	TestStatus status;
+	ExtentReportsScreenshotCode ScreenShotUtil;
+	SQLWrapper sql = new SQLWrapper(log);
+	CommonFunctions objCommonFunctions;
+	LoginPage objLoginPage;
+	LoginPageObjects objLoginPageObjects;
+	CommonRepository CommonFunc;
+	ActivityObjects objActivityObjects;
+	ActivityPage objActivityPage;
+	String MenuSelection;
+	List<List<Object>> UIValues;
+	BasePage BaseObj;
+	List<List<Object>> DBActivityAdd,DBActivityEdit,DBActivityDelete;
+	public Activity() {
+		super.log = log;
+	}
+
+	/**
+	 * LogintoApplication: Logging into SMS Application
+	 * 
+	 * @throws Exception
+	 */
+
+	@Test(description = "Logging into SMS Application", priority = 0)
+	public void LoginApplication() throws Exception {
+		extentTest = report.startTest("Application Login - HomePage verification");		
+		objLoginPage = new LoginPage().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(), LoginPage.class);
+		objLoginPage.enterUserCredentials(getContext().getStringProperty("SMSUserType"));
+		objLoginPage.VerifySignIn(objLoginPageObjects, extentTest, getContext().getStringProperty("WelcomeName"));
+	}
+
+
+
+//Adding the Activity Details
+	
+	@Test(description = "Adding the Activity Details", priority = 1)
+	public void ADD_Details() throws Exception {
+		extentTest = report.startTest("Adding the Activity Details");
+		objLoginPage = new LoginPage().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(), LoginPage.class);
+		objCommonFunctions = new CommonFunctions().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(), CommonFunctions.class);
+		objActivityPage= new Activity().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(),ActivityPage.class);
+
+		objCommonFunctions.verifyMenuSelection(objLoginPageObjects, extentTest,getContext().getStringProperty("MenuSelection"), 
+				getContext().getStringProperty("SubSMSMenu13"),
+				LoginPageObjects.smsSubMenuCount, LoginPageObjects.smsSubMenu, LoginPageObjects.smsMenuExpand);
+		
+		objCommonFunctions.clickButton(LoginPageObjects.explorerMenuFrame, LoginPageObjects.activity, extentTest, "clicking on Activity Screen");
+		
+		//objCommonFunctions.clickButton(ActivityObjects.frame,ActivityObjects.activityID,extentTest,"Clicking on Activity ID");
+		
+		objCommonFunctions.clickButton(ActivityObjects.frame,ActivityObjects.add,extentTest,"Clicking on ADD Button");
+
+		// Get Parent window handle
+		String winHandleBefore = driver1.getWindowHandle();
+		for (String winHandle : driver1.getWindowHandles()) {
+			// Switch to child window
+			driver1.switchTo().window(winHandle);
+		}
+		// Do some operation on child window and get child window handle.
+		String winHandleAfter = driver1.getWindowHandle();
+
+		objActivityPage.ADD_ActivityDetails(objActivityObjects,ActivityObjects.tradingDepartment,getContext().getStringProperty("TradingDepartment_Activity"),
+				ActivityObjects.smsJob,getContext().getStringProperty("SMSJob_Activity"),extentTest);	
+		waitFor(3);
+		enterText(ActivityObjects.activityDescription, getContext().getStringProperty("ActivityDescription")); 
+		waitFor(3);
+		
+	    
+	   
+		objCommonFunctions.clickButton(ActivityObjects.frame,ActivityObjects.save,extentTest,"Clicking on SAVE Button");
+		 objCommonFunctions.clickButtonWithoutFrame(ActivityObjects.closeLMS, extentTest, "closing LMS page");
+		waitFor(3);
+		String ActivityID =getValueAttribute(StandardDepartmentObjects.standarddeptUID);
+	    System.out.println(ActivityID);
+		
+		objCommonFunctions.clickButton(ActivityObjects.frame,ActivityObjects.close,extentTest,"Clicking on CLOSE Button");
+
+
+//to switch to parent window.
+		driver1.switchTo().window(winHandleBefore);
+		
+		//verifying the data in DB
+		String SMSDBValues = data.getText("SMSDBValues");
+		DBActivityAdd = sql.SMSexecuteQuery(getContext(),
+				SMSDBValues.replace("idno", ActivityID).replace("descp", getContext().getStringProperty("LMSDescription")));
+		System.out.println("DB Values: " + DBActivityAdd);
+		
+		if (Integer.parseInt(DBActivityAdd.get(0).get(0).toString())==1) {
+			
+			Report_AddStep("testcase", "The Activity UI data is matching with DB for created Activity:  " + ActivityID + "", "", "", "Pass");
+			htmlToExtent(cName, mName, extentTest, driver1,"Activity UI & DB data are matching for created Activity: " + ActivityID + ";;;Pass");
+			}
+			
+		else
+		{				
+			Report_AddStep("testcase","The Activity UI data is not matching with DB for created Activity:  " + ActivityID + "", "", "", "Fail");
+			htmlToExtent(cName, mName, extentTest, driver1,"Activity UI & DB data are not matching for created Activity: " + ActivityID +  ";;;Fail");
+		}
+
+		
+		
+
+	}
+	 
+
+	
+	//Editing the Activity Details
+	
+		@Test(description = "Editing the Activity Details", priority = 2)
+		public void Edit_Details() throws Exception {
+			extentTest = report.startTest("Editing the Activity Details");
+			objLoginPage = new LoginPage().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(), LoginPage.class);
+			objCommonFunctions = new CommonFunctions().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(), CommonFunctions.class);
+			objActivityPage= new Activity().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(),ActivityPage.class);
+
+			/*objCommonFunctions.verifyMenuSelection(objLoginPageObjects, extentTest,getContext().getStringProperty("MenuSelection"), 
+					getContext().getStringProperty("SubSMSMenu13"),
+					LoginPageObjects.smsSubMenuCount, LoginPageObjects.smsSubMenu, LoginPageObjects.smsMenuExpand);
+			
+			objCommonFunctions.clickButton(LoginPageObjects.explorerMenuFrame, LoginPageObjects.activity, extentTest, "clicking on Activity Screen");
+*/
+			objCommonFunctions.clickButton(ActivityObjects.frame,ActivityObjects.Description,extentTest,"Clicking on Activity Description ");
+			enterText(ActivityObjects.Description, getContext().getStringProperty("ActivityDescription")); 
+			enterText(ActivityObjects.activityDescription, getContext().getStringProperty("ActivityDescription")); 
+			waitFor(3);
+        objCommonFunctions.clickButton(ActivityObjects.frame,ActivityObjects.search,extentTest,"Clicking on Search Button");
+			objCommonFunctions.clickButton(ActivityObjects.frame,ActivityObjects.edit,extentTest,"Clicking on Edit Button");
+
+			// Get Parent window handle
+			String winHandleBefore = driver1.getWindowHandle();
+			for (String winHandle : driver1.getWindowHandles()) {
+				// Switch to child window
+				driver1.switchTo().window(winHandle);
+			}
+			// Do some operation on child window and get child window handle.
+			String winHandleAfter = driver1.getWindowHandle();
+
+			enterText(ActivityObjects.activityDescription, getContext().getStringProperty("Edit_ActivityDescription")); 
+			waitFor(3);
+			
+			objCommonFunctions.clickButton(ActivityObjects.frame,ActivityObjects.save,extentTest,"Clicking on SAVE Button");
+			waitFor(3);
+			String ActivityID =getValueAttribute(StandardDepartmentObjects.standarddeptUID);
+		    System.out.println(ActivityID);
+			objCommonFunctions.clickButton(ActivityObjects.frame,ActivityObjects.close,extentTest,"Clicking on CLOSE Button");
+
+	//to switch to parent window.
+			driver1.switchTo().window(winHandleBefore);
+			
+			
+			
+			
+			//verifying the data in DB
+			String SMSDBValues = data.getText("SMSDBValues"); 
+			DBActivityEdit = sql.SMSexecuteQuery(getContext(),
+					SMSDBValues.replace("idno", ActivityID).replace("descp", getContext().getStringProperty("LMSDescription")));
+			System.out.println("DB Values: " + DBActivityEdit);
+			
+			if (Integer.parseInt(DBActivityEdit.get(0).get(0).toString())==1) {
+				
+				Report_AddStep("testcase", "The Activity screen UI data is matching with DB for created Activity:  " + ActivityID + "", "", "", "Pass");
+				htmlToExtent(cName, mName, extentTest, driver1,"Activity screen UI & DB data are matching for created Activity: " + ActivityID + ";;;Pass");
+				}
+				
+			else
+			{				
+				Report_AddStep("testcase","The Activity screen UI data is not matching with DB for created Activity:  " + ActivityID + "", "", "", "Fail");
+				htmlToExtent(cName, mName, extentTest, driver1,"Activity screen UI & DB data are not matching for created Activity: " + ActivityID +  ";;;Fail");
+			}
+
+		}
+		
+	
+	//Delete the Activity Details
+	
+		@Test(description = "Deleting the Activity Details", priority = 3)
+		public void Delete() throws Exception {
+			extentTest = report.startTest("Deleting the Activity Details");
+			objLoginPage = new LoginPage().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(), LoginPage.class);
+			objCommonFunctions = new CommonFunctions().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(), CommonFunctions.class);
+			objActivityPage= new Activity().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(),ActivityPage.class);
+
+			/*objCommonFunctions.verifyMenuSelection(objLoginPageObjects, extentTest,getContext().getStringProperty("MenuSelection"), 
+					getContext().getStringProperty("SubSMSMenu13"),
+					LoginPageObjects.smsSubMenuCount, LoginPageObjects.smsSubMenu, LoginPageObjects.smsMenuExpand);
+			
+			objCommonFunctions.clickButton(LoginPageObjects.explorerMenuFrame, LoginPageObjects.activity, extentTest, "clicking on Activity Screen");
+			*/
+			
+			objCommonFunctions.clickButton(ActivityObjects.frame,ActivityObjects.Description,extentTest,"Clicking on Activity Description ");
+			waitFor(3);
+			enterText(ActivityObjects.Description, getContext().getStringProperty("Edit_ActivityDescription")); 
+
+			objCommonFunctions.clickButton(ActivityObjects.frame,ActivityObjects.search,extentTest,"Clicking on Search Button");
+			waitFor(3);
+			objCommonFunctions.clickButton(ActivityObjects.frame,ActivityObjects.deleteOption,extentTest,"Clicking on Delete Option Button");
+			waitFor(3);
+			objCommonFunctions.clickButton(ActivityObjects.frame,ActivityObjects.delete,extentTest,"Clicking on Delete Button");
+			Alert alert = driver1.switchTo().alert();
+			alert.accept();
+
+			//verifying the data in DB
+			String SMSDBValues = data.getText("SMSDBValues");
+			DBActivityDelete = sql.SMSexecuteQuery(getContext(),
+					SMSDBValues.replace("idno", getContext().getStringProperty("ActivityID")).replace("descp", getContext().getStringProperty("LMSDescription")));
+			System.out.println("DB Values: " + DBActivityDelete);
+			
+			if (Integer.parseInt(DBActivityDelete.get(0).get(0).toString())==0) {
+				
+				Report_AddStep("testcase", "The Activity screen UI data is matching with DB after deleting the Activity:  " + getContext().getStringProperty("ActivityID") + "", "", "", "Pass");
+				htmlToExtent(cName, mName, extentTest, driver1,"Activity screen UI & DB data are matching after deleting the Activity: " + getContext().getStringProperty("ActivityID") + ";;;Pass");
+				}
+				
+			else
+			{		
+				Report_AddStep("testcase","The Activity screen UI data is not matching with DB after deleting the Activity:  " + getContext().getStringProperty("ActivityID") + "", "", "", "Fail");
+				htmlToExtent(cName, mName, extentTest, driver1,"Activity screen UI & DB data are not matching after deleting the Activity: " + getContext().getStringProperty("ActivityID") +  ";;;Fail");
+			}	
+				
+
+		}
+		  
+		/**
+		Searching on Activity
+	 */
+
+@Test(description = "Searching on Activity with filter criteria", priority = 4)
+	public void Search_ActivityID() throws Exception {
+		extentTest = report.startTest("Searching on Activity");
+		objLoginPage = new LoginPage().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(), LoginPage.class);
+		objCommonFunctions = new CommonFunctions().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(), CommonFunctions.class);
+		objActivityPage= new Activity().createPage(getDriver(), getContext(), log, status, data,getReport(), getReportLogger(),ActivityPage.class);
+
+
+	/*	objCommonFunctions.verifyMenuSelection(objLoginPageObjects, extentTest,getContext().getStringProperty("MenuSelection"), 
+				getContext().getStringProperty("SubSMSMenu13"),
+				LoginPageObjects.smsSubMenuCount, LoginPageObjects.smsSubMenu, LoginPageObjects.smsMenuExpand);
+		
+		objCommonFunctions.clickButton(LoginPageObjects.explorerMenuFrame, LoginPageObjects.activity, extentTest, "clicking on Activity Screen");
+		*/
+		objCommonFunctions.clickButton(ActivityObjects.frame,ActivityObjects.activityID,extentTest,"Clicking on Activity ID");
+		waitFor(3);
+		enterText(ActivityObjects.activityID, getContext().getStringProperty("ACTIVITY_ID")); 
+		waitFor(3);
+		objCommonFunctions.clickButton(ActivityObjects.frame,ActivityObjects.search,extentTest,"Clicking on Search Button");
+		
+	}
+	 
+	
+	
+	//Logging of the Application
+
+		@Test(priority = 5)
+		public void LogoutApplication() throws Exception {
+			extentTest = report.startTest("Logging out of application");
+            objLoginPage = new LoginPage().createPage(getDriver(), getContext(), log, status, data, getReport(),
+					getReportLogger(), LoginPage.class);
+			objLoginPage.LogOFF(objLoginPageObjects);
+		}
+
+		@BeforeTest
+		public void InitiateExtentReport() throws Exception {
+			report = new ExtentReports(System.getProperty("user.dir") + "\\Reports\\Activity.html");
+		}
+
+		@AfterTest
+		public void CloseExtentReport() throws Exception {
+			report.endTest(extentTest);
+			report.flush();
+		}
+
+		@BeforeMethod
+		public void setUpItemPrice(Method m, ITestContext testcontext) throws IOException {
+
+			/*initializeTestcontext();
+			System.out.println("test1 - beforemethod");
+			log.info("Loading Testdata for the test case: " + m.getName().toString());
+			data.getTCNameFromChildren(m.getName().toString().trim());
+			testcontext.setAttribute("WebDriver", getDriver());
+			testcontext.setAttribute("Customreports", this.customreport);
+			customreport.startTest(m.getName().toString());
+			initializeTestStatus();
+			reportPath = new File(getContext().getStringProperty("reportPath"));
+			moduledesc = m.getName().toString().trim();
+			dtmoduledesc = m.getAnnotation(Test.class).description();
+			testcasesttime = new Date();
+			objCommonFunctions = PageFactory.initElements(this.getDriver(), CommonFunctions.class);
+			objLoginPage = PageFactory.initElements(this.getDriver(), LoginPage.class);
+			objLoginPageObjects = PageFactory.initElements(this.getDriver(), LoginPageObjects.class);
+			objActivityObjects = PageFactory.initElements(this.getDriver(),ActivityObjects.class);
+			objActivityPage = PageFactory.initElements(this.getDriver(), ActivityPage.class);
+			
+			ScreenShotUtil = PageFactory.initElements(this.getDriver(), ExtentReportsScreenshotCode.class);
+			System.out.println(System.getProperty("user.dir"));
+			Date date = new Date();
+			SimpleDateFormat sdf = new SimpleDateFormat("MMddyyyy_hmmss");
+			String formattedDate = sdf.format(date);
+			System.out.println(formattedDate); // 12/01/2011 4:48:16 PM
+			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			String formattedDate1 = dateFormat.format(date);
+			System.out.println(formattedDate1); // 12/01/2011 4:48:16 PM
+			String dat = formattedDate1;
+			Report_Header("testcase", reportPath, moduledesc, dat);
+			*/
+			System.out.println("test1 - beforemethod");
+			mName = m.getName().toString().trim();
+			System.out.println(m.getName().toString().trim());
+			if (!methodList.contains(m.getName().toString().trim())) {
+				methodList.add(m.getName().toString().trim());
+				//extentTest = report.startTest(m.getName().toString().trim());
+			}
+			System.out.println(methodList.size());
+			//initializeTestcontext();
+			System.out.println("test1 - beforemethod");
+			log.info("Loading Testdata for the test case: " + m.getName().toString());
+			data.getTCNameFromChildren(m.getName().toString().trim());
+			testcontext.setAttribute("WebDriver", getDriver());
+			testcontext.setAttribute("Customreports", this.customreport);
+			customreport.startTest(m.getName().toString());
+			initializeTestStatus();
+			reportPath = new File(getContext().getStringProperty("reportPath"));
+			moduledesc = m.getName().toString().trim();
+			dtmoduledesc = m.getAnnotation(Test.class).description();
+			testcasesttime = new Date();
+			objCommonFunctions = PageFactory.initElements(this.getDriver(), CommonFunctions.class);
+			objLoginPage = PageFactory.initElements(this.getDriver(), LoginPage.class);
+			objLoginPageObjects = PageFactory.initElements(this.getDriver(), LoginPageObjects.class);
+			ScreenShotUtil = PageFactory.initElements(this.getDriver(), ExtentReportsScreenshotCode.class);
+			objActivityObjects = PageFactory.initElements(this.getDriver(),ActivityObjects.class);
+			objActivityPage = PageFactory.initElements(this.getDriver(), ActivityPage.class);
+
+			BaseObj = PageFactory.initElements(this.getDriver(), BasePage.class);
+			System.out.println(System.getProperty("user.dir"));
+			Date date = new Date();
+			SimpleDateFormat sdf = new SimpleDateFormat("MMddyyyy_hmmss");
+			String formattedDate = sdf.format(date);
+			System.out.println(formattedDate); // 12/01/2011 4:48:16 PM
+			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			String formattedDate1 = dateFormat.format(date);
+			System.out.println(formattedDate1); // 12/01/2011 4:48:16 PM
+			String dat = formattedDate1;
+			Report_Header("testcase", reportPath, moduledesc, dat);
+
+		}
+
+		
+
+	
+
+		
+
+		@BeforeClass
+		public void loadXMLFile() {
+		/*	//try {
+			initializeTestcontext();
+			//sql.CLRConnectSITDB(context);
+			System.out.println("test1 - Beforeclass");
+			data = new XMLDataReader(log);
+			customreport = new CustomExtentReports();
+			createDriver(getContext().getStringProperty("SMSUrl"), getContext().getStringProperty("browser"), cName,
+					mName, extentTest, driver1);			log.info("Loading data for the class: ");
+			data.loadTestDataXML(System.getProperty("user.dir") + "\\TestData\\SMSApplication\\SMStoCLRDBValOthers.xml");
+			customreport.createExtentReport();
+			//} catch (SQLException e) {
+			//e.printStackTrace();
+			//}
+		}
+		*/
+			try {
+				cName = this.getClass().getSimpleName();
+				reportPath = new File(getContext().getStringProperty("reportPath"));
+				report = new ExtentReports(
+						getContext().getStringProperty("reportPath") + "\\" + this.getClass().getSimpleName() + ".html");
+				classList.add(this.getClass().getSimpleName());
+				initializeTestcontext();
+				sql.SMSConnectSITDB(context);
+					
+				System.out.println("test1 - Beforeclass");
+				data = new XMLDataReader(log);
+				customreport = new CustomExtentReports();
+			createDriver(getContext().getStringProperty("SMSUrl"), getContext().getStringProperty("browser"), cName,
+						mName, extentTest, driver1);
+				log.info("Loading data for the class: ");
+				data.loadTestDataXML(System.getProperty("user.dir") + "\\TestData\\SMSApplication\\SMStoCLRDBValOthers.xml");
+				customreport.createExtentReport();
+				
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+
+}

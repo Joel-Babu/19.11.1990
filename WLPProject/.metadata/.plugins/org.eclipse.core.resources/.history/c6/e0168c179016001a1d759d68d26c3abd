@@ -1,0 +1,265 @@
+package au.wow.main.pages;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.Random;
+import java.util.TimeZone;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+
+import au.wow.main.objects.LoginPageObjects;
+import au.wow.main.objects.fcd.SurveyQuestionReviewObjects;
+import au.wow.sms.utils.TestBase;
+
+public class CommonFunctions extends TestBase {
+	List<List<Object>> results;
+	String image;
+
+	/**
+	 * Returns promotion weekdate to return the articles from DB
+	 * 
+	 * @param promofor
+	 * @return promotion weekdate
+	 */
+	public void verifyMenuSelection(LoginPageObjects loginPageObjects, ExtentTest extentTest, String menuName,
+			String subMenuName, String count, String menuXpath, WebElement explorerXpath) throws Exception {
+		String name = null;
+
+		Boolean result = false;
+		try {
+			SwitchFrame(LoginPageObjects.explorerMenuFrame);
+			click(explorerXpath);
+			System.out.println("Successfully Logged into SubMenu Explorer");
+
+			int RowCount = TableCount(count);
+			//SwitchFrame(LoginPageObjects.explorerMenuFrame);
+			for (int i = 1; i <= RowCount- 1; i++) {
+				WebElement subMenuNameUI = prepareWebElementWithDynamicXpathWithInt(menuXpath, i);
+				name = getText(subMenuNameUI);
+				if (name.equalsIgnoreCase(subMenuName)) {
+					System.out.println(name);
+					click(subMenuNameUI);
+					result = true;
+					break;
+					
+						}
+			}
+			
+			if (result == true) {
+				image = TakeScreenshot(extentTest, "MenuSelection");
+				extentTest.log(LogStatus.PASS, "MenuSelection is Successful",image);
+				Report_AddStep("testcase", "Successfully selected SubMenu: " + name + "", "", "", "Pass");
+				htmlToExtent(cName,mName,extentTest,driver1, "Successfully to Navigated to: "+name+";;;Pass");
+			} 
+			else {
+				image = TakeScreenshot(extentTest, "MenuSelection");
+				extentTest.log(LogStatus.PASS, "MenuSelection is not Successful",image);
+			Report_AddStep("testcase", "SubMenu Does not exist in UI: " + name + "", "", "", "Fail");
+		   htmlToExtent(cName,mName,extentTest,driver1, "Failed to Navigate to: "+name+";;;Fail");
+			}
+
+	} 
+		catch (Exception e) {
+	System.out.println("Exception Occured" + e.getMessage());
+	image = TakeScreenshot(extentTest, "MenuSelection");
+		extentTest.log(LogStatus.FAIL, "Exception occured while selecting SubMenu: " + subMenuName + "", image);
+		Report_AddStep("testcase", "Exception occured while selecting SubMenu " + subMenuName + "", "", "", "Fail");
+		htmlToExtent(cName,mName,extentTest,driver1, "Failed to Navigate to: "+name+";;;Fail");
+	}
+	}
+	
+
+	/**
+	 * Select value from dropdown
+	 * 
+	 * @throws Exception
+	 */
+	public void selectOptionFromDropdown(WebElement frame, String xpath, ExtentTest extentTest, String value,
+			String ssdescription) throws Exception {
+		try {
+			SwitchFrame(frame);
+			WebElement element = prepareWebElementWithDynamicXpathWithInt(xpath);
+			if (isDisplayed(element)) {
+				selectByValue(element, value);
+				extentTest.log(LogStatus.PASS, "Successfully selected Dropdown Option: '" + value + "'");
+				Report_AddStep("testcase", "Successfully selected Dropdown Option: '" + value + "'", "", "", "Pass");
+			} else {
+				image = TakeScreenshot(extentTest, ssdescription);
+				extentTest.log(LogStatus.FAIL, "Dropdown is not displayed in UI", image);
+				Report_AddStep("testcase", "Dropdown is not displayed in UI", "", "", "Fail");
+			}
+		} catch (Exception e) {
+			image = TakeScreenshot(extentTest, ssdescription);
+			System.out.println("Exception Occured" + e.getMessage());
+			extentTest.log(LogStatus.FAIL, "Error while selecting Dropdown Option: '" + value + "'", image);
+			Report_AddStep("testcase", "Error while selecting Dropdown Option: '" + value + "'", "", "", "Fail");
+		}
+	}
+
+	/**
+	 * Clicking Button
+	 * 
+	 * @param frame : webelement of frame within which the button is present
+	 * @param xpath: xpath of the button 
+	 * @param ssdescription: Name of screenshot
+	 * @throws Exception
+	 */
+	public void clickButton(WebElement frame, WebElement xpath, ExtentTest extentTest, String ssdescription)
+			throws Exception {
+		String btnName = null;
+		try {
+			//SwitchFrame(frame);
+	
+			if (isDisplayed(xpath)) {
+				btnName = getText(xpath);				
+				
+				if((btnName.length())<1){				
+				btnName = getAttribute(xpath);}
+				String image = TakeScreenshot(extentTest, ssdescription);
+				click(xpath);
+				//extentTest.log(LogStatus.PASS, "Clicked on the "+ btnName+ " button successfully",image);
+				Report_AddStep("testcase", "Successfully clicked on the button: " +btnName+""+ image + "", "", "", "Pass");
+				htmlToExtent(cName,mName,extentTest,driver1, "Successfully clicked on the button: "+btnName+""+image+";;;Pass");
+			} else {
+				image = TakeScreenshot(extentTest, ssdescription);
+				//extentTest.log(LogStatus.FAIL,"Button is not clicked successfully: '" + btnName + "'", image);
+				Report_AddStep("testcase", "Failed to click on the button: '" + btnName + "'", "", "", "Fail");
+				htmlToExtent(cName,mName,extentTest,driver1, "Failed to click on the button: "+btnName+""+image+";;;Fail");
+			}
+		} catch (Exception e) {
+			image = TakeScreenshot(extentTest, ssdescription);
+			System.out.println("Exception Occured" + e.getMessage());
+			//extentTest.log(LogStatus.FAIL, "Error while clicking the Button: '" + ssdescription + "'", image);
+			Report_AddStep("testcase", "Error while clicking the Button: '" + btnName + "'", "", "", "Fail");
+			htmlToExtent(cName,mName,extentTest,driver1, "Error occured on clicking the button: "+btnName+ ""+image+";;;Fail");
+		}
+	}
+	
+	public  void clickButtonWithoutFrame(WebElement xpath, ExtentTest extentTest, String ssdescription)
+			throws Exception {
+		String btnName = null;
+		try {
+			
+			if (isDisplayed(xpath)) {
+				btnName = getText(xpath);
+				
+				if((btnName.length())<1){				
+					btnName = getAttribute(xpath);}
+				String image = TakeScreenshot(extentTest, "clickbuttonpass");
+				click(xpath);
+				//extentTest.log(LogStatus.PASS, "addpageafterclickingsave",image1);
+				Report_AddStep("testcase", "Successfully clicked on the button: " +btnName+""+ image + "", "", "", "Pass");
+				htmlToExtent(cName,mName,extentTest,driver1, "Successfully clicked on the button: "+btnName+""+image+";;;Pass");
+				
+			} else {
+				image = TakeScreenshot(extentTest, "clickbuttonfail");
+				//extentTest.log(LogStatus.PASS, "addpageafterclickingsave",image);
+				Report_AddStep("testcase", "Failed to click on the button : " +btnName+  ""+ image + "", "", "", "Fail");
+				htmlToExtent(cName,mName,extentTest,driver1, "Failed to click on the button: "+btnName+""+image+";;;Fail");
+			}
+		} catch (Exception e) {
+			image = TakeScreenshot(extentTest,"clickbuttonexecption");
+			System.out.println("Exception Occured" + e.getMessage());
+			//extentTest.log(LogStatus.FAIL, "Error while clicking the Button: '" + "addpageafterclickingsave" + "'", image);
+			Report_AddStep("testcase", "Error while clicking the Button: '" + btnName+ "'", "", "", "Fail");
+			htmlToExtent(cName,mName,extentTest,driver1, "Error occured on clicking the button: "+btnName+ ""+image+";;;Fail");
+		}
+	}
+	
+	
+	
+	
+	public void clickButtonWithoutFrame1(WebElement xpath, ExtentTest extentTest, String ssdescription)
+			throws Exception {
+		String btnName = null;
+		try {
+			//SwitchFrame(frame);
+			//WebElement element = prepareWebElementWithDynamicXpathWithInt(xpath);
+			if (isDisplayed(xpath)) {
+				btnName = getText(xpath);
+				
+//				image = TakeScreenshot(extentTest, "addstandarddetailsbeforeclickingsave");
+//				extentTest.log(LogStatus.PASS, "addstandarddetailsbeforeclickingsave",image);
+//				Report_AddStep("testcase", "Data before clicking on add button: " + image + "", "", "", "Pass");
+//				htmlToExtent(cName,mName,extentTest,driver1, "Successfully to Navigated to: "+image+";;;Pass");
+				click(xpath);
+				Alert alert = driver1.switchTo().alert();
+				alert.accept();
+				String image = TakeScreenshot(extentTest, "StdDeptDelete");
+				extentTest.log(LogStatus.PASS, "standard department has been deleted successfully",image);
+				Report_AddStep("testcase", "standard department has been deleted successfully", "", image,
+						"Pass");
+				htmlToExtent(cName, mName, extentTest, driver1,"standard department has been deleted successfully;;;Pass");
+
+				
+			} else {
+				String image = TakeScreenshot(extentTest, "StdDeptDelete");
+				extentTest.log(LogStatus.PASS, "standard department has been deleted successfully",image);
+				Report_AddStep("testcase", "standard department has been deleted successfully", "", image,
+						"Fail");
+				htmlToExtent(cName, mName, extentTest, driver1,"Failed to delete standard department;;;Fail");
+
+			}
+		} catch (Exception e) {
+			image = TakeScreenshot(extentTest,"StdDeptDelete");
+			System.out.println("Exception Occured" + e.getMessage());
+			extentTest.log(LogStatus.FAIL, "Error while clicking the Button: '" + "StdDeptDelete" + "'", image);
+			Report_AddStep("testcase", "Error while clicking the Button: '" + "StdDeptDelete"+ "'", "", "", "Fail");
+		}
+	}
+	
+	
+	
+	
+	/**
+	 * Writing Data to CSV File
+	 * 
+	 * @param uniqueValues : List that needs to be printed in CSV file
+	 * @param csvFileName: Name of the csv file
+	 * @throws Exception
+	 */
+	public boolean writeToCSVFile(List<List<Object>> uniqueValues,String csvFileName) throws Exception {
+		boolean result = false;
+		int i;
+		FileWriter writer = null;
+		String csvFile = System.getProperty("user.dir") + "\\Reports\\"+csvFileName+".csv";
+		try{
+			writer = new FileWriter(csvFile);
+	        for(i=0; i<uniqueValues.size(); i++){
+	        	writer.append(uniqueValues.get(i).toString());
+	        	writer.append(System.getProperty("line.separator"));
+	        }
+		}catch (Exception e) {
+            System.out.println("Error in CsvFileWriter !!!");
+            e.printStackTrace();
+        } finally {
+            try {
+            	writer.flush();
+            	writer.close();
+            	result=true;
+            } catch (IOException e) {
+              System.out.println("Error while flushing/closing fileWriter !!!");
+                e.printStackTrace();
+            }
+        }
+		return result;
+	}
+
+		
+		
+	}
+		 
+
