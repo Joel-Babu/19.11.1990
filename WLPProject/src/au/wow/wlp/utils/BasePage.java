@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.TimeZone;
-
+import org.openqa.selenium.support.Color;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -47,7 +47,8 @@ public class BasePage extends HTMLReport {
 	// WLP
 	protected Logger log;
 	private TestContext context;
-	public WebDriver driver;
+	//public WebDriver driver;
+	public static WebDriver driver;
 	public ExtentReports report;
 	public ExtentTest extentTest;
 	private TestStatus status;
@@ -514,7 +515,24 @@ public class BasePage extends HTMLReport {
 	public void click(WebElement element) {
 		String elementname = getElementLocator(element);
 		try {
-			element.click();
+			element.click(); 
+			// getLogger().info("The element: " + elementname + " is clicked");
+		} catch (Exception e) {
+			try {
+				throw new CustomException(e, getLogger(), elementname);
+			} catch (CustomException e1) {
+				getLogger().error("Error in clicking the element: " + elementname);
+			}
+		}
+	}
+	
+	
+	public void submit(WebElement element) {
+		String elementname = getElementLocator(element);
+		try {
+			final By Field = By.xpath(elementname);
+			WebElement Val = driver.findElement(Field);
+			Val.submit(); 
 			// getLogger().info("The element: " + elementname + " is clicked");
 		} catch (Exception e) {
 			try {
@@ -1336,6 +1354,12 @@ public class BasePage extends HTMLReport {
 		return Xpath;
 	}
 
+	public WebElement prepareWebElementWithLinkText(String xpathValue) {
+	
+		WebElement Xpath = driver.findElement(By.linkText(xpathValue));
+		return Xpath;
+	}
+	
 	public WebElement prepareWebElementWithDynamicXpathWithIntTry(String xpathValue, int i) {
 		WebElement Xpath = driver.findElement(By.xpath(xpathValue.replace("dynamic", "" + i).replace("$", "c")));
 		return Xpath;
@@ -1618,6 +1642,20 @@ public class BasePage extends HTMLReport {
 		String desc = "";
 		if (!valueList[1].isEmpty()) {
 			desc = valueList[0] + "<br />Db Value: <br />" + valueList[1] + "<br />Application Value: <br />"
+					+ valueList[2];
+		} else {
+			desc = valueList[0];
+		}
+		System.out.println("Test Value : " + valueList[3]);
+		writeExtentReportStep1(valueList[3], desc, methodName, extLogger, cName, mName, driver);
+
+	}
+	
+	public static void htmlToExtentTwo(String cName, String mName, ExtentTest extLogger, WebDriver driver, String value) {
+		String[] valueList = value.split(";");
+		String desc = "";
+		if (!valueList[1].isEmpty()) {
+			desc = valueList[0] + "" + valueList[1] + ""
 					+ valueList[2];
 		} else {
 			desc = valueList[0];
